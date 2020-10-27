@@ -30,6 +30,6 @@
     "homepage": "https://github.com/dalisoft/deepcopy#readme",
     "devDependencies": {
         "ava": "^3.13.0",
-        "terser": "^4.8.0"
+        "terser": "^5.3.8"
     }
 }

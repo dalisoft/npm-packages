@@ -27,7 +27,7 @@
   "homepage": "https://github.com/dalisoft/cookie#readme",
   "devDependencies": {
     "ava": "^2.0.0",
-    "terser": "^4.0.0"
+    "terser": "^5.3.8"
   },
   "dependencies": {}
 }

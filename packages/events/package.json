@@ -31,7 +31,7 @@
   "devDependencies": {
     "ava": "^3.13.0",
     "lib-export": "0.0.3",
-    "terser": "^4.8.0"
+    "terser": "^5.3.8"
   },
   "dependencies": {
     "@dalisoft/args": "^0.1.1"

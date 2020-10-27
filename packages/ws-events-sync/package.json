@@ -30,7 +30,7 @@
   "homepage": "https://github.com/dalisoft/ws-events-sync#readme",
   "devDependencies": {
     "ava": "^3.13.0",
-    "terser": "^4.8.0",
+    "terser": "^5.3.8",
     "websocket": "^1.0.32",
     "ws": "^7.3.1"
   },

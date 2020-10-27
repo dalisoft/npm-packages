@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/dalisoft/react-es6-tween#readme",
   "devDependencies": {
-    "terser": "^3.17.0"
+    "terser": "^5.3.8"
   }
 }
