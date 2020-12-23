@@ -23,6 +23,7 @@ artifacts
 
 logs
 .log
+*.log
 *-debug.log*
 
 #################
@@ -67,6 +68,12 @@ __snapshots__
 tmp
 styleguide/
 
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
 ## Make sure subfolders also does not exist
 **/.grunt
 **/.npm
@@ -83,6 +90,12 @@ styleguide/
 **/__snapshots__
 **/tmp
 **/styleguide/
+
+**/.yarn/*
+**/!.yarn/releases
+**/!.yarn/plugins
+**/!.yarn/sdks
+**/!.yarn/versions
 
 #################
 #### Modules ####
@@ -111,7 +124,6 @@ jspm_packages
 #################
 
 .lock-wscript
-yarn.lock
 .yarn-integrity
 
 #################
