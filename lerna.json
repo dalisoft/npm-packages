@@ -2,5 +2,12 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "stream": true
+  "stream": true,
+  "command": {
+    "publish": {
+      "changelogPreset": "@commitlint/config-lerna-scopes",
+      "conventionalCommits": true,
+      "createRelease": "github"
+    }
+  }
 }
