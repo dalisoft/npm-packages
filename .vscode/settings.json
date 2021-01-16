@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "*.ts": "typescript",
+    "*rc": "json"
+  }
+}
