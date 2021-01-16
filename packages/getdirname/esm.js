@@ -1,3 +1,4 @@
+// eslint-disable-next-line node/no-unsupported-features/es-syntax
 export default function getdirname() {
   try {
     throw new Error('__get__dirname__');
@@ -5,6 +6,7 @@ export default function getdirname() {
     const currStackTrace = e.stack.split('at ');
 
     let stackTraceRun = currStackTrace.shift();
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       if (currStackTrace[0].indexOf('file://') !== -1) {
         stackTraceRun = currStackTrace.shift();

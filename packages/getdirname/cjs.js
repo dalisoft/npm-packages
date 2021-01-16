@@ -2,9 +2,10 @@ module.exports = function getdirname() {
   try {
     throw new Error('__get__dirname__');
   } catch (e) {
-    var currStackTrace = e.stack.split('at ');
+    const currStackTrace = e.stack.split('at ');
 
-    var stackTraceRun = currStackTrace.shift();
+    let stackTraceRun = currStackTrace.shift();
+    // eslint-disable-next-line no-constant-condition
     while (true) {
       if (currStackTrace[0].indexOf(' (/') !== -1) {
         stackTraceRun = currStackTrace.shift();
@@ -17,12 +18,12 @@ module.exports = function getdirname() {
       return null;
     }
 
-    var lastSlashIndex = stackTraceRun.lastIndexOf('/');
-    var firstBrace = stackTraceRun.indexOf(' (/');
+    const lastSlashIndex = stackTraceRun.lastIndexOf('/');
+    let firstBrace = stackTraceRun.indexOf(' (/');
 
     if (firstBrace !== -1 && lastSlashIndex !== -1) {
       firstBrace += 2;
-      var realdirname = stackTraceRun.substr(
+      const realdirname = stackTraceRun.substr(
         firstBrace,
         lastSlashIndex - firstBrace
       );
