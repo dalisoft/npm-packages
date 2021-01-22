@@ -1,5 +1,5 @@
 // eslint-disable-next-line node/no-unsupported-features/es-syntax
-export default function getdirname() {
+module.exports = function getdirname() {
   try {
     throw new Error('__get__dirname__');
   } catch (e) {
@@ -28,4 +28,4 @@ export default function getdirname() {
   }
 
   return null;
-}
+};
