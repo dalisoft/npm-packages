@@ -27,9 +27,5 @@
   "bugs": {
     "url": "https://github.com/dalisoft/swipe-gesture/issues"
   },
-  "homepage": "https://github.com/dalisoft/swipe-gesture#readme",
-  "devDependencies": {
-    "lib-export": "0.0.3",
-    "terser": "^4.8.0"
-  }
+  "homepage": "https://github.com/dalisoft/swipe-gesture#readme"
 }

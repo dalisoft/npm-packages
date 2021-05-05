@@ -28,9 +28,7 @@
     "url": "https://github.com/dalisoft/ws-events-sync/issues"
   },
   "homepage": "https://github.com/dalisoft/ws-events-sync#readme",
-  "devDependencies": {
-    "ava": "^3.13.0",
-    "terser": "^4.8.0",
+  "peerDependencies": {
     "websocket": "^1.0.32",
     "ws": "^7.3.1"
   },

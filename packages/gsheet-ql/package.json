@@ -26,12 +26,5 @@
   },
   "homepage": "https://github.com/dalisoft/gsheet-ql#readme",
   "author": "dalisoft",
-  "license": "MIT",
-  "devDependencies": {
-    "rollup": "^2.33.1",
-    "rollup-plugin-delete": "^1.x",
-    "rollup-plugin-sucrase": "^2.1.0",
-    "rollup-plugin-terser": "^5.3.1",
-    "typescript": "^3.9.7"
-  }
+  "license": "MIT"
 }

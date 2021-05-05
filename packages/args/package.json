@@ -27,10 +27,5 @@
   "bugs": {
     "url": "https://github.com/dalisoft/args/issues"
   },
-  "homepage": "https://github.com/dalisoft/args#readme",
-  "devDependencies": {
-    "ava": "^3.14.0",
-    "lib-export": "0.0.3",
-    "terser": "^4.8.0"
-  }
+  "homepage": "https://github.com/dalisoft/args#readme"
 }

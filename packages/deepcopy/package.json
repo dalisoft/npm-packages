@@ -27,9 +27,5 @@
   "bugs": {
     "url": "https://github.com/dalisoft/deepcopy/issues"
   },
-  "homepage": "https://github.com/dalisoft/deepcopy#readme",
-  "devDependencies": {
-    "ava": "^3.13.0",
-    "terser": "^4.8.0"
-  }
+  "homepage": "https://github.com/dalisoft/deepcopy#readme"
 }

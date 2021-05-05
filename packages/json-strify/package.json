@@ -22,9 +22,6 @@
     "url": "https://github.com/dalisoft/json-strify/issues"
   },
   "homepage": "https://github.com/dalisoft/json-strify#readme",
-  "devDependencies": {
-    "ava": "^3.13.0"
-  },
   "dependencies": {
     "compile-json-stringify": "^0.1.2"
   }
