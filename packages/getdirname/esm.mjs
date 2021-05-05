@@ -15,8 +15,6 @@ export default function getdirname() {
       }
     }
 
-    console.log(stackTraceRun);
-
     if (!stackTraceRun) {
       return null;
     }
