@@ -4,6 +4,7 @@
   "description": "The fastest query parser",
   "type": "commonjs",
   "main": "parse.js",
+  "types": "parse.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/npm-packages.git"
