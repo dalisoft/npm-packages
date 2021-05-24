@@ -1,0 +1,27 @@
+{
+  "name": "fast-query-parse",
+  "version": "1.0.0",
+  "description": "The fastest query parser",
+  "type": "commonjs",
+  "main": "parse.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "keywords": [
+    "esm",
+    "cjs",
+    "qs",
+    "query",
+    "parse"
+  ],
+  "author": "dalisoft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-query-parse",
+  "dependencies": {
+    "fast-decode-uri-component": "^1.0.1"
+  }
+}
