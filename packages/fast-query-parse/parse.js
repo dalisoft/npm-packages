@@ -16,7 +16,7 @@ function parse(str) {
 
   let index = -1;
   let lastIndex = 0;
-  let returns;
+  let returns = null;
 
   let field;
   let keyIndex;
@@ -25,6 +25,9 @@ function parse(str) {
 
   // eslint-disable-next-line no-cond-assign
   while ((index = str.indexOf('&', lastIndex)) !== -1) {
+    if (returns === null) {
+      returns = {};
+    }
     field = str.substring(lastIndex, index);
 
     keyIndex = field.indexOf('=');
