@@ -15,12 +15,16 @@ Get callee directory
 
 ```js
 import dirname from 'getdirname';
+
+dirname();
 ```
 
 ### CJS
 
 ```js
 const dirname = require('getdirname');
+
+dirname();
 ```
 
 ## License
