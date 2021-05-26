@@ -1,12 +1,13 @@
 # fast-query-parse
 
-The fastest query parser. Up to 2x faster than `querystring.parse`
+The fastest query parser. Up to 10x faster than `require('qs').parse`
 
 ## Features
 
 - Zero dependency
 - Fast
 - Auto-decode URL
+- Auto-mapping
 
 ## Usage
 

@@ -1,6 +1,6 @@
 {
   "name": "fast-query-parse",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "The fastest query parser",
   "type": "commonjs",
   "main": "parse.js",
