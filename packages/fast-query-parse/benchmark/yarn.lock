@@ -24,7 +24,7 @@ fast-decode-uri-component@^1.0.1:
   integrity sha512-WKgKWg5eUxvRZGwW8FvfbaH7AXSh2cL+3j5fMGzUMCxWBJ3dV3a7Wz8y2f/uQ0e3B6WmodD3oS54jTQ9HVTIIg==
 
 "fast-query-parse@file:..":
-  version "1.0.3"
+  version "1.1.0"
   dependencies:
     fast-decode-uri-component "^1.0.1"
 

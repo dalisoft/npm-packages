@@ -6,6 +6,22 @@ import querystring from 'querystring';
 const QS = 'foo=bar&loop[]=doing&shitty[foo]=1&shitty[bar]=2';
 const qsRexEx = /([A-Za-z0-9[\]]+)?=([A-Za-z0-9[\]]+)/gi;
 
+const qsSchema = {
+  type: 'object',
+  properties: {
+    foo: { type: 'string' },
+    loop: { type: 'array', items: { type: 'string' } },
+    shitty: {
+      type: 'object',
+      properties: {
+        foo: { type: 'number' },
+        bar: { type: 'number' }
+      }
+    }
+  }
+};
+const schema = fastQueryParse.parseSchema(qsSchema);
+
 function parseQS(str) {
   let match;
   const returns = {};
@@ -29,10 +45,11 @@ function splitQS(str) {
 }
 
 console.log({
-  'qs.parse': qs.parse(QS),
+  'qs.parse': qs.parse(QS, { depth: 1 }),
   'querystring.parse': querystring.parse(QS),
-  'fast-query-parse': fastQueryParse(QS),
-  'fqp-once': fastQueryParse('foo[]=bar'),
+  'fast-query-parse': fastQueryParse.parse(QS),
+  'fast-query-parse+aot': schema(QS),
+  'fqp-once': fastQueryParse.parse('foo[]=bar'),
   parse_qs: parseQS(QS),
   split_qs: splitQS(QS)
 });
@@ -43,13 +60,16 @@ suite.add('querystring.parse', () => {
   querystring.parse(QS);
 });
 suite.add('qs.parse', () => {
-  qs.parse(QS);
+  qs.parse(QS, { depth: 1 });
 });
 suite.add('parseQS', () => {
   parseQS(QS);
 });
 suite.add('fast-query-parse', () => {
-  fastQueryParse(QS);
+  fastQueryParse.parse(QS);
+});
+suite.add('fast-query-parse+aot', () => {
+  schema(QS);
 });
 suite.add('splitQS', () => {
   splitQS(QS);
