@@ -1,9 +1,9 @@
 const test = require('ava');
-const { Server, Client } = require('.');
 
 const http = require('http');
 const Websocket = require('ws');
 const W3CWebSocket = require('websocket');
+const { Server, Client } = require('.');
 
 const createServer = () =>
   http.createServer((req, res) => {
@@ -24,8 +24,6 @@ test('WebSocket.Server test', (t) =>
 
     ws.on('connection', (ws) => {
       const wsWrapper = new Server(ws);
-
-      wsWrapper.m;
 
       t.pass('Connection passed');
 

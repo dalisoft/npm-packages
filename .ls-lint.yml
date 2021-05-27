@@ -1,0 +1,14 @@
+ls:
+  packages:
+    .dir: kebab-case
+    .ts: kebab-case
+    .tsx: kebab-case
+    .js: kebab-case
+    .d.ts: kebab-case
+    .html: kebab-case
+    .scss: kebab-case
+    .spec.ts: kebab-case | pointcase
+
+ignore:
+  - .git
+  - .bin
