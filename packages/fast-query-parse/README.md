@@ -1,6 +1,6 @@
 # fast-query-parse
 
-The fastest query parser. Up to 10x faster than `require('qs').parse`
+Most fastest `query parse` with performance of `querystring` module and features of `qs` module
 
 ## Features
 

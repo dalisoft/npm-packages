@@ -7,7 +7,7 @@ interface IParseOptions {
 
 declare function parse(
   str: string,
-  delimiter?: '=' | ':',
+  delimiter?: '&' | ';',
   options?: IParseOptions
 ): ParsedUrlQuery | null;
 
