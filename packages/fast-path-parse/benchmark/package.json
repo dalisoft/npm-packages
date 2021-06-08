@@ -1,0 +1,16 @@
+{
+  "name": "benchmark",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=15.10"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "fast-path-parse": "file:..",
+    "path-to-regexp": "^6.2.0",
+    "path-to-tree": "^0.1.0"
+  }
+}

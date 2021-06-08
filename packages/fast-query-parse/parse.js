@@ -14,8 +14,8 @@ const fastUrlDecode = require('fast-decode-uri-component');
  * @example
  * parse('foo=bar')
  */
-// eslint-disable-next-line complexity, max-lines-per-function
 const defaultOptions = { enableParser: true };
+// eslint-disable-next-line complexity, max-lines-per-function
 function parse(str, delimiter = '&', options = defaultOptions) {
   if (str.indexOf('%') !== -1) {
     str = fastUrlDecode(str);

@@ -1,0 +1,25 @@
+{
+  "name": "fast-path-parse",
+  "version": "1.0.0",
+  "description": "Most fastest path parser",
+  "type": "commonjs",
+  "main": "parse.js",
+  "types": "parse.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "keywords": [
+    "esm",
+    "cjs",
+    "qs",
+    "query",
+    "parse"
+  ],
+  "author": "dalisoft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-path-parse"
+}
