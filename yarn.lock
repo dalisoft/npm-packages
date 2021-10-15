@@ -6748,9 +6748,9 @@ prepend-http@^2.0.0:
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
 prettier-config-airlight@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/prettier-config-airlight/-/prettier-config-airlight-1.0.0.tgz#2ff571aee286dc0510cff9fc1a62e464611a112f"
-  integrity sha512-hQwk2waEYms62lmWWZQAhUZSI+jSllVftBtBzeJhBhmk5AGP5+UyFZrocKZMx1sKmLhL6/eQulkB2gTULG8Ntw==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/prettier-config-airlight/-/prettier-config-airlight-1.0.1.tgz#2ec36f7d6cbcdc8daa7df7ce0636656c3ba9b801"
+  integrity sha512-KsIpBUSD0dyOKeRySIy6YihPeV03G/uZ5M0vfKH4dq4inlofyhnl/GVsOG1sW2YrzADlPVnErbDSM4qh///bng==
 
 prettier@^2.3.0:
   version "2.3.0"
