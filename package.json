@@ -35,7 +35,6 @@
     "lib-export": "^0.0.3"
   },
   "resolutions": {
-    "lodash": "^4.17.21",
-    "hosted-git-info": "^3.0.8"
+    "tar": "^6.1.9"
   }
 }

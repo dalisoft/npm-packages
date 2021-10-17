@@ -4,6 +4,7 @@
 .DS_Store
 artifacts
 .ansible
+.history
 
 **/artifacts
 **/.ansible
@@ -15,7 +16,6 @@ artifacts
 
 # nano
 .nano/search_history
-
 
 #################
 #####  Logs #####
