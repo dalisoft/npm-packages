@@ -1,5 +1,5 @@
-/* eslint-disable no-cond-assign, eslint-comments/disable-enable-pair, no-param-reassign, @typescript-eslint/restrict-plus-operands */
-const fastUrlDecode = require('fast-decode-uri-component');
+/* eslint-disable no-cond-assign, eslint-comments/disable-enable-pair, no-param-reassign, @typescript-eslint/restrict-plus-operands, node/no-unsupported-features/es-syntax  */
+import fastUrlDecode from 'fast-decode-uri-component';
 
 /**
  * Parser string or URL encoded string to object
@@ -16,7 +16,7 @@ const fastUrlDecode = require('fast-decode-uri-component');
  */
 const defaultOptions = { enableParser: true };
 // eslint-disable-next-line complexity, max-lines-per-function
-function parse(str, delimiter = '&', options = defaultOptions) {
+export default function parse(str, delimiter = '&', options = defaultOptions) {
   if (str.indexOf('%') !== -1) {
     str = fastUrlDecode(str);
   }
@@ -91,6 +91,3 @@ function parse(str, delimiter = '&', options = defaultOptions) {
 
   return returns;
 }
-
-module.exports = parse;
-module.exports.default = parse;
