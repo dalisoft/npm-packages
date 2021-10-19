@@ -3671,10 +3671,10 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky-config-airlight@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/husky-config-airlight/-/husky-config-airlight-1.0.4.tgz#553e46189030b08d92a863fadd9d49cc53714ce8"
-  integrity sha512-MZlM2qs+NsEUbKeD/g/4Cf1CStkEv8bfFZYsYhsZwUw+KSm2VluPmJ4nvRkUnappSVkmhZ8UI4pl+LpoBTwkkw==
+husky-config-airlight@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/husky-config-airlight/-/husky-config-airlight-2.0.0.tgz#b2c20d8f244eec13f854488f810dc75b941cec9a"
+  integrity sha512-K7KCLO+BKPsYfGXbJEdX4q+Io/FzHDt7QrC1Jnbftkci5wVno8CO6uNk0aYTIDeNtOQ9L5mT3FfkIg8myFH5MA==
 
 husky@^7.0.1:
   version "7.0.2"
