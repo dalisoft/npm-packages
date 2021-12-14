@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dalisoft/jwt.git"
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
   },
   "bugs": {
-    "url": "https://github.com/dalisoft/jwt/issues"
+    "url": "https://github.com/dalisoft/npm-packages/issues"
   },
-  "homepage": "https://github.com/dalisoft/jwt#readme",
+  "homepage": "https://github.com/dalisoft/npm-packages/packages/jwt#readme",
   "keywords": [
     "auth",
     "jwt",
