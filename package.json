@@ -14,7 +14,7 @@
     "@rollup/plugin-commonjs": "^21.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-sucrase": "^4.0.0",
-    "ava": "^3.15.0",
+    "ava": "^4.0.0",
     "eslint": "^8.0.1",
     "eslint-config-airlight-node": "^3.0.1",
     "husky": "^7.0.1",
