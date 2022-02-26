@@ -16,7 +16,7 @@ const fastUrlDecode = require('fast-decode-uri-component');
  */
 const defaultOptions = { enableParser: true };
 // eslint-disable-next-line complexity, max-lines-per-function
-module.exports = function parse(str, delimiter = '&', options = defaultOptions) {
+function parse(str, delimiter = '&', options = defaultOptions) {
   if (str.indexOf('%') !== -1) {
     str = fastUrlDecode(str);
   }
@@ -91,3 +91,6 @@ module.exports = function parse(str, delimiter = '&', options = defaultOptions) 
 
   return returns;
 }
+
+module.exports = parse
+module.exports.default = parse
