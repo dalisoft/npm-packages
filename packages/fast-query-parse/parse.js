@@ -93,4 +93,3 @@ function parse(str, delimiter = '&', options = defaultOptions) {
 }
 
 module.exports = parse
-module.exports.default = parse
