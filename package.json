@@ -35,6 +35,8 @@
     "lib-export": "^0.0.3"
   },
   "resolutions": {
-    "tar": "^6.1.9"
+    "tar": "^6.1.9",
+    "markdown-it": "^12.3.2",
+    "json-schema": "^0.4.0"
   }
 }
