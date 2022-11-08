@@ -6194,9 +6194,9 @@ sequelize-pool@^7.1.0:
   integrity sha512-G9c0qlIWQSK29pR/5U2JF5dDQeqqHRragoyahj/Nx4KOOQ3CPPfzxnfqFPCSB7x5UgjOgnZ61nSxz+fjDpRlJg==
 
 sequelize@^6.6.2:
-  version "6.25.3"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-6.25.3.tgz#ddbdeb84367a030aef367eeef81859c1557f3144"
-  integrity sha512-sbbvDGft6UfSRdIC0dcZvMxxJYi6g0+IgWvIpTuk6ccEoIyLcr7Sk6nXWwGfkdlDabGeunhhhI4yH8PleVMvtw==
+  version "6.25.5"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-6.25.5.tgz#d19982ce40f5d3663df662ac4cb34ba8649eb38f"
+  integrity sha512-QwA2kL4lSNy4mYTv1Zm4DjvloZLaYajuYF5QMOv0O7FameMUEl8Q5zOWRD+FNKGCLzyOJ28gQCo3HX0N9mcssA==
   dependencies:
     "@types/debug" "^4.1.7"
     "@types/validator" "^13.7.1"
@@ -6659,9 +6659,9 @@ tar-stream@~2.2.0:
     readable-stream "^3.1.1"
 
 tar@^6.1.0, tar@^6.1.11, tar@^6.1.2, tar@^6.1.9:
-  version "6.1.11"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.11.tgz#6760a38f003afa1b2ffd0ffe9e9abbd0eab3d621"
-  integrity sha512-an/KZQzQUkZCkuoAA64hM92X0Urb6VpRhAFllDzz44U2mcD5scmT3zBc4VgVpkugF580+DQn8eAFSyoQt0tznA==
+  version "6.1.12"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.12.tgz#3b742fb05669b55671fb769ab67a7791ea1a62e6"
+  integrity sha512-jU4TdemS31uABHd+Lt5WEYJuzn+TJTCBLljvIAHZOz6M9Os5pJ4dD+vRFLxPa/n3T0iEFzpi+0x1UfuDZYbRMw==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
