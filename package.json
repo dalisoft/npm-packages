@@ -13,7 +13,7 @@
     "@rollup/plugin-buble": "^1.0.1",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^14.0.0",
-    "@rollup/plugin-sucrase": "^4.0.0",
+    "@rollup/plugin-sucrase": "^5.0.1",
     "ava": "^4.0.0",
     "eslint": "^8.0.1",
     "eslint-config-airlight-node": "^3.0.1",
