@@ -29,7 +29,7 @@
   "author": "dalisoft",
   "license": "MIT",
   "dependencies": {
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "rand-token": "^1.0.1"
   }
 }
