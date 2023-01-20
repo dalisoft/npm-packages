@@ -16,7 +16,7 @@
     "@rollup/plugin-sucrase": "^5.0.1",
     "ava": "^5.1.0",
     "eslint": "^8.0.1",
-    "eslint-config-airlight-node": "^3.0.1",
+    "eslint-config-airlight-node": "^4.0.0",
     "husky": "^8.0.1",
     "husky-config-airlight": "^2.0.0",
     "lerna": "^6.3.0",
