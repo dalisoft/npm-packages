@@ -1,4 +1,4 @@
-/* eslint-disable no-cond-assign, eslint-comments/disable-enable-pair, no-param-reassign, @typescript-eslint/restrict-plus-operands, node/no-unsupported-features/es-syntax  */
+/* eslint-disable no-cond-assign, eslint-comments/disable-enable-pair, no-param-reassign, @typescript-eslint/restrict-plus-operands  */
 const fastUrlDecode = require('fast-decode-uri-component');
 
 /**
@@ -17,6 +17,9 @@ const fastUrlDecode = require('fast-decode-uri-component');
 const defaultOptions = { enableParser: true };
 // eslint-disable-next-line complexity, max-lines-per-function
 function parse(str, delimiter = '&', options = defaultOptions) {
+  if (typeof str !== 'string') {
+    return null;
+  }
   if (str.indexOf('%') !== -1) {
     str = fastUrlDecode(str);
   }
@@ -92,4 +95,4 @@ function parse(str, delimiter = '&', options = defaultOptions) {
   return returns;
 }
 
-module.exports = parse
+module.exports = parse;
