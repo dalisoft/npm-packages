@@ -816,9 +816,9 @@
     esquery "^1.0.1"
 
 "@rollup/plugin-buble@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-buble/-/plugin-buble-1.0.2.tgz#30af390341b0888490f781fcf17e469198d118a2"
-  integrity sha512-Hz9+AigRWwS93vmorrVrhyG9SdSCZAkBDx614w09iFQYFUAP2HmdUrQyZsb1WO2n+iDvPFznrTE16la+eGNcEQ==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-buble/-/plugin-buble-1.0.3.tgz#6ce275f062a3bac583472cf14f54aa5f0957dccf"
+  integrity sha512-QYD9BKkJoof0FdCFeSYYhF6/Y8e0Mnf+098xGgmWOFJ4UPHlWujjqOYeVwEm2hJPOmlR5k7HPUdAjqtOWhN64Q==
   dependencies:
     "@rollup/pluginutils" "^5.0.1"
     "@types/buble" "^0.19.2"
