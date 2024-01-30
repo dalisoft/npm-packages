@@ -17,7 +17,7 @@
     "ava": "^5.1.0",
     "eslint": "^8.0.1",
     "eslint-config-airlight-node": "^4.0.0",
-    "husky": "^8.0.1",
+    "husky": "^9.0.7",
     "husky-config-airlight": "^3.0.0",
     "lerna": "^6.3.0",
     "lint-staged": "^13.0.3",
