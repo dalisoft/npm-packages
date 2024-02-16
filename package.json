@@ -19,7 +19,7 @@
     "eslint-config-airlight-node": "^4.0.0",
     "husky": "^8.0.1",
     "husky-config-airlight": "^3.0.0",
-    "lerna": "^6.3.0",
+    "lerna": "^8.1.2",
     "lint-staged": "^13.0.3",
     "lint-staged-config-airlight": "^4.0.0",
     "prettier-config-airlight": "^2.0.0",
