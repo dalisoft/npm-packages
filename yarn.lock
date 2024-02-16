@@ -3544,10 +3544,10 @@ husky-config-airlight@^3.0.0:
   resolved "https://registry.yarnpkg.com/husky-config-airlight/-/husky-config-airlight-3.0.0.tgz#dfecca7cc55b373068a6b6c743246cb3675bde8c"
   integrity sha512-4NnJ2T/FMEvA1QDHXmH59MG0uHKK7mvBPNrpQDAH6ARCUuvQXKUmeowFO3nFUeCUQcPdCH3hvDzfxzAU+ZTR9w==
 
-husky@^8.0.1:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
-  integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
+husky@^9.0.11:
+  version "9.0.11"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-9.0.11.tgz#fc91df4c756050de41b3e478b2158b87c1e79af9"
+  integrity sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==
 
 iconv-lite@^0.4.24:
   version "0.4.24"
