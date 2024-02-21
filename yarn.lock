@@ -3540,9 +3540,9 @@ humanize-ms@^1.2.1:
     ms "^2.0.0"
 
 husky-config-airlight@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/husky-config-airlight/-/husky-config-airlight-3.0.0.tgz#dfecca7cc55b373068a6b6c743246cb3675bde8c"
-  integrity sha512-4NnJ2T/FMEvA1QDHXmH59MG0uHKK7mvBPNrpQDAH6ARCUuvQXKUmeowFO3nFUeCUQcPdCH3hvDzfxzAU+ZTR9w==
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/husky-config-airlight/-/husky-config-airlight-3.0.2.tgz#842184689c506963d341ff37a4fbfdc7c5da8641"
+  integrity sha512-YJFOXpf62TmS4FoA01TMf//8VFvgZcDZxph6lAZrEp0IOobAhToues1KanErKoBJ3BssyBQjmT46THn0shGEsw==
 
 husky@^8.0.1:
   version "8.0.3"
