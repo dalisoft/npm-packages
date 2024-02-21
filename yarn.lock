@@ -5757,10 +5757,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier-config-airlight@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/prettier-config-airlight/-/prettier-config-airlight-2.0.2.tgz#390084b92c9fbcb251b94a88c3e46b9127988ffa"
-  integrity sha512-SkSuYlEaCvlpzKht9TUZH/TuQttdCBF6e7kgaDklSvi9uI5WPgNLUYNGZaZe/NZ3uc4ufL/VUEU/32HOhO5FbQ==
+prettier-config-airlight@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/prettier-config-airlight/-/prettier-config-airlight-5.0.0.tgz#8f401ee6da42725864c52993f2d806b1588817e5"
+  integrity sha512-mLti2maCgtuf/+G3sujOIDEVblRCGt/UyWsDIKY0vkfp92B/ui0BUoyZmirs/TKlYehrfbS170jFPGPB0eEUPw==
 
 prettier@^2.8.4:
   version "2.8.7"
