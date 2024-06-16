@@ -1,4 +1,4 @@
-import { sign, Secret, SignOptions } from 'jsonwebtoken';
+import jwt, { type SignOptions } from 'jsonwebtoken';
 import { encrypt } from './utils';
 
 const signJWT = (
@@ -8,7 +8,7 @@ const signJWT = (
   encode?: boolean
 ): Promise<string> =>
   new Promise((resolve, reject): void =>
-    sign(payload, secretOrPrivate, options, (err, encoded): void => {
+    jwt.sign(payload, secretOrPrivate, options, (err, encoded): void => {
       if (err) {
         return reject(err);
       }

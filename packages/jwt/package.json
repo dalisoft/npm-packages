@@ -4,7 +4,8 @@
   "description": "JWT Helper for Auth building from scratch",
   "types": "dist/es/jwt.d.ts",
   "module": "dist/es/jwt.js",
-  "main": "dist/cjs/jwt.js",
+  "type": "module",
+  "main": "dist/es/jwt.js",
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build && npm run test",
@@ -31,5 +32,8 @@
   "dependencies": {
     "jsonwebtoken": "^9.0.2",
     "rand-token": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.6"
   }
 }

@@ -1,10 +1,4 @@
-import {
-  verify,
-  VerifyOptions,
-  VerifyErrors,
-  GetPublicKeyOrSecret,
-  VerifyCallback
-} from 'jsonwebtoken';
+import jwt, { type GetPublicKeyOrSecret, type VerifyOptions } from 'jsonwebtoken';
 import { decrypt } from './utils';
 
 const verifyJWT = (
@@ -14,7 +8,7 @@ const verifyJWT = (
   encoded?: boolean
 ): Promise<string | object> =>
   new Promise((resolve, reject): void =>
-    verify(
+    jwt.verify(
       encoded ? decrypt(secretOrPrivate, token) : token,
       secretOrPrivate,
       options,
