@@ -1,6 +1,6 @@
 {
   "name": "@dalisoft/jwt",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "JWT Helper for Auth building from scratch",
   "types": "dist/es/jwt.d.ts",
   "module": "dist/es/jwt.js",
