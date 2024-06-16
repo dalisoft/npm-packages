@@ -2,5 +2,6 @@
   "files.associations": {
     "*.ts": "typescript",
     "*rc": "json"
-  }
+  },
+  "npm.packageManager": "pnpm"
 }
