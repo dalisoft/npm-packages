@@ -1,6 +1,6 @@
 {
   "name": "fast-query-parse",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "Most fastest `query parse` with performance of `querystring` module and features of `qs` module",
   "main": "parse.js",
   "types": "parse.d.ts",
