@@ -37,8 +37,8 @@ importers:
         specifier: ^9.5.0
         version: 9.5.0
       eslint-config-airlight-node:
-        specifier: ^5.0.2
-        version: 5.0.2(@typescript-eslint/parser@7.13.0)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.4.5)
+        specifier: ^5.0.3
+        version: 5.0.3(@typescript-eslint/parser@7.13.0)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.4.5)
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -2911,8 +2911,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-airlight-node@5.0.2(@typescript-eslint/parser@7.13.0)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.4.5):
-    resolution: {integrity: sha512-u1adyRmqJ0gzsxS7afA7sxsnIgQC6kez2XZ/S/X1otSkHEQTBQqTlzM6w/BY1BF6xJsR5DYcc7+GIdb4MDsr6A==}
+  /eslint-config-airlight-node@5.0.3(@typescript-eslint/parser@7.13.0)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.4.5):
+    resolution: {integrity: sha512-Tfqxfh120o8ZU/Mi/jnsQo8PR+M9eXKt7CVap7+8aARfF8QZa5AipZFaqG8DTVkoAm5LboJRYFadxg1EVSN4Fw==}
     engines: {node: '>=18.19.0'}
     peerDependencies:
       eslint: ^9.5.0
@@ -2922,7 +2922,7 @@ packages:
       eslint: 9.5.0
       eslint-config-airlight-base: 7.0.0(@typescript-eslint/parser@7.13.0)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.4.5)
       eslint-plugin-n: 17.9.0(eslint@9.5.0)
-      globals: 15.5.0
+      globals: 15.6.0
       prettier: 3.3.2
       typescript: 5.4.5
     transitivePeerDependencies:
@@ -3117,7 +3117,7 @@ packages:
       eslint: 9.5.0
       eslint-plugin-es-x: 7.7.0(eslint@9.5.0)
       get-tsconfig: 4.7.5
-      globals: 15.5.0
+      globals: 15.6.0
       ignore: 5.3.1
       minimatch: 9.0.4
       semver: 7.6.2
@@ -3673,8 +3673,8 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /globals@15.5.0:
-    resolution: {integrity: sha512-r7/9tQj5RylGxt/BKGv0D2SvehYvRFYg4ukSNk+EuZxvWI7uK/MJFmOCLq8aKvgh3EVBYFbBlOMAtaITXZr80w==}
+  /globals@15.6.0:
+    resolution: {integrity: sha512-UzcJi88Hw//CurUIRa9Jxb0vgOCcuD/MNjwmXp633cyaRKkCWACkoqHCtfZv43b1kqXGg/fpOa8bwgacCeXsVg==}
     engines: {node: '>=18'}
     dev: true
 
