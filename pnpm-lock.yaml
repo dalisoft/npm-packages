@@ -43,8 +43,8 @@ importers:
         specifier: ^9.0.11
         version: 9.0.11
       husky-config-airlight:
-        specifier: ^4.0.0
-        version: 4.0.0(@commitlint/cli@19.3.0)
+        specifier: ^4.0.1
+        version: 4.0.1(@commitlint/cli@19.3.0)
       lint-staged:
         specifier: ^15.2.7
         version: 15.2.7
@@ -3982,8 +3982,8 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
-  /husky-config-airlight@4.0.0(@commitlint/cli@19.3.0):
-    resolution: {integrity: sha512-o2/RU7KYJT8EiRZJM57zrnuJtqDeP+S+kNPW/5wytjd4KytNJuxjWRQCXFIwMyGv2+CO1EC4wLKfhoHuZm74nw==}
+  /husky-config-airlight@4.0.1(@commitlint/cli@19.3.0):
+    resolution: {integrity: sha512-IWr56az/10cr42q4zQIbZxx/GgKPzvor5XAJw0whBmUXTs2Hof6fS0DMIXU6UMiIw/MVdn+RxHeIvmIkzL5CdQ==}
     engines: {node: '>=18.19.0'}
     peerDependencies:
       '@commitlint/cli': ^19.x
