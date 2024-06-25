@@ -37,8 +37,8 @@ importers:
         specifier: ^9.5.0
         version: 9.5.0
       eslint-config-airlight-node:
-        specifier: ^5.0.3
-        version: 5.0.3(@typescript-eslint/parser@7.13.1)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.5.2)
+        specifier: ^5.0.4
+        version: 5.0.4(@typescript-eslint/parser@7.13.1)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.5.2)
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -2912,8 +2912,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-config-airlight-node@5.0.3(@typescript-eslint/parser@7.13.1)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.5.2):
-    resolution: {integrity: sha512-Tfqxfh120o8ZU/Mi/jnsQo8PR+M9eXKt7CVap7+8aARfF8QZa5AipZFaqG8DTVkoAm5LboJRYFadxg1EVSN4Fw==}
+  /eslint-config-airlight-node@5.0.4(@typescript-eslint/parser@7.13.1)(eslint-plugin-import@2.29.1)(eslint@9.5.0)(prettier@3.3.2)(typescript@5.5.2):
+    resolution: {integrity: sha512-IAECna/QMq09Q8+0Bjyn1cy+ofFhjAYA+j9NztYvjnRc4PMVGlwIHtQpCZOj+xvzfpyeknYzqIUHuavTh4jc4g==}
     engines: {node: '>=18.19.0'}
     peerDependencies:
       eslint: ^9.5.0
