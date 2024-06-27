@@ -49,8 +49,8 @@ importers:
         specifier: ^15.2.7
         version: 15.2.7
       lint-staged-config-airlight:
-        specifier: ^4.1.0
-        version: 4.1.0(@biomejs/biome@1.8.2)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.5.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.2))
+        specifier: ^4.1.1
+        version: 4.1.1(@biomejs/biome@1.8.2)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.5.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.2))
       prettier-config-airlight:
         specifier: ^6.0.2
         version: 6.0.2(prettier@3.3.2)
@@ -2351,9 +2351,9 @@ packages:
   linkify-it@4.0.1:
     resolution: {integrity: sha512-C7bfi1UZmoj8+PQx22XyeXCuBlokoyWQL5pWSP+EI6nzRylyThouddufc2c1NDIcP9k5agmN9fLpA7VNJfIiqw==}
 
-  lint-staged-config-airlight@4.1.0:
-    resolution: {integrity: sha512-1JGBKoxT6qakZS18D1YlVaOqC4vidhPZcUSvcY4Fs5f3FgKKU/QTkO53bodBvEplv50Eu3sXiEhEDNnD8lKv1A==}
-    engines: {node: '>=18.19.0'}
+  lint-staged-config-airlight@4.1.1:
+    resolution: {integrity: sha512-6zjGC1vPo9kuaqyMSYXnw44avjX+tFjtN49jgkFtXa2wNsswwfRAvmMHbRmGKLhijFbtgCfwiG5gPAG4Xlrz4w==}
+    engines: {node: '>=18.20.3'}
     peerDependencies:
       '@biomejs/biome': ^1.8.1
       '@stoplight/spectral-cli': ^6.0.1
@@ -6146,7 +6146,7 @@ snapshots:
     dependencies:
       uc.micro: 1.0.6
 
-  lint-staged-config-airlight@4.1.0(@biomejs/biome@1.8.2)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.5.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.2)):
+  lint-staged-config-airlight@4.1.1(@biomejs/biome@1.8.2)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.5.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.2)):
     dependencies:
       '@biomejs/biome': 1.8.2
       '@stoplight/spectral-cli': 6.11.1
