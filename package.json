@@ -26,7 +26,7 @@
     "husky-config-airlight": "^4.0.2",
     "lint-staged": "^15.2.7",
     "lint-staged-config-airlight": "^4.1.0",
-    "prettier-config-airlight": "^6.0.1",
+    "prettier-config-airlight": "^6.0.2",
     "rollup": "^4.18.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
