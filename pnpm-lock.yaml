@@ -50,7 +50,7 @@ importers:
         version: 15.2.7
       lint-staged-config-airlight:
         specifier: ^4.1.1
-        version: 4.1.1(@biomejs/biome@1.8.2)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.6.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3))
+        version: 4.1.1(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.6.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3))
       prettier-config-airlight:
         specifier: ^6.0.4
         version: 6.0.4(prettier@3.3.2)
@@ -67,8 +67,8 @@ importers:
         specifier: ^0.36.0
         version: 0.36.0(rollup@4.18.0)(typescript@5.5.3)
       smartlint:
-        specifier: ^7.0.3
-        version: 7.0.3(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3))
+        specifier: ^7.0.6
+        version: 7.0.6(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3))
       terser:
         specifier: ^5.31.1
         version: 5.31.1
@@ -193,55 +193,55 @@ packages:
     resolution: {integrity: sha512-EStJpq4OuY8xYfhGVXngigBJRWxftKX9ksiGDnmlY3o7B/V7KIAc9X4oiK87uPJSc/vs5L869bem5fhZa8caZw==}
     engines: {node: '>=6.9.0'}
 
-  '@biomejs/biome@1.8.2':
-    resolution: {integrity: sha512-XafCzLgs0xbH0bCjYKxQ63ig2V86fZQMq1jiy5pyLToWk9aHxA8GAUxyBtklPHtPYZPGEPOYglQHj4jyfUp+Iw==}
+  '@biomejs/biome@1.8.3':
+    resolution: {integrity: sha512-/uUV3MV+vyAczO+vKrPdOW0Iaet7UnJMU4bNMinggGJTAnBPjCoLEYcyYtYHNnUNYlv4xZMH6hVIQCAozq8d5w==}
     engines: {node: '>=14.21.3'}
     hasBin: true
 
-  '@biomejs/cli-darwin-arm64@1.8.2':
-    resolution: {integrity: sha512-l9msLsTcSIAPqMsPIhodQmb50sEfaXPLQ0YW4cdj6INmd8iaOh/V9NceQb2366vACTJgcWDQ2RzlvURek1T68g==}
+  '@biomejs/cli-darwin-arm64@1.8.3':
+    resolution: {integrity: sha512-9DYOjclFpKrH/m1Oz75SSExR8VKvNSSsLnVIqdnKexj6NwmiMlKk94Wa1kZEdv6MCOHGHgyyoV57Cw8WzL5n3A==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [darwin]
 
-  '@biomejs/cli-darwin-x64@1.8.2':
-    resolution: {integrity: sha512-Fc4y/FuIxRSiB3TJ+y27vFDE/HJt4QgBuymktsIKEcBZvnKfsRjxvzVDunccRn4xbKgepnp+fn6BoS+ZIg/I3Q==}
+  '@biomejs/cli-darwin-x64@1.8.3':
+    resolution: {integrity: sha512-UeW44L/AtbmOF7KXLCoM+9PSgPo0IDcyEUfIoOXYeANaNXXf9mLUwV1GeF2OWjyic5zj6CnAJ9uzk2LT3v/wAw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [darwin]
 
-  '@biomejs/cli-linux-arm64-musl@1.8.2':
-    resolution: {integrity: sha512-WpT41QJJvkZa1eZq0WmD513zkC6AYaMI39HJKmKeiUeX2NZirG+bxv1YRDhqkns1NbBqo3+qrJqBkPmOW+xAVA==}
+  '@biomejs/cli-linux-arm64-musl@1.8.3':
+    resolution: {integrity: sha512-9yjUfOFN7wrYsXt/T/gEWfvVxKlnh3yBpnScw98IF+oOeCYb5/b/+K7YNqKROV2i1DlMjg9g/EcN9wvj+NkMuQ==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-arm64@1.8.2':
-    resolution: {integrity: sha512-Q99qwP0qibkZxm2kfnt37OxeIlliDYf5ogi3zX9ij2DULzc+KtPA9Uj0wCljcJofOBsBYaHc7597Q+Bf/251ww==}
+  '@biomejs/cli-linux-arm64@1.8.3':
+    resolution: {integrity: sha512-fed2ji8s+I/m8upWpTJGanqiJ0rnlHOK3DdxsyVLZQ8ClY6qLuPc9uehCREBifRJLl/iJyQpHIRufLDeotsPtw==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64-musl@1.8.2':
-    resolution: {integrity: sha512-rk1Wj4d3LIlAlIAS1m2jlyfOjkNbuY1lfwKvWIAeZC51yDMzwhRD7cReE5PE+jqLDtq60PX38hDPeKd7nA1S6A==}
+  '@biomejs/cli-linux-x64-musl@1.8.3':
+    resolution: {integrity: sha512-UHrGJX7PrKMKzPGoEsooKC9jXJMa28TUSMjcIlbDnIO4EAavCoVmNQaIuUSH0Ls2mpGMwUIf+aZJv657zfWWjA==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-linux-x64@1.8.2':
-    resolution: {integrity: sha512-bjhhUVFchFid2gOjrvBe4fg8BShcpyFQTHuB/QQnfGxs1ddrGP30yq3fHfc6S6MoCcz9Tjd3Zzq1EfWfyy5iHA==}
+  '@biomejs/cli-linux-x64@1.8.3':
+    resolution: {integrity: sha512-I8G2QmuE1teISyT8ie1HXsjFRz9L1m5n83U1O6m30Kw+kPMPSKjag6QGUn+sXT8V+XWIZxFFBoTDEDZW2KPDDw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
 
-  '@biomejs/cli-win32-arm64@1.8.2':
-    resolution: {integrity: sha512-EUbqmCmNWT5xhnxHrCAEBzJB1AnLqxTYoRjlxiCMzGvsy5jQzhCanJ8CT9kNsApW3pfPWBWkoTa7qrwWmwnEGA==}
+  '@biomejs/cli-win32-arm64@1.8.3':
+    resolution: {integrity: sha512-J+Hu9WvrBevfy06eU1Na0lpc7uR9tibm9maHynLIoAjLZpQU3IW+OKHUtyL8p6/3pT2Ju5t5emReeIS2SAxhkQ==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [win32]
 
-  '@biomejs/cli-win32-x64@1.8.2':
-    resolution: {integrity: sha512-n9H5oRUCk1uNezMgyJh9+hZdtfD8PXLLeq8DUzTycIhl0I1BulIoZ/uxWgRVDFDwAR1JHu1AykISCRFNGnc4iA==}
+  '@biomejs/cli-win32-x64@1.8.3':
+    resolution: {integrity: sha512-/PJ59vA1pnQeKahemaQf4Nyj7IKUvGQSc3Ze1uIGi+Wvr1xF7rGobSrAAG01T/gUDG21vkDsZYM03NAmPiVkqg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
@@ -349,38 +349,38 @@ packages:
   '@dalisoft/events@0.2.0':
     resolution: {integrity: sha512-2NS/0vS9eL8ZxhgCVZQgPS4uoqbcSk9FN3G8Eqakcej7wOpH72z1kmDEDGI5T+MOp9IueKT2qI0XUdXhKeK9GA==}
 
-  '@dprint/darwin-arm64@0.46.3':
-    resolution: {integrity: sha512-1ycDpGvclGHF3UG5V6peymPDg6ouNTqM6BjhVELQ6zwr+X98AMhq/1slgO8hwHtPcaS5qhTAS+PkzOmBJRegow==}
+  '@dprint/darwin-arm64@0.47.1':
+    resolution: {integrity: sha512-Ur2atF1NVhNfzRxDVwLMaCWfU0eQ9JSm9ewdFvPWK5BZ/G5ywum9Cph6XTwyZhG9UB0nxNtf6DP/37aezCBa7g==}
     cpu: [arm64]
     os: [darwin]
 
-  '@dprint/darwin-x64@0.46.3':
-    resolution: {integrity: sha512-v5IpLmrY836Q5hJAxZuX097ZNQvoZgO6JKO4bK4l6XDhhHAw2XTIUr41+FM5r36ENxyASMk0NpHjhcHtih3o0g==}
+  '@dprint/darwin-x64@0.47.1':
+    resolution: {integrity: sha512-yP7UuG32uR7We3E3StuuemL5nnegbB8IXaY9o23ADiq4sE3Aa58kM/MUERCuCsZ5lZiXMnGs4FxbeWI6xKnOYQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@dprint/linux-arm64-glibc@0.46.3':
-    resolution: {integrity: sha512-9P13g1vgV8RfQH2qBGa8YAfaOeWA42RIhj7lmWRpkDFtwau96reMKwnBBn8bHUnc5e6bSsbPUOMb/X1KMUKz/g==}
+  '@dprint/linux-arm64-glibc@0.47.1':
+    resolution: {integrity: sha512-hD3sbFhSKqadUWcDanvJu0w/kxs7lbOk/VXNTkt+9VVCzT5ewDtqEy/CgUdm6YuLeZjoY3ApP8TBY1fxbAnaOQ==}
     cpu: [arm64]
     os: [linux]
 
-  '@dprint/linux-arm64-musl@0.46.3':
-    resolution: {integrity: sha512-AAcdcMSZ6DEIoY9E0xQHjkZP+THP7EWsQge4TWzglSIjzn31YltglHAGYFcLB4CTJYpF0NsFDNFktzgkO+s0og==}
+  '@dprint/linux-arm64-musl@0.47.1':
+    resolution: {integrity: sha512-tXOsfvIkZQl2+2WHE26yx8DIjmCbzNRnXBT3qplGvm8/cH5zUUfApoDIbK6JH1H0T0Hf0uYfw6LoguXW1Fy6Nw==}
     cpu: [arm64]
     os: [linux]
 
-  '@dprint/linux-x64-glibc@0.46.3':
-    resolution: {integrity: sha512-c5cQ3G1rC64nBZ8Pd2LGWwzkEk4D7Ax9NrBbwYmNPvs6mFbGlJPC1+RD95x2WwIrIlMIciLG+Kxmt25PzBphmg==}
+  '@dprint/linux-x64-glibc@0.47.1':
+    resolution: {integrity: sha512-rI/q0narrWDL/XeoLkxNase0c/ITOQEU31WklidP6MvwYtGFooy9ZBIQqGYLh+eDjPEKDIPmkEUpLsaL1RkuCw==}
     cpu: [x64]
     os: [linux]
 
-  '@dprint/linux-x64-musl@0.46.3':
-    resolution: {integrity: sha512-ONtk2QtLcV0TqWOCOqzUFQixgk3JC+vnJLB5L6tQwT7BX5LzeircfE/1f4dg459iqejNC9MBXZkHnXqabvWSow==}
+  '@dprint/linux-x64-musl@0.47.1':
+    resolution: {integrity: sha512-P/PMHo37/SSLWbQeq6KQKuklsPNVwmrNf1c+wzqbydJ9ET0zqKl/w99JhfrRTyyl6mimNN/40AROGNBUVTFCQQ==}
     cpu: [x64]
     os: [linux]
 
-  '@dprint/win32-x64@0.46.3':
-    resolution: {integrity: sha512-xvj4DSEilf0gGdT7CqnwNEgfWNuWqT6eIBxHDEUbmcn1vZ7IwirtqRq/nm3lmYtQaJ4EbtMQZvACHZwxC7G96w==}
+  '@dprint/win32-x64@0.47.1':
+    resolution: {integrity: sha512-LFnhMbHjB200K6SOq1hyYTe1ukz13AjI9LudSQ44j5pdL410rVwhkIwTah7iG221d2cJo3jhK3AFiHqSnqKTrw==}
     cpu: [x64]
     os: [win32]
 
@@ -1477,8 +1477,8 @@ packages:
   dottie@2.0.6:
     resolution: {integrity: sha512-iGCHkfUc5kFekGiqhe8B/mdaurD+lakO9txNnTvKtA6PISrw86LgqHvRzWYPyoE2Ph5aMIrCw9/uko6XHTKCwA==}
 
-  dprint@0.46.3:
-    resolution: {integrity: sha512-ACEd7B7sO/uvPvV/nsHbtkIeMqeD2a8XGO1DokROtKDUmI5WbuflGZOwyjFCYwy4rkX6FXoYBzGdEQ6um7BjCA==}
+  dprint@0.47.1:
+    resolution: {integrity: sha512-gZUxs5LmrwCsYoQ5h+QdGB36qrDc2cLAF4q3UgYOFvWnuYyF5rH/xvdpgLgAcltRspDc4bQy0wP650FaFbaVGg==}
     hasBin: true
 
   eastasianwidth@0.2.0:
@@ -3183,8 +3183,8 @@ packages:
     resolution: {integrity: sha512-bSiSngZ/jWeX93BqeIAbImyTbEihizcwNjFoRUIY/T1wWQsfsm2Vw1agPKylXvQTU7iASGdHhyqRlqQzfz+Htg==}
     engines: {node: '>=18'}
 
-  smartlint@7.0.3:
-    resolution: {integrity: sha512-IwxaGOuQxfhnFzSo0gAfLuI1CRMKgmxmQmhXkJljW280PH2uO8Xod+kUgQd1Miznd0kKBeUVx+INExASm9dONw==}
+  smartlint@7.0.6:
+    resolution: {integrity: sha512-0gnZ0spv8x+2YAthzHJmj5dnYaTkKBWbkNrp5CACaaqMZWtw4haQVXEnFwk7ujOTvli1TkuMiWxpQesSZMb0XA==}
     engines: {node: '>=18.20.3'}
     hasBin: true
     peerDependencies:
@@ -3705,39 +3705,39 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.0.1
 
-  '@biomejs/biome@1.8.2':
+  '@biomejs/biome@1.8.3':
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 1.8.2
-      '@biomejs/cli-darwin-x64': 1.8.2
-      '@biomejs/cli-linux-arm64': 1.8.2
-      '@biomejs/cli-linux-arm64-musl': 1.8.2
-      '@biomejs/cli-linux-x64': 1.8.2
-      '@biomejs/cli-linux-x64-musl': 1.8.2
-      '@biomejs/cli-win32-arm64': 1.8.2
-      '@biomejs/cli-win32-x64': 1.8.2
+      '@biomejs/cli-darwin-arm64': 1.8.3
+      '@biomejs/cli-darwin-x64': 1.8.3
+      '@biomejs/cli-linux-arm64': 1.8.3
+      '@biomejs/cli-linux-arm64-musl': 1.8.3
+      '@biomejs/cli-linux-x64': 1.8.3
+      '@biomejs/cli-linux-x64-musl': 1.8.3
+      '@biomejs/cli-win32-arm64': 1.8.3
+      '@biomejs/cli-win32-x64': 1.8.3
 
-  '@biomejs/cli-darwin-arm64@1.8.2':
+  '@biomejs/cli-darwin-arm64@1.8.3':
     optional: true
 
-  '@biomejs/cli-darwin-x64@1.8.2':
+  '@biomejs/cli-darwin-x64@1.8.3':
     optional: true
 
-  '@biomejs/cli-linux-arm64-musl@1.8.2':
+  '@biomejs/cli-linux-arm64-musl@1.8.3':
     optional: true
 
-  '@biomejs/cli-linux-arm64@1.8.2':
+  '@biomejs/cli-linux-arm64@1.8.3':
     optional: true
 
-  '@biomejs/cli-linux-x64-musl@1.8.2':
+  '@biomejs/cli-linux-x64-musl@1.8.3':
     optional: true
 
-  '@biomejs/cli-linux-x64@1.8.2':
+  '@biomejs/cli-linux-x64@1.8.3':
     optional: true
 
-  '@biomejs/cli-win32-arm64@1.8.2':
+  '@biomejs/cli-win32-arm64@1.8.3':
     optional: true
 
-  '@biomejs/cli-win32-x64@1.8.2':
+  '@biomejs/cli-win32-x64@1.8.3':
     optional: true
 
   '@commitlint/cli@19.3.0(@types/node@20.14.2)(typescript@5.5.3)':
@@ -3874,25 +3874,25 @@ snapshots:
     dependencies:
       '@dalisoft/args': 0.1.1
 
-  '@dprint/darwin-arm64@0.46.3':
+  '@dprint/darwin-arm64@0.47.1':
     optional: true
 
-  '@dprint/darwin-x64@0.46.3':
+  '@dprint/darwin-x64@0.47.1':
     optional: true
 
-  '@dprint/linux-arm64-glibc@0.46.3':
+  '@dprint/linux-arm64-glibc@0.47.1':
     optional: true
 
-  '@dprint/linux-arm64-musl@0.46.3':
+  '@dprint/linux-arm64-musl@0.47.1':
     optional: true
 
-  '@dprint/linux-x64-glibc@0.46.3':
+  '@dprint/linux-x64-glibc@0.47.1':
     optional: true
 
-  '@dprint/linux-x64-musl@0.46.3':
+  '@dprint/linux-x64-musl@0.47.1':
     optional: true
 
-  '@dprint/win32-x64@0.46.3':
+  '@dprint/win32-x64@0.47.1':
     optional: true
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
@@ -5189,15 +5189,15 @@ snapshots:
 
   dottie@2.0.6: {}
 
-  dprint@0.46.3:
+  dprint@0.47.1:
     optionalDependencies:
-      '@dprint/darwin-arm64': 0.46.3
-      '@dprint/darwin-x64': 0.46.3
-      '@dprint/linux-arm64-glibc': 0.46.3
-      '@dprint/linux-arm64-musl': 0.46.3
-      '@dprint/linux-x64-glibc': 0.46.3
-      '@dprint/linux-x64-musl': 0.46.3
-      '@dprint/win32-x64': 0.46.3
+      '@dprint/darwin-arm64': 0.47.1
+      '@dprint/darwin-x64': 0.47.1
+      '@dprint/linux-arm64-glibc': 0.47.1
+      '@dprint/linux-arm64-musl': 0.47.1
+      '@dprint/linux-x64-glibc': 0.47.1
+      '@dprint/linux-x64-musl': 0.47.1
+      '@dprint/win32-x64': 0.47.1
 
   eastasianwidth@0.2.0: {}
 
@@ -6221,9 +6221,9 @@ snapshots:
     dependencies:
       uc.micro: 1.0.6
 
-  lint-staged-config-airlight@4.1.1(@biomejs/biome@1.8.2)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.6.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3)):
+  lint-staged-config-airlight@4.1.1(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.6.0)(lint-staged@15.2.7)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3)):
     dependencies:
-      '@biomejs/biome': 1.8.2
+      '@biomejs/biome': 1.8.3
       '@stoplight/spectral-cli': 6.11.1
       '@stoplight/spectral-ruleset-migrator': 1.9.5
       dockerfilelint: 1.8.0
@@ -6969,14 +6969,14 @@ snapshots:
       ansi-styles: 6.2.1
       is-fullwidth-code-point: 5.0.0
 
-  smartlint@7.0.3(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3)):
+  smartlint@7.0.6(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.3)):
     dependencies:
-      '@biomejs/biome': 1.8.2
+      '@biomejs/biome': 1.8.3
       '@ls-lint/ls-lint': 2.2.3
       '@stoplight/spectral-cli': 6.11.1
       '@stoplight/spectral-ruleset-migrator': 1.9.5
       dockerfilelint: 1.8.0
-      dprint: 0.46.3
+      dprint: 0.47.1
       eslint: 9.6.0
       prettier: 3.3.2
       stylelint: 16.6.1(typescript@5.5.3)
