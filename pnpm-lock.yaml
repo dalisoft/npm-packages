@@ -37,8 +37,8 @@ importers:
         specifier: ^9.9.0
         version: 9.9.0(jiti@1.21.6)
       eslint-config-airlight-node:
-        specifier: ^5.6.1
-        version: 5.6.1(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4)
+        specifier: ^5.6.2
+        version: 5.6.2(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4)
       husky:
         specifier: ^9.1.4
         version: 9.1.4
@@ -1643,8 +1643,8 @@ packages:
       prettier: ^3.3.2
       typescript: ^5.5.4
 
-  eslint-config-airlight-node@5.6.1:
-    resolution: {integrity: sha512-93bLyardYsFU7sDkJwi7T0ZkmwxjYvRsFs0H4Q5zEf53Zqx0E4Xw5Va4lw2L3lf5f2aR6IujsnJWko8EWheIcQ==}
+  eslint-config-airlight-node@5.6.2:
+    resolution: {integrity: sha512-Lno7zl8cofjK7megSf9yGUp2eRllvaNpZc/z0vEFBmTGgfphuGTjXDv4Mj81iUxDC0KPAyPvncFYg/poiiAcYg==}
     engines: {node: '>=18.20.3'}
     peerDependencies:
       eslint: ^8.57.0 || ^9.5.0
@@ -1714,8 +1714,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-n@17.9.0:
-    resolution: {integrity: sha512-CPSaXDXdrT4nsrOrO4mT4VB6FMUkoySRkHWuuJJHVqsIEjIeZgMY1H7AzSwPbDScikBmLN82KeM1u7ixV7PzGg==}
+  eslint-plugin-n@17.10.2:
+    resolution: {integrity: sha512-e+s4eAf5NtJaxPhTNu3qMO0Iz40WANS93w9LQgYcvuljgvDmWi/a3rh+OrNyMHeng6aOWGJO0rCg5lH4zi8yTw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -2002,10 +2002,6 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
-    engines: {node: '>=18'}
-
-  globals@15.8.0:
-    resolution: {integrity: sha512-VZAJ4cewHTExBWDHR6yptdIBlx9YSSZuwojj9Nt5mBRXQzrKakDsVKQ1J63sklLvzAJm0X5+RpO4i3Y2hcOnFw==}
     engines: {node: '>=18'}
 
   globals@15.9.0:
@@ -2642,6 +2638,10 @@ packages:
 
   minimatch@9.0.4:
     resolution: {integrity: sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==}
+    engines: {node: '>=16 || 14 >=14.17'}
+
+  minimatch@9.0.5:
+    resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
 
   minimist@1.2.8:
@@ -5489,12 +5489,12 @@ snapshots:
       - eslint-plugin-import
       - supports-color
 
-  eslint-config-airlight-node@5.6.1(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4):
+  eslint-config-airlight-node@5.6.2(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4):
     dependencies:
       eslint: 9.9.0(jiti@1.21.6)
       eslint-config-airlight-base: 7.7.0(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4)
-      eslint-plugin-n: 17.9.0(eslint@9.9.0(jiti@1.21.6))
-      globals: 15.8.0
+      eslint-plugin-n: 17.10.2(eslint@9.9.0(jiti@1.21.6))
+      globals: 15.9.0
       prettier: 3.3.2
       typescript: 5.5.4
     transitivePeerDependencies:
@@ -5605,16 +5605,16 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-n@17.9.0(eslint@9.9.0(jiti@1.21.6)):
+  eslint-plugin-n@17.10.2(eslint@9.9.0(jiti@1.21.6)):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.9.0(jiti@1.21.6))
       enhanced-resolve: 5.17.0
       eslint: 9.9.0(jiti@1.21.6)
       eslint-plugin-es-x: 7.7.0(eslint@9.9.0(jiti@1.21.6))
       get-tsconfig: 4.7.5
-      globals: 15.8.0
+      globals: 15.9.0
       ignore: 5.3.1
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       semver: 7.6.2
 
   eslint-plugin-no-secrets@1.0.2(eslint@9.9.0(jiti@1.21.6)):
@@ -5960,8 +5960,6 @@ snapshots:
       which: 1.3.1
 
   globals@14.0.0: {}
-
-  globals@15.8.0: {}
 
   globals@15.9.0: {}
 
@@ -6541,6 +6539,10 @@ snapshots:
       brace-expansion: 1.1.11
 
   minimatch@9.0.4:
+    dependencies:
+      brace-expansion: 2.0.1
+
+  minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
 
