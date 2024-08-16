@@ -37,8 +37,8 @@ importers:
         specifier: ^9.9.0
         version: 9.9.0(jiti@1.21.6)
       eslint-config-airlight-node:
-        specifier: ^5.6.2
-        version: 5.6.2(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4)
+        specifier: ^5.6.3
+        version: 5.6.3(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4)
       husky:
         specifier: ^9.1.4
         version: 9.1.4
@@ -1635,16 +1635,16 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
-  eslint-config-airlight-base@7.7.0:
-    resolution: {integrity: sha512-B3PkagMeVWHv2kNVhoS9JW5ALcF4pO0WjujGp8Dv6aKEBMXhUP24GvSoAE51Bd437mLuuHhqu0kMVi108pZxOg==}
+  eslint-config-airlight-base@7.7.1:
+    resolution: {integrity: sha512-F2kPJ24dleYxCgwHuTWAfyGEoE0Pr89tMVx8KuEc31fKtC9KtD/8gvN7DkR7f6ZM/KqtZcnYdQmQ9RiBqyoNcg==}
     engines: {node: '>=18.20.3'}
     peerDependencies:
       eslint: ^8.57.0 || ^9.5.0
       prettier: ^3.3.2
       typescript: ^5.5.4
 
-  eslint-config-airlight-node@5.6.2:
-    resolution: {integrity: sha512-Lno7zl8cofjK7megSf9yGUp2eRllvaNpZc/z0vEFBmTGgfphuGTjXDv4Mj81iUxDC0KPAyPvncFYg/poiiAcYg==}
+  eslint-config-airlight-node@5.6.3:
+    resolution: {integrity: sha512-/KPcdoy6tywtmBxlluVTRBowGE9/Plye3ux5W5R8K+3XNHGvSbSRUqU0G5YKJm3QF6sArFleSkbYjKfgglsIGA==}
     engines: {node: '>=18.20.3'}
     peerDependencies:
       eslint: ^8.57.0 || ^9.5.0
@@ -4636,7 +4636,7 @@ snapshots:
       debug: 4.3.6
       globby: 11.1.0
       is-glob: 4.0.3
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       semver: 7.6.2
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
@@ -4651,7 +4651,7 @@ snapshots:
       debug: 4.3.6
       globby: 11.1.0
       is-glob: 4.0.3
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       semver: 7.6.2
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
@@ -5462,7 +5462,7 @@ snapshots:
       eslint: 9.9.0(jiti@1.21.6)
       semver: 7.6.2
 
-  eslint-config-airlight-base@7.7.0(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4):
+  eslint-config-airlight-base@7.7.1(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4):
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.3.0(eslint@9.9.0(jiti@1.21.6))
       '@eslint/compat': 1.1.1
@@ -5489,10 +5489,10 @@ snapshots:
       - eslint-plugin-import
       - supports-color
 
-  eslint-config-airlight-node@5.6.2(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4):
+  eslint-config-airlight-node@5.6.3(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4):
     dependencies:
       eslint: 9.9.0(jiti@1.21.6)
-      eslint-config-airlight-base: 7.7.0(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4)
+      eslint-config-airlight-base: 7.7.1(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6)))(eslint@9.9.0(jiti@1.21.6))(prettier@3.3.2)(typescript@5.5.4)
       eslint-plugin-n: 17.10.2(eslint@9.9.0(jiti@1.21.6))
       globals: 15.9.0
       prettier: 3.3.2
@@ -5570,7 +5570,7 @@ snapshots:
       eslint-import-resolver-node: 0.3.9
       get-tsconfig: 4.7.5
       is-glob: 4.0.3
-      minimatch: 9.0.4
+      minimatch: 9.0.5
       semver: 7.6.2
       stable-hash: 0.0.4
       tslib: 2.6.3
