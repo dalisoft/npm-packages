@@ -1,33 +1,42 @@
 # fast-path-parse
 
-Most fastest path parser
+Fastest route path-to-params parser.
+
+Up-to **2x** faster than fastest counterpart (`compile` method)
 
 ## Features
 
 - Zero dependency
-- Fast
-- Auto-mapping
-
-## Caveats
-
-This module supports only `/user/:foo` as performance reason
+- Fastest parser
 
 ## Usage
 
 ### ESM
 
 ```js
-import parse from 'fast-path-parse';
+import parse from 'fast-path-parse/parse';
+// or
+import parse from 'fast-path-parse/compile';
 
-parse('/user/:foo')('/user/john');
+// Run this ahead-of-time, not at runtime or hot path
+const parsePath = parse('/user/:foo');
+
+// Run this at hot path
+parsePath('/user/john');
 ```
 
 ### CJS
 
 ```js
-const parse = require('fast-path-parse');
+const parse = require('fast-path-parse/parse');
+// or
+const parse = require('fast-path-parse/compile');
 
-parse('/user/:foo')('/user/john');
+// Run this ahead-of-time, not at runtime or hot path
+const parsePath = parse('/user/:foo');
+
+// Run this at hot path
+parsePath('/user/john');
 ```
 
 ## License

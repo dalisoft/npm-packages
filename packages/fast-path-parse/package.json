@@ -1,13 +1,28 @@
 {
   "name": "fast-path-parse",
-  "version": "1.0.0",
-  "description": "Most fastest path parser",
+  "version": "1.1.0",
+  "description": "Fastest route path-to-params parser",
   "type": "commonjs",
   "main": "parse.js",
-  "types": "parse.d.ts",
+  "exports": {
+    ".": "./parse.js",
+    "./parse": "./parse.js",
+    "./compile": "./compile.js"
+  },
+  "files": [
+    "parse.js",
+    "compile.js"
+  ],
+  "engines": {
+    "node": ">=18.20.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "scripts": {
+    "test": "node parse.test.js",
+    "prepublishOnly": "npm run test"
   },
   "keywords": [
     "esm",

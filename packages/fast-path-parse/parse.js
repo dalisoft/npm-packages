@@ -1,88 +1,51 @@
-/* eslint-disable no-cond-assign, eslint-comments/disable-enable-pair, no-param-reassign, @typescript-eslint/restrict-plus-operands */
-
-const prepareMatches = (match) => {
-  let i = 0;
-  let lastIndex = -1;
-  const map = [];
-
-  let currentPath;
-  let char;
-
-  while ((i = match.indexOf('/', lastIndex)) !== -1) {
-    currentPath = match.substring(lastIndex, i);
-    char = currentPath.charAt(0);
-
-    if (char === ':') {
-      map.push(currentPath.substr(1));
-    } else {
-      map.push(null);
-    }
-
-    lastIndex = i + 1;
-  }
-
-  currentPath = match.substring(lastIndex);
-  char = currentPath.charAt(0);
-
-  if (char === ':') {
-    map.push(currentPath.substr(1));
-  } else {
-    map.push(null);
-  }
-
-  return map;
-};
-
 /**
- * Parser path string into object
- * @param {String} str Input string
- *
+ * Prepares an route path for parsing
+ * @param {string} path A path to be compiled
+ * @returns {(pathname: string, params?: Record<string, string>) => params} Function which parse params at runtime
  * @example
- * parse('/user/:id')('/user/1234');
+ * ```ts
+ * import parse from 'fast-path-parser/parse';
+ *
+ * const pathParse = parse('/user/:id');
+ * pathParse('/user/123') // returns { id: '123' }
+ * ```
  */
-const fastPathParse = (match) => {
-  const map = prepareMatches(match);
+const parse = (path) => {
+  /**
+   * @type {Array<string | null>}
+   */
+  const segments = path
+    .split('/')
+    .map((name) => (name.charAt(0) === ':' ? name.substring(1) : null));
+  const segmentsFilled = segments.filter((segment) => segment);
 
-  // eslint-disable-next-line complexity
-  return (path) => {
-    let params = null;
+  return segmentsFilled.length > 0
+    ? (pathname, params = {}) => {
+        let index = 0;
 
-    let i;
-    let lastIndex = -1;
-    let index = 0;
+        let i;
+        let lastIndex = 0;
 
-    let key;
-    let value;
+        // biome-ignore lint/style/noParameterAssign: This makes last entry forcefully parse
+        pathname += '/';
 
-    while ((i = path.indexOf('/', lastIndex)) !== -1) {
-      value = path.substring(lastIndex, i);
+        // biome-ignore lint/suspicious/noAssignInExpressions: It saves additional CPU cycles
+        while ((i = pathname.indexOf('/', lastIndex)) !== -1) {
+          const key = segments[index];
 
-      key = map[index];
-      if (key) {
-        if (!params) {
-          params = {};
+          if (key) {
+            const value = pathname.substring(lastIndex, i);
+
+            params[key] = value;
+          }
+
+          lastIndex = i + 1;
+          index++;
         }
 
-        params[key] = value;
+        return params;
       }
-
-      lastIndex = i + 1;
-      index += 1;
-    }
-
-    value = path.substring(lastIndex);
-
-    key = map[index];
-    if (key) {
-      if (!params) {
-        params = {};
-      }
-
-      params[key] = value;
-    }
-
-    return params;
-  };
+    : (_, params = {}) => params;
 };
 
-module.exports = fastPathParse;
+module.exports = parse;

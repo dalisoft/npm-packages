@@ -1,7 +1,6 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable no-console, node/no-unsupported-features/es-syntax, security-node/detect-crlf */
 import Benchmark from 'benchmark';
-import fastPathParse from 'fast-path-parse';
+import fastPathParse from 'fast-path-parse/parse';
+import fastPathCompile from 'fast-path-parse/compile';
 import pathToRegExp from 'path-to-regexp';
 import pathToTree from 'path-to-tree';
 
@@ -9,12 +8,12 @@ const path = '/user/:id/edit/:page';
 
 const paramsId = ['id', 'page'];
 const regExp = new RegExp(
-  // eslint-disable-next-line security-node/non-literal-reg-expr
   `^${path.replace(':id', '([^/]+?)').replace(':page', '([^/]+?)')}\\/?$`,
   'i'
 );
 
 const fastPath = fastPathParse(path);
+const fastPath2 = fastPathCompile(path);
 
 const pathKeys = [];
 const compiledPathRegEx = pathToRegExp.pathToRegexp(path, pathKeys);
@@ -40,6 +39,9 @@ suite.add('fast regexp exec', () => {
 });
 suite.add('fast path parse', () => {
   fastPath('/user/1234/edit/weather');
+});
+suite.add('fast path compile', () => {
+  fastPath2('/user/1234/edit/weather');
 });
 suite.add('path-to-regexp exec', () => {
   const params = {};
