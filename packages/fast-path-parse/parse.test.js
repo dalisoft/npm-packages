@@ -64,3 +64,35 @@ test('fast-path-parse unsafe', async (t) => {
     );
   });
 });
+
+test('fast-path-parse unsafe security', async (t) => {
+  await t.test('process.exit security check', () => {
+    assert.deepStrictEqual(
+      compilePathname('/foo/process.exit(1)')('/foo/(process.exit(1))'),
+      {}
+    );
+    assert.deepStrictEqual(compilePathname('/foo/process.exit(1)')('/foo'), {});
+    assert.deepStrictEqual(
+      compilePathname('/foo/:bar')('/foo/(process.exit(1))'),
+      { bar: '(process.exit(1))' }
+    );
+    assert.deepStrictEqual(
+      compilePathname('/foo/:bar')('/(process.exit(1))'),
+      {}
+    );
+    assert.deepStrictEqual(compilePathname('/:bar')('/(process.exit(1))'), {
+      bar: '(process.exit(1))'
+    });
+  });
+  await t.test('throw security check', () => {
+    assert.deepStrictEqual(compilePathname('/foo/throw 1')('/foo throw 1'), {});
+    assert.deepStrictEqual(compilePathname('/foo/throw 1')('/foo'), {});
+    assert.deepStrictEqual(compilePathname('/foo/:bar')('/foo/throw 1'), {
+      bar: 'throw 1'
+    });
+    assert.deepStrictEqual(compilePathname('/foo/:bar')('/throw 1'), {});
+    assert.deepStrictEqual(compilePathname('/:bar')('/throw 1'), {
+      bar: 'throw 1'
+    });
+  });
+});
