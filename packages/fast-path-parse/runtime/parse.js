@@ -19,24 +19,21 @@ const parse = (path) => {
 
   return filled.length > 0
     ? (pathname, params = {}) => {
-        let uri = pathname;
-
         let i;
         let lastIndex = 1;
 
-        if (uri.charCodeAt(uri.length - 1) !== SLASH_CODE) {
-          uri += '/';
-        }
-
         for (const segment of segments) {
-          i = uri.indexOf('/', lastIndex);
+          i = pathname.indexOf('/', lastIndex);
 
-          if (i < segment.position) {
+          if (!segment.last && i < segment.position) {
             return params;
           }
 
           if (segment.segment) {
-            params[segment.name] = uri.substring(lastIndex, i);
+            params[segment.name] =
+              segment.last && i === -1
+                ? pathname.substring(lastIndex)
+                : pathname.substring(lastIndex, i);
           }
 
           lastIndex = i + 1;

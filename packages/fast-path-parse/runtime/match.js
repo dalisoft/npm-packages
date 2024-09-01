@@ -19,26 +19,23 @@ const match = (path) => {
 
   return filled.length > 0
     ? (pathname) => {
-        let uri = pathname;
-
         let i;
         let lastIndex = 1;
         let isValid = true;
 
-        if (uri.charCodeAt(uri.length - 1) !== SLASH_CODE) {
-          uri += '/';
-        }
-
         for (let index = 0; isValid && index < LENGTH; index++) {
           const segment = segments[index];
 
-          i = uri.indexOf('/', lastIndex);
+          i = pathname.indexOf('/', lastIndex);
 
-          if (i < segment.position) {
+          if (!segment.last && i < segment.position) {
             return false;
           }
 
-          const value = uri.substring(lastIndex, i);
+          const value =
+            segment.last && i === -1
+              ? pathname.substring(lastIndex)
+              : pathname.substring(lastIndex, i);
 
           if (segment.segment) {
             isValid = value.length > 0;

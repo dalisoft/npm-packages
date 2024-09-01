@@ -14,7 +14,7 @@ const segmentsSlice = require('../utils/segment.js');
  * ```
  */
 const compile = (path) => {
-  const { segments, filled, length: LENGTH } = segmentsSlice(path);
+  const { segments, filled } = segmentsSlice(path);
 
   if (filled.length > 0) {
     let aotJit = `function compilePath(pathname, params = {}) {
@@ -22,25 +22,23 @@ const compile = (path) => {
 
         let i;
         let lastIndex = 1;
-        let value;
+        let value;`;
 
-        if (uri.charCodeAt(uri.length - 1) !== ${SLASH_CODE}) {
-          uri += '/';
-        }`;
-
-    for (let index = 0; index < LENGTH; index++) {
-      const segment = segments[index];
-
+    for (const segment of segments) {
       aotJit += `
         i = uri.indexOf('/', lastIndex);
+        `;
 
-        if (i < ${segment.position}) {
-          return params;
-        }`;
+      if (segment.last) {
+        aotJit +=
+          'i === -1 ? value = uri.substring(lastIndex) : value = uri.substring(lastIndex, i);';
+      } else {
+        aotJit += `if (i < ${segment.position}) { return params; }`;
+        aotJit += 'value = uri.substring(lastIndex, i);';
+      }
 
       if (segment.segment) {
         aotJit += `
-          value = uri.substring(lastIndex, i);
           params['${segment.name}'] = value;
           `;
       }

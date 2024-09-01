@@ -6,10 +6,10 @@
  */
 const parseSegment = (name, getIndex, position = 1) => {
   if (name === '*' || name === '(.*)') {
-    return { name: `*${getIndex()}`, segment: true, position };
+    return { name: `*${getIndex()}`, segment: true, position: position + 2 };
   }
   if (name.charAt(0) === ':') {
-    return { name: name.substring(1), segment: true, position };
+    return { name: name.substring(1), segment: true, position: position + 2 };
   }
 
   return { name, segment: false, position: position + name.length + 1 };

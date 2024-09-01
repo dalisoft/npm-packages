@@ -13,6 +13,7 @@ const segmentsSlice = require('../utils/segment.js');
  * pathMatch('/user/123') // returns `true`
  * ```
  */
+// eslint-disable-next-line max-lines-per-function
 const match = (path) => {
   const { segments, filled } = segmentsSlice(path);
 
@@ -24,22 +25,24 @@ const match = (path) => {
         let lastIndex = 1;
         let isValid = true;
 
-        let value;
-
-        if (uri.charCodeAt(uri.length - 1) !== ${SLASH_CODE}) {
-          uri += '/';
-        }`;
+        let value;`;
 
     for (const segment of segments) {
       aotJit += `
         if (!isValid) { return false; }
 
-        i = uri.indexOf('/', lastIndex);
+        i = uri.indexOf('/', lastIndex)`;
 
-        if (i < ${segment.position}) { return false; }
-
-        value = uri.substring(lastIndex, i);
-          lastIndex = i + 1;`;
+      if (segment.last) {
+        aotJit += `
+          value = i === -1 ? uri.substring(lastIndex) : uri.substring(lastIndex, i);
+          `;
+      } else {
+        aotJit += `
+          if (i < ${segment.position}) { return false; }
+          value = uri.substring(lastIndex, i);
+          `;
+      }
 
       if (segment.segment) {
         aotJit += `
@@ -48,6 +51,9 @@ const match = (path) => {
         aotJit += `
           isValid = value === '${segment.name}';`;
       }
+
+      aotJit += `
+        lastIndex = i + 1`;
     }
     aotJit += `
         return isValid;
