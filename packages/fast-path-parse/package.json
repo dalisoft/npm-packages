@@ -22,7 +22,7 @@
     "url": "git+https://github.com/dalisoft/npm-packages.git"
   },
   "scripts": {
-    "test": "node parse.test.js",
+    "test": "node --test",
     "prepublishOnly": "npm run test"
   },
   "keywords": [
