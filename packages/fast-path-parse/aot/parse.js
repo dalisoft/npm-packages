@@ -4,7 +4,7 @@
  * @returns {(pathname: string, params?: Record<string, string>) => params} Optimized function which parse params at runtime
  * @example
  * ```ts
- * import compile from 'fast-path-parser/compile';
+ * import compile from 'fast-path-parser/aot/parse';
  *
  * const pathParse = compile('/user/:id');
  * pathParse('/user/123') // returns { id: '123' }
