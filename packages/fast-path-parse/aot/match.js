@@ -1,4 +1,3 @@
-const { SLASH_CODE } = require('../constants.js');
 const segmentsSlice = require('../utils/segment.js');
 
 /**

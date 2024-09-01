@@ -1,4 +1,3 @@
-const { SLASH_CODE } = require('../constants.js');
 const segmentsSlice = require('../utils/segment.js');
 
 /**
@@ -18,7 +17,8 @@ const parse = (path) => {
   const { segments, filled } = segmentsSlice(path);
 
   return filled.length > 0
-    ? (pathname, params = {}) => {
+    ? // eslint-disable-next-line complexity
+      (pathname, params = {}) => {
         let i;
         let lastIndex = 1;
 

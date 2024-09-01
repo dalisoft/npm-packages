@@ -12,8 +12,7 @@
   "files": [
     "aot",
     "runtime",
-    "utils",
-    "constants.js"
+    "utils"
   ],
   "engines": {
     "node": ">=18.20.1"
