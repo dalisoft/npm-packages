@@ -9,11 +9,17 @@ describe('fast-path-parse/match safe', async () => {
     assert.equal(match('/foo/bar')('/foo/bar/'), true);
     assert.equal(match('/foo/bar/')('/foo/bar/'), true);
   });
-  await it('Simple segmenting', () => {
+  await it('Simple segmenting, `:id`', () => {
     assert.equal(match('/foo/:id/bar')('/foo/123/bar'), true);
     assert.equal(match('/foo/:id/bar/')('/foo/123/bar'), true);
     assert.equal(match('/foo/:id/bar')('/foo/123/bar/'), true);
     assert.equal(match('/foo/:id/bar/')('/foo/123/bar/'), true);
+  });
+  await it('Simple segmenting, `<id>`', () => {
+    assert.equal(match('/foo/<id>/bar')('/foo/123/bar'), true);
+    assert.equal(match('/foo/<id>/bar/')('/foo/123/bar'), true);
+    assert.equal(match('/foo/<id>/bar')('/foo/123/bar/'), true);
+    assert.equal(match('/foo/<id>/bar/')('/foo/123/bar/'), true);
   });
   await it('Simple two segmenting', () => {
     assert.equal(match('/foo/:id/bar/:task')('/foo/123/bar/run'), true);

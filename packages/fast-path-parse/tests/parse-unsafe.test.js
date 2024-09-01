@@ -8,8 +8,13 @@ describe('fast-path-parse/parse unsafe', async () => {
   await it('No segmenting', () => {
     assert.deepStrictEqual(compilePathname('/foo/bar')('/foo/bar'), {});
   });
-  await it('Simple segmenting', () => {
+  await it('Simple segmenting, `:id`', () => {
     assert.deepStrictEqual(compilePathname('/foo/:id/bar')('/foo/123/bar'), {
+      id: '123'
+    });
+  });
+  await it('Simple segmenting, `<id>`', () => {
+    assert.deepStrictEqual(compilePathname('/foo/<id>/bar')('/foo/123/bar'), {
       id: '123'
     });
   });

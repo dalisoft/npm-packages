@@ -43,7 +43,7 @@ describe('segments slice', async () => {
       length: 2
     });
   });
-  await it('simple dynamic route parse', () => {
+  await it('simple dynamic route parse, `:id`', () => {
     assert.deepStrictEqual(segmentsSlice('/foo/:id'), {
       filled: [
         {
@@ -70,6 +70,58 @@ describe('segments slice', async () => {
       length: 2
     });
     assert.deepStrictEqual(segmentsSlice('/foo/:id/'), {
+      filled: [
+        {
+          name: 'id',
+          segment: true,
+          last: true,
+          position: 5
+        }
+      ],
+      segments: [
+        {
+          name: 'foo',
+          segment: false,
+          last: false,
+          position: 1
+        },
+        {
+          name: 'id',
+          segment: true,
+          last: true,
+          position: 5
+        }
+      ],
+      length: 2
+    });
+  });
+  await it('simple dynamic route parse, `<id>`', () => {
+    assert.deepStrictEqual(segmentsSlice('/foo/<id>'), {
+      filled: [
+        {
+          name: 'id',
+          segment: true,
+          last: true,
+          position: 5
+        }
+      ],
+      segments: [
+        {
+          name: 'foo',
+          segment: false,
+          last: false,
+          position: 1
+        },
+        {
+          name: 'id',
+          segment: true,
+          last: true,
+          position: 5
+        }
+      ],
+      length: 2
+    });
+    assert.deepStrictEqual(segmentsSlice('/foo/<id>/'), {
       filled: [
         {
           name: 'id',

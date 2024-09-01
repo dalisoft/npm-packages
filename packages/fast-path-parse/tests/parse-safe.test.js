@@ -11,7 +11,7 @@ describe('fast-path-parse/parse safe', async () => {
     assert.deepStrictEqual(parsePathname('/foo/bar')('/foo/bar/'), {});
     assert.deepStrictEqual(parsePathname('/foo/bar/')('/foo/bar/'), {});
   });
-  await it('Simple segmenting', () => {
+  await it('Simple segmenting, `:id`', () => {
     assert.deepStrictEqual(parsePathname('/foo/:id/bar')('/foo/123/bar'), {
       id: '123'
     });
@@ -22,6 +22,20 @@ describe('fast-path-parse/parse safe', async () => {
       id: '123'
     });
     assert.deepStrictEqual(parsePathname('/foo/:id/bar/')('/foo/123/bar/'), {
+      id: '123'
+    });
+  });
+  await it('Simple segmenting, `<id>`', () => {
+    assert.deepStrictEqual(parsePathname('/foo/<id>/bar')('/foo/123/bar'), {
+      id: '123'
+    });
+    assert.deepStrictEqual(parsePathname('/foo/<id>/bar/')('/foo/123/bar'), {
+      id: '123'
+    });
+    assert.deepStrictEqual(parsePathname('/foo/<id>/bar')('/foo/123/bar/'), {
+      id: '123'
+    });
+    assert.deepStrictEqual(parsePathname('/foo/<id>/bar/')('/foo/123/bar/'), {
       id: '123'
     });
   });
