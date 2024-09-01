@@ -4,7 +4,7 @@ Fastest route path-to-params parser.
 
 Optimized where it's possible.
 
-Up-to **6x** faster than fastest counterpart (`compile` method)
+Up-to **10x** faster than fastest counterpart (`aot` imports)
 
 ## Features
 
