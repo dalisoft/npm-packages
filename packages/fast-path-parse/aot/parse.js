@@ -1,3 +1,6 @@
+const { SLASH_CODE } = require('../constants.js');
+const segmentsSlice = require('../utils/segment.js');
+
 /**
  * Compiles an route path for fastest parsing
  * @param {string} path A path to be compiled
@@ -11,39 +14,39 @@
  * ```
  */
 const compile = (path) => {
-  /**
-   * @type {Array<string | null>}
-   */
-  const segments = path
-    .split('/')
-    .map((name) => (name.charAt(0) === ':' ? name.substring(1) : null));
-  const segmentsFilled = segments.filter((segment) => segment);
+  const { segments, filled, length: LENGTH } = segmentsSlice(path);
 
-  if (segmentsFilled.length > 0) {
+  if (filled.length > 0) {
     let aotJit = `function compilePath(pathname, params = {}) {
+        let uri = pathname;
+
         let i;
-        let lastIndex = 0;
+        let lastIndex = 1;
+        let value;
 
-        pathname += '/';
-    `;
+        if (uri.charCodeAt(uri.length - 1) !== ${SLASH_CODE}) {
+          uri += '/';
+        }`;
 
-    for (const segment of segments) {
-      if (segment) {
+    for (let index = 0; index < LENGTH; index++) {
+      const segment = segments[index];
+
+      aotJit += `
+        i = uri.indexOf('/', lastIndex);
+
+        if (i < ${segment.position}) {
+          return params;
+        }`;
+
+      if (segment.segment) {
         aotJit += `
-        i = pathname.indexOf('/', lastIndex);
-        if (i !== -1) {
-          params['${segment}'] = pathname.substring(lastIndex, i);
-          lastIndex = i + 1;
-        }
-        `;
-      } else {
-        aotJit += `
-        i = pathname.indexOf('/', lastIndex);
-        if (i !== -1) {
-          lastIndex = i + 1;
-        }
-        `;
+          value = uri.substring(lastIndex, i);
+          params['${segment.name}'] = value;
+          `;
       }
+
+      aotJit += `lastIndex = i + 1;
+`;
     }
 
     aotJit += `

@@ -1,3 +1,6 @@
+const { SLASH_CODE } = require('../constants.js');
+const segmentsSlice = require('../utils/segment.js');
+
 /**
  * Prepares an route path for parsing
  * @param {string} path A path to be compiled
@@ -10,37 +13,33 @@
  * pathParse('/user/123') // returns { id: '123' }
  * ```
  */
-const parse = (path) => {
-  /**
-   * @type {Array<string | null>}
-   */
-  const segments = path
-    .split('/')
-    .map((name) => (name.charAt(0) === ':' ? name.substring(1) : null));
-  const segmentsFilled = segments.filter((segment) => segment);
 
-  return segmentsFilled.length > 0
+const parse = (path) => {
+  const { segments, filled } = segmentsSlice(path);
+
+  return filled.length > 0
     ? (pathname, params = {}) => {
-        let index = 0;
+        let uri = pathname;
 
         let i;
-        let lastIndex = 0;
+        let lastIndex = 1;
 
-        // biome-ignore lint/style/noParameterAssign: This makes last entry forcefully parse
-        pathname += '/';
+        if (uri.charCodeAt(uri.length - 1) !== SLASH_CODE) {
+          uri += '/';
+        }
 
-        // biome-ignore lint/suspicious/noAssignInExpressions: It saves additional CPU cycles
-        while ((i = pathname.indexOf('/', lastIndex)) !== -1) {
-          const key = segments[index];
+        for (const segment of segments) {
+          i = uri.indexOf('/', lastIndex);
 
-          if (key) {
-            const value = pathname.substring(lastIndex, i);
+          if (i < segment.position) {
+            return params;
+          }
 
-            params[key] = value;
+          if (segment.segment) {
+            params[segment.name] = uri.substring(lastIndex, i);
           }
 
           lastIndex = i + 1;
-          index++;
         }
 
         return params;

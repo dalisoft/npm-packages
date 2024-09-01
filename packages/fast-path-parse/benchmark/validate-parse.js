@@ -1,6 +1,6 @@
 import benny from 'benny';
-import fastPathCompile from '../aot/parse.js';
-import fastPathParse from '../runtime/parse.js';
+import fastPathCompile from '../aot/match.js';
+import fastPathParse from '../runtime/match.js';
 import pathToRegExp from 'path-to-regexp';
 import pathToTree from 'path-to-tree';
 
@@ -14,11 +14,11 @@ tree.add(path, 2);
 
 // Suite
 benny.suite(
-  'Parse',
-  benny.add('fast path parse', () => {
+  'Validation/Match',
+  benny.add('fast path match', () => {
     fastPath('/user/1234/edit/weather');
   }),
-  benny.add('fast path compile', () => {
+  benny.add('fast path compiled match', () => {
     fastPath2('/user/1234/edit/weather');
   }),
   benny.add('path-to-regexp match', () => {

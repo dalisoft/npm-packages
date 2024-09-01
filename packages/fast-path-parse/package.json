@@ -3,15 +3,17 @@
   "version": "1.1.0",
   "description": "Fastest route path-to-params parser",
   "type": "commonjs",
-  "main": "parse.js",
   "exports": {
-    ".": "./parse.js",
-    "./parse": "./parse.js",
-    "./compile": "./compile.js"
+    "./aot/parse": "./aot/parse.js",
+    "./aot/match": "./aot/match.js",
+    "./runtime/parse": "./runtime/parse.js",
+    "./runtime/match": "./runtime/match.js"
   },
   "files": [
-    "parse.js",
-    "compile.js"
+    "aot",
+    "runtime",
+    "utils",
+    "constants.js"
   ],
   "engines": {
     "node": ">=18.20.1"

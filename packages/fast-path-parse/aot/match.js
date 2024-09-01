@@ -1,3 +1,6 @@
+const { SLASH_CODE } = require('../constants.js');
+const segmentsSlice = require('../utils/segment.js');
+
 /**
  * Compiles an route path for fastest validation
  * @param {string} path A path to be compiled
@@ -10,68 +13,45 @@
  * pathMatch('/user/123') // returns `true`
  * ```
  */
-// eslint-disable-next-line max-lines-per-function
 const match = (path) => {
-  /**
-   * @type {Array<{name: string; segment: boolean}>}
-   */
-  const segments = path
-    .split('/')
-    .map((name) =>
-      name.charAt(0) === ':'
-        ? { name: name.substring(1), segment: true }
-        : { name, segment: false }
-    );
-  const segmentsFilled = segments.filter((segment) => segment.segment);
+  const { segments, filled } = segmentsSlice(path);
 
-  if (segmentsFilled.length > 0) {
+  if (filled.length > 0) {
     let aotJit = `function matchPath(pathname) {
+        let uri = pathname;
+
         let i;
-        let lastIndex = 0;
+        let lastIndex = 1;
         let isValid = true;
 
-        let key;
         let value;
 
-        pathname += '/';
-    `;
+        if (uri.charCodeAt(uri.length - 1) !== ${SLASH_CODE}) {
+          uri += '/';
+        }`;
 
     for (const segment of segments) {
+      aotJit += `
+        if (!isValid) { return false; }
+
+        i = uri.indexOf('/', lastIndex);
+
+        if (i < ${segment.position}) { return false; }
+
+        value = uri.substring(lastIndex, i);
+          lastIndex = i + 1;`;
+
       if (segment.segment) {
         aotJit += `
-        if (!isValid) {
-          return false;
-        }
-
-        i = pathname.indexOf('/', lastIndex);
-        if (i !== -1) {
-          key = '${segment.name}';
-          value = pathname.substring(lastIndex, i);
-          lastIndex = i + 1;
-
-          isValid = isValid && value !== undefined && value.length > 0;
-        }
-        `;
+          isValid = value.length > 0;`;
       } else {
         aotJit += `
-        if (!isValid) {
-          return false;
-        }
-
-        i = pathname.indexOf('/', lastIndex);
-        if (i !== -1) {
-          value = pathname.substring(lastIndex, i);
-          lastIndex = i + 1;
-
-          isValid = isValid && value === '${segment.name}';
-        }
-        `;
+          isValid = value === '${segment.name}';`;
       }
     }
-
     aotJit += `
-        return isValid
-  }`;
+        return isValid;
+    }`;
 
     // eslint-disable-next-line @typescript-eslint/no-implied-eval
     return new Function(`return ${aotJit}`)();
