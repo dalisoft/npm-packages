@@ -1,98 +1,65 @@
-/* eslint-disable no-cond-assign, eslint-comments/disable-enable-pair, no-param-reassign, @typescript-eslint/restrict-plus-operands  */
 const fastUrlDecode = require('fast-decode-uri-component');
 
 /**
  * Parser string or URL encoded string to object
  * @param {String} str Input string
+ * @param {Boolean} enableParser Enable deep parser for handling complex queries
  * @param {String} delimiter Delimiter during parsing
- * @param {Object} options Parser options
- * @param {Boolean} options.enableParser Enable deep parser for handling complex queries
- *
- * @default delimiter & Default value of delimiter
- * @default options.enableParser true Deep parser default state
- *
  * @example
  * parse('foo=bar')
  */
-const defaultOptions = { enableParser: true };
-// eslint-disable-next-line complexity, max-lines-per-function
-function parse(str, delimiter = '&', options = defaultOptions) {
-  if (typeof str !== 'string') {
+// eslint-disable-next-line complexity
+function parse(str, enableParser = false, delimiter = '&') {
+  let query = str;
+
+  if (typeof str !== 'string' || str.length < 3 || str.indexOf('=') === -1) {
     return null;
   }
   if (str.indexOf('%') !== -1) {
-    str = fastUrlDecode(str);
-  }
-  if (str.length < 3 || str.indexOf('=') === -1) {
-    return null;
+    query = fastUrlDecode(str);
   }
 
-  let index = -1;
+  const map = {};
+
+  let i;
   let lastIndex = 0;
-  const returns = {};
 
-  let field;
-  let keyIndex;
-  let fieldIndex;
-  let key;
-  let value;
+  query += delimiter;
 
-  let values;
+  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+  while ((i = query.indexOf(delimiter, lastIndex)) !== -1) {
+    const entry = query.substring(i, lastIndex);
+    const SPLIT_INDEX = entry.indexOf('=');
 
-  while ((index = str.indexOf(delimiter, lastIndex)) !== -1) {
-    field = str.substring(lastIndex, index);
+    if (SPLIT_INDEX !== -1) {
+      const key = entry.substring(0, SPLIT_INDEX);
+      const value = entry.substring(SPLIT_INDEX + 1);
 
-    keyIndex = field.indexOf('=');
-    key = field.substr(0, keyIndex);
-    value = field.substr(keyIndex + 1);
+      const BRACKET_INDEX = enableParser && key.indexOf('[');
+      if (enableParser && BRACKET_INDEX !== -1) {
+        const mapkey = key.substring(0, BRACKET_INDEX);
+        const subkey = key.substring(BRACKET_INDEX + 1, key.indexOf(']'));
+        let submap;
 
-    if (options.enableParser && key.indexOf('[]') !== -1) {
-      key = key.substr(0, key.length - 2);
-      values = returns[key] || [];
+        // eslint-disable-next-line max-depth
+        if (!subkey || !Number.isNaN(+subkey)) {
+          submap = map[mapkey] || [];
+          submap[submap.length] = value;
+        } else {
+          submap = map[mapkey] || {};
+          submap[subkey] = value;
+        }
 
-      values.push(value);
-    } else if (options.enableParser && (keyIndex = key.indexOf('[')) !== -1) {
-      fieldIndex = key.indexOf(']', keyIndex);
-      field = key.substring(keyIndex + 1, fieldIndex);
-      key = key.substring(0, keyIndex);
-      values = returns[key] || {};
-
-      values[field] = value;
-    } else {
-      values = value;
+        map[mapkey] = submap;
+      } else {
+        map[key] = value;
+      }
     }
 
-    returns[key] = values;
-    values = null;
-
-    lastIndex = index + 1;
+    lastIndex = i + 1;
   }
 
-  field = str.substr(lastIndex);
-  keyIndex = field.indexOf('=');
-  key = field.substr(0, keyIndex);
-  value = field.substr(keyIndex + 1);
-
-  if (options.enableParser && key.indexOf('[]') !== -1) {
-    key = key.substr(0, key.length - 2);
-    values = returns[key] || [];
-
-    values.push(value);
-  } else if (options.enableParser && (keyIndex = key.indexOf('[')) !== -1) {
-    fieldIndex = key.indexOf(']');
-    field = key.substring(keyIndex + 1, fieldIndex);
-    key = key.substring(0, keyIndex);
-    values = returns[key] || {};
-
-    values[field] = value;
-  } else {
-    values = value;
-  }
-
-  returns[key] = values;
-  values = null;
-
-  return returns;
+  return map;
 }
 
 module.exports = parse;

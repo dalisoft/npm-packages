@@ -1,64 +1,35 @@
-import Benchmark from 'benchmark';
-import fastQueryParse from 'fast-query-parse';
+import benny from 'benny';
+import fastQueryParse from '../parse.js';
 import qs from 'qs';
-import querystring from 'querystring';
+import querystring from 'node:querystring';
 
-const QS = 'foo=bar&loop[]=doing&shitty[foo]=1&shitty[bar]=2';
-const qsRexEx = /([A-Za-z0-9[\]]+)?=([A-Za-z0-9[\]]+)/gi;
-
-function parseQS(str) {
-  let match;
-  const returns = {};
-  while ((match = qsRexEx.exec(str)) !== null) {
-    returns[match[1]] = match[2];
-  }
-
-  return returns;
-}
-
-function splitQS(str) {
-  const values = str.split('&');
-  const returns = {};
-
-  for (let i = 0, len = values.length; i < len; i += 1) {
-    const [key, value] = values[i].split('=');
-    returns[key] = value;
-  }
-
-  return returns;
-}
-
-console.log({
-  'qs.parse': qs.parse(QS, { depth: 1 }),
-  'querystring.parse': querystring.parse(QS),
-  'fast-query-parse': fastQueryParse(QS),
-  'fqp-once': fastQueryParse('foo[]=bar'),
-  parse_qs: parseQS(QS),
-  split_qs: splitQS(QS)
-});
+const QS = 'foo=bar&loop[]=doing&shitty[foo]=1&shitty[bar]=2&loop[1]=something';
 
 // Suite
-const suite = new Benchmark.Suite();
-suite.add('querystring.parse', () => {
-  querystring.parse(QS);
-});
-suite.add('qs.parse', () => {
-  qs.parse(QS, { depth: 1 });
-});
-suite.add('parseQS', () => {
-  parseQS(QS);
-});
-suite.add('fast-query-parse', () => {
-  fastQueryParse(QS);
-});
-suite.add('splitQS', () => {
-  splitQS(QS);
-});
-suite.on('cycle', (e) => {
-  console.log(e.target.toString());
-});
-suite.on('complete', function () {
-  console.log(`Fastest is ${this.filter('fastest').map('name')}`);
-});
+benny.suite(
+  'parse simple',
+  benny.add('querystring.parse', () => {
+    querystring.parse(QS);
+  }),
+  benny.add('fast-query-parse', () => {
+    fastQueryParse(QS);
+  }),
+  benny.add('ada URL', () => {
+    new URL(`http://dummyurl.com?${QS}`).searchParams;
+  }),
+  benny.cycle(),
+  benny.complete()
+);
 
-suite.run();
+// Suite
+benny.suite(
+  'parse complex',
+  benny.add('qs.parse', () => {
+    qs.parse(QS, { depth: 1 });
+  }),
+  benny.add('fast-query-parse', () => {
+    fastQueryParse(QS, true);
+  }),
+  benny.cycle(),
+  benny.complete()
+);

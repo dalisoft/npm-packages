@@ -8,8 +8,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "benchmark": "^2.1.4",
+    "benny": "^3.7.1",
     "fast-query-parse": "file:..",
-    "qs": "^6.10.1"
+    "qs": "^6.13.0"
   }
 }

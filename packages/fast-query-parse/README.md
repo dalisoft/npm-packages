@@ -1,13 +1,11 @@
 # fast-query-parse
 
-Most fastest `query parse` with performance of `querystring` module and features of `qs` module
+Fastest `query parse` with performance of `querystring` module and features of `qs` module
 
 ## Features
 
-- Zero dependency
 - Fast
 - Auto-decode URL
-- Auto-mapping
 
 ## Caveats
 
