@@ -46,11 +46,11 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4(@commitlint/cli@19.4.1(@types/node@20.14.2)(typescript@5.5.4))
       lint-staged:
-        specifier: ^15.2.9
-        version: 15.2.9
+        specifier: ^15.2.10
+        version: 15.2.10
       lint-staged-config-airlight:
         specifier: ^4.1.4
-        version: 4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.9.1(jiti@1.21.6))(lint-staged@15.2.9)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.4))
+        version: 4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.9.1(jiti@1.21.6))(lint-staged@15.2.10)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.4))
       prettier-config-airlight:
         specifier: ^6.0.4
         version: 6.0.4(prettier@3.3.2)
@@ -2446,8 +2446,8 @@ packages:
       prettier: ^3.3.2
       stylelint: ^16.0.x
 
-  lint-staged@15.2.9:
-    resolution: {integrity: sha512-BZAt8Lk3sEnxw7tfxM7jeZlPRuT4M68O0/CwZhhaw6eeWu0Lz5eERE3m386InivXB64fp/mDID452h48tvKlRQ==}
+  lint-staged@15.2.10:
+    resolution: {integrity: sha512-5dY5t743e1byO19P9I4b3x8HJwalIznL5E1FWYnU6OWw33KxNBSLAc6Cy7F2PsFEO8FKnLwjwm5hx7aMF0jzZg==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -2623,6 +2623,10 @@ packages:
 
   micromatch@4.0.7:
     resolution: {integrity: sha512-LPP/3KorzCwBxfeUuZmaR6bG2kdeHSbe0P2tY3FLRU4vYrjYz5hI4QZwV0njUx3jeuKe67YukQ1LSPZBKDqO/Q==}
+    engines: {node: '>=8.6'}
+
+  micromatch@4.0.8:
+    resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
 
   mimic-fn@4.0.0:
@@ -6333,19 +6337,19 @@ snapshots:
     dependencies:
       uc.micro: 1.0.6
 
-  lint-staged-config-airlight@4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.9.1(jiti@1.21.6))(lint-staged@15.2.9)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.4)):
+  lint-staged-config-airlight@4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(eslint@9.9.1(jiti@1.21.6))(lint-staged@15.2.10)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.5.4)):
     dependencies:
       '@biomejs/biome': 1.8.3
       '@stoplight/spectral-cli': 6.11.1
       '@stoplight/spectral-ruleset-migrator': 1.9.5
       dockerfilelint: 1.8.0
       eslint: 9.9.1(jiti@1.21.6)
-      lint-staged: 15.2.9
+      lint-staged: 15.2.10
       markdownlint-cli2: 0.11.0
       prettier: 3.3.2
       stylelint: 16.6.1(typescript@5.5.4)
 
-  lint-staged@15.2.9:
+  lint-staged@15.2.10:
     dependencies:
       chalk: 5.3.0
       commander: 12.1.0
@@ -6353,7 +6357,7 @@ snapshots:
       execa: 8.0.1
       lilconfig: 3.1.2
       listr2: 8.2.4
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pidtree: 0.6.0
       string-argv: 0.3.2
       yaml: 2.5.0
@@ -6522,6 +6526,11 @@ snapshots:
       picomatch: 2.3.1
 
   micromatch@4.0.7:
+    dependencies:
+      braces: 3.0.3
+      picomatch: 2.3.1
+
+  micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
       picomatch: 2.3.1
