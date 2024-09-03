@@ -1,5 +1,3 @@
-function match(
-  path: string
-): (pathname: string, params?: Record<string, string>) => boolean;
+function match(path: string): (pathname: string) => boolean;
 
 export = match;
