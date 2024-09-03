@@ -2,8 +2,9 @@ const segmentsSlice = require('../utils/segment.js');
 
 /**
  * Prepares an route path for parsing
- * @param {string} path A path to be compiled
- * @returns {(pathname: string, params?: Record<string, string>) => params} Function which parse params at runtime
+ * @type {import('./parse')}
+ * @param path A path to be compiled
+ * @returns Function which parse params at runtime
  * @example
  * ```ts
  * import parse from 'fast-path-parser/runtime/parse';

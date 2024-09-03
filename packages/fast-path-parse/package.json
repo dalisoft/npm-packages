@@ -4,10 +4,22 @@
   "description": "Fastest route path-to-params parser",
   "type": "commonjs",
   "exports": {
-    "./aot/parse": "./aot/parse.js",
-    "./aot/match": "./aot/match.js",
-    "./runtime/parse": "./runtime/parse.js",
-    "./runtime/match": "./runtime/match.js"
+    "./aot/parse": {
+      "default": "./aot/parse.js",
+      "types": "./aot/parse.d.ts"
+    },
+    "./aot/match": {
+      "default": "./aot/match.js",
+      "types": "./aot/match.d.ts"
+    },
+    "./runtime/parse": {
+      "default": "./runtime/parse.js",
+      "types": "./runtime/parse.d.ts"
+    },
+    "./runtime/match": {
+      "default": "./runtime/match.js",
+      "types": "./runtime/match.d.ts"
+    }
   },
   "files": [
     "aot",

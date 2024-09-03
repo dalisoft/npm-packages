@@ -2,8 +2,9 @@ const segmentsSlice = require('../utils/segment.js');
 
 /**
  * Compiles an route path for fastest parsing
- * @param {string} path A path to be compiled
- * @returns {(pathname: string, params?: Record<string, string>) => params} Optimized function which parse params at runtime
+ * @type {import('./parse')}
+ * @param path A path to be compiled
+ * @returns Optimized function which parse params at runtime
  * @example
  * ```ts
  * import compile from 'fast-path-parser/aot/parse';
@@ -12,7 +13,7 @@ const segmentsSlice = require('../utils/segment.js');
  * pathParse('/user/123') // returns { id: '123' }
  * ```
  */
-const compile = (path) => {
+const parse = (path) => {
   const { segments, filled } = segmentsSlice(path);
 
   if (filled.length > 0) {
@@ -57,4 +58,4 @@ const compile = (path) => {
   return (_, params = {}) => params;
 };
 
-module.exports = compile;
+module.exports = parse;

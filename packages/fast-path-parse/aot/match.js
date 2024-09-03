@@ -2,8 +2,9 @@ const segmentsSlice = require('../utils/segment.js');
 
 /**
  * Compiles an route path for fastest validation
- * @param {string} path A path to be compiled
- * @returns {(pathname: string, params?: Record<string, string>) => boolean} Optimized function which validate params at runtime
+ * @type {import('./match')}
+ * @param path A path to be compiled
+ * @returns Optimized function which validate params at runtime
  * @example
  * ```ts
  * import compile from 'fast-path-parser/aot/match';
