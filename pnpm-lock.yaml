@@ -70,8 +70,8 @@ importers:
         specifier: ^7.0.6
         version: 7.0.6(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.9.5)(dockerfilelint@1.8.0)(jiti@1.21.6)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.6.2))
       terser:
-        specifier: ^5.31.6
-        version: 5.31.6
+        specifier: ^5.32.0
+        version: 5.32.0
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -3428,8 +3428,8 @@ packages:
     resolution: {integrity: sha512-nHc6S/bwIilKHNRgK/3jlhDoIHcp45YgyiwcAk46Tr0LfEqGBVpmiAyuiuxeVE44m3mXnEeVhaipLOEWmH+Njw==}
     engines: {node: '>=14.16'}
 
-  terser@5.31.6:
-    resolution: {integrity: sha512-PQ4DAriWzKj+qgehQ7LK5bQqCFNMmlhjR2PFFLuqGCpuCAauxemVBWwWOxo3UIwWQx8+Pr61Df++r76wDmkQBg==}
+  terser@5.32.0:
+    resolution: {integrity: sha512-v3Gtw3IzpBJ0ugkxEX8U0W6+TnPKRRCWGh1jC/iM/e3Ki5+qvO1L1EAZ56bZasc64aXHwRHNIQEzm6//i5cemQ==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4705,8 +4705,8 @@ snapshots:
     dependencies:
       '@mapbox/node-pre-gyp': 1.0.11
       '@rollup/pluginutils': 4.2.1
-      acorn: 8.12.0
-      acorn-import-attributes: 1.9.5(acorn@8.12.0)
+      acorn: 8.12.1
+      acorn-import-attributes: 1.9.5(acorn@8.12.1)
       async-sema: 3.1.1
       bindings: 1.5.0
       estree-walker: 2.0.2
@@ -4734,9 +4734,9 @@ snapshots:
     dependencies:
       acorn: 6.4.2
 
-  acorn-import-attributes@1.9.5(acorn@8.12.0):
+  acorn-import-attributes@1.9.5(acorn@8.12.1):
     dependencies:
-      acorn: 8.12.0
+      acorn: 8.12.1
 
   acorn-jsx@5.3.2(acorn@6.4.2):
     dependencies:
@@ -4748,7 +4748,7 @@ snapshots:
 
   acorn-walk@8.3.3:
     dependencies:
-      acorn: 8.12.0
+      acorn: 8.12.1
 
   acorn@6.4.2: {}
 
@@ -6946,7 +6946,7 @@ snapshots:
       jest-worker: 26.6.2
       rollup: 4.21.2
       serialize-javascript: 4.0.0
-      terser: 5.31.6
+      terser: 5.32.0
 
   rollup-plugin-typescript2@0.36.0(rollup@4.21.2)(typescript@5.6.2):
     dependencies:
@@ -7342,10 +7342,10 @@ snapshots:
 
   temp-dir@3.0.0: {}
 
-  terser@5.31.6:
+  terser@5.32.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.12.0
+      acorn: 8.12.1
       commander: 2.20.3
       source-map-support: 0.5.21
 
