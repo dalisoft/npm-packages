@@ -16,8 +16,8 @@ importers:
         specifier: ^19.4.1
         version: 19.4.1(@types/node@20.14.2)(typescript@5.6.2)
       '@commitlint/config-lerna-scopes':
-        specifier: ^19.0.0
-        version: 19.0.0
+        specifier: ^19.5.0
+        version: 19.5.0
       '@rollup/plugin-buble':
         specifier: ^1.0.3
         version: 1.0.3(rollup@4.21.2)
@@ -251,8 +251,8 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-lerna-scopes@19.0.0':
-    resolution: {integrity: sha512-Us46bcN74Efdva2gsuxootQY2ueLdeNNWhsM/24FKdRDzxqrbL1gbA+lDBC+HhwTQ/jb3w+NRaCx4kRYJpWqJA==}
+  '@commitlint/config-lerna-scopes@19.5.0':
+    resolution: {integrity: sha512-h89BuwLVinacPOu2hzBKJ4t/L/HOA7rUuzbS10k26Lzq2/OKpi/KEhNfphJJLizfeqOzjqh1/V3ILbePtaBUtg==}
     engines: {node: '>=v18'}
     peerDependencies:
       lerna: ^5.0.0 || ^6
@@ -3812,7 +3812,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-lerna-scopes@19.0.0':
+  '@commitlint/config-lerna-scopes@19.5.0':
     dependencies:
       '@lerna/project': 6.4.1
       glob: 10.4.1
