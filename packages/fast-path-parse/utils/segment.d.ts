@@ -2,6 +2,7 @@ export interface ISegment {
   name: string;
   segment: boolean;
   position: number;
+  size: number;
   last: boolean;
 }
 

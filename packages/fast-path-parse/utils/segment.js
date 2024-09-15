@@ -8,20 +8,36 @@
 // eslint-disable-next-line complexity
 const parseSegment = (name, getIndex, position = 1) => {
   if (name === '*' || name === '(.*)') {
-    return { name: `*${getIndex()}`, segment: true, position: position + 2 };
+    return {
+      name: `*${getIndex()}`,
+      segment: true,
+      position: position + 2,
+      size: 2
+    };
   }
   if (name.charAt(0) === ':') {
-    return { name: name.substring(1), segment: true, position: position + 2 };
+    return {
+      name: name.substring(1),
+      segment: true,
+      position: position + 2,
+      size: 2
+    };
   }
   if (name.charAt(0) === '<' && name.charAt(name.length - 1) === '>') {
     return {
       name: name.substring(1, name.length - 1),
       segment: true,
-      position: position + 2
+      position: position + 2,
+      size: 2
     };
   }
 
-  return { name, segment: false, position: position + name.length + 1 };
+  return {
+    name,
+    segment: false,
+    position: position + name.length + 1,
+    size: name.length
+  };
 };
 
 /**
@@ -31,7 +47,7 @@ const parseSegment = (name, getIndex, position = 1) => {
  * @example
  * ```ts
  * segmentsSlice('/foo/bar').segments
- * // [{name: 'foo', segment: false, last: false}, {name: 'bar', segment: false, last: true}]
+ * // [{name: 'foo', segment: false, size: 3, last: false}, {name: 'bar', segment: false, size: 3, last: true}]
  * ```
  */
 module.exports = function segmentsSlice(path) {

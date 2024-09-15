@@ -1,5 +1,5 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable max-lines-per-function */
+/* eslint-disable max-lines, max-lines-per-function */
 const assert = require('node:assert');
 const { describe, it } = require('node:test');
 const segmentsSlice = require('../utils/segment.js');
@@ -13,13 +13,15 @@ describe('segments slice', async () => {
           name: 'foo',
           segment: false,
           last: false,
-          position: 1
+          position: 1,
+          size: 3
         },
         {
           name: 'bar',
           segment: false,
           last: true,
-          position: 5
+          position: 5,
+          size: 3
         }
       ],
       length: 2
@@ -31,13 +33,15 @@ describe('segments slice', async () => {
           name: 'foo',
           segment: false,
           last: false,
-          position: 1
+          position: 1,
+          size: 3
         },
         {
           name: 'bar',
           segment: false,
           last: true,
-          position: 5
+          position: 5,
+          size: 3
         }
       ],
       length: 2
@@ -50,7 +54,8 @@ describe('segments slice', async () => {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       segments: [
@@ -58,13 +63,15 @@ describe('segments slice', async () => {
           name: 'foo',
           segment: false,
           last: false,
-          position: 1
+          position: 1,
+          size: 3
         },
         {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       length: 2
@@ -75,7 +82,8 @@ describe('segments slice', async () => {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       segments: [
@@ -83,13 +91,15 @@ describe('segments slice', async () => {
           name: 'foo',
           segment: false,
           last: false,
-          position: 1
+          position: 1,
+          size: 3
         },
         {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       length: 2
@@ -102,7 +112,8 @@ describe('segments slice', async () => {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       segments: [
@@ -110,13 +121,15 @@ describe('segments slice', async () => {
           name: 'foo',
           segment: false,
           last: false,
-          position: 1
+          position: 1,
+          size: 3
         },
         {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       length: 2
@@ -127,7 +140,8 @@ describe('segments slice', async () => {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       segments: [
@@ -135,13 +149,15 @@ describe('segments slice', async () => {
           name: 'foo',
           segment: false,
           last: false,
-          position: 1
+          position: 1,
+          size: 3
         },
         {
           name: 'id',
           segment: true,
           last: true,
-          position: 5
+          position: 5,
+          size: 2
         }
       ],
       length: 2
