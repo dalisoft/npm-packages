@@ -1,17 +1,7 @@
 const segmentsSlice = require('../utils/segment.js');
 
 /**
- * Compiles an route path for fastest validation
  * @type {import('./match')}
- * @param path A path to be compiled
- * @returns Optimized function which validate params at runtime
- * @example
- * ```ts
- * import compile from 'fast-path-parser/aot/match';
- *
- * const pathMatch = compile('/user/:id');
- * pathMatch('/user/123') // returns `true`
- * ```
  */
 // eslint-disable-next-line max-lines-per-function
 const match = (path) => {

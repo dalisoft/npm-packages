@@ -41,14 +41,7 @@ const parseSegment = (name, getIndex, position = 1) => {
 };
 
 /**
- * Parses route string into segments and parses it
  * @type {import('./segment')}
- * @param path A path to parse
- * @example
- * ```ts
- * segmentsSlice('/foo/bar').segments
- * // [{name: 'foo', segment: false, size: 3, last: false}, {name: 'bar', segment: false, size: 3, last: true}]
- * ```
  */
 module.exports = function segmentsSlice(path) {
   let INDEX = 1;

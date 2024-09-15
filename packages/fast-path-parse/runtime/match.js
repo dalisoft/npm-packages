@@ -1,19 +1,8 @@
 const segmentsSlice = require('../utils/segment.js');
 
 /**
- * Prepares an route path for validating
  * @type {import('./match')}
- * @param path A path to be compiled
- * @returns Function which validates runtime
- * @example
- * ```ts
- * import match from 'fast-path-parser/runtime/match';
- *
- * const pathMatch = match('/user/:id');
- * pathMatch('/user/123') // returns `true`
- * ```
  */
-
 const match = (path) => {
   const { segments, filled, length: LENGTH } = segmentsSlice(path);
 
