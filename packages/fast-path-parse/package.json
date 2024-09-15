@@ -1,6 +1,6 @@
 {
   "name": "fast-path-parse",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Fastest route path-to-params parser",
   "type": "commonjs",
   "exports": {
