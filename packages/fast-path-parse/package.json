@@ -19,6 +19,10 @@
     "./runtime/match": {
       "default": "./runtime/match.js",
       "types": "./runtime/match.d.ts"
+    },
+    "./utils/segment": {
+      "default": "./utils/segment.js",
+      "types": "./utils/segment.d.ts"
     }
   },
   "files": [

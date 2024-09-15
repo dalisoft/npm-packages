@@ -4,6 +4,7 @@
  * @param {(() => number)} getIndex
  * @param {number} position
  */
+
 // eslint-disable-next-line complexity
 const parseSegment = (name, getIndex, position = 1) => {
   if (name === '*' || name === '(.*)') {
@@ -25,7 +26,8 @@ const parseSegment = (name, getIndex, position = 1) => {
 
 /**
  * Parses route string into segments and parses it
- * @param {string} path
+ * @type {import('./segment')}
+ * @param path A path to parse
  * @example
  * ```ts
  * segmentsSlice('/foo/bar').segments
@@ -36,7 +38,7 @@ module.exports = function segmentsSlice(path) {
   let INDEX = 1;
 
   /**
-   * @type {Array<{name: string; segment: boolean, last: boolean, position: number}>}
+   * @type {import('./segment').ISegment[]}
    */
   const segments = path
     .substring(1)
