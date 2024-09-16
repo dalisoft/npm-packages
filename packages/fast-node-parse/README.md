@@ -73,4 +73,4 @@ It is on my machine, on your machine results may vary. See [benchmark](./benchma
 
 ## License
 
-MIT
+Apache-2.0
