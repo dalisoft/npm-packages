@@ -14,7 +14,7 @@ See [examples](./examples) or [benchmark](./benchmark) folder to see how it's co
 
 ## Benchmark
 
-It is on my machine, on your machine results may vary
+It is on my machine, on your machine results may vary. See [benchmark](./benchmark) folder
 
 ### Static
 
@@ -64,6 +64,12 @@ It is on my machine, on your machine results may vary
 | `/foo/:bar`          | ✅     |
 | `/foo/*`             | ✅     |
 | `/foo/(.*)`          | ❌     |
+
+## Similar projects
+
+- [find-my-way](https://github.com/delvedor/find-my-way)
+- [Hono Router](https://hono.dev/docs/concepts/routers)
+- [fast-path-parse](https://www.npmjs.com/package/fast-path-parse). not 100% alternative
 
 ## License
 
