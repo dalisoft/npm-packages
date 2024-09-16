@@ -13,6 +13,16 @@
   "engines": {
     "node": ">=18.20.4"
   },
+  "exports": {
+    ".": {
+      "default": "./src/node.js",
+      "types": "./src/node.d.ts"
+    },
+    "./utils/compact": {
+      "default": "./utils/compact.js",
+      "types": "./utils/compact.d.ts"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/npm-packages.git"
