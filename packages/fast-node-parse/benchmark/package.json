@@ -1,0 +1,19 @@
+{
+  "name": "@nanoexpress/find-route",
+  "version": "0.0.1",
+  "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
+  "main": "src/engine.ts",
+  "dependencies": {
+    "benny": "^3.7.1",
+    "fast-path-parse": "^2.1.2",
+    "find-my-way": "^9.0.0",
+    "hono": "^4.5.11"
+  },
+  "description": "Router engine for nanoexpress",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "test"
+  },
+  "type": "module",
+  "keywords": []
+}

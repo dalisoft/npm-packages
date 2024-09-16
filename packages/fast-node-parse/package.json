@@ -1,0 +1,23 @@
+{
+  "name": "fast-node-parse",
+  "version": "0.0.1",
+  "description": "Router engine for nanoexpress",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
+  "type": "module",
+  "main": "src/node.js",
+  "module": "src/node.js",
+  "types": "module",
+  "typings": "src/node.d.ts",
+  "engines": {
+    "node": ">=18.20.4"
+  },
+  "files": [
+    "src",
+    "utils"
+  ],
+  "scripts": {
+    "test": "node --test"
+  }
+}
