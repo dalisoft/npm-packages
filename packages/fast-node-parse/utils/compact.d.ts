@@ -1,6 +1,6 @@
 import type { Node } from '../src/node';
 
-declare class Compactify implements Node {
+declare class Compactify extends Node {
   optimize(copyProps: string[]): this;
 }
 
