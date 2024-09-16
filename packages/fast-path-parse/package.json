@@ -37,6 +37,10 @@
     "type": "git",
     "url": "git+https://github.com/dalisoft/npm-packages.git"
   },
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-path-parse",
   "scripts": {
     "test": "node --test",
     "prepublishOnly": "npm run test"
@@ -49,9 +53,5 @@
     "parse"
   ],
   "author": "dalisoft",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dalisoft/npm-packages/issues"
-  },
-  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-path-parse"
+  "license": "MIT"
 }
