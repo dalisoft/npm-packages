@@ -10,11 +10,11 @@ Fastest route node walker with three main essentials: `match`, `parse` and `look
 
 ## Usage
 
-See [examples](./examples) or [benchmark](./benchmark) folder to see how it's could be used.
+See [examples](/packages/fast-node-parse/examples) or [benchmark](/packages/fast-node-parse/benchmark) folder to see how it's could be used.
 
 ## Benchmark
 
-It is on my machine, on your machine results may vary. See [benchmark](./benchmark) folder
+It is on my machine, on your machine results may vary. See [benchmark](/packages/fast-node-parse/benchmark) folder
 
 ### Static
 
