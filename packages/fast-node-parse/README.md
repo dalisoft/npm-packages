@@ -4,9 +4,10 @@ Fastest route node walker with three main essentials: `match`, `parse` and `look
 
 ## Features
 
-- Zero dependency
+- [Zero dependency](/packages/fast-node-parse/package.json)
 - Zero config
-- Fastest parser
+- [Fastest](#benchmark) parser
+- [Extensible](/packages/fast-node-parse/benchmark/nodes.js)
 
 ## Usage
 
