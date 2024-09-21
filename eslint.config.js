@@ -11,8 +11,20 @@ export default [
     },
     rules: {
       '@typescript-eslint/no-var-requires': 'off',
-      'n/no-unsupported-features/node-builtins': 'off',
-      complexity: ['error', 20]
+      'n/no-unsupported-features/node-builtins': 'off'
+    }
+  },
+  {
+    files: ['**/*.test.js'],
+    rules: {
+      'max-lines': 'off',
+      'max-lines-per-function': 'off'
+    }
+  },
+  {
+    files: ['**/benchmark/*'],
+    rules: {
+      'n/no-unpublished-import': 'off'
     }
   }
 ];
