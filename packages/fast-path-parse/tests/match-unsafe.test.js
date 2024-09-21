@@ -1,5 +1,3 @@
-// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable max-lines-per-function */
 const assert = require('node:assert');
 const { describe, it } = require('node:test');
 const match = require('../aot/match.js');
@@ -11,6 +9,7 @@ describe('fast-path-parse/match unsafe', () => {
     it('/foo/bar', () => assert.equal(match('/foo/bar')('/foo/bar/'), true));
     it('/foo/bar/', () => assert.equal(match('/foo/bar/')('/foo/bar/'), true));
   });
+
   describe('Simple segmenting, `:id`', () => {
     it('/foo/:id/bar', () =>
       assert.equal(match('/foo/:id/bar')('/foo/123/bar'), true));
@@ -21,6 +20,7 @@ describe('fast-path-parse/match unsafe', () => {
     it('/foo/:id/bar/', () =>
       assert.equal(match('/foo/:id/bar/')('/foo/123/bar/'), true));
   });
+
   describe('Simple segmenting, `<id>`', () => {
     it('/foo/<id>/bar', () =>
       assert.equal(match('/foo/<id>/bar')('/foo/123/bar'), true));
@@ -31,6 +31,7 @@ describe('fast-path-parse/match unsafe', () => {
     it('/foo/<id>/bar/', () =>
       assert.equal(match('/foo/<id>/bar/')('/foo/123/bar/'), true));
   });
+
   describe('Simple two segmenting', () => {
     it('/foo/:id/bar/:task', () =>
       assert.equal(match('/foo/:id/bar/:task')('/foo/123/bar/run'), true));
@@ -80,6 +81,7 @@ describe('fast-path-parse/match unsafe security', () => {
       assert.equal(match('/foo/:bar')('/(process.exit(1))'), false));
     it('/:bar', () => assert.equal(match('/:bar')('/(process.exit(1))'), true));
   });
+
   describe('throw security check', () => {
     it('/foo/throw 1', () =>
       assert.equal(match('/foo/throw 1')('/foo throw 1'), false));

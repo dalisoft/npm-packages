@@ -1,5 +1,3 @@
-// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable max-lines, max-lines-per-function */
 const assert = require('node:assert');
 const { describe, it } = require('node:test');
 const segmentsSlice = require('../utils/segment.js');
