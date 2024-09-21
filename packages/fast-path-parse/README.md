@@ -8,9 +8,9 @@ Up-to **10x** faster than fastest counterpart (`aot` imports)
 
 ## Features
 
-- Zero dependency
+- [Zero dependency](/packages/fast-path-parse/package.json)
 - Zero config
-- Fastest parser
+- [Fastest](#benchmark) parser
 
 ## Usage
 
@@ -41,6 +41,19 @@ const parsePath = parse('/user/:foo');
 // Run this at hot path
 parsePath('/user/john');
 ```
+
+## Benchmark
+
+It is on my machine, on your machine results may vary. See [benchmark](/packages/fast-path-parse/benchmark) folder
+
+### 3-level parameter
+
+| Runtime | Path                   | Methods | `fast-path` | `fast-path-compiled` | `path-to-regexp` | `path-to-tree` |
+| ------- | ---------------------- | ------- | ----------- | -------------------- | ---------------- | -------------- |
+| Node.js | `/user/:id/edit/:page` | `match` | `12.5M ops` | `17.5M ops`          | `3M ops`         | `2M ops`       |
+| Bun     | `/user/:id/edit/:page` | `match` | `12.5M ops` | `13.5M ops`          | `1M ops`         | `2.5M`         |
+| Node.js | `/user/:id/edit/:page` | `parse` | `13M ops`   | `28M ops`            | `3M ops`         | `2M ops`       |
+| Bun     | `/user/:id/edit/:page` | `parse` | `12M ops`   | `20.5M ops`          | `1M ops`         | `2.5M`         |
 
 ## Supported paths
 
