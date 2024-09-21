@@ -1,6 +1,7 @@
 /**
  * Compiles an route path for fastest parsing
  * @param path A path to be compiled
+ * @param compact An status of compiler to reduce segments
  * @returns Optimized function which parse params at runtime
  * @example
  * ```ts
@@ -11,7 +12,8 @@
  * ```
  */
 function parse(
-  path: string
+  path: string,
+  compact: boolean
 ): (
   pathname: string,
   params?: Record<string, string>

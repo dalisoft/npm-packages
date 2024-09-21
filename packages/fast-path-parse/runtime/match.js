@@ -3,8 +3,8 @@ const segmentsSlice = require('../utils/segment.js');
 /**
  * @type {import('./match')}
  */
-const match = (path) => {
-  const { segments, filled, length: LENGTH } = segmentsSlice(path);
+const match = (path, compact) => {
+  const { segments, filled, length: LENGTH } = segmentsSlice(path, compact);
 
   return filled.length > 0
     ? // eslint-disable-next-line complexity

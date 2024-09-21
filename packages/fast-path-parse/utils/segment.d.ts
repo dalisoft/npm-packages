@@ -21,6 +21,6 @@ export interface ISegmentSlice {
  * // [{name: 'foo', segment: false, size: 3, last: false}, {name: 'bar', segment: false, size: 3, last: true}]
  * ```
  */
-function segmentsSlice(path: string): ISegmentSlice;
+function segmentsSlice(path: string, compact: boolean): ISegmentSlice;
 
 export = segmentsSlice;

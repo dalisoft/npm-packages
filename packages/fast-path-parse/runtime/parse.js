@@ -1,9 +1,10 @@
 const segmentsSlice = require('../utils/segment.js');
+
 /**
  * @type {import('./parse')}
  */
-const parse = (path) => {
-  const { segments, filled } = segmentsSlice(path);
+const parse = (path, compact) => {
+  const { segments, filled } = segmentsSlice(path, compact);
 
   return filled.length > 0
     ? // eslint-disable-next-line complexity

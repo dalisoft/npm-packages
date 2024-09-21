@@ -3,8 +3,8 @@ const segmentsSlice = require('../utils/segment.js');
 /**
  * @type {import('./parse')}
  */
-const parse = (path) => {
-  const { segments, filled } = segmentsSlice(path);
+const parse = (path, compact) => {
+  const { segments, filled } = segmentsSlice(path, compact);
 
   if (filled.length > 0) {
     let aotJit = `function compilePath(pathname, params = {}) {

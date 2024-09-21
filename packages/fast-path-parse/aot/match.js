@@ -3,9 +3,9 @@ const segmentsSlice = require('../utils/segment.js');
 /**
  * @type {import('./match')}
  */
-// eslint-disable-next-line max-lines-per-function
-const match = (path) => {
-  const { segments, filled } = segmentsSlice(path);
+// eslint-disable-next-line max-lines-per-function, complexity
+const match = (path, compact) => {
+  const { segments, filled } = segmentsSlice(path, compact);
 
   if (filled.length > 0) {
     let aotJit = `function matchPath(pathname) {
