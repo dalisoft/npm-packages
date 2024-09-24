@@ -1,5 +1,3 @@
-// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable import-x/prefer-default-export */
 import { Node } from '../src/node.js';
 
 /**
@@ -21,7 +19,6 @@ export class Compactify extends Node {
 
     if (this.segment === '/') {
       this.segment = '';
-      this.rootNode = false;
     }
 
     // biome-ignore lint/suspicious/noAssignInExpressions: It is efficient

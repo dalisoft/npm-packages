@@ -34,5 +34,4 @@ declare class Node {
   lookup(path: string): false;
 }
 
-// eslint-disable-next-line import-x/prefer-default-export
 export { Node };

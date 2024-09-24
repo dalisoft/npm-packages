@@ -7,7 +7,6 @@
  * @type {import('./node').Node}
  * @implements {import('./node').Node}
  */
-// eslint-disable-next-line import-x/prefer-default-export
 export class Node {
   constructor(segment) {
     this.next = undefined;
@@ -16,7 +15,6 @@ export class Node {
     this.segment = segment;
     this.static = !/[<>{}:*]/.test(segment);
     this.length = this.static ? segment.length : 2;
-    this.rootNode = segment === '/';
 
     // This need for routers, otherwise you can modify it
     // or remove it, add something, do whatever you want
@@ -40,7 +38,7 @@ export class Node {
 
   match(path) {
     let i = -1;
-    let node = this.rootNode && this.next ? this.next : this;
+    let node = this.next;
 
     while (node) {
       if (node.static) {
@@ -61,7 +59,7 @@ export class Node {
 
   parse(path) {
     let i = -1;
-    let node = this.rootNode && this.next ? this.next : this;
+    let node = this.next;
     let params;
 
     while (node) {
@@ -97,7 +95,7 @@ export class Node {
 
   lookup(path) {
     let i = -1;
-    let node = this.rootNode && this.next ? this.next : this;
+    let node = this.next;
 
     while (node.next) {
       if (node.static) {
