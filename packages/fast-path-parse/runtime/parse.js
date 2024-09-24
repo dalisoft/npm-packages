@@ -7,7 +7,8 @@ const parse = (path, compact) => {
   const { segments, filled, length: LENGTH } = segmentsSlice(path, compact);
 
   return filled.length > 0
-    ? (pathname, params = {}) => {
+    ? // eslint-disable-next-line complexity
+      (pathname, params = {}) => {
         let i;
         let lastIndex = 1;
 
@@ -34,7 +35,5 @@ const parse = (path, compact) => {
       }
     : (_, params = {}) => params;
 };
-
-console.log(parse('/foo/:bar')('/(process.exit(1))'));
 
 module.exports = parse;

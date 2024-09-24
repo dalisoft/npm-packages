@@ -50,10 +50,10 @@ It is on my machine, on your machine results may vary. See [benchmark](/packages
 
 | Runtime | Path                   | Methods | `fast-path` | `fast-path-compiled` | `path-to-regexp` | `path-to-tree` |
 | ------- | ---------------------- | ------- | ----------- | -------------------- | ---------------- | -------------- |
-| Node.js | `/user/:id/edit/:page` | `match` | `14.5M ops` | `20.5M ops`          | `3M ops`         | `2M ops`       |
-| Bun     | `/user/:id/edit/:page` | `match` | `14.5M ops` | `16M ops`            | `1M ops`         | `2.5M`         |
-| Node.js | `/user/:id/edit/:page` | `parse` | `15.5M ops` | `46M ops`            | `3M ops`         | `2M ops`       |
-| Bun     | `/user/:id/edit/:page` | `parse` | `20.5M ops` | `28M ops`            | `1M ops`         | `2.5M`         |
+| Node.js | `/user/:id/edit/:page` | `match` | `16.5M ops` | `24M ops`            | `3M ops`         | `2M ops`       |
+| Bun     | `/user/:id/edit/:page` | `match` | `15M ops`   | `15M ops`            | `1M ops`         | `2.5M`         |
+| Node.js | `/user/:id/edit/:page` | `parse` | `13.5M ops` | `28M ops`            | `3M ops`         | `2M ops`       |
+| Bun     | `/user/:id/edit/:page` | `parse` | `17M ops`   | `23M ops`            | `1M ops`         | `2.5M`         |
 
 ## Supported paths
 
