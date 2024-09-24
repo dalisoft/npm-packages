@@ -12,13 +12,15 @@ export default [
     rules: {
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-implied-eval': 'warn',
+      '@typescript-eslint/no-this-alias': 'warn',
+      '@typescript-eslint/no-require-imports': 'off',
       'n/no-unsupported-features/node-builtins': 'off',
       'import-x/prefer-default-export': 'off',
       complexity: ['error', 10]
     }
   },
   {
-    files: ['**/*.test.js'],
+    files: ['**/*.test.js', '**/tests/**', '**/tests/*'],
     rules: {
       'max-lines': 'off',
       'max-lines-per-function': 'off',
@@ -29,6 +31,7 @@ export default [
     files: ['**/benchmark/*'],
     rules: {
       'n/no-unpublished-import': 'off',
+      'n/no-unpublished-require': 'off',
       '@typescript-eslint/no-unused-vars': 'off'
     }
   }
