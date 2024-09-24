@@ -1,5 +1,3 @@
-// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable max-lines-per-function, max-nested-callbacks */
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { Node } from '../src/node.js';
