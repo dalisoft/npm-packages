@@ -7,8 +7,7 @@ const parse = (path, compact) => {
   const { segments, filled, length: LENGTH } = segmentsSlice(path, compact);
 
   return filled.length > 0
-    ? // eslint-disable-next-line complexity
-      (pathname, params = {}) => {
+    ? (pathname, params = {}) => {
         let i;
         let lastIndex = 1;
 

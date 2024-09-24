@@ -8,8 +8,7 @@ const match = (path, compact) => {
   const { segments, filled, length: LENGTH } = segmentsSlice(path, compact);
 
   return filled.length > 0
-    ? // eslint-disable-next-line complexity
-      (pathname) => {
+    ? (pathname) => {
         let i;
         let lastIndex = 1;
         let isValid = true;
