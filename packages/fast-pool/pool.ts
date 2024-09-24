@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unsupported-features/es-syntax
 export default class Pool<T> {
   protected pools: T[];
 
