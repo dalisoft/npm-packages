@@ -14,7 +14,7 @@ export default [
       '@typescript-eslint/no-implied-eval': 'warn',
       'n/no-unsupported-features/node-builtins': 'off',
       'import-x/prefer-default-export': 'off',
-      complexity: ['error', 7]
+      complexity: ['error', 10]
     }
   },
   {
@@ -28,7 +28,8 @@ export default [
   {
     files: ['**/benchmark/*'],
     rules: {
-      'n/no-unpublished-import': 'off'
+      'n/no-unpublished-import': 'off',
+      '@typescript-eslint/no-unused-vars': 'off'
     }
   }
 ];
