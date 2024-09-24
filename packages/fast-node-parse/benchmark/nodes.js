@@ -1,5 +1,3 @@
-// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
-/* eslint-disable n/no-unpublished-import */
 import { Node } from '../src/node.js';
 import { Compactify } from '../utils/compact.js';
 

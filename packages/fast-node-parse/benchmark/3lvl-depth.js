@@ -1,5 +1,4 @@
 import { suite, add, cycle, complete } from 'benny';
-// eslint-disable-next-line n/no-unpublished-import
 import { Node } from '../src/node.js';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
@@ -71,13 +70,11 @@ suite(
   add('hono regex parse', () => {
     const [res] = honoRouteRegEx.match('GET', '/foo/123/bar');
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const params = res[0][1];
   }),
   add('hono trie parse', () => {
     const [res] = honoTrieRoute.match('GET', '/foo/123/bar');
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const params = res[0][1];
   }),
   add('find-my-way', () => {

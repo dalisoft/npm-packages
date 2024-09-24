@@ -10,8 +10,6 @@ const foo = new CallbackNode('GET', () => ({ foo: '1' }), 'foo');
 root.push(foo);
 root.optimize(['method', 'callback']);
 
-console.log(root.lookup('GET', '/foo'));
-
 const route = FindMyWay({
   defaultRoute() {
     return false;
@@ -56,13 +54,11 @@ suite(
   add('hono regex parse', () => {
     const [res] = honoRouteRegEx.match('GET', '/foo');
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const params = res[0][1];
   }),
   add('hono trie match', () => {
     const [res] = honoTrieRoute.match('GET', '/foo');
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const params = res[0][1];
   }),
   add('find-my-way', () => {
