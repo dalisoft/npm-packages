@@ -21,7 +21,8 @@ export default [
     files: ['**/*.test.js'],
     rules: {
       'max-lines': 'off',
-      'max-lines-per-function': 'off'
+      'max-lines-per-function': 'off',
+      'max-nested-callbacks': 'off'
     }
   },
   {
