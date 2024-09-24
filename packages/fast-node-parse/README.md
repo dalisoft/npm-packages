@@ -19,25 +19,25 @@ It is on my machine, on your machine results may vary. See [benchmark](/packages
 
 ### Static
 
-| Runtime | Path   | Methods  | `fast-node` | `hono-regexp` | `find-my-way` |
-| ------- | ------ | -------- | ----------- | ------------- | ------------- |
-| Node.js | `/foo` | `match`  | `73M ops`   | `73M ops`     | `43.5M ops`   |
-| Bun     | `/foo` | `match`  | `50M ops`   | `118M ops`    | `21M ops`     |
-| Node.js | `/foo` | `parse`  | `74M ops`   | `66M ops`     | `44M ops`     |
-| Bun     | `/foo` | `parse`  | `51M ops`   | `82M ops`     | `20M ops`     |
-| Node.js | `/foo` | `lookup` | `32M ops`   | `49.5M ops`   | `42M ops`     |
-| Bun     | `/foo` | `lookup` | `29.5M ops` | `72.5M ops`   | `14.5M ops`   |
+| Runtime | Path   | Methods  | `fast-node`  | `hono-regexp` | `find-my-way` |
+| ------- | ------ | -------- | ------------ | ------------- | ------------- |
+| Node.js | `/foo` | `match`  | `111.5M ops` | `73M ops`     | `43.5M ops`   |
+| Bun     | `/foo` | `match`  | `376.5M ops` | `118M ops`    | `21M ops`     |
+| Node.js | `/foo` | `parse`  | `151M ops`   | `66M ops`     | `44M ops`     |
+| Bun     | `/foo` | `parse`  | `402M ops`   | `82M ops`     | `20M ops`     |
+| Node.js | `/foo` | `lookup` | `151M ops`   | `49.5M ops`   | `42M ops`     |
+| Bun     | `/foo` | `lookup` | `231M ops`   | `72.5M ops`   | `14.5M ops`   |
 
 ### 3-level parameter
 
 | Runtime | Path             | Methods  | `fast-node` | `hono-regexp` | `find-my-way` |
 | ------- | ---------------- | -------- | ----------- | ------------- | ------------- |
-| Node.js | `/foo/:id/:kind` | `match`  | `32M ops`   | `16M ops`     | `7.5M ops`    |
-| Bun     | `/foo/:id/:kind` | `match`  | `36M ops`   | `12.5M ops`   | `6.5M ops`    |
-| Node.js | `/foo/:id/:kind` | `parse`  | `14.5M ops` | `15M ops`     | `7.5M ops`    |
-| Bun     | `/foo/:id/:kind` | `parse`  | `19.5M ops` | `11.5M ops`   | `6.5M ops`    |
-| Node.js | `/foo/:id/:kind` | `lookup` | `4.5M ops`  | `6.5M ops`    | `4M ops`      |
-| Bun     | `/foo/:id/:kind` | `lookup` | `8M ops`    | `8M ops`      | `4.5M ops`    |
+| Node.js | `/foo/:id/:kind` | `match`  | `49M ops`   | `16M ops`     | `7.5M ops`    |
+| Bun     | `/foo/:id/:kind` | `match`  | `60.5M ops` | `12.5M ops`   | `6.5M ops`    |
+| Node.js | `/foo/:id/:kind` | `parse`  | `16.5M ops` | `15M ops`     | `7.5M ops`    |
+| Bun     | `/foo/:id/:kind` | `parse`  | `19M ops`   | `11.5M ops`   | `6.5M ops`    |
+| Node.js | `/foo/:id/:kind` | `lookup` | `5.5M ops`  | `6.5M ops`    | `4M ops`      |
+| Bun     | `/foo/:id/:kind` | `lookup` | `9M ops`    | `8M ops`      | `4.5M ops`    |
 
 ## Supported paths
 
