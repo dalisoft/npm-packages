@@ -1,7 +1,7 @@
 const { describe } = require('node:test');
 const testsParseData = require('./data/parse.js');
 const testsParseSecurityData = require('./data/parse.js');
-const compilePathname = require('../aot/parse.js');
+const compilePathname = require('../src/aot/parse.js');
 const { runTest } = require('./helpers.js');
 
 describe('fast-path-parse/parse unsafe', () => {

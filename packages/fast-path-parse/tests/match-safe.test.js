@@ -1,5 +1,5 @@
 const { describe } = require('node:test');
-const match = require('../runtime/match.js');
+const match = require('../src/runtime/match.js');
 const testsMatchData = require('./data/match.js');
 const testsMatchSecurityData = require('./data/match.security.js');
 const { runTest } = require('./helpers.js');

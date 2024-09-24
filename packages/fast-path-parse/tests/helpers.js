@@ -7,8 +7,14 @@ const runTest = (test, callee, is_parent = true) => {
   if (variants) {
     describe(name, () => {
       for (const [inputTemplate, testInputTemplate] of variants) {
-        const inputIt = inputTemplate.replace(/%s/g, input);
-        const testInputIt = testInputTemplate.replace(/%s/g, test_input);
+        const inputIt =
+          typeof inputTemplate === 'string'
+            ? inputTemplate.replace(/%s/g, input)
+            : input;
+        const testInputIt =
+          typeof testInputTemplate === 'string'
+            ? testInputTemplate.replace(/%s/g, test_input)
+            : test_input;
 
         it(inputIt, () => {
           if (typeof result === 'object') {

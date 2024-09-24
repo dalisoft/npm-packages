@@ -5,30 +5,30 @@
   "type": "commonjs",
   "exports": {
     "./aot/parse": {
-      "default": "./aot/parse.js",
-      "types": "./aot/parse.d.ts"
+      "default": "./src/aot/parse.js",
+      "types": "./src/aot/parse.d.ts"
     },
     "./aot/match": {
-      "default": "./aot/match.js",
-      "types": "./aot/match.d.ts"
+      "default": "./src/aot/match.js",
+      "types": "./src/aot/match.d.ts"
     },
     "./runtime/parse": {
-      "default": "./runtime/parse.js",
-      "types": "./runtime/parse.d.ts"
+      "default": "./src/runtime/parse.js",
+      "types": "./src/runtime/parse.d.ts"
     },
     "./runtime/match": {
-      "default": "./runtime/match.js",
-      "types": "./runtime/match.d.ts"
+      "default": "./src/runtime/match.js",
+      "types": "./src/runtime/match.d.ts"
     },
     "./utils/segment": {
-      "default": "./utils/segment.js",
-      "types": "./utils/segment.d.ts"
+      "default": "./src/utils/segment.js",
+      "types": "./src/utils/segment.d.ts"
     }
   },
   "files": [
-    "aot",
-    "runtime",
-    "utils"
+    "src/aot",
+    "src/runtime",
+    "src/utils"
   ],
   "engines": {
     "node": ">=18.20.1"
