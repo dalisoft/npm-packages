@@ -1,3 +1,4 @@
+const equalPath = require('../utils/equal-path.js');
 const segmentsSlice = require('../utils/segment.js');
 
 /**
@@ -16,6 +17,18 @@ const match = (path, compact) => {
         for (let index = 0; isValid && index < LENGTH; index++) {
           const segment = segments[index];
 
+          // The static segment should be handled fast
+          // This way it is more faster and efficient
+          if (!segment.segment) {
+            isValid =
+              pathname.substring(lastIndex, lastIndex + segment.size) ===
+              segment.name;
+
+            lastIndex += segment.size + 1;
+
+            continue;
+          }
+
           i = pathname.indexOf('/', lastIndex);
 
           if (!segment.last && i < segment.position) {
@@ -27,23 +40,14 @@ const match = (path, compact) => {
               ? pathname.substring(lastIndex)
               : pathname.substring(lastIndex, i);
 
-          if (segment.segment) {
-            isValid = value.length > 0;
-          } else {
-            isValid = value === segment.name;
-          }
+          isValid = value.length > 0;
 
           lastIndex = i + 1;
         }
 
         return isValid;
       }
-    : (url) =>
-        url === path ||
-        `${url}/` === path ||
-        url === `${path}/` ||
-        `/${url}` === path ||
-        url === `/${path}`;
+    : (url) => equalPath(url, path);
 };
 
 module.exports = match;

@@ -1,16 +1,14 @@
+const equalPath = require('../utils/equal-path.js');
 const segmentsSlice = require('../utils/segment.js');
 
 /**
  * @type {import('./match')}
  */
-// eslint-disable-next-line max-lines-per-function, complexity
 const match = (path, compact) => {
   const { segments, filled } = segmentsSlice(path, compact);
 
   if (filled.length > 0) {
     let aotJit = `function matchPath(pathname) {
-        let uri = pathname;
-
         let i;
         let lastIndex = 1;
         let isValid = true;
@@ -19,46 +17,42 @@ const match = (path, compact) => {
 
     for (const segment of segments) {
       aotJit += `
-        if (!isValid) { return false; }
+        if (!isValid) { return false; }`;
 
-        i = uri.indexOf('/', lastIndex)`;
+      if (!segment.segment) {
+        aotJit += `
+          value = pathname.substring(lastIndex, lastIndex + ${segment.size});`;
+        aotJit += `
+          isValid = value === '${segment.name}';
+          lastIndex += ${segment.size + 1};`;
 
-      if (segment.last) {
-        aotJit += `
-          value = i === -1 ? uri.substring(lastIndex) : uri.substring(lastIndex, i);
-          `;
-      } else {
-        aotJit += `
-          if (i < ${segment.position}) { return false; }
-          value = uri.substring(lastIndex, i);
-          `;
-      }
-
-      if (segment.segment) {
-        aotJit += `
-          isValid = value.length > 0;`;
-      } else {
-        aotJit += `
-          isValid = value === '${segment.name}';`;
+        continue;
       }
 
       aotJit += `
-        lastIndex = i + 1`;
+          i = pathname.indexOf('/', lastIndex);`;
+
+      if (segment.last) {
+        aotJit += `
+          value = i === -1 ? pathname.substring(lastIndex) : pathname.substring(lastIndex, i);`;
+      } else {
+        aotJit += `
+          if (i < ${segment.position}) { return false; }
+          value = pathname.substring(lastIndex, i);`;
+      }
+
+      aotJit += `
+          isValid = value.length > 0;
+          lastIndex = i + 1;`;
     }
     aotJit += `
         return isValid;
     }`;
 
-    // eslint-disable-next-line @typescript-eslint/no-implied-eval
     return new Function(`return ${aotJit}`)();
   }
 
-  return (url) =>
-    url === path ||
-    `${url}/` === path ||
-    url === `${path}/` ||
-    `/${url}` === path ||
-    url === `/${path}`;
+  return (url) => equalPath(url, path);
 };
 
 module.exports = match;

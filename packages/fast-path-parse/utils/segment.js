@@ -5,7 +5,6 @@
  * @param {number} position
  */
 
-// eslint-disable-next-line complexity
 const parseSegment = (name, getIndex, position = 1) => {
   if (name === '*' || name === '(.*)') {
     return {
@@ -43,7 +42,6 @@ const parseSegment = (name, getIndex, position = 1) => {
 /**
  * @param {import('./segment').ISegment[]} segments
  */
-// eslint-disable-next-line complexity
 const mergeStaticSegments = (segments) => {
   let i = 0;
 
