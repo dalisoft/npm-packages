@@ -11,8 +11,10 @@ export default [
     },
     rules: {
       '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/no-implied-eval': 'warn',
       'n/no-unsupported-features/node-builtins': 'off',
-      'import-x/prefer-default-export': 'off'
+      'import-x/prefer-default-export': 'off',
+      complexity: ['error', 7]
     }
   },
   {
