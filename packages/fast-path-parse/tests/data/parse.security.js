@@ -6,31 +6,31 @@ const matchSecurity = [
         name: '/foo/process.exit(1)',
         input: '/foo/process.exit(1)',
         test_input: '/foo/(process.exit(1))',
-        result: {}
+        excepted: {}
       },
       {
         name: '/foo/process.exit(1)',
         input: '/foo/process.exit(1)',
         test_input: '/foo',
-        result: {}
+        excepted: {}
       },
       {
         name: '/foo/:bar',
         input: '/foo/:bar',
         test_input: '/foo/(process.exit(1))',
-        result: { bar: '(process.exit(1))' }
+        excepted: { bar: '(process.exit(1))' }
       },
       {
         name: '/foo/:bar',
         input: '/foo/:bar',
         test_input: '/(process.exit(1))',
-        result: {}
+        excepted: {}
       },
       {
         name: '/:bar',
         input: '/:bar',
         test_input: '/(process.exit(1))',
-        result: { bar: '(process.exit(1))' }
+        excepted: { bar: '(process.exit(1))' }
       }
     ]
   },
@@ -41,31 +41,31 @@ const matchSecurity = [
         name: '/foo/throw 1',
         input: '/foo/throw 1',
         test_input: '/foo throw 1',
-        result: {}
+        excepted: {}
       },
       {
         name: '/foo/throw 1',
         input: '/foo/throw 1',
         test_input: '/foo',
-        result: {}
+        excepted: {}
       },
       {
         name: '/foo/:bar',
         input: '/foo/:bar',
         test_input: '/foo/throw 1',
-        result: { bar: 'throw 1' }
+        excepted: { bar: 'throw 1' }
       },
       {
         name: '/foo/:bar',
         input: '/foo/:bar',
         test_input: '/throw 1',
-        result: {}
+        excepted: {}
       },
       {
         name: '/:bar',
         input: '/:bar',
         test_input: '/throw 1',
-        result: { bar: 'throw 1' }
+        excepted: { bar: 'throw 1' }
       }
     ]
   }

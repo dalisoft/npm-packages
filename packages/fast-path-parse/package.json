@@ -42,7 +42,7 @@
   },
   "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-path-parse",
   "scripts": {
-    "test": "vitest",
+    "test": "vitest --no-isolate --dir=tests **/*.test.js",
     "prepublishOnly": "npm run test"
   },
   "keywords": [

@@ -3,7 +3,7 @@ const segmentsSlice = require('../utils/segment.js');
 /**
  * @type {import('./parse')}
  */
-const parse = (path, compact) => {
+const parse = (path, { compact, ignoreTrailingSlash = true } = {}) => {
   const { segments, filled } = segmentsSlice(path, compact);
 
   if (filled.length > 0) {
@@ -20,8 +20,7 @@ const parse = (path, compact) => {
         `;
 
       if (segment.last) {
-        aotJit +=
-          'i === -1 ? value = uri.substring(lastIndex) : value = uri.substring(lastIndex, i);';
+        aotJit += `i === -1 && ${ignoreTrailingSlash} ? value = uri.substring(lastIndex) : value = uri.substring(lastIndex, i);`;
       } else {
         aotJit += `if (i < ${segment.position}) { return {}; }`;
         aotJit += 'value = uri.substring(lastIndex, i);';

@@ -1,10 +1,10 @@
-const equalPath = require('../utils/equal-path.js');
+const { equal, strictEqual } = require('../utils/equal-path.js');
 const segmentsSlice = require('../utils/segment.js');
 
 /**
  * @type {import('./match')}
  */
-const match = (path, compact) => {
+const match = (path, { compact, ignoreTrailingSlash = true } = {}) => {
   const { segments, filled } = segmentsSlice(path, compact);
 
   if (filled.length > 0) {
@@ -52,7 +52,9 @@ const match = (path, compact) => {
     return new Function(`return ${aotJit}`)();
   }
 
-  return (url) => equalPath(url, path);
+  return ignoreTrailingSlash
+    ? (url) => equal(url, path)
+    : (url) => strictEqual(url, path);
 };
 
 module.exports = match;

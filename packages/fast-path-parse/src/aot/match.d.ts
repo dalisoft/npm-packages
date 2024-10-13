@@ -1,7 +1,11 @@
+import type { IOptions } from '../runtime/match';
+
 /**
  * Compiles an route path for fastest validation
  * @param path A path to be compiled
- * @param compact An status of compiler to reduce segments
+ * @param options Options to configure the match
+ * @param options.ignoreTrailingSlash Compare strictly or loosely
+ * @param options.compact An status of compiler to reduce segments
  * @returns Optimized function which validate params at runtime
  * @example
  * ```ts
@@ -11,6 +15,9 @@
  * pathMatch('/user/123') // returns `true`
  * ```
  */
-function match(path: string, compact: boolean): (pathname: string) => boolean;
+function match(
+  path: string,
+  options: Partial<IOptions>
+): (pathname: string) => boolean;
 
 export = match;

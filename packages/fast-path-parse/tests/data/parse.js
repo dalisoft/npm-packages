@@ -6,7 +6,7 @@ const parse = [
         name: '2-level depth',
         input: '/foo/bar',
         test_input: '/foo/bar',
-        result: {},
+        excepted: {},
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -18,7 +18,7 @@ const parse = [
         name: '3-level depth',
         input: '/foo/bar/baz',
         test_input: '/foo/bar/baz',
-        result: {},
+        excepted: {},
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -36,7 +36,7 @@ const parse = [
         name: '2-level depth, `:id`',
         input: '/foo/:id',
         test_input: '/foo/123',
-        result: { id: '123' },
+        excepted: { id: '123' },
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -48,7 +48,7 @@ const parse = [
         name: '2-level depth, `:id`',
         input: '/foo/:id',
         test_input: '/foo/',
-        result: {},
+        excepted: {},
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -60,7 +60,7 @@ const parse = [
         name: '2-level depth, `<id>`',
         input: '/foo/<id>',
         test_input: '/foo/123',
-        result: { id: '123' },
+        excepted: { id: '123' },
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -72,7 +72,7 @@ const parse = [
         name: '2-level depth, `<id>`',
         input: '/foo/<id>',
         test_input: '/foo/',
-        result: {},
+        excepted: {},
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -84,7 +84,7 @@ const parse = [
         name: '3-level depth, `:id`',
         input: '/foo/:id/bar',
         test_input: '/foo/123/bar',
-        result: { id: '123' },
+        excepted: { id: '123' },
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -96,7 +96,7 @@ const parse = [
         name: '3-level depth, `:id`',
         input: '/foo/:id/bar',
         test_input: '/foo/123',
-        result: {},
+        excepted: {},
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -108,7 +108,7 @@ const parse = [
         name: '3-level depth, <id>',
         input: '/foo/<id>/bar',
         test_input: '/foo/123/bar',
-        result: { id: '123' },
+        excepted: { id: '123' },
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -120,7 +120,7 @@ const parse = [
         name: '3-level depth, `<id>`',
         input: '/foo/<id>/bar',
         test_input: '/foo/123',
-        result: {},
+        excepted: {},
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -132,7 +132,7 @@ const parse = [
         name: '3-level depth alternative, `:id`',
         input: '/foo/bar/:id',
         test_input: '/foo/bar/123',
-        result: { id: '123' },
+        excepted: { id: '123' },
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -144,7 +144,7 @@ const parse = [
         name: '4-level depth',
         input: '/foo/:id/bar/:task',
         test_input: '/foo/123/bar/run',
-        result: {},
+        excepted: {},
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -162,7 +162,7 @@ const parse = [
         name: '3-level depth',
         input: '/foo/:id/:task',
         test_input: '/foo/123/run',
-        result: { id: '123', task: 'run' },
+        excepted: { id: '123', task: 'run' },
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -174,7 +174,7 @@ const parse = [
         name: '4-level depth',
         input: '/foo/:id/:task/bar',
         test_input: '/foo/123/run/bar',
-        result: { id: '123', task: 'run' },
+        excepted: { id: '123', task: 'run' },
         variants: [
           ['%s', '%s'],
           ['%s/', '%s'],
@@ -191,25 +191,25 @@ const parse = [
         name: '/foo/*/bar',
         input: '/foo/*/bar',
         test_input: '/foo/123/bar',
-        result: { '*1': '123' }
+        excepted: { '*1': '123' }
       },
       {
         name: '/foo/*/bar',
         input: '/foo/*/bar',
         test_input: '/foo/123',
-        result: {}
+        excepted: {}
       },
       {
         name: '/foo/*/bar/*',
         input: '/foo/*/bar/*',
         test_input: '/foo/123/bar/run',
-        result: { '*1': '123', '*2': 'run' }
+        excepted: { '*1': '123', '*2': 'run' }
       },
       {
         name: '/foo/*/bar/*',
         input: '/foo/*/bar/*',
         test_input: '/foo/123/bar',
-        result: {}
+        excepted: {}
       }
     ]
   },
@@ -220,19 +220,19 @@ const parse = [
         name: '/foo/:id/*',
         input: '/foo/:id/*',
         test_input: '/foo/123/bar',
-        result: { id: '123', '*1': 'bar' }
+        excepted: { id: '123', '*1': 'bar' }
       },
       {
         name: '/foo/*/*/*',
         input: '/foo/*/*/*',
         test_input: '/foo/123/bar/run',
-        result: { '*1': '123', '*2': 'bar', '*3': 'run' }
+        excepted: { '*1': '123', '*2': 'bar', '*3': 'run' }
       },
       {
         name: '/foo/*/:id/*',
         input: '/foo/*/:id/*',
         test_input: '/foo/123/bar/run',
-        result: {
+        excepted: {
           '*1': '123',
           id: 'bar',
           '*2': 'run'
@@ -242,7 +242,7 @@ const parse = [
         name: '/foo/*/:id/(.*)',
         input: '/foo/*/:id/(.*)',
         test_input: '/foo/123/bar/run',
-        result: {
+        excepted: {
           '*1': '123',
           id: 'bar',
           '*2': 'run'

@@ -6,7 +6,7 @@ const segments = [
         name: '/foo/bar',
         input: '/foo/bar',
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [],
           segments: [
             {
@@ -37,7 +37,7 @@ const segments = [
         input: '/foo/bar',
         test_input: true,
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [],
           segments: [
             {
@@ -60,7 +60,7 @@ const segments = [
         name: '/foo/:id',
         input: '/foo/:id',
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
@@ -98,7 +98,7 @@ const segments = [
         name: '/foo/:id/bar',
         input: '/foo/:id/bar',
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
@@ -143,7 +143,7 @@ const segments = [
         name: '/foo/:id/bar/last',
         input: '/foo/:id/bar/last',
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
@@ -196,7 +196,7 @@ const segments = [
         input: '/foo/:id/bar/last',
         test_input: true,
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
@@ -241,7 +241,7 @@ const segments = [
         name: '/foo/<id>',
         input: '/foo/<id>',
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
@@ -279,7 +279,7 @@ const segments = [
         name: '/foo/<id>/bar',
         input: '/foo/<id>/bar',
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
@@ -324,7 +324,7 @@ const segments = [
         name: '/foo/<id>/bar/last',
         input: '/foo/<id>/bar/last',
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
@@ -377,7 +377,7 @@ const segments = [
         input: '/foo/<id>/bar/last',
         test_input: true,
         variants: [['%s'], ['%s/']],
-        result: {
+        excepted: {
           filled: [
             {
               name: 'id',
