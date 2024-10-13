@@ -5,22 +5,22 @@
   "keywords": [],
   "license": "Apache-2.0",
   "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
-  "type": "module",
-  "main": "src/node.js",
-  "module": "src/node.js",
-  "types": "module",
-  "typings": "src/node.d.ts",
+  "type": "commonjs",
+  "main": "src/node/node.js",
+  "typings": "src/node/node.d.ts",
   "engines": {
     "node": ">=18.20.4"
   },
   "exports": {
     ".": {
-      "default": "./src/node.js",
-      "types": "./src/node.d.ts"
+      "default": "./src/node/node.js",
+      "require": "./src/node/node.js",
+      "types": "./src/node/node.d.ts"
     },
     "./utils/compact": {
-      "default": "./utils/compact.js",
-      "types": "./utils/compact.d.ts"
+      "default": "./src/utils/compact.js",
+      "require": "./src/utils/compact.js",
+      "types": "./src/utils/compact.d.ts"
     }
   },
   "repository": {
@@ -32,8 +32,8 @@
   },
   "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-node-parse",
   "files": [
-    "src",
-    "utils"
+    "src/node",
+    "src/utils"
   ],
   "scripts": {
     "test": "node --test"

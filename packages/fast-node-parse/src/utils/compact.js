@@ -1,10 +1,10 @@
-import { Node } from '../src/node.js';
+const Node = require('../node/node.js');
 
 /**
  * Compacts Node tree by using special method
  * @class Compactify
  */
-export class Compactify extends Node {
+class Compactify extends Node {
   /**
    * Compiles node tree into compact nodes
    * by combining them into single or small sizes
@@ -17,8 +17,8 @@ export class Compactify extends Node {
     let node = this;
     let next;
 
-    if (this.segment === '/') {
-      this.segment = '';
+    if (node.segment === '/' && node.static && node.next.static) {
+      node.segment = '';
     }
 
     // biome-ignore lint/suspicious/noAssignInExpressions: It is efficient
@@ -75,3 +75,5 @@ export class Compactify extends Node {
     };
   }
 }
+
+module.exports = Compactify;

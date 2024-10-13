@@ -1,4 +1,4 @@
-import { suite, add, cycle, complete } from 'benny';
+import { add, complete, cycle, suite } from 'benny';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';

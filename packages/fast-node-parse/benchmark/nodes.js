@@ -1,5 +1,5 @@
-import { Node } from '../src/node.js';
-import { Compactify } from '../utils/compact.js';
+import Node from '../src/node/node.js';
+import Compactify from '../src/utils/compact.js';
 
 export class CallbackNode extends Node {
   /**
@@ -17,14 +17,16 @@ export class CallbackNode extends Node {
    * @param {import('./types').HttpMethod} method
    * @param {(params: Record<string, string>) => Record<string, string>} handler
    * @param {string} segment
+   * @param {number} length
    */
-  constructor(method, handler, segment) {
-    super(segment);
+  constructor(method, handler, segment, length) {
+    super(segment, length);
 
     this.method = method;
     this.callback = handler;
   }
 }
+
 export class RootNode extends Compactify {
   /**
    *

@@ -1,9 +1,9 @@
-import { suite, add, cycle, complete } from 'benny';
-import { Node } from '../src/node.js';
+import { add, complete, cycle, suite } from 'benny';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
-import { CallbackNode, RootNode } from './nodes.js';
 import { TrieRouter } from 'hono/router/trie-router';
+import Node from '../src/node/node.js';
+import { CallbackNode, RootNode } from './nodes.js';
 
 const root = new RootNode('/');
 const foo = new Node('foo');

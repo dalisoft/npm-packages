@@ -1,10 +1,10 @@
 import type { HttpMethod } from '../benchmark/types';
-import { Node } from '../src/node.js';
+import Node from '../node/node.js';
 
 /**
  * Supports only `CASE 1` for now
  */
-const CASE = 1;
+const CASE: number = 1;
 
 if (CASE === 1) {
   class KindNode extends Node {
@@ -79,7 +79,7 @@ if (CASE === 1) {
   const root2 = new Node('/').push(
     new Node('foo').push(
       new Node(':id').push(
-        new Node(':kind', (params) => ({
+        new Node(':kind', (params: Record<string, string>) => ({
           id: params.id,
           [params.kind]: 1
         }))

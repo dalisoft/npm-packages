@@ -1,8 +1,8 @@
-import assert from 'node:assert/strict';
-import { describe, it } from 'node:test';
-import { Node } from '../src/node.js';
-import { Compactify } from '../utils/compact.js';
-import { CallbackNode, RootNode } from '../benchmark/nodes.js';
+const assert = require('node:assert/strict');
+const { describe, it } = require('node:test');
+const Node = require('../src/node/node.js');
+const Compactify = require('../src/utils/compact.js');
+const { CallbackNode, RootNode } = require('../benchmark/nodes.js');
 
 describe('node compact tree [optimized]', () => {
   describe('route matches [/foo/:id/:kind]', () => {

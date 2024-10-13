@@ -3,11 +3,15 @@
  * but it is different algorithm was made
  * to solve the walking on routers linearly
  * so it should fast on any size of route
+ * *
+ * @class Node
  */
 declare class Node {
   private next: Node | undefined;
 
-  private rootNode: boolean;
+  private last: boolean;
+
+  private fixed_length: boolean;
 
   position: number;
 
@@ -21,7 +25,21 @@ declare class Node {
 
   value: string | undefined;
 
-  constructor(segment: string);
+  /**
+   * @param segment Segment parameter, it can be *, static or :dynamic
+   * @param length This can improve performance drastically if you're using fixed-length parameter
+   * @example
+   * ```js
+   * const root = new Node('/');
+   * const foo = new Node('foo');
+   * const id = new Node(':id', 5);
+   *
+   * root.push(foo);
+   * foo.push(id);
+   * ```
+   */
+
+  constructor(segment: string, length?: number);
 
   push(node: Node): this;
 
@@ -34,4 +52,4 @@ declare class Node {
   lookup(path: string): false;
 }
 
-export { Node };
+export = Node;
