@@ -15,7 +15,7 @@ benny.suite(
     fastQueryParse(QS);
   }),
   benny.add('ada URL', () => {
-    new URL(`http://dummyurl.com?${QS}`).searchParams;
+    const params = new URL(`http://dummyurl.com?${QS}`).searchParams;
   }),
   benny.cycle(),
   benny.complete()
