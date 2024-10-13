@@ -24,7 +24,9 @@ export default [
     rules: {
       'max-lines': 'off',
       'max-lines-per-function': 'off',
-      'max-nested-callbacks': 'off'
+      'max-nested-callbacks': 'off',
+      'import-x/no-extraneous-dependencies': 'warn',
+      'n/no-extraneous-import': 'warn'
     }
   },
   {
