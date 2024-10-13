@@ -71,4 +71,4 @@ const matchSecurity = [
   }
 ];
 
-module.exports = matchSecurity;
+export default matchSecurity;

@@ -417,4 +417,4 @@ const segments = [
   }
 ];
 
-module.exports = segments;
+export default segments;

@@ -1,8 +1,8 @@
-const { describe } = require('node:test');
-const match = require('../src/aot/match.js');
-const testsMatchData = require('./data/match.js');
-const testsMatchSecurityData = require('./data/match.security.js');
-const { runTest } = require('./helpers.js');
+import { describe } from 'vitest';
+import match from '../src/aot/match.js';
+import testsMatchData from './data/match.js';
+import testsMatchSecurityData from './data/match.security.js';
+import { runTest } from './helpers.js';
 
 describe('fast-path-parse/match unsafe', () => {
   for (const test of testsMatchData) {

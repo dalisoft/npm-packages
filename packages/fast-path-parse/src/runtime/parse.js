@@ -17,7 +17,7 @@ const parse = (path, compact) => {
           i = pathname.indexOf('/', lastIndex);
 
           if (!segment.last && i < segment.position) {
-            return params;
+            return {};
           }
 
           if (segment.segment) {

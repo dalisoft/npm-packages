@@ -23,7 +23,7 @@ const parse = (path, compact) => {
         aotJit +=
           'i === -1 ? value = uri.substring(lastIndex) : value = uri.substring(lastIndex, i);';
       } else {
-        aotJit += `if (i < ${segment.position}) { return params; }`;
+        aotJit += `if (i < ${segment.position}) { return {}; }`;
         aotJit += 'value = uri.substring(lastIndex, i);';
       }
 

@@ -1,7 +1,6 @@
-const assert = require('node:assert/strict');
-const { describe, it } = require('node:test');
+import { describe, it, assert } from 'vitest';
 
-const runTest = (test, callee, is_parent = true) => {
+export const runTest = (test, callee, is_parent = true) => {
   const { name, input, test_input, result, variants, children } = test;
 
   if (variants) {
@@ -18,7 +17,7 @@ const runTest = (test, callee, is_parent = true) => {
 
         it(inputIt, () => {
           if (typeof result === 'object') {
-            assert.deepEqual(callee(inputIt, testInputIt), result);
+            assert.deepStrictEqual(callee(inputIt, testInputIt), result);
           } else {
             assert.equal(callee(inputIt, testInputIt), result);
           }
@@ -34,7 +33,7 @@ const runTest = (test, callee, is_parent = true) => {
   } else if (!is_parent) {
     it(name, () => {
       if (typeof result === 'object') {
-        assert.deepEqual(callee(input, test_input), result);
+        assert.deepStrictEqual(callee(input, test_input), result);
       } else {
         assert.equal(callee(input, test_input), result);
       }
@@ -43,13 +42,11 @@ const runTest = (test, callee, is_parent = true) => {
     describe(input, () => {
       it(test_input, () => {
         if (typeof result === 'object') {
-          assert.deepEqual(callee(input, test_input), result);
+          expect(callee(input, test_input), result);
         } else {
-          assert.equal(callee(input, test_input), result);
+          expect(callee(input, test_input), result);
         }
       });
     });
   }
 };
-
-module.exports = { runTest };

@@ -1,8 +1,8 @@
-const { describe } = require('node:test');
-const testsParseData = require('./data/parse.js');
-const testsParseSecurityData = require('./data/parse.js');
-const parsePathname = require('../src/runtime/parse.js');
-const { runTest } = require('./helpers.js');
+import { describe } from 'vitest';
+import parsePathname from '../src/runtime/parse.js';
+import testsParseData from './data/parse.js';
+import testsParseSecurityData from './data/parse.security.js';
+import { runTest } from './helpers.js';
 
 describe('fast-path-parse/parse safe', () => {
   for (const test of testsParseData) {
