@@ -36,6 +36,6 @@
   },
   "homepage": "https://github.com/dalisoft/microhelpers#readme",
   "dependencies": {
-    "cookie": "^0.7.2"
+    "cookie": "^1.0.1"
   }
 }
