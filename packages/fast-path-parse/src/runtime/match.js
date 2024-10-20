@@ -44,6 +44,10 @@ const match = (path, { compact, ignoreTrailingSlash = true } = {}) => {
           lastIndex = i + 1;
         }
 
+        if (!ignoreTrailingSlash && pathname.endsWith('/') !== path.endsWith('/')) {
+            return false;
+        }
+
         return isValid;
       }
     : ignoreTrailingSlash
