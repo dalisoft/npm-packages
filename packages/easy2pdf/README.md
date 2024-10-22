@@ -2,6 +2,14 @@
 
 Easiest HTML and Markdown to PDF Converter. Add's **GitHub** like style **Markdown** rendering for best visual UI & UX.
 
+## Features
+
+- HTML support
+- Markdown support
+- Fully-compatible styling
+- CLI & API usage
+- And free
+
 ## Installation
 
 ### CLI
@@ -22,7 +30,7 @@ yarn add easy2pdf
 bun add easy2pdf
 ```
 
-### Usage
+## Usage
 
 ### CLI
 
