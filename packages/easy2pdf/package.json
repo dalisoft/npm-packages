@@ -1,6 +1,6 @@
 {
   "name": "easy2pdf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Easiest HTML and Markdown to PDF Converter",
   "type": "commonjs",
   "main": "src/api.js",
