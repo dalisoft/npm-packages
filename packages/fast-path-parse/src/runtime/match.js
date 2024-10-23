@@ -44,7 +44,8 @@ const match = (path, { compact, ignoreTrailingSlash = true } = {}) => {
           lastIndex = i + 1;
         }
 
-        return isValid;
+
+          return isValid && (ignoreTrailingSlash || i === -1);
       }
     : ignoreTrailingSlash
       ? (url) => equal(url, path)
