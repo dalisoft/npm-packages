@@ -29,6 +29,10 @@ const match = (path, { compact, ignoreTrailingSlash = true } = {}) => {
           }
 
           i = pathname.indexOf('/', lastIndex);
+          console.log(segment)
+          console.log(path, pathname, lastIndex)
+          console.log(i)
+            console.log()
 
           if (!segment.last && i < segment.position && !ignoreTrailingSlash) {
             return false;
@@ -44,11 +48,8 @@ const match = (path, { compact, ignoreTrailingSlash = true } = {}) => {
           lastIndex = i + 1;
         }
 
-        if (!ignoreTrailingSlash && pathname.endsWith('/') !== path.endsWith('/')) {
-            return false;
-        }
 
-        return isValid;
+          return isValid && (ignoreTrailingSlash || i === -1);
       }
     : ignoreTrailingSlash
       ? (url) => equal(url, path)
