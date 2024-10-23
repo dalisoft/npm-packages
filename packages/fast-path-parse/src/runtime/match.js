@@ -29,10 +29,6 @@ const match = (path, { compact, ignoreTrailingSlash = true } = {}) => {
           }
 
           i = pathname.indexOf('/', lastIndex);
-          console.log(segment)
-          console.log(path, pathname, lastIndex)
-          console.log(i)
-            console.log()
 
           if (!segment.last && i < segment.position && !ignoreTrailingSlash) {
             return false;
