@@ -35,6 +35,6 @@
   "license": "MIT",
   "dependencies": {
     "markdown-it": "^14.1.0",
-    "puppeteer": "^23.6.0"
+    "puppeteer": "^23.6.1"
   }
 }
