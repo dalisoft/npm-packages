@@ -13,7 +13,7 @@
     "lint": "echo 'No linter configured yet' && exit 0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.0",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-lerna-scopes": "^19.5.0",
     "@rollup/plugin-buble": "^1.0.3",
     "@rollup/plugin-commonjs": "^28.0.1",
