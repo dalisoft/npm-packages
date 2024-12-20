@@ -96,8 +96,8 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0
       puppeteer:
-        specifier: ^23.11.0
-        version: 23.11.0(bufferutil@4.0.8)(typescript@5.7.2)(utf-8-validate@5.0.10)
+        specifier: ^23.11.1
+        version: 23.11.1(bufferutil@4.0.8)(typescript@5.7.2)(utf-8-validate@5.0.10)
 
   packages/events:
     dependencies:
@@ -428,10 +428,6 @@ packages:
 
   '@eslint/eslintrc@3.2.0':
     resolution: {integrity: sha512-grOjVNN8P3hjJn/eIETF1wwd12DdnwFDoyceUJLYYdkpbwq3nLi+4fqrTAONx7XDALqlL220wC/RHSC/QTI/0w==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@eslint/js@9.16.0':
-    resolution: {integrity: sha512-tw2HxzQkrbeuvyj1tG2Yqq+0H9wGoI2IMk4EOsQeX+vmd75FtJAzf+gTA69WF+baUKRYQ3x2kbLE08js5OsTVg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/js@9.17.0':
@@ -3197,12 +3193,12 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  puppeteer-core@23.11.0:
-    resolution: {integrity: sha512-fr5Xp8KeZGRiLrYmosAxPAObi1vmb09vmwak9lqS7KvKMbcN+mk+bDpnDKXPd7QN9b7b/mb9Fgp0A6+024XbVA==}
+  puppeteer-core@23.11.1:
+    resolution: {integrity: sha512-3HZ2/7hdDKZvZQ7dhhITOUg4/wOrDRjyK2ZBllRB0ZCOi9u0cwq1ACHDjBB+nX+7+kltHjQvBRdeY7+W0T+7Gg==}
     engines: {node: '>=18'}
 
-  puppeteer@23.11.0:
-    resolution: {integrity: sha512-UaHfTIcg02bTahmZjrjrpU8efyjNeItrNvANu+DdnYMEcQ24X8LOkBWv2Z4bqDzkOzFymqJkADS0bdSDMUNi1A==}
+  puppeteer@23.11.1:
+    resolution: {integrity: sha512-53uIX3KR5en8l7Vd8n5DUv90Ae9QDQsyIthaUFVzwV6yU750RjqRznEtNMBT20VthqAdemnJN+hxVdmMHKt7Zw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4274,8 +4270,6 @@ snapshots:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-
-  '@eslint/js@9.16.0': {}
 
   '@eslint/js@9.17.0': {}
 
@@ -5873,7 +5867,7 @@ snapshots:
       '@eslint-community/eslint-plugin-eslint-comments': 4.3.0(eslint@9.17.0(jiti@2.4.1))
       '@eslint/compat': 1.1.1
       '@eslint/eslintrc': 3.2.0
-      '@eslint/js': 9.16.0
+      '@eslint/js': 9.17.0
       '@stylistic/eslint-plugin': 2.6.2(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
       '@typescript-eslint/eslint-plugin': 8.1.0(@typescript-eslint/parser@8.1.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2))(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
       '@typescript-eslint/parser': 8.1.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
@@ -7362,7 +7356,7 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  puppeteer-core@23.11.0(bufferutil@4.0.8)(utf-8-validate@5.0.10):
+  puppeteer-core@23.11.1(bufferutil@4.0.8)(utf-8-validate@5.0.10):
     dependencies:
       '@puppeteer/browsers': 2.6.1
       chromium-bidi: 0.11.0(devtools-protocol@0.0.1367902)
@@ -7375,13 +7369,13 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  puppeteer@23.11.0(bufferutil@4.0.8)(typescript@5.7.2)(utf-8-validate@5.0.10):
+  puppeteer@23.11.1(bufferutil@4.0.8)(typescript@5.7.2)(utf-8-validate@5.0.10):
     dependencies:
       '@puppeteer/browsers': 2.6.1
       chromium-bidi: 0.11.0(devtools-protocol@0.0.1367902)
       cosmiconfig: 9.0.0(typescript@5.7.2)
       devtools-protocol: 0.0.1367902
-      puppeteer-core: 23.11.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      puppeteer-core: 23.11.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       typed-query-selector: 2.12.0
     transitivePeerDependencies:
       - bufferutil
