@@ -16,8 +16,8 @@ importers:
         specifier: ^19.6.1
         version: 19.6.1(@types/node@20.14.2)(typescript@5.7.2)
       '@commitlint/config-lerna-scopes':
-        specifier: ^19.5.0
-        version: 19.5.0
+        specifier: ^19.7.0
+        version: 19.7.0
       '@rollup/plugin-buble':
         specifier: ^1.0.3
         version: 1.0.3(rollup@4.29.1)
@@ -262,11 +262,11 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-lerna-scopes@19.5.0':
-    resolution: {integrity: sha512-h89BuwLVinacPOu2hzBKJ4t/L/HOA7rUuzbS10k26Lzq2/OKpi/KEhNfphJJLizfeqOzjqh1/V3ILbePtaBUtg==}
+  '@commitlint/config-lerna-scopes@19.7.0':
+    resolution: {integrity: sha512-KsmMvb/DncTHid27lj5/45HObuoM3OKWGBs9sPw8dIMORqs70MWBk5iq+SoUjKqQAgZ8Gv4kO9Sol/laqva+hw==}
     engines: {node: '>=v18'}
     peerDependencies:
-      lerna: ^5.0.0 || ^6
+      lerna: '>=5 <9'
     peerDependenciesMeta:
       lerna:
         optional: true
@@ -1463,10 +1463,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  cross-spawn@7.0.5:
-    resolution: {integrity: sha512-ZVJrKKYunU38/76t0RMOulHOnUcbU9GbpWKAOZ0mhjr7CX6FVrH+4FrAapSOekrgFQ3f/8gwMEuIft0aKq6Hug==}
-    engines: {node: '>= 8'}
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -4093,12 +4089,12 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-lerna-scopes@19.5.0':
+  '@commitlint/config-lerna-scopes@19.7.0':
     dependencies:
       '@lerna/project': 6.4.1
       glob: 10.4.1
       import-from: 4.0.0
-      semver: 7.6.2
+      semver: 7.6.3
 
   '@commitlint/config-validator@19.5.0':
     dependencies:
@@ -5541,12 +5537,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.7.2
 
-  cross-spawn@7.0.5:
-    dependencies:
-      path-key: 3.1.1
-      shebang-command: 2.0.0
-      which: 2.0.2
-
   cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
@@ -6259,7 +6249,7 @@ snapshots:
 
   foreground-child@3.2.1:
     dependencies:
-      cross-spawn: 7.0.5
+      cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
   fs-extra@10.1.0:
