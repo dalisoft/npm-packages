@@ -46,11 +46,11 @@ importers:
         specifier: ^4.0.4
         version: 4.0.4(@commitlint/cli@19.6.1(@types/node@20.14.2)(typescript@5.7.2))
       lint-staged:
-        specifier: ^15.4.2
-        version: 15.4.2
+        specifier: ^15.4.3
+        version: 15.4.3
       lint-staged-config-airlight:
         specifier: ^4.1.4
-        version: 4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.11.1)(dockerfilelint@1.8.0)(eslint@9.18.0(jiti@2.4.1))(lint-staged@15.4.2)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.7.2))
+        version: 4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.11.1)(dockerfilelint@1.8.0)(eslint@9.18.0(jiti@2.4.1))(lint-staged@15.4.3)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.7.2))
       prettier-config-airlight:
         specifier: ^6.0.4
         version: 6.0.4(prettier@3.3.2)
@@ -443,6 +443,10 @@ packages:
 
   '@eslint/js@9.18.0':
     resolution: {integrity: sha512-fK6L7rxcq6/z+AaQMtiFTkvbHkBLNlwyRxHpKawP0x3u9+NC6MQTnFW+AdpwC6gfHTW0051cokQgtTN2FqlxQA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/js@9.19.0':
+    resolution: {integrity: sha512-rbq9/g38qjfqFLOVPvwjIvFFdNziEC5S65jmjPw5r6A//QH+W91akh9irMwjDN8zKUTak6W9EsAv4m/7Wnw0UQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/object-schema@2.1.4':
@@ -2061,8 +2065,9 @@ packages:
   flatted@3.3.2:
     resolution: {integrity: sha512-AiwGJM8YcNOaobumgtng+6NHuOqC3A7MixFeDafM3X9cIUM+xUXoS5Vfgf+OihAYe20fxqNM9yPBXJzRtZ/4eA==}
 
-  for-each@0.3.3:
-    resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
+  for-each@0.3.4:
+    resolution: {integrity: sha512-kKaIINnFpzW6ffJNDjjyjrk21BkDx38c0xa/klsT8VzLCaMEefv4ZTacrcVR4DmgTeBra++jMDAfS/tS799YDw==}
+    engines: {node: '>= 0.4'}
 
   foreground-child@3.2.1:
     resolution: {integrity: sha512-PXUUyLqrR2XCWICfv6ukppP96sdFwWbNEnfEMt7jNsISjMsvaLNinAHNDYyvkyU+SZG2BTSbT5NjG+vZslfGTA==}
@@ -2686,8 +2691,8 @@ packages:
       prettier: ^3.3.2
       stylelint: ^16.0.x
 
-  lint-staged@15.4.2:
-    resolution: {integrity: sha512-gCqzB/Li281uZJgReNci+oXXqUEdrFAQAzTE/LwoxxiEuP41vozNe4BATS+4ehdqkWn+Z6bGc3EDcBja3npBVw==}
+  lint-staged@15.4.3:
+    resolution: {integrity: sha512-FoH1vOeouNh1pw+90S+cnuoFwRfUD9ijY2GKy5h7HS3OR7JVir2N2xrsa0+Twc1B7cW72L+88geG5cW4wIhn7g==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -4425,6 +4430,8 @@ snapshots:
 
   '@eslint/js@9.18.0': {}
 
+  '@eslint/js@9.19.0': {}
+
   '@eslint/object-schema@2.1.4': {}
 
   '@eslint/plugin-kit@0.2.5':
@@ -6018,7 +6025,7 @@ snapshots:
       '@eslint-community/eslint-plugin-eslint-comments': 4.4.1(eslint@9.18.0(jiti@2.4.1))
       '@eslint/compat': 1.2.5(eslint@9.18.0(jiti@2.4.1))
       '@eslint/eslintrc': 3.2.0
-      '@eslint/js': 9.18.0
+      '@eslint/js': 9.19.0
       '@stylistic/eslint-plugin': 2.13.0(eslint@9.18.0(jiti@2.4.1))(typescript@5.7.2)
       '@typescript-eslint/eslint-plugin': 8.21.0(@typescript-eslint/parser@8.21.0(eslint@9.18.0(jiti@2.4.1))(typescript@5.7.2))(eslint@9.18.0(jiti@2.4.1))(typescript@5.7.2)
       '@typescript-eslint/parser': 8.21.0(eslint@9.18.0(jiti@2.4.1))(typescript@5.7.2)
@@ -6399,7 +6406,7 @@ snapshots:
 
   flatted@3.3.2: {}
 
-  for-each@0.3.3:
+  for-each@0.3.4:
     dependencies:
       is-callable: 1.2.7
 
@@ -7019,19 +7026,19 @@ snapshots:
     dependencies:
       uc.micro: 2.1.0
 
-  lint-staged-config-airlight@4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.11.1)(dockerfilelint@1.8.0)(eslint@9.18.0(jiti@2.4.1))(lint-staged@15.4.2)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.7.2)):
+  lint-staged-config-airlight@4.1.4(@biomejs/biome@1.8.3)(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.11.1)(dockerfilelint@1.8.0)(eslint@9.18.0(jiti@2.4.1))(lint-staged@15.4.3)(markdownlint-cli2@0.11.0)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.7.2)):
     dependencies:
       '@biomejs/biome': 1.8.3
       '@stoplight/spectral-cli': 6.11.1
       '@stoplight/spectral-ruleset-migrator': 1.11.1
       dockerfilelint: 1.8.0
       eslint: 9.18.0(jiti@2.4.1)
-      lint-staged: 15.4.2
+      lint-staged: 15.4.3
       markdownlint-cli2: 0.11.0
       prettier: 3.3.2
       stylelint: 16.6.1(typescript@5.7.2)
 
-  lint-staged@15.4.2:
+  lint-staged@15.4.3:
     dependencies:
       chalk: 5.4.1
       commander: 13.1.0
@@ -8302,7 +8309,7 @@ snapshots:
   typed-array-byte-length@1.0.3:
     dependencies:
       call-bind: 1.0.8
-      for-each: 0.3.3
+      for-each: 0.3.4
       gopd: 1.2.0
       has-proto: 1.2.0
       is-typed-array: 1.1.15
@@ -8311,7 +8318,7 @@ snapshots:
     dependencies:
       available-typed-arrays: 1.0.7
       call-bind: 1.0.8
-      for-each: 0.3.3
+      for-each: 0.3.4
       gopd: 1.2.0
       has-proto: 1.2.0
       is-typed-array: 1.1.15
@@ -8320,7 +8327,7 @@ snapshots:
   typed-array-length@1.0.7:
     dependencies:
       call-bind: 1.0.8
-      for-each: 0.3.3
+      for-each: 0.3.4
       gopd: 1.2.0
       is-typed-array: 1.1.15
       possible-typed-array-names: 1.0.0
@@ -8457,7 +8464,7 @@ snapshots:
       available-typed-arrays: 1.0.7
       call-bind: 1.0.8
       call-bound: 1.0.3
-      for-each: 0.3.3
+      for-each: 0.3.4
       gopd: 1.2.0
       has-tostringtag: 1.0.2
 
