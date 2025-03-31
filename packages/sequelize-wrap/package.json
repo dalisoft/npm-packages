@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/dalisoft/sequelize-wrap#readme",
   "devDependencies": {
-    "sequelize": "^6.37.6"
+    "sequelize": "^6.37.7"
   }
 }
