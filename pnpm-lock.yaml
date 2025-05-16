@@ -70,8 +70,8 @@ importers:
         specifier: ^7.0.6
         version: 7.0.6(@stoplight/spectral-cli@6.11.1)(@stoplight/spectral-ruleset-migrator@1.11.1)(dockerfilelint@1.8.0)(jiti@2.4.2)(prettier@3.3.2)(stylelint@16.6.1(typescript@5.8.3))
       terser:
-        specifier: ^5.39.1
-        version: 5.39.1
+        specifier: ^5.39.2
+        version: 5.39.2
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -3922,8 +3922,8 @@ packages:
     resolution: {integrity: sha512-nHc6S/bwIilKHNRgK/3jlhDoIHcp45YgyiwcAk46Tr0LfEqGBVpmiAyuiuxeVE44m3mXnEeVhaipLOEWmH+Njw==}
     engines: {node: '>=14.16'}
 
-  terser@5.39.1:
-    resolution: {integrity: sha512-Mm6+uad0ZuDtcV8/4uOZQDQ8RuiC5Pu+iZRedJtF7yA/27sPL7d++In/AJKpWZlU3SYMPPkVfwetn6sgZ66pUA==}
+  terser@5.39.2:
+    resolution: {integrity: sha512-yEPUmWve+VA78bI71BW70Dh0TuV4HHd+I5SHOAfS1+QBOmvmCiiffgjR8ryyEd3KIfvPGFqoADt8LdQ6XpXIvg==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -7953,7 +7953,7 @@ snapshots:
       jest-worker: 26.6.2
       rollup: 4.40.2
       serialize-javascript: 4.0.0
-      terser: 5.39.1
+      terser: 5.39.2
 
   rollup-plugin-typescript2@0.36.0(rollup@4.40.2)(typescript@5.8.3):
     dependencies:
@@ -8459,7 +8459,7 @@ snapshots:
 
   temp-dir@3.0.0: {}
 
-  terser@5.39.1:
+  terser@5.39.2:
     dependencies:
       '@jridgewell/source-map': 0.3.6
       acorn: 8.14.1
