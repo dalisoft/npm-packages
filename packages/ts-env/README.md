@@ -52,7 +52,7 @@ import { activate } from 'ts-env';
 
 await activate({
   on: 'DEVELOPMENT',
-  envs: ['DEVELOPMENT', 'TESTING', 'PRODUCTION']
+  envs: ['DEVELOPMENT', 'TESTING', 'PRODUCTION'] as const // This `const` is important
 });
 ```
 

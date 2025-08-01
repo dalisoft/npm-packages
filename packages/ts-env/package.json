@@ -4,6 +4,7 @@
   "description": "dotenv for TypeScript",
   "type": "module",
   "main": "src/lib.js",
+  "typings": "lib.d.ts",
   "files": [
     "src/lib.js",
     "lib.d.ts"

@@ -19,7 +19,7 @@ export async function activate(options) {
 
     const convertType = (value, key) => {
       if (key === 'NODE_ENV') {
-        return `"${options.envs.map((env) => `"${env}"`).join(' | ')}"`;
+        return options.envs.map((env) => `"${env}"`).join(' | ');
       }
       if (value === '') {
         return '';
