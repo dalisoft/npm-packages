@@ -1,6 +1,6 @@
-# ts-env
+# tss-env
 
-dotenv for TypeScript
+dotenv typings for TypeScript
 
 ## Features
 
@@ -48,13 +48,13 @@ Make sure you following the guide
 ### You entrypoint (auto-mode)
 
 ```js
-import 'ts-env/auto';
+import 'tss-env/auto';
 ```
 
 ### You entrypoint (manual mode, flexible)
 
 ```js
-import { activate } from 'ts-env';
+import { activate } from 'tss-env';
 
 await activate({
   on: 'development',
