@@ -2,6 +2,40 @@ import fsPromise from 'node:fs/promises';
 import fs from 'node:fs';
 import path from 'node:path';
 
+/**
+ * Convert dotenv values into proper TypeScript values
+ * @param {string} value
+ * @returns {string}
+ */
+const convertType = (value) => {
+  if (value === '') {
+    return '';
+  }
+  if (value === 'true' || value === 'false') {
+    return value;
+  }
+  if (!Number.isNaN(Number(value))) {
+    // TODO: use `Number(value)`?
+    return `"${value}"`;
+  }
+  if (value.startsWith('"')) {
+    return value;
+  }
+
+  return `"${value}"`;
+};
+
+/**
+ * Activate `dotenv` to `TypeScript` conversion
+ * @type {import('./lib.d.ts').activate}
+ * @param options.on On which ENV value get's activated `TypeScript` conversion
+ * @param options.envs List of ENV values to be inferred
+ * @returns Activation status
+ * @example
+ * ```ts
+ * await activate({on: 'DEVELOPMENT', envs: ['DEVELOPMENT', 'PRODUCTION']})
+ * ```
+ */
 export async function activate(options) {
   const projectRoot = path.resolve('.');
   const envFilePath = path.resolve(projectRoot, '.env');
@@ -17,27 +51,6 @@ export async function activate(options) {
       encoding: 'utf-8'
     });
 
-    const convertType = (value, key) => {
-      if (key === 'NODE_ENV') {
-        return options.envs.map((env) => `"${env}"`).join(' | ');
-      }
-      if (value === '') {
-        return '';
-      }
-      if (value === 'true' || value === 'false') {
-        return value;
-      }
-      if (!Number.isNaN(Number(value))) {
-        // TODO: use `Number(value)`?
-        return `"${value}"`;
-      }
-      if (value.startsWith('"')) {
-        return value;
-      }
-
-      return `"${value}"`;
-    };
-
     let type = `declare namespace NodeJS {
   interface ProcessEnv {
 `;
@@ -49,14 +62,16 @@ export async function activate(options) {
       const [key, value] = env.trim().split('=');
 
       if (value) {
-        const valueTyped = convertType(value, key);
+        const valueTyped =
+          key === 'NODE_ENV'
+            ? options.envs.map((_env) => `"${_env}"`).join(' | ')
+            : convertType(value);
 
         type += `    ${key}: ${valueTyped},\n`;
       }
     }
 
-    type += `
-  }
+    type += `  }
 }`;
 
     await fsPromise

@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "description": "dotenv for TypeScript",
   "type": "module",
-  "main": "src/lib.js",
+  "main": "lib.js",
+  "module": "lib.js",
   "typings": "lib.d.ts",
   "files": [
-    "src/lib.js",
+    "lib.js",
     "lib.d.ts"
   ],
   "engines": {
