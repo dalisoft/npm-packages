@@ -45,14 +45,20 @@ Make sure you following the guide
 
 ```
 
-### You entrypoint
+### You entrypoint (auto-mode)
+
+```js
+import 'ts-env/auto';
+```
+
+### You entrypoint (manual mode, flexible)
 
 ```js
 import { activate } from 'ts-env';
 
 await activate({
-  on: 'DEVELOPMENT',
-  envs: ['DEVELOPMENT', 'TESTING', 'PRODUCTION'] as const // This `const` is important
+  on: 'development',
+  envs: ['development', 'test', 'production'] as const // This `const` is important
 });
 ```
 

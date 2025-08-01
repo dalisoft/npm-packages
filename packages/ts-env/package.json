@@ -8,7 +8,8 @@
   "typings": "lib.d.ts",
   "files": [
     "lib.js",
-    "lib.d.ts"
+    "lib.d.ts",
+    "auto.js"
   ],
   "engines": {
     "node": ">=18.20.1"

@@ -5,9 +5,9 @@
  * @returns Activation status
  * @example
  * ```ts
- * await activate({on: 'DEVELOPMENT', envs: ['DEVELOPMENT', 'PRODUCTION']})
+ * await activate({on: 'development', envs: ['development', 'test', 'production']})
  * ```
  */
 export function activate<
-  TEnvs extends string[] = ['DEVELOPMENT', 'TESTING', 'PRODUCTION']
+  TEnvs extends string[] = ['development', 'test', 'production']
 >(options: { on: TEnvs[number]; envs: TEnvs }): Promise<boolean>;
