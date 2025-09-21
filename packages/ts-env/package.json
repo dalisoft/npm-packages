@@ -1,6 +1,6 @@
 {
   "name": "tss-env",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "dotenv typings for TypeScript",
   "type": "module",
   "main": "lib.js",

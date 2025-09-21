@@ -42,7 +42,12 @@ Make sure you following the guide
     ]
   }
 }
+```
 
+### `.env`
+
+```env
+NODE_ENV=development
 ```
 
 ### You entrypoint (auto-mode)
@@ -57,7 +62,7 @@ import 'tss-env/auto';
 import { activate } from 'tss-env';
 
 await activate({
-  on: 'development',
+  on: 'development', // This should at `.env` NODE_ENV to be activated
   envs: ['development', 'test', 'production'] as const // This `const` is important
 });
 ```
