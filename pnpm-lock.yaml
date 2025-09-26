@@ -16,8 +16,8 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1(@types/node@24.0.3)(typescript@5.9.2)
       '@commitlint/config-lerna-scopes':
-        specifier: ^19.8.1
-        version: 19.8.1
+        specifier: ^20.0.0
+        version: 20.0.0
       '@rollup/plugin-buble':
         specifier: ^1.0.3
         version: 1.0.3(rollup@4.52.2)
@@ -262,8 +262,8 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-lerna-scopes@19.8.1':
-    resolution: {integrity: sha512-oyHjIUj/yL54C+UfvMxpd3C6ajzS90sjSeepN0VYwPrRA8vI4l+9obmoJVvg0zx99WG+Pa1Ml/VV5puIJpwYug==}
+  '@commitlint/config-lerna-scopes@20.0.0':
+    resolution: {integrity: sha512-Qr/ouGxs+Khb09gBnNcaf6ul7pU4nXRvbSTu3T8iLeYnh0HnzWt4JVATnSS57YjCZvdCx2vgiJzrRw/GSR51yw==}
     engines: {node: '>=v18'}
     peerDependencies:
       lerna: '*'
@@ -275,8 +275,8 @@ packages:
     resolution: {integrity: sha512-0jvJ4u+eqGPBIzzSdqKNX1rvdbSU1lPNYlfQQRIFnBgLy26BtC0cFnr7c/AyuzExMxWsMOte6MkTi9I3SQ3iGQ==}
     engines: {node: '>=v18'}
 
-  '@commitlint/config-workspace-scopes@19.8.1':
-    resolution: {integrity: sha512-paQyR2hguTL71wP45WuhmekWD6mBHEEz72htdX5+cWJMRwhAp8NUiM35rntagvzWosbOERGuuEZG2NRbPX+Sog==}
+  '@commitlint/config-workspace-scopes@20.0.0':
+    resolution: {integrity: sha512-eS+5nNq+MeZ/ah1WdnOxkTpLCXZe+Sl8x3qCpFxvwCvxUuSLGf6iLOaqnEtc8DpgVQ6qaJl00GJevBwH7quHQQ==}
     engines: {node: '>=v18'}
 
   '@commitlint/ensure@19.8.1':
@@ -4260,9 +4260,9 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-lerna-scopes@19.8.1':
+  '@commitlint/config-lerna-scopes@20.0.0':
     dependencies:
-      '@commitlint/config-workspace-scopes': 19.8.1
+      '@commitlint/config-workspace-scopes': 20.0.0
       fast-glob: 3.3.3
 
   '@commitlint/config-validator@19.8.1':
@@ -4270,7 +4270,7 @@ snapshots:
       '@commitlint/types': 19.8.1
       ajv: 8.17.1
 
-  '@commitlint/config-workspace-scopes@19.8.1':
+  '@commitlint/config-workspace-scopes@20.0.0':
     dependencies:
       glob: 10.4.5
 
@@ -4508,7 +4508,7 @@ snapshots:
     dependencies:
       string-width: 5.1.2
       string-width-cjs: string-width@4.2.3
-      strip-ansi: 7.1.0
+      strip-ansi: 7.1.2
       strip-ansi-cjs: strip-ansi@6.0.1
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
@@ -8027,7 +8027,7 @@ snapshots:
     dependencies:
       eastasianwidth: 0.2.0
       emoji-regex: 9.2.2
-      strip-ansi: 7.1.0
+      strip-ansi: 7.1.2
 
   string-width@7.2.0:
     dependencies:
@@ -8506,7 +8506,7 @@ snapshots:
     dependencies:
       ansi-styles: 6.2.3
       string-width: 5.1.2
-      strip-ansi: 7.1.0
+      strip-ansi: 7.1.2
 
   wrap-ansi@9.0.0:
     dependencies:
