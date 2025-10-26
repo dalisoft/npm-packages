@@ -5,9 +5,14 @@
   "main": "src/engine.ts",
   "dependencies": {
     "benny": "^3.7.1",
-    "fast-path-parse": "^2.1.2",
+    "extreme-router": "^1.1.1",
+    "fast-path-parse": "file:../../fast-path-parse",
     "find-my-way": "^9.0.0",
-    "hono": "^4.5.11"
+    "hono": "^4.5.11",
+    "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "tinypool": "^2.x"
   },
   "description": "Router engine for nanoexpress",
   "license": "Apache-2.0",

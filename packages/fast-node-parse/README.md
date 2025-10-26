@@ -60,6 +60,8 @@ It is on my machine, on your machine results may vary. See [benchmark](/packages
 | `/foo/bar-*`         | ❌     |
 | `/foo/bar*`          | ❌     |
 | `/foo/bar/<id>`      | ❌     |
+| `/foo/bar/{id}`      | ❌     |
+| `/foo/bar/:id`       | ❌     |
 | `/foo/task/:bar`     | ✅     |
 | `/foo/:task/:bar`    | ✅     |
 | `/foo/:bar`          | ✅     |

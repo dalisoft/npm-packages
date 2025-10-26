@@ -7,8 +7,6 @@
 declare class Node {
   private next: Node | undefined;
 
-  private rootNode: boolean;
-
   position: number;
 
   segment: string;
