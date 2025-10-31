@@ -22,8 +22,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(rollup@4.52.5)
       '@rollup/plugin-commonjs':
-        specifier: ^28.0.9
-        version: 28.0.9(rollup@4.52.5)
+        specifier: ^29.0.0
+        version: 29.0.0(rollup@4.52.5)
       '@rollup/plugin-node-resolve':
         specifier: ^15.3.0
         version: 15.3.1(rollup@4.52.5)
@@ -441,8 +441,8 @@ packages:
     resolution: {integrity: sha512-EriSTlt5OC9/7SXkRSCAhfSxxoSUgBm33OH+IkwbdpgoqsSsUg7y3uh+IICI/Qg4BBWr3U2i39RpmycbxMq4ew==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
 
-  '@eslint/compat@1.4.0':
-    resolution: {integrity: sha512-DEzm5dKeDBPm3r08Ixli/0cmxr8LkRdwxMRUIJBlSCpAwSrvFEJpVBzV+66JhDxiaqKxnRzCXhtiMiczF7Hglg==}
+  '@eslint/compat@1.4.1':
+    resolution: {integrity: sha512-cfO82V9zxxGBxcQDr1lfaYB7wykTa0b00mGa36FrJl7iTFd0Z2cHfEYuxcBRP/iNijCsWsEkA+jzT8hGYmv33w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.40 || 9
@@ -460,6 +460,10 @@ packages:
 
   '@eslint/core@0.16.0':
     resolution: {integrity: sha512-nmC8/totwobIiFcGkDza3GIKfAw1+hLiYVrh3I1nIomQ8PEr5cxg34jnkmGawul/ep52wGRAcyeDCNtWKSOj4Q==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/core@0.17.0':
+    resolution: {integrity: sha512-yL/sLrpmtDaFEiUj1osRP4TI2MDz1AddJL+jZ7KSqvBuliN4xqYY54IfdN8qD8Toa6g1iloph1fxQNkjOxrrpQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/eslintrc@3.3.1':
@@ -606,8 +610,8 @@ packages:
     peerDependencies:
       rollup: ^2.68.0
 
-  '@rollup/plugin-commonjs@28.0.9':
-    resolution: {integrity: sha512-PIR4/OHZ79romx0BVVll/PkwWpJ7e5lsqFa3gFfcrFPWwLXLV39JVUzQV9RKjWerE7B845Hqjj9VYlQeieZ2dA==}
+  '@rollup/plugin-commonjs@29.0.0':
+    resolution: {integrity: sha512-U2YHaxR2cU/yAiwKJtJRhnyLk7cifnQw0zUpISsocBDoHDJn+HTV74ABqnwr5bEgWUwFZC9oFL6wLe21lHu5eQ==}
     engines: {node: '>=16.0.0 || 14 >= 14.17'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0||^4.0.0
@@ -2961,8 +2965,8 @@ packages:
     resolution: {integrity: sha512-VP79XUPxV2CigYP3jWwAUFSku2aKqBH7uTAapFWCBqutsbmDo96KY5o8uh6U+/YSIn5OxJnXp73beVkpqMIGhA==}
     engines: {node: '>=18'}
 
-  minimatch@10.0.3:
-    resolution: {integrity: sha512-IPZ167aShDZZUMdRk66cyQAW3qr0WzbHkPdMYa8bzZhlHhO3jALbKdxcaak7W9FfT2rZNpQuUu4Od7ILEpXSaw==}
+  minimatch@10.1.1:
+    resolution: {integrity: sha512-enIvLvRAFZYXJzkCYG5RKmPfrFArdLv+R+lbQ53BmIMLIry74bjKzX6iHAm8WYamJkhSSEabrWN5D97XnKObjQ==}
     engines: {node: 20 || >=22}
 
   minimatch@3.1.2:
@@ -4443,9 +4447,9 @@ snapshots:
 
   '@eslint-community/regexpp@4.12.2': {}
 
-  '@eslint/compat@1.4.0(eslint@9.38.0(jiti@2.4.2))':
+  '@eslint/compat@1.4.1(eslint@9.38.0(jiti@2.4.2))':
     dependencies:
-      '@eslint/core': 0.16.0
+      '@eslint/core': 0.17.0
     optionalDependencies:
       eslint: 9.38.0(jiti@2.4.2)
 
@@ -4462,6 +4466,10 @@ snapshots:
       '@eslint/core': 0.16.0
 
   '@eslint/core@0.16.0':
+    dependencies:
+      '@types/json-schema': 7.0.15
+
+  '@eslint/core@0.17.0':
     dependencies:
       '@types/json-schema': 7.0.15
 
@@ -4628,7 +4636,7 @@ snapshots:
       resolve: 1.22.11
       rollup: 2.79.2
 
-  '@rollup/plugin-commonjs@28.0.9(rollup@4.52.5)':
+  '@rollup/plugin-commonjs@29.0.0(rollup@4.52.5)':
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.52.5)
       commondir: 1.0.1
@@ -6078,7 +6086,7 @@ snapshots:
   eslint-config-airlight-base@7.7.2(@typescript-eslint/utils@8.46.2(eslint@9.38.0(jiti@2.4.2))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.4.2))(typescript@5.9.3))(eslint@9.38.0(jiti@2.4.2)))(eslint@9.38.0(jiti@2.4.2))(prettier@3.3.2)(typescript@5.9.3):
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.5.0(eslint@9.38.0(jiti@2.4.2))
-      '@eslint/compat': 1.4.0(eslint@9.38.0(jiti@2.4.2))
+      '@eslint/compat': 1.4.1(eslint@9.38.0(jiti@2.4.2))
       '@eslint/eslintrc': 3.3.1
       '@eslint/js': 9.38.0
       '@stylistic/eslint-plugin': 3.1.0(eslint@9.38.0(jiti@2.4.2))(typescript@5.9.3)
@@ -6180,7 +6188,7 @@ snapshots:
       eslint: 9.38.0(jiti@2.4.2)
       eslint-import-context: 0.1.9(unrs-resolver@1.11.1)
       is-glob: 4.0.3
-      minimatch: 10.0.3
+      minimatch: 10.1.1
       semver: 7.7.3
       stable-hash-x: 0.2.0
       unrs-resolver: 1.11.1
@@ -7254,7 +7262,7 @@ snapshots:
 
   mimic-function@5.0.1: {}
 
-  minimatch@10.0.3:
+  minimatch@10.1.1:
     dependencies:
       '@isaacs/brace-expansion': 5.0.0
 
