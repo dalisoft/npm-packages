@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-lerna-scopes": "^19.8.1",
+    "@commitlint/config-lerna-scopes": "^20.4.0",
     "@rollup/plugin-buble": "^1.0.3",
     "@rollup/plugin-commonjs": "^28.0.9",
     "@rollup/plugin-node-resolve": "^15.3.0",
