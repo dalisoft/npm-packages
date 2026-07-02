@@ -16,8 +16,8 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1(@types/node@25.3.5)(typescript@5.9.3)
       '@commitlint/config-lerna-scopes':
-        specifier: ^19.8.1
-        version: 19.8.1
+        specifier: ^21.2.0
+        version: 21.2.0
       '@rollup/plugin-buble':
         specifier: ^1.0.3
         version: 1.0.3(rollup@4.62.2)
@@ -262,9 +262,9 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-lerna-scopes@19.8.1':
-    resolution: {integrity: sha512-oyHjIUj/yL54C+UfvMxpd3C6ajzS90sjSeepN0VYwPrRA8vI4l+9obmoJVvg0zx99WG+Pa1Ml/VV5puIJpwYug==}
-    engines: {node: '>=v18'}
+  '@commitlint/config-lerna-scopes@21.2.0':
+    resolution: {integrity: sha512-Qm8/icwmhSbOuKjYC3RRIrzoh1AUhI/pCiLYdmDW2l2AVWJ9LOkTVuRza4DGCe2JFfEXpBMgWzPzeCStf5OtZA==}
+    engines: {node: '>=22.12.0'}
     peerDependencies:
       lerna: '*'
     peerDependenciesMeta:
@@ -275,9 +275,9 @@ packages:
     resolution: {integrity: sha512-0jvJ4u+eqGPBIzzSdqKNX1rvdbSU1lPNYlfQQRIFnBgLy26BtC0cFnr7c/AyuzExMxWsMOte6MkTi9I3SQ3iGQ==}
     engines: {node: '>=v18'}
 
-  '@commitlint/config-workspace-scopes@19.8.1':
-    resolution: {integrity: sha512-paQyR2hguTL71wP45WuhmekWD6mBHEEz72htdX5+cWJMRwhAp8NUiM35rntagvzWosbOERGuuEZG2NRbPX+Sog==}
-    engines: {node: '>=v18'}
+  '@commitlint/config-workspace-scopes@21.2.0':
+    resolution: {integrity: sha512-WBUoQkNzvBgvgceluQ8kC+UqHkGaVmGaK0bKN3Cx9yN+H+v8KHuGlRpyn+BIIb6Df5RJkDEjXmRaxx0OYPGMbg==}
+    engines: {node: '>=22.12.0'}
 
   '@commitlint/ensure@19.8.1':
     resolution: {integrity: sha512-mXDnlJdvDzSObafjYrOSvZBwkD01cqB4gbnnFuVyNpGUM5ijwU/r/6uqUmBXAAOKRfyEjpkGVZxaDsCVnHAgyw==}
@@ -4361,19 +4361,16 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-lerna-scopes@19.8.1':
+  '@commitlint/config-lerna-scopes@21.2.0':
     dependencies:
-      '@commitlint/config-workspace-scopes': 19.8.1
-      fast-glob: 3.3.3
+      '@commitlint/config-workspace-scopes': 21.2.0
 
   '@commitlint/config-validator@19.8.1':
     dependencies:
       '@commitlint/types': 19.8.1
       ajv: 8.17.1
 
-  '@commitlint/config-workspace-scopes@19.8.1':
-    dependencies:
-      glob: 10.4.5
+  '@commitlint/config-workspace-scopes@21.2.0': {}
 
   '@commitlint/ensure@19.8.1':
     dependencies:
