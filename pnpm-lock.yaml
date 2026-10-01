@@ -16,8 +16,8 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1(@types/node@25.3.5)(typescript@5.9.3)
       '@commitlint/config-lerna-scopes':
-        specifier: ^19.8.1
-        version: 19.8.1
+        specifier: ^21.2.0
+        version: 21.2.0
       '@rollup/plugin-buble':
         specifier: ^1.0.3
         version: 1.0.3(rollup@4.62.3)
@@ -272,9 +272,9 @@ packages:
     engines: {node: '>=v18'}
     hasBin: true
 
-  '@commitlint/config-lerna-scopes@19.8.1':
-    resolution: {integrity: sha512-oyHjIUj/yL54C+UfvMxpd3C6ajzS90sjSeepN0VYwPrRA8vI4l+9obmoJVvg0zx99WG+Pa1Ml/VV5puIJpwYug==}
-    engines: {node: '>=v18'}
+  '@commitlint/config-lerna-scopes@21.2.0':
+    resolution: {integrity: sha512-Qm8/icwmhSbOuKjYC3RRIrzoh1AUhI/pCiLYdmDW2l2AVWJ9LOkTVuRza4DGCe2JFfEXpBMgWzPzeCStf5OtZA==}
+    engines: {node: '>=22.12.0'}
     peerDependencies:
       lerna: '*'
     peerDependenciesMeta:
@@ -285,9 +285,9 @@ packages:
     resolution: {integrity: sha512-0jvJ4u+eqGPBIzzSdqKNX1rvdbSU1lPNYlfQQRIFnBgLy26BtC0cFnr7c/AyuzExMxWsMOte6MkTi9I3SQ3iGQ==}
     engines: {node: '>=v18'}
 
-  '@commitlint/config-workspace-scopes@19.8.1':
-    resolution: {integrity: sha512-paQyR2hguTL71wP45WuhmekWD6mBHEEz72htdX5+cWJMRwhAp8NUiM35rntagvzWosbOERGuuEZG2NRbPX+Sog==}
-    engines: {node: '>=v18'}
+  '@commitlint/config-workspace-scopes@21.2.0':
+    resolution: {integrity: sha512-WBUoQkNzvBgvgceluQ8kC+UqHkGaVmGaK0bKN3Cx9yN+H+v8KHuGlRpyn+BIIb6Df5RJkDEjXmRaxx0OYPGMbg==}
+    engines: {node: '>=22.12.0'}
 
   '@commitlint/ensure@19.8.1':
     resolution: {integrity: sha512-mXDnlJdvDzSObafjYrOSvZBwkD01cqB4gbnnFuVyNpGUM5ijwU/r/6uqUmBXAAOKRfyEjpkGVZxaDsCVnHAgyw==}
@@ -3121,9 +3121,6 @@ packages:
   mdn-data@2.27.1:
     resolution: {integrity: sha512-9Yubnt3e8A0OKwxYSXyhLymGW4sCufcLG6VdiDdUGVkPhpqLxlvP5vl1983gQjJl3tqbrM731mjaZaP68AgosQ==}
 
-  mdurl@2.0.0:
-    resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
-
   mdurl@2.1.0:
     resolution: {integrity: sha512-1+HBaOx0zi/dQWht8rNv9MYf9qqpqL/kxI0hXImU6Y547zM6Sni8BQibt7ifgMcYtQg41ao3Ivd6cnSM86inpg==}
 
@@ -4556,19 +4553,16 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@commitlint/config-lerna-scopes@19.8.1':
+  '@commitlint/config-lerna-scopes@21.2.0':
     dependencies:
-      '@commitlint/config-workspace-scopes': 19.8.1
-      fast-glob: 3.3.3
+      '@commitlint/config-workspace-scopes': 21.2.0
 
   '@commitlint/config-validator@19.8.1':
     dependencies:
       '@commitlint/types': 19.8.1
       ajv: 8.17.1
 
-  '@commitlint/config-workspace-scopes@19.8.1':
-    dependencies:
-      glob: 10.4.5
+  '@commitlint/config-workspace-scopes@21.2.0': {}
 
   '@commitlint/ensure@19.8.1':
     dependencies:
@@ -7652,7 +7646,7 @@ snapshots:
       argparse: 2.0.1
       entities: 4.5.0
       linkify-it: 5.0.2
-      mdurl: 2.0.0
+      mdurl: 2.1.0
       punycode.js: 2.3.1
       uc.micro: 2.1.0
 
@@ -7707,8 +7701,6 @@ snapshots:
       blueimp-md5: 2.19.0
 
   mdn-data@2.27.1: {}
-
-  mdurl@2.0.0: {}
 
   mdurl@2.1.0: {}
 
