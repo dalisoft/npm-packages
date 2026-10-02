@@ -5,11 +5,12 @@
     "packages/*"
   ],
   "type": "module",
+  "packageManager": "bun@1.4.2",
   "engines": {
     "node": ">=18.19.1"
   },
   "scripts": {
-    "release": "pnpm -r --workspace-concurrency=1 exec ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace",
+    "release": "for pkg in packages/*/package.json; do (cd \"$(dirname \"$pkg\")\" && ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace) || exit 1; done",
     "lint": "echo 'No linter configured yet' && exit 0"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "terser": "^5.51.2",
     "typescript": "^5.9.3"
   },
+  "trustedDependencies": [],
   "dependencies": {
     "lib-export": "^0.0.3"
   }

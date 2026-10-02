@@ -4,7 +4,7 @@
     "*rc": "json"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "npm.packageManager": "pnpm",
+  "npm.packageManager": "bun",
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
