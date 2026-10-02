@@ -10,6 +10,7 @@
     "node": ">=18.19.1"
   },
   "scripts": {
+    "prepare": "lefthook install",
     "release": "for pkg in packages/*/package.json; do (cd \"$(dirname \"$pkg\")\" && ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace) || exit 1; done",
     "lint": "biome lint && rumdl check .",
     "format": "biome format --write && rumdl fmt ."
@@ -18,12 +19,8 @@
     "@biomejs/biome": "^2.5.15",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-lerna-scopes": "^21.2.0",
-    "husky": "^9.1.7",
-    "husky-config-airlight": "^4.0.4",
-    "lint-staged": "^15.5.2",
-    "lint-staged-config-airlight": "^4.1.4",
+    "lefthook": "^2.1.16",
     "rumdl": "^0.2.78",
-    "smartlint": "^7.0.6",
     "typescript": "^7.0.2"
   },
   "overrides": {
