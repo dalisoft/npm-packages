@@ -11,18 +11,17 @@
   },
   "scripts": {
     "release": "for pkg in packages/*/package.json; do (cd \"$(dirname \"$pkg\")\" && ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace) || exit 1; done",
-    "lint": "echo 'No linter configured yet' && exit 0"
+    "lint": "biome lint",
+    "format": "biome format --write"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-lerna-scopes": "^21.2.0",
-    "eslint": "^9.39.2",
-    "eslint-config-airlight-node": "^5.6.3",
     "husky": "^9.1.7",
     "husky-config-airlight": "^4.0.4",
     "lint-staged": "^15.5.2",
     "lint-staged-config-airlight": "^4.1.4",
-    "prettier-config-airlight": "^6.0.4",
     "smartlint": "^7.0.6",
     "typescript": "^7.0.2"
   },

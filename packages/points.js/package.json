@@ -6,8 +6,8 @@
   "cdn": "points.min.js",
   "module": "index.js",
   "scripts": {
-    "fix": "standard --fix",
-    "lint": "standard --verbose | snazzy",
+    "fix": "biome check --write .",
+    "lint": "biome lint .",
     "test": "npm run fix && npm run lint",
     "minify": "bun ../../build.js index.js --name=PointsJS --named --bundle --min=points.min.js",
     "source": "bun ../../build.js index.js --name=PointsJS --named --bundle --sourcemap --umd=points.js",
