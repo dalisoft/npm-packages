@@ -1,18 +1,17 @@
-const test = require('ava');
+const test = require('node:test');
 const batchCollect = require('.');
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('Basic test', async (t) => {
   t.plan(5);
-  t.timeout(5000);
 
   let queryIndex = 0;
   const batchQuery = batchCollect(async (collects) => {
     await timeout(500);
 
     queryIndex++;
-    t.pass('The collection collect is passed');
+    t.assert.ok(true, 'The collection collect is passed');
 
     return collects.map((collect) => ({
       responseOf: collect
@@ -33,22 +32,26 @@ test('Basic test', async (t) => {
   batchQuery(
     () => `getMessages { id, text }`,
     (response) =>
-      t.deepEqual(response, { responseOf: `getMessages { id, text }` })
+      t.assert.deepStrictEqual(response, {
+        responseOf: `getMessages { id, text }`
+      })
   );
 
   await timeout(1000);
 
-  t.is(queryIndex, 3, 'Query called properly');
+  t.assert.strictEqual(queryIndex, 3, 'Query called properly');
 });
 
 test('Duplicate handling', async (t) => {
-  t.timeout(1500);
-
   let queryIndex = 0;
   const batchQuery = batchCollect(async (collects) => {
     await timeout(500);
 
-    t.is(collects.length, 1, 'Collect deduplication not works properly');
+    t.assert.strictEqual(
+      collects.length,
+      1,
+      'Collect deduplication not works properly'
+    );
 
     return collects.map((collect) => ({
       responseOf: collect
@@ -80,12 +83,14 @@ test('Duplicate handling', async (t) => {
 
   await timeout(500);
 
-  t.is(queryIndex, 5, 'Duplication handling not works as expected');
+  t.assert.strictEqual(
+    queryIndex,
+    5,
+    'Duplication handling not works as expected'
+  );
 });
 
 test('N+1 solving', async (t) => {
-  t.timeout(1500);
-
   let handleIds = (ids) => ids.map((id) => ({ result: id }));
 
   const batchN1 = batchCollect(async (ids) => {
@@ -94,8 +99,10 @@ test('N+1 solving', async (t) => {
     return handleIds(ids);
   });
 
-  const handleResult = (id) => ({ result }) =>
-    t.is(result, id, 'Id returned incorrectly');
+  const handleResult =
+    (id) =>
+    ({ result }) =>
+      t.assert.strictEqual(result, id, 'Id returned incorrectly');
 
   batchN1(() => 1, handleResult(1));
   batchN1(2, handleResult(2));

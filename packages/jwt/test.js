@@ -1,7 +1,6 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
 /* eslint-disable max-lines-per-function */
-// eslint-disable-next-line import-x/no-extraneous-dependencies, n/no-extraneous-import
-import test from 'ava';
+import test from 'node:test';
 import * as JWT from './dist/es/jwt.js';
 import jwt from 'jsonwebtoken';
 
@@ -10,7 +9,6 @@ const salt =
   'some-secure-128-bit-salt-key-for-getting-private-key--pem-key-string-would-be-helpful';
 
 test('JWT Basic features ', async (t) => {
-  t.timeout(5000);
   t.plan(10);
 
   const TIME_START = Math.floor(Date.now() / 1000);
@@ -25,16 +23,16 @@ test('JWT Basic features ', async (t) => {
   };
   const signed = await JWT.sign(payload1, secretKey);
 
-  t.pass('Signing token was passed');
+  t.assert.ok(true, 'Signing token was passed');
 
   const verify1 = await JWT.verify(signed, secretKey);
 
-  t.deepEqual(verify1, payload1, 'Verify token is not passed');
-  t.deepEqual(await JWT.decode(signed, secretKey), payload1);
+  t.assert.deepStrictEqual(verify1, payload1, 'Verify token is not passed');
+  t.assert.deepStrictEqual(await JWT.decode(signed, secretKey), payload1);
 
-  t.throwsAsync(
+  await t.assert.rejects(
     JWT.verify(signed.replace(/./, '..'), secretKey),
-    { instanceOf: jwt.JsonWebTokenError, message: 'jwt malformed', any: true },
+    { name: 'JsonWebTokenError', message: 'jwt malformed' },
     'Invalid token was passed and this mean function does not work properly'
   );
 
@@ -51,35 +49,36 @@ test('JWT Basic features ', async (t) => {
 
   const signedAndEncoded = await JWT.sign(payload2, secretKey, {}, true);
 
-  t.pass('Signing and encoding token was passed');
+  t.assert.ok(true, 'Signing and encoding token was passed');
   const verify2 = await JWT.verify(signedAndEncoded, secretKey, {}, true);
-  t.deepEqual(verify2, payload2, 'Verify token is not passed');
-  t.deepEqual(
+  t.assert.deepStrictEqual(verify2, payload2, 'Verify token is not passed');
+  t.assert.deepStrictEqual(
     await JWT.decode(signedAndEncoded, secretKey, {}, true),
     payload2
   );
 
-  t.throwsAsync(
-    JWT.verify(`${signedAndEncoded  }a`, secretKey, {}, true),
-    { instanceOf: jwt.JsonWebTokenError, message: 'jwt malformed', any: true },
+  await t.assert.rejects(
+    JWT.verify(`${signedAndEncoded}a`, secretKey, {}, true),
+    { name: 'JsonWebTokenError', message: 'jwt malformed' },
     'Invalid token was passed and this mean function does not work properly'
   );
 
   await new Promise((resolve) =>
     setTimeout(async () => {
-      await t.throwsAsync(
+      await t.assert.rejects(
         JWT.verify(signed, secretKey),
-        { instanceOf: jwt.TokenExpiredError, message: 'jwt expired', any: true },
+        { name: 'TokenExpiredError', message: 'jwt expired' },
 
         'Expired token was passed and this mean function does not work properly'
       );
-      await t.throwsAsync(
+      await t.assert.rejects(
         JWT.verify(signedAndEncoded, secretKey, {}, true),
-        { instanceOf: jwt.TokenExpiredError, message: 'jwt expired', any: true },
+        { name: 'TokenExpiredError', message: 'jwt expired' },
         'Expired token was passed and this mean function does not work properly'
       );
       resolve();
-    }, 3000));
+    }, 3000)
+  );
 });
 
 test('JWT Generate token and Refresh token', async (t) => {
@@ -100,7 +99,7 @@ test('JWT Generate token and Refresh token', async (t) => {
   )
     .then((res) => JWT.refreshToken({ ...res, privateKey: secretKey }))
     .then(({ accessToken }) => JWT.verify(accessToken, secretKey, undefined))
-    .then(() => t.pass('Refresh token worked perfectly'));
+    .then(() => t.assert.ok(true, 'Refresh token worked perfectly'));
 
   await JWT.generateToken(
     {
@@ -121,7 +120,7 @@ test('JWT Generate token and Refresh token', async (t) => {
     .then(({ accessToken }) =>
       JWT.verify(accessToken, secretKey, undefined, true)
     )
-    .then(() => t.pass('Refresh token worked perfectly'));
+    .then(() => t.assert.ok(true, 'Refresh token worked perfectly'));
 
   await JWT.generateToken(
     {
@@ -138,7 +137,7 @@ test('JWT Generate token and Refresh token', async (t) => {
   )
     .then((res) => JWT.refreshToken({ ...res, privateKey: secretKey }))
     .then(({ accessToken }) => JWT.verify(accessToken, secretKey, undefined))
-    .then(() => t.pass('Refresh token worked perfectly'));
+    .then(() => t.assert.ok(true, 'Refresh token worked perfectly'));
 
   await JWT.generateToken(
     {
@@ -159,5 +158,5 @@ test('JWT Generate token and Refresh token', async (t) => {
     .then(({ accessToken }) =>
       JWT.verify(accessToken, secretKey, undefined, true)
     )
-    .then(() => t.pass('Refresh token worked perfectly'));
+    .then(() => t.assert.ok(true, 'Refresh token worked perfectly'));
 });

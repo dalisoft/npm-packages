@@ -10,7 +10,7 @@
   "scripts": {
     "minify": "terser event.js -c -m -o event.min.js --source-map \"filename='event.min.js.map'\"",
     "prepublishOnly": "npm run build && npm test && npm run minify",
-    "test": "npm run build && ava",
+    "test": "npm run build && node --test --test-timeout=1000",
     "build": "lib-export -name Events -file event.es.js -output event.js"
   },
   "repository": {

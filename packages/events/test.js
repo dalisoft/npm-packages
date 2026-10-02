@@ -1,25 +1,25 @@
-const test = require('ava');
+const test = require('node:test');
 const Events = require('.');
 
 test('Get prototype', (t) => {
   t.plan(4);
 
-  t.is(
+  t.assert.strictEqual(
     typeof Events.prototype.on,
     'function',
     'Prototype methods not assigned properly'
   );
-  t.is(
+  t.assert.strictEqual(
     typeof Events.prototype.once,
     'function',
     'Prototype methods not assigned properly'
   );
-  t.is(
+  t.assert.strictEqual(
     typeof Events.prototype.off,
     'function',
     'Prototype methods not assigned properly'
   );
-  t.is(
+  t.assert.strictEqual(
     typeof Events.prototype.emit,
     'function',
     'Prototype methods not assigned properly'
@@ -27,15 +27,14 @@ test('Get prototype', (t) => {
 });
 test('Basic test', (t) =>
   new Promise((resolve) => {
-    t.timeout(1000);
     t.plan(5);
 
     const ev = new Events();
 
-    ev.on('e1', () => t.pass());
-    ev.on('e2', () => t.pass());
-    ev.once('e3', () => t.pass());
-    ev.on('e4', () => t.pass());
+    ev.on('e1', () => t.assert.ok(true));
+    ev.on('e2', () => t.assert.ok(true));
+    ev.once('e3', () => t.assert.ok(true));
+    ev.on('e4', () => t.assert.ok(true));
 
     ev.emit('e1');
     ev.emit('e2');
@@ -53,7 +52,6 @@ test('Basic test', (t) =>
   }));
 
 test('Type and Value parsing test', (t) => {
-  t.plan(1000);
   t.plan(8);
 
   const ev = new Events();
@@ -77,27 +75,51 @@ test('Type and Value parsing test', (t) => {
   });
 
   ev.on('num', (n, excepted) => {
-    t.is(n, excepted, 'Number parsing does not work as excepted');
-    t.is(typeof n, 'number', 'Number type parsing does not work as excepted');
+    t.assert.strictEqual(
+      n,
+      excepted,
+      'Number parsing does not work as excepted'
+    );
+    t.assert.strictEqual(
+      typeof n,
+      'number',
+      'Number type parsing does not work as excepted'
+    );
   });
   ev.on('arr', (someArr, excepted) => {
-    t.deepEqual(someArr, excepted, 'Array parsing does not work as excepted');
-    t.true(
+    t.assert.deepStrictEqual(
+      someArr,
+      excepted,
+      'Array parsing does not work as excepted'
+    );
+    t.assert.ok(
       Array.isArray(someArr),
       'Array type parsing does not work as excepted'
     );
   });
   ev.on('obj', (someObj, excepted) => {
-    t.deepEqual(someObj, excepted, 'Object parsing does not work as excepted');
-    t.is(
+    t.assert.deepStrictEqual(
+      someObj,
+      excepted,
+      'Object parsing does not work as excepted'
+    );
+    t.assert.strictEqual(
       typeof someObj,
       'object',
       'Object type parsing does not work as excepted'
     );
   });
   ev.once('str', (s, excepted) => {
-    t.is(s, excepted, 'String parsing does not work as excepted');
-    t.is(typeof s, 'string', 'String type parsing does not work as excepted');
+    t.assert.strictEqual(
+      s,
+      excepted,
+      'String parsing does not work as excepted'
+    );
+    t.assert.strictEqual(
+      typeof s,
+      'string',
+      'String type parsing does not work as excepted'
+    );
   });
 
   ev.emit('num', '500', 500);

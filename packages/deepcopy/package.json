@@ -16,7 +16,7 @@
   "scripts": {
     "minify": "terser deepcopy.js -c -m -o deepcopy.min.js --source-map \"filename='deepcopy.min.js.map'\"",
     "prepublishOnly": "npm test && npm run minify",
-    "test": "ava"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",

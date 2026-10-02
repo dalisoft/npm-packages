@@ -10,7 +10,7 @@
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build && npm test",
-    "test": "npm run build && ava"
+    "test": "npm run build && node --test --test-timeout=10000"
   },
   "repository": {
     "type": "git",

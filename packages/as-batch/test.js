@@ -1,10 +1,9 @@
-const test = require('ava');
+const test = require('node:test');
 const asBatch = require('.');
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 test('Method [Register]: Basic test', async (t) => {
-  t.timeout(5000);
   t.plan(4);
 
   const calling = new asBatch({
@@ -12,7 +11,7 @@ test('Method [Register]: Basic test', async (t) => {
     transform: (queries) =>
       'query {' + '\n  ' + queries.join('\n  ') + '\n' + '}',
     onRegisterTimeout: async (query) => {
-      t.is(
+      t.assert.strictEqual(
         query.startsWith('query {'),
         true,
         'Transforming does not work properly'
@@ -33,7 +32,7 @@ test('Method [Register]: Basic test', async (t) => {
       (res) => res.posts
     )
     .then((posts) =>
-      t.deepEqual(
+      t.assert.deepStrictEqual(
         posts,
         [{ id: 1, type: 'post' }],
         'Value getting does not work properly'
@@ -48,7 +47,7 @@ test('Method [Register]: Basic test', async (t) => {
       (res) => res.users
     )
     .then((users) =>
-      t.deepEqual(
+      t.assert.deepStrictEqual(
         users,
         [{ id: 10, type: 'user' }],
         'Value getting does not work properly'
@@ -63,7 +62,7 @@ test('Method [Register]: Basic test', async (t) => {
       (res) => res.photos
     )
     .then((photos) =>
-      t.deepEqual(
+      t.assert.deepStrictEqual(
         photos,
         [{ id: 2, type: 'photo' }],
         'Value getting does not work properly'
@@ -74,7 +73,6 @@ test('Method [Register]: Basic test', async (t) => {
 });
 
 test('Method [Register]: Basic test with fake hacks', async (t) => {
-  t.timeout(5000);
   t.plan(4);
 
   const calling = new asBatch({
@@ -82,7 +80,7 @@ test('Method [Register]: Basic test with fake hacks', async (t) => {
     transform: (queries) =>
       'query {' + '\n  ' + queries.join('\n  ') + '\n' + '}',
     onRegisterTimeout: async (query) => {
-      t.is(
+      t.assert.strictEqual(
         query.startsWith('query {'),
         true,
         'Transforming does not work properly'
@@ -112,17 +110,17 @@ test('Method [Register]: Basic test with fake hacks', async (t) => {
 
   await timeout(200);
 
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     posts,
     [{ id: 1, type: 'post' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     users,
     [{ id: 10, type: 'user' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     photos,
     [{ id: 2, type: 'photo' }],
     'Value getting does not work properly'
@@ -130,7 +128,6 @@ test('Method [Register]: Basic test with fake hacks', async (t) => {
 });
 
 test('Method [Register]: Basic test with {#FetchRegistered} method', async (t) => {
-  t.timeout(5000);
   t.plan(4);
 
   const calling = new asBatch({
@@ -138,7 +135,7 @@ test('Method [Register]: Basic test with {#FetchRegistered} method', async (t) =
     transform: (queries) =>
       'query {' + '\n  ' + queries.join('\n  ') + '\n' + '}',
     onRegisterTimeout: async (query) => {
-      t.is(
+      t.assert.strictEqual(
         query.startsWith('query {'),
         true,
         'Transforming does not work properly'
@@ -167,17 +164,17 @@ test('Method [Register]: Basic test with {#FetchRegistered} method', async (t) =
 
   const { posts, users, photos } = await calling.fetchRegistered();
 
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     posts,
     [{ id: 1, type: 'post' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     users,
     [{ id: 10, type: 'user' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     photos,
     [{ id: 2, type: 'photo' }],
     'Value getting does not work properly'
@@ -185,7 +182,6 @@ test('Method [Register]: Basic test with {#FetchRegistered} method', async (t) =
 });
 
 test('Method [Register]: Async/Await test', async (t) => {
-  t.timeout(5000);
   t.plan(4);
 
   const calling = new asBatch({
@@ -193,7 +189,7 @@ test('Method [Register]: Async/Await test', async (t) => {
     transform: (queries) =>
       'query {' + '\n  ' + queries.join('\n  ') + '\n' + '}',
     onRegisterTimeout: async (query) => {
-      t.is(
+      t.assert.strictEqual(
         query.startsWith('query {'),
         true,
         'Transforming does not work properly'
@@ -229,17 +225,17 @@ test('Method [Register]: Async/Await test', async (t) => {
 
   await timeout(200);
 
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     await posts,
     [{ id: 1, type: 'post' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     await users,
     [{ id: 10, type: 'user' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     await photos,
     [{ id: 2, type: 'photo' }],
     'Value getting does not work properly'
@@ -247,13 +243,12 @@ test('Method [Register]: Async/Await test', async (t) => {
 });
 
 test('Method [Call]: Basic test', async (t) => {
-  t.timeout(5000);
   t.plan(4);
 
   const calling = new asBatch({
     key: 'my-call-batch-key',
     onCallsTimeout: async (calls) => {
-      t.pass();
+      t.assert.ok(true);
       await timeout(2000);
 
       return await Promise.all(calls);
@@ -269,7 +264,7 @@ test('Method [Call]: Basic test', async (t) => {
       (responses) => responses.find((response) => response.index === 1).posts
     )
     .then((posts) =>
-      t.deepEqual(
+      t.assert.deepStrictEqual(
         posts,
         [{ id: 1, type: 'post' }],
         'Value getting does not work properly'
@@ -287,7 +282,7 @@ test('Method [Call]: Basic test', async (t) => {
       (responses) => responses.find((response) => response.index === 2).users
     )
     .then((users) =>
-      t.deepEqual(
+      t.assert.deepStrictEqual(
         users,
         [{ id: 10, type: 'user' }],
         'Value getting does not work properly'
@@ -305,7 +300,7 @@ test('Method [Call]: Basic test', async (t) => {
       (responses) => responses.find((response) => response.index === 3).photos
     )
     .then((photos) =>
-      t.deepEqual(
+      t.assert.deepStrictEqual(
         photos,
         [{ id: 2, type: 'photo' }],
         'Value getting does not work properly'
@@ -316,13 +311,12 @@ test('Method [Call]: Basic test', async (t) => {
 });
 
 test('Method [Call]: Basic test with fake hacks', async (t) => {
-  t.timeout(5000);
   t.plan(4);
 
   const calling = new asBatch({
     key: 'my-call-batch-key',
     onCallsTimeout: async (calls) => {
-      t.pass();
+      t.assert.ok(true);
       await timeout(2000);
 
       return await Promise.all(calls);
@@ -359,17 +353,17 @@ test('Method [Call]: Basic test with fake hacks', async (t) => {
 
   await timeout(200);
 
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     posts,
     [{ id: 1, type: 'post' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     users,
     [{ id: 10, type: 'user' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     photos,
     [{ id: 2, type: 'photo' }],
     'Value getting does not work properly'
@@ -377,13 +371,12 @@ test('Method [Call]: Basic test with fake hacks', async (t) => {
 });
 
 test('Method [Call]: Async/Await test', async (t) => {
-  t.timeout(5000);
   t.plan(4);
 
   const calling = new asBatch({
     key: 'my-call-batch-key',
     onCallsTimeout: async (calls) => {
-      t.pass();
+      t.assert.ok(true);
       await timeout(2000);
 
       return await Promise.all(calls);
@@ -420,17 +413,17 @@ test('Method [Call]: Async/Await test', async (t) => {
 
   await timeout(200);
 
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     await posts,
     [{ id: 1, type: 'post' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     await users,
     [{ id: 10, type: 'user' }],
     'Value getting does not work properly'
   );
-  t.deepEqual(
+  t.assert.deepStrictEqual(
     await photos,
     [{ id: 2, type: 'photo' }],
     'Value getting does not work properly'

@@ -1,4 +1,4 @@
-const test = require('ava');
+const test = require('node:test');
 
 const http = require('http');
 const Websocket = require('ws');
@@ -13,7 +13,6 @@ const createServer = () =>
 
 test('WebSocket.Server test', (t) =>
   new Promise((resolve) => {
-    t.timeout(150);
     t.plan(3);
 
     const server = createServer();
@@ -25,17 +24,17 @@ test('WebSocket.Server test', (t) =>
     ws.on('connection', (ws) => {
       const wsWrapper = new Server(ws);
 
-      t.pass('Connection passed');
+      t.assert.ok(true, 'Connection passed');
 
       wsWrapper.on('message', (data) => {
-        t.is(
+        t.assert.strictEqual(
           data,
           'client_message',
           'Message did not match to text from client'
         );
       });
       ws.on('close', () => {
-        t.pass('Close passed');
+        t.assert.ok(true, 'Close passed');
 
         server.close();
         resolve();
@@ -61,7 +60,6 @@ test('WebSocket.Server test', (t) =>
 
 test('WebSocket.Client test', (t) =>
   new Promise((resolve) => {
-    t.timeout(150);
     t.plan(3);
 
     const server = createServer();
@@ -81,12 +79,12 @@ test('WebSocket.Client test', (t) =>
       const wsClient = new Client(client);
 
       wsClient.on('open', () => {
-        t.pass('Connection passed');
+        t.assert.ok(true, 'Connection passed');
         client.send('client_message');
       });
 
       wsClient.on('message', (message) => {
-        t.is(
+        t.assert.strictEqual(
           message,
           'server_message',
           'Message did not match to text from server'
@@ -94,7 +92,7 @@ test('WebSocket.Client test', (t) =>
       });
 
       wsClient.on('close', () => {
-        t.pass('Close passed');
+        t.assert.ok(true, 'Close passed');
         server.close();
         resolve();
       });

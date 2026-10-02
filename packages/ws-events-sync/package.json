@@ -9,7 +9,7 @@
   "scripts": {
     "minify": "terser ws-events-sync.js -c -m -o ws-events-sync.min.js --source-map \"filename='ws-events-sync.min.js.map'\"",
     "prepublishOnly": "npm test && npm run minify",
-    "test": "ava"
+    "test": "node --test --test-timeout=150"
   },
   "repository": {
     "type": "git",

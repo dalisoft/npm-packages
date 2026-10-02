@@ -11,7 +11,7 @@
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "prepublishOnly": "npm run build && npm test",
-    "test": "ava"
+    "test": "node --test --test-timeout=10000"
   },
   "repository": {
     "type": "git",
