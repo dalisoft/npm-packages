@@ -8,7 +8,7 @@
   "cdn": "dist/umd/as-batch.min.js",
   "browser": "dist/umd/as-batch.min.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "bun ../../build.js ./src/as-batch.ts --name=asBatch --clean=dist --es=./dist/es/as-batch.js --cjs=./dist/cjs/as-batch.js --umd=./dist/umd/as-batch.js --min=./dist/umd/as-batch.min.js && tsc --emitDeclarationOnly",
     "prepublishOnly": "npm run build && npm test",
     "test": "npm run build && node --test --test-timeout=10000"
   },
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/dalisoft/as-batch/issues"
   },
-  "homepage": "https://github.com/dalisoft/as-batch#readme"
+  "homepage": "https://github.com/dalisoft/as-batch#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.4"
+  }
 }

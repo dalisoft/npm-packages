@@ -13,8 +13,8 @@
   "type": "module",
   "typings": "microhelpers.d.ts",
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
+    "dev": "bun build ./esm/index.js --format=cjs --target=node --packages=external --sourcemap=linked --outdir=./cjs --entry-naming=index.cjs --watch",
+    "build": "bun build ./esm/index.js --format=cjs --target=node --packages=external --sourcemap=linked --outdir=./cjs --entry-naming=index.cjs",
     "lint": "eslint ./esm",
     "prepublishOnly": "npm run lint"
   },

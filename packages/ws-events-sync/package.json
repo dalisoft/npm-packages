@@ -7,7 +7,7 @@
   "browser": "ws-events-sync.min.js",
   "typings": "ws-events-sync.d.js",
   "scripts": {
-    "minify": "terser ws-events-sync.js -c -m -o ws-events-sync.min.js --source-map \"filename='ws-events-sync.min.js.map'\"",
+    "minify": "bun build ws-events-sync.js --no-bundle --minify --outfile=ws-events-sync.min.js",
     "prepublishOnly": "npm test && npm run minify",
     "test": "node --test --test-timeout=150"
   },

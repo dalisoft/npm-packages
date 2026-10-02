@@ -7,7 +7,7 @@
   "type": "module",
   "main": "dist/es/jwt.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf dist && bun build ./src/jwt.ts --target=node --packages=external --outfile=./dist/es/jwt.js && tsc --emitDeclarationOnly",
     "prepublishOnly": "npm run build && npm run test",
     "test": "node --test --test-timeout=5000"
   },
