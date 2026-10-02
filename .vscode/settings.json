@@ -6,7 +6,7 @@
   "editor.defaultFormatter": "biomejs.biome",
   "npm.packageManager": "bun",
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvben.rumdl"
   },
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
