@@ -6,13 +6,13 @@
   "cdn": "points.min.js",
   "module": "index.js",
   "scripts": {
-    "fix": "standard --fix",
-    "lint": "standard --verbose | snazzy",
+    "fix": "biome check --write .",
+    "lint": "biome lint .",
     "test": "npm run fix && npm run lint",
-    "minify": "rollup -c --environment BUILD:prod",
-    "source": "rollup -c --sourcemap",
+    "minify": "bun ../../build.js index.js --name=PointsJS --named --bundle --min=points.min.js",
+    "source": "bun ../../build.js index.js --name=PointsJS --named --bundle --sourcemap --umd=points.js",
     "prepublishOnly": "npm test && npm run source && npm run minify",
-    "dev": "rollup -c -w --sourcemap"
+    "dev": "bun ../../build.js index.js --name=PointsJS --named --bundle --sourcemap --umd=points.js --watch=./src"
   },
   "repository": {
     "type": "git",

@@ -8,9 +8,9 @@
   "cdn": "dist/umd/batch-collect.min.js",
   "browser": "dist/umd/batch-collect.min.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "bun ../../build.js ./src/batch-collect.js --name=batchCollect --clean=dist --cjs=./dist/cjs/batch-collect.js --umd=./dist/umd/batch-collect.js --min=./dist/umd/batch-collect.min.js",
     "prepublishOnly": "npm run build && npm test",
-    "test": "npm run build && ava"
+    "test": "npm run build && node --test --test-timeout=5000"
   },
   "repository": {
     "type": "git",

@@ -7,9 +7,9 @@
   "browser": "ws-events-sync.min.js",
   "typings": "ws-events-sync.d.js",
   "scripts": {
-    "minify": "terser ws-events-sync.js -c -m -o ws-events-sync.min.js --source-map \"filename='ws-events-sync.min.js.map'\"",
+    "minify": "bun build ws-events-sync.js --no-bundle --minify --outfile=ws-events-sync.min.js",
     "prepublishOnly": "npm test && npm run minify",
-    "test": "ava"
+    "test": "node --test --test-timeout=150"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,9 @@
   "peerDependencies": {
     "websocket": "^1.0.32",
     "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "ws": "^7.5.13"
   },
   "dependencies": {
     "@dalisoft/events": "^0.2.0"

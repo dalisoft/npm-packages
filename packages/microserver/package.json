@@ -13,9 +13,9 @@
   "type": "module",
   "typings": "microhelpers.d.ts",
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "lint": "eslint ./esm",
+    "dev": "bun build ./esm/index.js --format=cjs --target=node --packages=external --sourcemap=linked --outdir=./cjs --entry-naming=index.cjs --watch",
+    "build": "bun build ./esm/index.js --format=cjs --target=node --packages=external --sourcemap=linked --outdir=./cjs --entry-naming=index.cjs",
+    "lint": "biome lint ./esm",
     "prepublishOnly": "npm run lint"
   },
   "engines": {

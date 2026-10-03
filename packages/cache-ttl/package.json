@@ -8,10 +8,10 @@
   "cdn": "dist/umd/cache-ttl.min.js",
   "browser": "dist/umd/cache-ttl.min.js",
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
+    "dev": "bun ../../build.js ./src/cache.ts --name=CacheTTL --clean=dist --es=./dist/es/cache-ttl.js --cjs=./dist/cjs/cache-ttl.js --umd=./dist/umd/cache-ttl.js --watch=./src",
+    "build": "bun ../../build.js ./src/cache.ts --name=CacheTTL --clean=dist --es=./dist/es/cache-ttl.js --cjs=./dist/cjs/cache-ttl.js --umd=./dist/umd/cache-ttl.js --min=./dist/umd/cache-ttl.min.js && tsc --emitDeclarationOnly",
     "prepublishOnly": "npm run build && npm test",
-    "test": "ava"
+    "test": "node --test --test-timeout=10000"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
     "in-memory"
   ],
   "author": "dalisoft",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^26.6.4"
+  }
 }

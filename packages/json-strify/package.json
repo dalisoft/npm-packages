@@ -5,7 +5,7 @@
   "main": "json-strify.js",
   "scripts": {
     "prepublishOnly": "npm test",
-    "test": "ava"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",

@@ -6,7 +6,7 @@
   "cdn": "react-es6-tween.min.js",
   "browser": "react-es6-tween.min.js",
   "scripts": {
-    "minify": "npx terser react-es6-tween.js -c -m -o react-es6-tween.min.js --source-map \"filename='react-es6-tween.min.js.map'\"",
+    "minify": "bun build react-es6-tween.js --no-bundle --minify --outfile=react-es6-tween.min.js",
     "prepublishOnly": "npm run minify"
   },
   "repository": {

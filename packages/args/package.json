@@ -9,9 +9,9 @@
   "browser": "args.min.js",
   "scripts": {
     "build": "lib-export -name args -file args.es.js -output args.js",
-    "minify": "npx terser args.js -c -m -o args.min.js --source-map \"filename='args.min.js.map'\"",
+    "minify": "bun build args.js --no-bundle --minify --outfile=args.min.js",
     "prepublishOnly": "npm run build && npm test && npm run minify",
-    "test": "npm run build && ava"
+    "test": "npm run build && node --test"
   },
   "repository": {
     "type": "git",

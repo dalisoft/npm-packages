@@ -5,8 +5,8 @@
   "main": "lib/gsheet-ql.js",
   "module": "gsheet-ql.es.js",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "build": "rm -rf lib dist && bun build ./src/_class.ts --target=node --packages=external --outfile=./gsheet-ql.es.js && bun build ./src/_class.ts --target=node --packages=external --format=cjs --outfile=./lib/gsheet-ql.js",
+    "dev": "bun build ./src/_class.ts --target=node --packages=external --watch --outfile=./gsheet-ql.es.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

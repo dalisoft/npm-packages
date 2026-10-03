@@ -16,7 +16,7 @@ const verifyJWT = (
         if (err) {
           return reject(err);
         }
-        resolve(decoded);
+        resolve(decoded as string | object);
       }
     )
   );

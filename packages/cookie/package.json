@@ -6,9 +6,9 @@
   "cdn": "cookie.min.js",
   "browser": "cookie.min.js",
   "scripts": {
-    "minify": "npx terser cookie.js -c -m -o cookie.min.js --source-map \"filename='cookie.min.js.map'\"",
+    "minify": "bun build cookie.js --no-bundle --minify --outfile=cookie.min.js",
     "prepublishOnly": "npm test && npm run minify",
-    "test": "npx ava"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
