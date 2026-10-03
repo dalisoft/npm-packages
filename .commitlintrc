@@ -1,5 +1,5 @@
 {
   "extends": [
-    "@commitlint/config-lerna-scopes"
+    "@commitlint/config-workspace-scopes"
   ]
 }

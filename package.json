@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-lerna-scopes": "^21.2.0",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-workspace-scopes": "^21.2.0",
     "lefthook": "^2.1.16",
     "rumdl": "^0.2.78",
     "typescript": "^7.0.2"
