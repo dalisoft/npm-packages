@@ -3,10 +3,9 @@ import nodeWebToken from 'node-webtokens';
 const verifyJWE = (token, key) =>
   new Promise((resolve, reject) => {
     nodeWebToken.parse(token).verify(key, (err, result) => {
-      const validExpiration =
-        result && result.payload
-          ? Number(result.payload.exp - Math.floor(Date.now() / 1000)) > 0
-          : true;
+      const validExpiration = result?.payload
+        ? Number(result.payload.exp - Math.floor(Date.now() / 1000)) > 0
+        : true;
       if (!validExpiration) {
         const tokenExpiredError = new Error('Token expired');
         tokenExpiredError.code = 'TokenExpiredError';
