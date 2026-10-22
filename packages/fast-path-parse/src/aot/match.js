@@ -1,8 +1,8 @@
-const equalPath = require('../utils/equal-path.js');
-const segmentsSlice = require('../utils/segment.js');
+import equalPath from '../utils/equal-path.js';
+import segmentsSlice from '../utils/segment.js';
 
 /**
- * @type {import('./match')}
+ * @type {import('./match').default}
  */
 const match = (path, compact) => {
   const { segments, filled } = segmentsSlice(path, compact);
@@ -55,4 +55,4 @@ const match = (path, compact) => {
   return (url) => equalPath(url, path);
 };
 
-module.exports = match;
+export default match;

@@ -9,32 +9,32 @@ const parseSegment = (name, getIndex, position = 1) => {
   if (name === '*' || name === '(.*)') {
     return {
       name: `*${getIndex()}`,
-      segment: true,
       position: position + 2,
+      segment: true,
       size: 2
     };
   }
   if (name.charAt(0) === ':') {
     return {
       name: name.substring(1),
-      segment: true,
       position: position + 2,
+      segment: true,
       size: 2
     };
   }
   if (name.charAt(0) === '<' && name.charAt(name.length - 1) === '>') {
     return {
       name: name.substring(1, name.length - 1),
-      segment: true,
       position: position + 2,
+      segment: true,
       size: 2
     };
   }
 
   return {
     name,
-    segment: false,
     position: position + name.length + 1,
+    segment: false,
     size: name.length
   };
 };
@@ -76,9 +76,9 @@ const mergeStaticSegments = (segments) => {
 };
 
 /**
- * @type {import('./segment')}
+ * @type {import('./segment').default}
  */
-module.exports = function segmentsSlice(path, compact = false) {
+export default function segmentsSlice(path, compact = false) {
   let INDEX = 1;
   let POSITION = 1;
 
@@ -104,5 +104,5 @@ module.exports = function segmentsSlice(path, compact = false) {
   const segments = compact ? mergeStaticSegments(rawSegments) : rawSegments;
   const segmentsFilled = segments.filter((segment) => segment.segment);
 
-  return { segments, filled: segmentsFilled, length: segments.length };
-};
+  return { filled: segmentsFilled, length: segments.length, segments };
+}

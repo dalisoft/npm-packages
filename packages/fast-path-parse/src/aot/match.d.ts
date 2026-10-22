@@ -13,4 +13,4 @@
  */
 function match(path: string, compact: boolean): (pathname: string) => boolean;
 
-export = match;
+export default match;

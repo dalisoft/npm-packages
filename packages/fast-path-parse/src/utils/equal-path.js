@@ -4,7 +4,7 @@
  * @param {string} path
  * @returns {boolean}
  */
-module.exports = (url, path) =>
+export default (url, path) =>
   url === path ||
   `${url}/` === path ||
   url === `${path}/` ||

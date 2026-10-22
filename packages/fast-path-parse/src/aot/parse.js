@@ -1,7 +1,7 @@
-const segmentsSlice = require('../utils/segment.js');
+import segmentsSlice from '../utils/segment.js';
 
 /**
- * @type {import('./parse')}
+ * @type {import('./parse').default}
  */
 const parse = (path, compact) => {
   const { segments, filled } = segmentsSlice(path, compact);
@@ -48,4 +48,4 @@ const parse = (path, compact) => {
   return (_, params = {}) => params;
 };
 
-module.exports = parse;
+export default parse;
