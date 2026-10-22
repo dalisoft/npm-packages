@@ -1,5 +1,5 @@
-import { applyFuncToShapes } from './helpers';
-import boundingBox from './boundingBox';
+import boundingBox from './boundingBox.js';
+import { applyFuncToShapes } from './helpers.js';
 
 const rotatePoint = (x, y, c, s, about) => {
   const { x: offsetX, y: offsetY } = about;

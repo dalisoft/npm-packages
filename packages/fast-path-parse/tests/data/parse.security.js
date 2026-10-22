@@ -1,74 +1,74 @@
 const matchSecurity = [
   {
-    name: 'process.exit security check',
     children: [
       {
-        name: '/foo/process.exit(1)',
         input: '/foo/process.exit(1)',
-        test_input: '/foo/(process.exit(1))',
-        result: {}
-      },
-      {
         name: '/foo/process.exit(1)',
+        result: {},
+        test_input: '/foo/(process.exit(1))'
+      },
+      {
         input: '/foo/process.exit(1)',
-        test_input: '/foo',
-        result: {}
+        name: '/foo/process.exit(1)',
+        result: {},
+        test_input: '/foo'
       },
       {
-        name: '/foo/:bar',
         input: '/foo/:bar',
-        test_input: '/foo/(process.exit(1))',
-        result: { bar: '(process.exit(1))' }
-      },
-      {
         name: '/foo/:bar',
-        input: '/foo/:bar',
-        test_input: '/(process.exit(1))',
-        result: {}
+        result: { bar: '(process.exit(1))' },
+        test_input: '/foo/(process.exit(1))'
       },
       {
-        name: '/:bar',
+        input: '/foo/:bar',
+        name: '/foo/:bar',
+        result: {},
+        test_input: '/(process.exit(1))'
+      },
+      {
         input: '/:bar',
-        test_input: '/(process.exit(1))',
-        result: { bar: '(process.exit(1))' }
+        name: '/:bar',
+        result: { bar: '(process.exit(1))' },
+        test_input: '/(process.exit(1))'
       }
-    ]
+    ],
+    name: 'process.exit security check'
   },
   {
-    name: 'throw security check',
     children: [
       {
-        name: '/foo/throw 1',
         input: '/foo/throw 1',
-        test_input: '/foo throw 1',
-        result: {}
-      },
-      {
         name: '/foo/throw 1',
+        result: {},
+        test_input: '/foo throw 1'
+      },
+      {
         input: '/foo/throw 1',
-        test_input: '/foo',
-        result: {}
+        name: '/foo/throw 1',
+        result: {},
+        test_input: '/foo'
       },
       {
-        name: '/foo/:bar',
         input: '/foo/:bar',
-        test_input: '/foo/throw 1',
-        result: { bar: 'throw 1' }
-      },
-      {
         name: '/foo/:bar',
-        input: '/foo/:bar',
-        test_input: '/throw 1',
-        result: {}
+        result: { bar: 'throw 1' },
+        test_input: '/foo/throw 1'
       },
       {
-        name: '/:bar',
+        input: '/foo/:bar',
+        name: '/foo/:bar',
+        result: {},
+        test_input: '/throw 1'
+      },
+      {
         input: '/:bar',
-        test_input: '/throw 1',
-        result: { bar: 'throw 1' }
+        name: '/:bar',
+        result: { bar: 'throw 1' },
+        test_input: '/throw 1'
       }
-    ]
+    ],
+    name: 'throw security check'
   }
 ];
 
-module.exports = matchSecurity;
+export default matchSecurity;

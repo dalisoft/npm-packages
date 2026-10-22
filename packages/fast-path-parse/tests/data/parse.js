@@ -1,9 +1,9 @@
 const parse = [
   {
-    name: 'No segment',
     input: '/foo/bar',
-    test_input: '/foo/bar',
+    name: 'No segment',
     result: {},
+    test_input: '/foo/bar',
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -12,10 +12,10 @@ const parse = [
     ]
   },
   {
-    name: 'Simple segmenting, `:id`',
     input: '/foo/:id',
-    test_input: '/foo/123',
+    name: 'Simple segmenting, `:id`',
     result: { id: '123' },
+    test_input: '/foo/123',
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -24,10 +24,10 @@ const parse = [
     ]
   },
   {
-    name: 'Simple segmenting 2, `:id`',
     input: '/foo/:id/bar',
-    test_input: '/foo/123/bar',
+    name: 'Simple segmenting 2, `:id`',
     result: { id: '123' },
+    test_input: '/foo/123/bar',
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -36,10 +36,10 @@ const parse = [
     ]
   },
   {
-    name: 'Simple segmenting, `<id>`',
     input: '/foo/<id>',
+    name: 'Simple segmenting, `<id>`',
+    result: { id: '123' },
     test_input: '/foo/123',
-    result: { id: '123' },
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -48,10 +48,10 @@ const parse = [
     ]
   },
   {
-    name: 'Simple segmenting 2, `<id>`',
     input: '/foo/<id>/bar',
-    test_input: '/foo/123/bar',
+    name: 'Simple segmenting 2, `<id>`',
     result: { id: '123' },
+    test_input: '/foo/123/bar',
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -60,10 +60,10 @@ const parse = [
     ]
   },
   {
-    name: 'Simple two segmenting',
     input: '/foo/:id/bar/:task',
+    name: 'Simple two segmenting',
+    result: { id: '123', task: 'run' },
     test_input: '/foo/123/bar/run',
-    result: { id: '123', task: 'run' },
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -72,10 +72,10 @@ const parse = [
     ]
   },
   {
-    name: 'Average two segmenting',
     input: '/foo/:id/:task',
+    name: 'Average two segmenting',
+    result: { id: '123', task: 'run' },
     test_input: '/foo/123/run',
-    result: { id: '123', task: 'run' },
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -84,10 +84,10 @@ const parse = [
     ]
   },
   {
-    name: 'Average two segmenting 2',
     input: '/foo/:id/:task/bar',
-    test_input: '/foo/123/run/bar',
+    name: 'Average two segmenting 2',
     result: { id: '123', task: 'run' },
+    test_input: '/foo/123/run/bar',
     variants: [
       ['%s', '%s'],
       ['%s/', '%s'],
@@ -96,59 +96,59 @@ const parse = [
     ]
   },
   {
-    name: 'Simple * segment',
     children: [
       {
-        name: '/foo/*/bar',
         input: '/foo/*/bar',
-        test_input: '/foo/123/bar',
-        result: { '*1': '123' }
+        name: '/foo/*/bar',
+        result: { '*1': '123' },
+        test_input: '/foo/123/bar'
       },
       {
-        name: '/foo/*/bar/*',
         input: '/foo/*/bar/*',
-        test_input: '/foo/123/bar/run',
-        result: { '*1': '123', '*2': 'run' }
+        name: '/foo/*/bar/*',
+        result: { '*1': '123', '*2': 'run' },
+        test_input: '/foo/123/bar/run'
       }
-    ]
+    ],
+    name: 'Simple * segment'
   },
   {
-    name: 'Average * segment',
     children: [
       {
-        name: '/foo/:id/*',
         input: '/foo/:id/*',
-        test_input: '/foo/123/bar',
-        result: { id: '123', '*1': 'bar' }
+        name: '/foo/:id/*',
+        result: { '*1': 'bar', id: '123' },
+        test_input: '/foo/123/bar'
       },
       {
-        name: '/foo/*/*/*',
         input: '/foo/*/*/*',
-        test_input: '/foo/123/bar/run',
-        result: { '*1': '123', '*2': 'bar', '*3': 'run' }
+        name: '/foo/*/*/*',
+        result: { '*1': '123', '*2': 'bar', '*3': 'run' },
+        test_input: '/foo/123/bar/run'
       },
       {
-        name: '/foo/*/:id/*',
         input: '/foo/*/:id/*',
-        test_input: '/foo/123/bar/run',
+        name: '/foo/*/:id/*',
         result: {
           '*1': '123',
-          id: 'bar',
-          '*2': 'run'
-        }
+          '*2': 'run',
+          id: 'bar'
+        },
+        test_input: '/foo/123/bar/run'
       },
       {
-        name: '/foo/*/:id/(.*)',
         input: '/foo/*/:id/(.*)',
-        test_input: '/foo/123/bar/run',
+        name: '/foo/*/:id/(.*)',
         result: {
           '*1': '123',
-          id: 'bar',
-          '*2': 'run'
-        }
+          '*2': 'run',
+          id: 'bar'
+        },
+        test_input: '/foo/123/bar/run'
       }
-    ]
+    ],
+    name: 'Average * segment'
   }
 ];
 
-module.exports = parse;
+export default parse;

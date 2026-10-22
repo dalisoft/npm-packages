@@ -1,5 +1,4 @@
 declare const process: any;
-declare const require: any;
 
 export interface Config {
   onlyServer?: boolean;
@@ -12,7 +11,7 @@ export interface Config {
   destroy?: Function;
 }
 
-type typeValueRef = string | number | object | Symbol | Function;
+type typeValueRef = string | number | object | symbol | Function;
 type typeValueRefOrRefArr = typeValueRef | typeValueRef[];
 type typeValue =
   | typeValueRefOrRefArr
@@ -20,9 +19,7 @@ type typeValue =
   | Promise<typeValueRefOrRefArr>;
 
 const isNonServerEnv =
-  typeof window !== 'undefined' ||
-  typeof require === 'undefined' ||
-  typeof process === 'undefined';
+  typeof window !== 'undefined' || typeof process === 'undefined';
 
 class CustomCache {
   public addedCacheKeys?: string[];
@@ -40,8 +37,8 @@ class CustomCache {
     this.addedCacheKeys = Array.isArray(config.initialKeys)
       ? config.initialKeys
       : typeof config.initialKeys === 'function'
-      ? config.initialKeys() || []
-      : [];
+        ? config.initialKeys() || []
+        : [];
 
     return this;
   }
@@ -150,7 +147,7 @@ class CustomCache {
     const isAsyncItem: boolean = this.addedCacheKeys.some(
       (key: string): boolean => {
         const item = this.get(key) as Promise<typeValue>;
-        // @ts-ignore
+        // @ts-expect-error
         if (item.then) {
           return true;
         }
@@ -159,19 +156,18 @@ class CustomCache {
     );
 
     if (isAsyncItem) {
-      return this.addedCacheKeys.forEach((key: string): Promise<
-        void
-      > | void => {
-        const get = this.get(key);
+      return this.addedCacheKeys.forEach(
+        (key: string): Promise<void> | void => {
+          const get = this.get(key);
 
-        // @ts-ignore-line
-        if ((get as Promise<typeValue>).then) {
-          return (get as Promise<typeValue>).then((getValue: any): void =>
-            fn(key, getValue)
-          );
+          if ((get as Promise<typeValue>).then) {
+            return (get as Promise<typeValue>).then((getValue: any): void =>
+              fn(key, getValue)
+            );
+          }
+          fn(get);
         }
-        fn(get);
-      });
+      );
     }
     return this.addedCacheKeys.forEach((key: string): void =>
       fn(key, this.get(key))
@@ -188,7 +184,7 @@ class CustomCache {
     }
     return;
   }
-  public destroy(): Promise<any> | void {
+  public destroy(): Promise<any> | undefined {
     if (isNonServerEnv && this.config.onlyServer) {
       return;
     }

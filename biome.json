@@ -1,0 +1,78 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedKeys": "on",
+        "useSortedPackageJson": "on"
+      }
+    },
+    "enabled": true
+  },
+  "files": {
+    "includes": ["**", "!!**/*.min.js", "!!**/*.d.ts", "!!**/node_modules"]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80
+  },
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "always",
+      "attributePosition": "multiline",
+      "bracketSameLine": true,
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "double",
+      "quoteStyle": "single",
+      "trailingCommas": "none"
+    }
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        "useHtmlLang": "warn"
+      },
+      "correctness": {
+        "noConstructorReturn": "warn",
+        "noInnerDeclarations": "warn",
+        "noInvalidUseBeforeDeclaration": "warn",
+        "noUnreachableSuper": "warn",
+        "noVoidTypeReturn": "warn"
+      },
+      "suspicious": {
+        "noAssignInExpressions": "warn",
+        "noAsyncPromiseExecutor": "warn",
+        "noImplicitAnyLet": "warn",
+        "noShadowRestrictedNames": "warn",
+        "useIterableCallbackReturn": "warn"
+      }
+    }
+  },
+  "markdown": {
+    "formatter": {
+      "enabled": false
+    },
+    "linter": {
+      "enabled": false
+    }
+  },
+  "overrides": [
+    {
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      },
+      "includes": ["package.json", "**/package.json"]
+    }
+  ],
+  "vcs": {
+    "clientKind": "git",
+    "enabled": true,
+    "useIgnoreFile": true
+  }
+}

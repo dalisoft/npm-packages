@@ -187,6 +187,19 @@ assets/css/bundle*
 
 # TypeScript v1 declaration files
 typings/
+tsconfig.tsbuildinfo
 
 # release-me
 .release-me
+
+# rumdl
+.rumdl_cache
+
+#################
+#### Agents #####
+#################
+
+DRAFTS/
+
+# Claude Code
+.claude

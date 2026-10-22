@@ -7,7 +7,7 @@ const collector = (fn, delay = 50 / 3) => {
   const timeoutHandler = async (
     collectCopy,
     collect,
-    reactFn,
+    _reactFn,
     result,
     reactResult
   ) => {
@@ -32,9 +32,8 @@ const collector = (fn, delay = 50 / 3) => {
   };
 
   const nextTickHandler = ({ result, reactFn }) => {
-    const collectCopy = (timerId
-      ? timerId.collect.concat(collect)
-      : collect.slice()
+    const collectCopy = (
+      timerId ? timerId.collect.concat(collect) : collect.slice()
     ).filter((item, i, self) => self.indexOf(item) === i);
 
     let reactResult;
@@ -71,17 +70,17 @@ const collector = (fn, delay = 50 / 3) => {
   return (batchFn, reactFn) => {
     const result = typeof batchFn === 'function' ? batchFn(collect) : batchFn;
 
-    if (result && result.then) {
+    if (result?.then) {
       return result
         .then((promiseResult) => {
           collect.push(promiseResult);
-          return { result: promiseResult, reactFn };
+          return { reactFn, result: promiseResult };
         })
         .then(nextTickHandler);
     }
 
     collect.push(result);
-    return nextTickHandler({ result, reactFn });
+    return nextTickHandler({ reactFn, result });
   };
 };
 

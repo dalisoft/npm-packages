@@ -1,41 +1,28 @@
 {
   "name": "@dalisoft/npm-packages",
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
-  "type": "module",
+  "scripts": {
+    "format": "biome format --write && rumdl fmt .",
+    "lint": "biome lint && rumdl check .",
+    "prepare": "lefthook install",
+    "release": "for pkg in packages/*/package.json; do (cd \"$(dirname \"$pkg\")\" && ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace) || exit 1; done"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.2",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-workspace-scopes": "^21.2.0",
+    "@types/node": "^26.6.5",
+    "lefthook": "^2.2.2",
+    "rumdl": "^0.3.0",
+    "tsrs": "^0.18.0-ts7.1.0-dev.20260929"
+  },
+  "packageManager": "bun@1.4.3",
   "engines": {
     "node": ">=18.19.1"
   },
-  "scripts": {
-    "release": "pnpm -r --workspace-concurrency=1 exec ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace",
-    "lint": "echo 'No linter configured yet' && exit 0"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-lerna-scopes": "^21.2.0",
-    "@rollup/plugin-buble": "^1.0.3",
-    "@rollup/plugin-commonjs": "^29.0.3",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-sucrase": "^5.1.0",
-    "ava": "^8.1.0",
-    "eslint": "^9.39.2",
-    "eslint-config-airlight-node": "^5.6.3",
-    "husky": "^9.1.7",
-    "husky-config-airlight": "^4.0.4",
-    "lint-staged": "^15.5.2",
-    "lint-staged-config-airlight": "^4.1.4",
-    "prettier-config-airlight": "^6.0.4",
-    "rollup": "^4.64.10",
-    "rollup-plugin-delete": "^3.0.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.37.0",
-    "smartlint": "^7.0.6",
-    "terser": "^5.51.2",
-    "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "lib-export": "^0.0.3"
-  }
+  "trustedDependencies": []
 }

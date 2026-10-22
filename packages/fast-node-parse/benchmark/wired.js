@@ -4,20 +4,20 @@ export class Wired {
   #index = 0;
 
   constructor() {
-    this.hashmap = new Map();
+    this.static = new Map();
     this.dynamic = [];
     this.wildcard = [];
   }
 
   handleMap(method, path, callback) {
     const paths = path.split('/').map((_path) => ({
-      wildcard: _path === '*',
       dynamic: [':', '<', '{'].includes(_path.charAt(0)),
-      static: !(_path === '*' && [':', '<', '{'].includes(_path.charAt(0)))
+      static: !(_path === '*' && [':', '<', '{'].includes(_path.charAt(0))),
+      wildcard: _path === '*'
     }));
     const refIndex = this.#index;
 
-    const ref = { method, path, callback, refIndex };
+    const ref = { callback, method, path, refIndex };
     const response = { method, path };
 
     if (paths.find((route) => route.wildcard)) {
@@ -32,8 +32,8 @@ export class Wired {
       response.kind = 'dynamic';
       response.priority = 2;
       response.ref = ref;
-    } else if (!this.hashmap.has(`${method}_${path}`)) {
-      this.hashmap.set(`${method}_${path}`, callback);
+    } else if (!this.static.has(`${method}_${path}`)) {
+      this.static.set(`${method}_${path}`, callback);
 
       response.kind = 'static';
       response.priority = 1;
@@ -52,12 +52,12 @@ export class Wired {
 
   has(method, path) {
     // TODO: implement full working solution
-    return this.hashmap.has(`${method}_${path}`);
+    return this.static.has(`${method}_${path}`);
   }
 
   lookup(method, path) {
     if (this.has(`${method}_${path}`)) {
-      return this.hashmap.get(`${method}_${path}`);
+      return this.static.get(`${method}_${path}`);
     }
     return null;
   }
@@ -70,3 +70,5 @@ w.add('GET', '/foo/:id', () => {});
 w.add('GET', '/foo/<id>', () => {});
 w.add('GET', '/foo/*/bar', () => {});
 w.add('GET', '/foo/bar/*', () => {});
+
+// console.log(w);

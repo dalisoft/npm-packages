@@ -1,5 +1,5 @@
-import { Secret, GetPublicKeyOrSecret } from 'jsonwebtoken';
-import crypto from 'crypto';
+import crypto from 'node:crypto';
+import type { GetPublicKeyOrSecret, Secret } from 'jsonwebtoken';
 
 const algorithm = 'aes-192-cbc';
 
@@ -18,11 +18,11 @@ function decrypt(key: Secret | GetPublicKeyOrSecret, data: string) {
   let decrypted;
   try {
     decrypted = decipher.update(data, 'hex', 'utf8');
-  } catch (e) {
+  } catch (_e) {
     return data;
   }
   decrypted += decipher.final('utf8');
   return decrypted;
 }
 
-export { encrypt, decrypt };
+export { decrypt, encrypt };

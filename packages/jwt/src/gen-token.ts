@@ -1,8 +1,8 @@
+import type { GetPublicKeyOrSecret, Secret, SignOptions } from 'jsonwebtoken';
 import randToken from 'rand-token';
-import { GetPublicKeyOrSecret, Secret, SignOptions } from 'jsonwebtoken';
-import { sign } from './sign';
 import { decode } from './decode';
-import { encrypt, decrypt } from './utils';
+import { sign } from './sign';
+import { decrypt, encrypt } from './utils';
 
 declare module 'rand-token' {
   export function uid(size: number): string;
@@ -12,8 +12,8 @@ interface SecureMapInterface {
   [key: string]: any;
 }
 const secureMap: SecureMapInterface = {
-  S128: true,
-  S96: false
+  S96: false,
+  S128: true
 };
 const secureVal = (v: boolean | undefined): string =>
   v ? 'S128' : v === false ? 'S96' : 'S32';
@@ -37,10 +37,10 @@ async function generateToken(
 
   return {
     accessToken,
-    refreshToken,
     publicKey: salt
       ? encrypt(`${refreshToken}.${salt}`, secretOrPrivate as any)
-      : null
+      : null,
+    refreshToken
   };
 }
 

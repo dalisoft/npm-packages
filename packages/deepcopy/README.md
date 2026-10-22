@@ -13,7 +13,7 @@ You can use [lodash.clonedeep](https://www.npmjs.com/package/lodash.clonedeep) a
 - Good browsers compatiblity
 - Performant
 - Easy
-- UMD compatible
+- ESM only
 
 ## Installation
 
@@ -26,13 +26,6 @@ npm i deepcopy
 then you able to import to Node.js/Browser easily
 
 ```js
-// Node.js
-const DeepCopy = require('deepcopy');
-
-// Browser
-// window.DeepCopy OR DeepCopy
-
-// ES6
 import DeepCopy from 'deepcopy';
 ```
 

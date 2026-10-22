@@ -2,8 +2,8 @@
 /** global: py */
 /** global: cx */
 /** global: cy */
-import arcToBezier from './arcToBezier';
-import { applyFuncToShapes } from './helpers';
+import arcToBezier from './arcToBezier.js';
+import { applyFuncToShapes } from './helpers.js';
 
 const cubifyShape = (shape) => {
   let i = 0;
@@ -16,15 +16,15 @@ const cubifyShape = (shape) => {
 
       if (point.curve.type === 'arc') {
         const curves = arcToBezier({
-          px,
-          py,
           cx,
           cy,
+          largeArcFlag: point.curve.largeArcFlag,
+          px,
+          py,
           rx: point.curve.rx,
           ry: point.curve.ry,
-          xAxisRotation: point.curve.xAxisRotation,
-          largeArcFlag: point.curve.largeArcFlag,
-          sweepFlag: point.curve.sweepFlag
+          sweepFlag: point.curve.sweepFlag,
+          xAxisRotation: point.curve.xAxisRotation
         });
 
         curves.forEach((point, offset) => {

@@ -1,7 +1,7 @@
-import benny from 'benny';
-import fastPathCompile from 'fast-path-parse/aot/match';
-import fastPathParse from 'fast-path-parse/runtime/match';
 import { match } from 'path-to-regexp';
+import { add, complete, cycle, suite } from 'tinybench';
+import fastPathCompile from '../src/aot/match.js';
+import fastPathParse from '../src/runtime/match.js';
 
 const pathString = '/foo/:bar';
 
@@ -10,17 +10,17 @@ const runtimeMatch = fastPathParse(pathString);
 const $match = match(pathString);
 
 // Suite
-benny.suite(
+suite(
   'path-compare',
-  benny.add('string-compare', () => {
+  add('string-compare', () => {
     return $match('/foo/bar');
   }),
-  benny.add('aot-match', () => {
+  add('aot-match', () => {
     aotMatch('/foo/bar');
   }),
-  benny.add('runtime-match', () => {
+  add('runtime-match', () => {
     runtimeMatch('/foo/bar');
   }),
-  benny.cycle(),
-  benny.complete()
+  cycle(),
+  complete()
 );

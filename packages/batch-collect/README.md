@@ -23,15 +23,6 @@ I recommend you using [DataLoader](https://github.com/graphql/dataloader) instea
 ```js
 // ES6
 import batchCollect from '@dalisoft/batch-collect';
-
-// or
-
-// CommonJS
-const batchCollect = require('@dalisoft/batch-collect');
-
-// or
-
-const batchCollect = window.batchCollect;
 ```
 
 ## Example

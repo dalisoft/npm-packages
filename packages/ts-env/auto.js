@@ -1,3 +1,3 @@
 import { activate } from './lib.js';
 
-activate({ on: 'development', envs: ['development', 'test', 'production'] });
+activate({ envs: ['development', 'test', 'production'], on: 'development' });

@@ -1,4 +1,4 @@
-const { launch } = require('puppeteer');
+import { launch } from 'puppeteer';
 
 /**
  * Build a PDF file from HTML content
@@ -29,4 +29,4 @@ const buildPDF = async (content, options = {}) => {
   return buffer;
 };
 
-module.exports = buildPDF;
+export default buildPDF;

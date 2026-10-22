@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const { exec } = require('child_process');
+import { exec } from 'node:child_process';
 
-// @ts-ignore-next-line
-const [node, cliFile, ...args] = process.argv;
+// @ts-expect-error-next-line
+const [_node, _cliFile, ...args] = process.argv;
 
 // Constants
 const CHECK_ANTIALIASING =
@@ -21,7 +21,7 @@ console.log(`> ${APP_NAME}`, '\n');
 let execArg;
 
 for (let i = 0, len = args.length; i < len; i++) {
-  let key = args[i].substr(2);
+  const key = args[i].substr(2);
 
   if (key === 'check') {
     execArg = CHECK_ANTIALIASING;
@@ -44,7 +44,7 @@ for (let i = 0, len = args.length; i < len; i++) {
 }
 
 if (execArg) {
-  exec(execArg, (err, stdout, stderr) => {
+  exec(execArg, (err, stdout, _stderr) => {
     if (err) {
       // node couldn't execute the command
       return;
@@ -62,10 +62,10 @@ if (execArg) {
         +stdout === 0
           ? 'Disabled'
           : +stdout === 1
-          ? 'Light'
-          : +stdout === 2
-          ? 'Medium'
-          : 'Strong';
+            ? 'Light'
+            : +stdout === 2
+              ? 'Medium'
+              : 'Strong';
       console.log('Apple Font Smoothing level is', '[', level, ']');
     } else if (execArg === CHECK_ANTIALIASING_THRESHOLD) {
       console.log('Apple Font Smoothing Threshold is', '[', +stdout, ']');

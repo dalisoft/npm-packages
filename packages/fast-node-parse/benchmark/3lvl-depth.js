@@ -1,9 +1,9 @@
-import { suite, add, cycle, complete } from 'benny';
-import { Node } from '../src/node.js';
+import { add, complete, cycle, suite } from 'benny';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
-import { CallbackNode, RootNode } from './nodes.js';
 import { TrieRouter } from 'hono/router/trie-router';
+import { Node } from '../src/node.js';
+import { CallbackNode, RootNode } from './nodes.js';
 
 const root = new RootNode('/');
 const foo = new Node('foo');
@@ -28,7 +28,7 @@ const route = FindMyWay({
     return false;
   }
 });
-route.on('GET', '/foo/:id/:kind', (req, res, params) => ({
+route.on('GET', '/foo/:id/:kind', (_req, _res, params) => ({
   id: params.id,
   [params.kind]: 1
 }));
@@ -70,12 +70,12 @@ suite(
   add('hono regex parse', () => {
     const [res] = honoRouteRegEx.match('GET', '/foo/123/bar');
 
-    const params = res[0][1];
+    const _params = res[0][1];
   }),
   add('hono trie parse', () => {
     const [res] = honoTrieRoute.match('GET', '/foo/123/bar');
 
-    const params = res[0][1];
+    const _params = res[0][1];
   }),
   add('find-my-way', () => {
     route.find('GET', '/foo/123/bar');

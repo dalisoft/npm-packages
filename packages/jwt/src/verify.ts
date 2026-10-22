@@ -1,4 +1,7 @@
-import jwt, { type GetPublicKeyOrSecret, type VerifyOptions } from 'jsonwebtoken';
+import jwt, {
+  type GetPublicKeyOrSecret,
+  type VerifyOptions
+} from 'jsonwebtoken';
 import { decrypt } from './utils';
 
 const verifyJWT = (
@@ -16,7 +19,7 @@ const verifyJWT = (
         if (err) {
           return reject(err);
         }
-        resolve(decoded);
+        resolve(decoded as string | object);
       }
     )
   );

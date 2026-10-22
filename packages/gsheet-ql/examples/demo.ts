@@ -1,5 +1,5 @@
+import readline from 'node:readline';
 import { default as fs } from 'fs-extra';
-import readline from 'readline';
 import { google } from 'googleapis';
 import GSheetQL from '../src/_class';
 

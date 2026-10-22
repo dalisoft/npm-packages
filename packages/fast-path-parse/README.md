@@ -28,20 +28,6 @@ const parsePath = parse('/user/:foo');
 parsePath('/user/john');
 ```
 
-### CJS
-
-```js
-const parse = require('fast-path-parse/runtime/parse');
-// or
-const parse = require('fast-path-parse/aot/parse');
-
-// Run this ahead-of-time, not at runtime or hot path
-const parsePath = parse('/user/:foo');
-
-// Run this at hot path
-parsePath('/user/john');
-```
-
 ## Benchmark
 
 It is on my machine, on your machine results may vary. See [benchmark](/packages/fast-path-parse/benchmark) folder
@@ -66,21 +52,23 @@ It is on my machine, on your machine results may vary. See [benchmark](/packages
 - ？– Not tested but could work
 - ❌ – Probably does not happen
 
-| Name                 | Status | Priority | Performance |
-| -------------------- | ------ | -------- | ----------- |
-| `/foo`               | ✅     | 0        | 100%        |
-| `/foo/bar`           | ✅     | 0        | 100%        |
-| `/foo/bar-{one,two}` | ⚠️     | 1        | 60%         |
-| `/foo/bar-[one,two]` | ⚠️     | 1        | 60%         |
-| `/foo/bar_*`         | ⚠️     | 2        | 80%         |
-| `/foo/bar-*`         | ⚠️     | 2        | 80%         |
-| `/foo/bar*`          | ⚠️     | 2        | 80%         |
-| `/foo/bar/<id>`      | ✅     | 3        | 90%         |
-| `/foo/task/:bar`     | ✅     | 4        | 80%         |
-| `/foo/:task/:bar`    | ✅     | 4        | 70%         |
-| `/foo/:bar`          | ✅     | 5        | 90%         |
-| `/foo/*`             | ✅     | 6        | 90%         |
-| `/foo/(.*)`          | ✅     | 6        | 90%         |
+| Name                   | Status | Priority | Performance |
+| ---------------------- | ------ | -------- | ----------- |
+| `/foo`                 | ✅     | 0        | 100%        |
+| `/foo/bar`             | ✅     | 0        | 100%        |
+| `/foo/bar-{two,three}` | ✍️     | 1        | 40%         |
+| `/foo/bar-[two,three]` | ✍️     | 1        | 40%         |
+| `/foo/bar-{one,two}`   | ✍️     | 1        | 60%         |
+| `/foo/bar-[one,two]`   | ✍️     | 1        | 60%         |
+| `/foo/bar_*`           | ⚠️     | 2        | 80%         |
+| `/foo/bar-*`           | ⚠️     | 2        | 80%         |
+| `/foo/bar*`            | ⚠️     | 2        | 80%         |
+| `/foo/bar/<id>`        | ✅     | 3        | 90%         |
+| `/foo/task/:bar`       | ✅     | 4        | 80%         |
+| `/foo/:task/:bar`      | ✅     | 4        | 70%         |
+| `/foo/:bar`            | ✅     | 5        | 90%         |
+| `/foo/*`               | ✅     | 6        | 90%         |
+| `/foo/(.*)`            | ✅     | 6        | 90%         |
 
 ## License
 

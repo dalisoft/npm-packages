@@ -1,5 +1,5 @@
-const importsAst = require('./imports-ast');
-const exportsAst = require('./exports-ast');
-const cleanAst = require('./clean-ast');
+import cleanAst from './clean-ast.js';
+import exportsAst from './exports-ast.js';
+import importsAst from './imports-ast.js';
 
-module.exports = { importsAst, exportsAst, cleanAst };
+export { cleanAst, exportsAst, importsAst };

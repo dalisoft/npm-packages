@@ -2,28 +2,35 @@
   "name": "@dalisoft/batch-collect",
   "version": "0.0.3",
   "description": "Collect calls and make them batching",
-  "typings": "batch-collect.d.ts",
-  "module": "src/batch-collect.js",
-  "main": "dist/cjs/batch-collect.js",
-  "cdn": "dist/umd/batch-collect.min.js",
-  "browser": "dist/umd/batch-collect.min.js",
-  "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build && npm test",
-    "test": "npm run build && ava"
+  "keywords": [
+    "call",
+    "batch"
+  ],
+  "homepage": "https://github.com/dalisoft/batch-collect#readme",
+  "bugs": {
+    "url": "https://github.com/dalisoft/batch-collect/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/batch-collect.git"
   },
-  "keywords": [
-    "call",
-    "batch"
-  ],
-  "author": "dalisoft",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dalisoft/batch-collect/issues"
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./batch-collect.d.ts",
+      "default": "./src/batch-collect.js"
+    }
   },
-  "homepage": "https://github.com/dalisoft/batch-collect#readme"
+  "main": "src/batch-collect.js",
+  "types": "batch-collect.d.ts",
+  "files": [
+    "src",
+    "batch-collect.d.ts"
+  ],
+  "scripts": {
+    "prepublishOnly": "bun run test",
+    "test": "bun test --timeout=5000"
+  }
 }

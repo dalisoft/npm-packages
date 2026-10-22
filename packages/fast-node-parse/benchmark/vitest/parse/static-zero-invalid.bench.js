@@ -1,17 +1,19 @@
 import Extreme, { param, wildcard } from 'extreme-router';
+import { Router } from 'fast-node-parse';
 import fppParseA from 'fast-path-parse/aot/parse';
 import fppParseR from 'fast-path-parse/runtime/parse';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';
 import { bench, describe } from 'vitest';
+import { FastTree } from '../../fast-tree.ts';
 import { CallbackNode, RootNode } from '../../nodes.js';
 import { Wired } from '../../wired.js';
 import { config, handler } from '../config.js';
 
 const { path, complexity, validate } = {
-  path: '/foo/bar',
   complexity: 'zero',
+  path: '/foo/bar',
   validate: '/foo/zero'
 };
 
@@ -20,6 +22,8 @@ const extreme = new Extreme();
 const honoRouteRegEx = new RegExpRouter();
 const honoTrieRoute = new TrieRouter();
 const wire = new Wired();
+const fastTree = new FastTree();
+const router = new Router();
 
 // Registering necessary modules
 extreme.use(param).use(wildcard);
@@ -45,10 +49,20 @@ honoRouteRegEx.add('GET', path, handler);
 honoTrieRoute.add('GET', path, handler);
 wire.add('GET', path, handler);
 extreme.register('/foo').handler = handler;
+fastTree.insert('GET', path, { descriptor: () => handler() });
+router.insert('GET', path, { descriptor: () => handler() });
+const routerBound = router.bind('GET', { normalize: 'raw' });
+const routerParams = {};
 
 // Suite
 describe(`parse [${complexity}]`, () => {
+  bench('fast-tree', () => fastTree.parse('GET', validate), config);
   bench('fast-node-parse', () => root.parse(validate), config);
+  bench(
+    'fast-node-router',
+    () => routerBound.parse(validate, routerParams),
+    config
+  );
   bench(
     'fast-path-parse[-runtime]',
     () => fastPathParseParseRuntime(validate),
@@ -76,5 +90,5 @@ describe(`parse [${complexity}]`, () => {
     config
   );
   bench('find-my-way', () => route.find('GET', validate), config);
-  bench('extreme-router', () => extreme.match(validate).params, config);
+  bench('extreme-router', () => extreme.match(validate)?.params, config);
 });

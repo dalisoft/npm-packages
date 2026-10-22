@@ -28,10 +28,10 @@ const getRowsIndex = (
     const [start, end] = indexMap;
 
     return {
-      startRowColumn: start.column,
-      startRowIndex: start.index,
       endRowColumn: end.column,
-      endRowIndex: end.index
+      endRowIndex: end.index,
+      startRowColumn: start.column,
+      startRowIndex: start.index
     };
   }
   if (indexMap.length === 0) {
@@ -41,10 +41,10 @@ const getRowsIndex = (
   const [item] = indexMap;
 
   return {
-    startRowColumn: item.column,
-    startRowIndex: item.index,
     endRowColumn: item.column,
-    endRowIndex: item.index + 1
+    endRowIndex: item.index + 1,
+    startRowColumn: item.column,
+    startRowIndex: item.index
   };
 };
 

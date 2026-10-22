@@ -1,9 +1,7 @@
 /** global: bx */
 /** global: by */
 const angleFromSides = (a, b, c) => {
-  const r = Math.acos(
-    (Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2)) / (2 * a * b)
-  );
+  const r = Math.acos((a ** 2 + b ** 2 - c ** 2) / (2 * a * b));
 
   return r * (180 / Math.PI);
 };
@@ -52,12 +50,12 @@ const joinSubPath = (shapes) =>
 export {
   angleFromSides,
   applyFuncToShapes,
+  countSubPath,
+  distance,
   getShapeArray,
   isShapeArray,
-  numberAtInterval,
-  distance,
-  sqrt,
-  splitSubPath,
   joinSubPath,
-  countSubPath
+  numberAtInterval,
+  splitSubPath,
+  sqrt
 };

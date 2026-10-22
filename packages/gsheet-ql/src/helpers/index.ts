@@ -1,5 +1,5 @@
-import parseTypes from './parse-types';
 import fieldsIntoObject from './fields-to-obj';
 import getRowsIndexRange from './get-rows-index-range';
+import parseTypes from './parse-types';
 
-export { parseTypes, fieldsIntoObject, getRowsIndexRange };
+export { fieldsIntoObject, getRowsIndexRange, parseTypes };

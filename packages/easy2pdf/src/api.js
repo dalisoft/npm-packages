@@ -1,8 +1,8 @@
-const fs = require('node:fs/promises');
-const path = require('node:path');
-const buildHTML = require('./parsers/html.js');
-const buildMarkdown = require('./parsers/markdown.js');
-const buildPDFBuffer = require('./pdf.js');
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import buildHTML from './parsers/html.js';
+import buildMarkdown from './parsers/markdown.js';
+import buildPDFBuffer from './pdf.js';
 
 /**
  * PDF build API interface
@@ -44,4 +44,4 @@ async function buildPDF(target) {
   return false;
 }
 
-module.exports = buildPDF;
+export default buildPDF;

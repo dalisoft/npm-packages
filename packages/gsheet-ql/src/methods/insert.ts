@@ -1,11 +1,11 @@
-import {
-  Sheets,
-  Resource,
-  Error,
-  Response,
-  ObjStringAny
-} from '../ts-interfaces';
 import { parseTypes } from '../helpers/index';
+import type {
+  Error,
+  ObjStringAny,
+  Resource,
+  Response,
+  Sheets
+} from '../ts-interfaces';
 
 const insertRows = (
   range: string,
@@ -28,12 +28,12 @@ const insertRows = (
   return new Promise((resolve, reject) => {
     sheets.spreadsheets.values.append(
       {
-        resource,
         auth,
-        spreadsheetId,
+        insertDataOption: 'INSERT_ROWS',
         range,
-        valueInputOption: 'RAW',
-        insertDataOption: 'INSERT_ROWS'
+        resource,
+        spreadsheetId,
+        valueInputOption: 'RAW'
       },
       (err: Error, res: Response) => {
         if (err) {

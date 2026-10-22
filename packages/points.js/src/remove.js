@@ -1,4 +1,4 @@
-import { applyFuncToShapes } from './helpers';
+import { applyFuncToShapes } from './helpers.js';
 
 const isBetween = (a, b, c) => {
   if (b.curve || c.curve) {

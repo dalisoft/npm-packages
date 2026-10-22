@@ -1,4 +1,4 @@
-const strify = require('../json-strify');
+import strify from '../json-strify.js';
 
 const obj = {
   a: 1,

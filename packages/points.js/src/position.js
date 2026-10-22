@@ -2,8 +2,9 @@
 /** global: x2 */
 /** global: y1 */
 /** global: y2 */
-import length, { linearLength } from './length';
-import { angleFromSides, numberAtInterval } from './helpers';
+
+import { angleFromSides, numberAtInterval } from './helpers.js';
+import length, { linearLength } from './length.js';
 
 const angle = (x1, y1, x2, y2, a) => {
   if (x1 === x2) {
@@ -22,7 +23,7 @@ const over = (shape, length, totalLength, desiredLength) => {
   const { x: x2, y: y2 } = shape[length - 1];
   const segmentLength = linearLength(x1, y1, x2, y2);
   const segmentInterval = (desiredLength - totalLength) / segmentLength + 1;
-  return { x1, y1, x2, y2, segmentInterval, segmentLength };
+  return { segmentInterval, segmentLength, x1, x2, y1, y2 };
 };
 
 const position = (s, interval) => {
@@ -34,8 +35,8 @@ const position = (s, interval) => {
     interval > 1
       ? over(s, l, t, d)
       : interval < 0
-      ? under(s, d)
-      : within(s, l, d);
+        ? under(s, d)
+        : within(s, l, d);
 
   return {
     angle: angle(x1, y1, x2, y2, segmentLength),
@@ -49,7 +50,7 @@ const under = (shape, desiredLength) => {
   const { x: x2, y: y2 } = shape[1];
   const segmentLength = linearLength(x1, y1, x2, y2);
   const segmentInterval = desiredLength / segmentLength;
-  return { x1, y1, x2, y2, segmentInterval, segmentLength };
+  return { segmentInterval, segmentLength, x1, x2, y1, y2 };
 };
 
 const within = (shape, length, desiredLength) => {
@@ -66,7 +67,7 @@ const within = (shape, length, desiredLength) => {
 
       if (currentLength + segmentLength >= desiredLength) {
         const segmentInterval = (desiredLength - currentLength) / segmentLength;
-        return { x1, y1, x2, y2, segmentInterval, segmentLength };
+        return { segmentInterval, segmentLength, x1, x2, y1, y2 };
       }
 
       currentLength += segmentLength;

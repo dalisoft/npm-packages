@@ -2,27 +2,32 @@
   "name": "batch-do",
   "version": "0.0.6",
   "description": "Do batched tasks easily",
-  "type": "module",
-  "typings": "batch-do.d.ts",
-  "main": "cjs.js",
-  "module": "esm.js",
-  "exports": {
-    ".": "./cjs.js",
-    "./module": "./esm.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/npm-packages.git"
-  },
   "keywords": [
     "batch",
     "performant",
     "idle"
   ],
-  "author": "dalisoft",
-  "license": "MIT",
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/batch-do",
   "bugs": {
     "url": "https://github.com/dalisoft/npm-packages/issues"
   },
-  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/batch-do"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./batch-do.d.ts",
+      "default": "./batch-do.js"
+    }
+  },
+  "main": "batch-do.js",
+  "types": "batch-do.d.ts",
+  "files": [
+    "batch-do.js",
+    "batch-do.d.ts"
+  ]
 }

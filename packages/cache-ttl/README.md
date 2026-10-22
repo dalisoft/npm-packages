@@ -22,15 +22,6 @@ Caching Library with TTL for Node.js and browser
 ```js
 // ES6
 import CacheTTL from '@dalisoft/cache-ttl';
-
-// or
-
-// CommonJS
-const CacheTTL = require('@dalisoft/cache-ttl');
-
-// or
-
-const CacheTTL = window.CacheTTL;
 ```
 
 ## Example

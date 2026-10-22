@@ -1,41 +1,44 @@
 {
   "name": "fast-node-parse",
   "version": "0.0.8",
-  "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
+  "description": "Fastest route node walker with three main essentials: `match`, `parse` and `lookup`",
+  "keywords": [],
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-node-parse",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/npm-packages.git"
   },
-  "main": "src/node.js",
-  "module": "src/node.js",
+  "license": "Apache-2.0",
+  "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
+  "type": "module",
   "exports": {
     ".": {
-      "default": "./src/node.js",
-      "types": "./src/node.d.ts"
+      "types": "./src/node.d.ts",
+      "default": "./src/node.js"
+    },
+    "./beta": {
+      "default": "./src/node-vtree.js"
     },
     "./utils/compact": {
-      "default": "./utils/compact.js",
-      "types": "./utils/compact.d.ts"
+      "types": "./utils/compact.d.ts",
+      "default": "./utils/compact.js"
     }
   },
-  "bugs": {
-    "url": "https://github.com/dalisoft/npm-packages/issues"
-  },
-  "description": "Fastest route node walker with three main essentials: `match`, `parse` and `lookup`",
-  "engines": {
-    "node": ">=18.20.4"
-  },
+  "main": "src/node.js",
+  "module": "src/node.js",
+  "types": "module",
+  "typings": "src/node.d.ts",
   "files": [
     "src",
     "utils"
   ],
-  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-node-parse",
-  "keywords": [],
-  "license": "Apache-2.0",
   "scripts": {
-    "test": "node --test"
+    "test": "bun test"
   },
-  "type": "module",
-  "types": "module",
-  "typings": "src/node.d.ts"
+  "engines": {
+    "node": ">=18.20.4"
+  }
 }

@@ -1,18 +1,19 @@
 import Extreme, { param, wildcard } from 'extreme-router';
-import { Node } from 'fast-node-parse';
+import { Node, Router } from 'fast-node-parse';
 import fppMatchA from 'fast-path-parse/aot/match';
 import fppMatchR from 'fast-path-parse/runtime/match';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';
 import { bench, describe } from 'vitest';
+import { FastTree } from '../../fast-tree.ts';
 import { CallbackNode, RootNode } from '../../nodes.js';
 import { Wired } from '../../wired.js';
 import { config, handler } from '../config.js';
 
 const { path, complexity, validate } = {
-  path: '/foo/*',
   complexity: 'easy',
+  path: '/foo/*',
   validate: '/foo/bar'
 };
 
@@ -21,6 +22,8 @@ const extreme = new Extreme();
 const honoRouteRegEx = new RegExpRouter();
 const honoTrieRoute = new TrieRouter();
 const wire = new Wired();
+const fastTree = new FastTree();
+const router = new Router();
 
 // Registering necessary modules
 extreme.use(param).use(wildcard);
@@ -48,9 +51,14 @@ honoRouteRegEx.add('GET', path, handler);
 honoTrieRoute.add('GET', path, handler);
 wire.add('GET', path, handler);
 extreme.register('/foo').handler = handler;
+fastTree.insert('GET', path, { descriptor: () => handler() });
+router.insert('GET', path, { descriptor: () => handler() });
+const routerBound = router.bind('GET', { normalize: 'raw' });
 
 describe(`matching [${complexity}]`, () => {
+  bench('fast-tree', () => fastTree.match('GET', validate), config);
   bench('fast-node-parse', () => root.match(validate), config);
+  bench('fast-node-router', () => routerBound.match(validate), config);
   bench(
     'fast-path-parse[-runtime]',
     () => fastPathParseMatchRuntime(validate),

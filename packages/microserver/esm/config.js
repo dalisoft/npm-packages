@@ -1,5 +1,5 @@
 export default (config) => {
-  return (res, req) => {
+  return (_res, req) => {
     for (const conf of config) {
       if (req[conf] !== undefined) {
         continue;

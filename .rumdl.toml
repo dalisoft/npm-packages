@@ -1,0 +1,3 @@
+[global]
+# Keep existing docs as-is (Prettier used `proseWrap: preserve`)
+disable = ["MD001", "MD013", "MD014", "MD025", "MD033", "MD034", "MD036", "MD041", "MD042", "MD053"]
