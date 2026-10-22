@@ -7,7 +7,7 @@ Get callee directory
 - Zero dependency
 - Fast
 - Exact callee directory
-- Both CJS and ESM support
+- ESM only
 
 ## Usage
 
@@ -15,14 +15,6 @@ Get callee directory
 
 ```js
 import dirname from 'getdirname';
-
-dirname();
-```
-
-### CJS
-
-```js
-const dirname = require('getdirname');
 
 dirname();
 ```
