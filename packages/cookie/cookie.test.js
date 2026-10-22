@@ -1,8 +1,8 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const { parse, stringify, getFromHeaders, set, remove } = require('./cookie');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { getFromHeaders, parse, remove, set, stringify } from './cookie.js';
 
-test('Cookie core features', (t) => {
+test('Cookie core features', (_t) => {
   assert.deepEqual(
     parse('foo=bar'),
     { foo: 'bar' },
@@ -20,7 +20,7 @@ test('Cookie core features', (t) => {
   );
 });
 
-test('Cookie basic features', (t) => {
+test('Cookie basic features', (_t) => {
   // Fake Framework.Core.prototype.Response
   const cookie = {};
   const res = {
