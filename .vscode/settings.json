@@ -1,19 +1,19 @@
 {
-  "files.associations": {
-    "*.ts": "typescript",
-    "*rc": "json"
-  },
-  "editor.defaultFormatter": "biomejs.biome",
-  "npm.packageManager": "bun",
-  "[markdown]": {
-    "editor.defaultFormatter": "rvben.rumdl"
-  },
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "typescript.validate.enable": true,
-  "typescript.experimental.useTsgo": false
+  "[markdown]": {
+    "editor.defaultFormatter": "rvben.rumdl"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "files.associations": {
+    "*.ts": "typescript",
+    "*rc": "json"
+  },
+  "js/ts.tsdk.path": "node_modules/tsrs",
+  "js/ts.validate.enable": true,
+  "npm.packageManager": "bun"
 }

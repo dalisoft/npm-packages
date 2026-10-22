@@ -1,4 +1,18 @@
 {
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "rvben.rumdl"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "files.associations": {
+    "*.ts": "typescript",
+    "*rc": "json"
+  },
   "folders": [
     {
       "path": "../packages/easy2pdf"
@@ -82,23 +96,7 @@
       "path": "../packages/args"
     }
   ],
-  "settings": {
-    "files.associations": {
-      "*.ts": "typescript",
-      "*rc": "json"
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "npm.packageManager": "bun",
-    "[markdown]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "typescript.validate.enable": true,
-    "typescript.experimental.useTsgo": true
-  }
+  "js/ts.tsdk.path": "node_modules/tsrs",
+  "js/ts.validate.enable": true,
+  "npm.packageManager": "bun"
 }
