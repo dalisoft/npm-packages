@@ -22,10 +22,6 @@ npm i @dalisoft/sequelize-wrap
 then you able to import to Node.js easily
 
 ```js
-// Node.js
-const SequelizeWrap = require('@dalisoft/sequelize-wrap');
-
-// ES6
 import SequelizeWrap from '@dalisoft/sequelize-wrap';
 ```
 
