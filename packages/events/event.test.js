@@ -1,40 +1,39 @@
-const test = require('node:test');
-const Events = require('.');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import Events from './event.js';
 
-test('Get prototype', (t) => {
-  t.plan(4);
-
-  t.assert.strictEqual(
+test('Get prototype', (_t) => {
+  assert.strictEqual(
     typeof Events.prototype.on,
     'function',
     'Prototype methods not assigned properly'
   );
-  t.assert.strictEqual(
+  assert.strictEqual(
     typeof Events.prototype.once,
     'function',
     'Prototype methods not assigned properly'
   );
-  t.assert.strictEqual(
+  assert.strictEqual(
     typeof Events.prototype.off,
     'function',
     'Prototype methods not assigned properly'
   );
-  t.assert.strictEqual(
+  assert.strictEqual(
     typeof Events.prototype.emit,
     'function',
     'Prototype methods not assigned properly'
   );
 });
-test('Basic test', (t) =>
+test('Basic test', (_t) =>
   new Promise((resolve) => {
-    t.plan(5);
+    let calls = 0;
 
     const ev = new Events();
 
-    ev.on('e1', () => t.assert.ok(true));
-    ev.on('e2', () => t.assert.ok(true));
-    ev.once('e3', () => t.assert.ok(true));
-    ev.on('e4', () => t.assert.ok(true));
+    ev.on('e1', () => calls++);
+    ev.on('e2', () => calls++);
+    ev.once('e3', () => calls++);
+    ev.on('e4', () => calls++);
 
     ev.emit('e1');
     ev.emit('e2');
@@ -47,13 +46,13 @@ test('Basic test', (t) =>
 
     setTimeout(() => {
       ev.emit('e1');
+      assert.equal(calls, 5, 'Listeners were not called as expected');
       resolve();
     }, 500);
   }));
 
-test('Type and Value parsing test', (t) => {
-  t.plan(8);
-
+test('Type and Value parsing test', (_t) => {
+  const called = [];
   const ev = new Events();
 
   ev.modifyArgs((args) => {
@@ -67,7 +66,7 @@ test('Type and Value parsing test', (t) => {
       ) {
         return JSON.parse(type);
       }
-      if (isNaN(+type)) {
+      if (Number.isNaN(+type)) {
         return type;
       }
       return +type;
@@ -75,47 +74,43 @@ test('Type and Value parsing test', (t) => {
   });
 
   ev.on('num', (n, excepted) => {
-    t.assert.strictEqual(
-      n,
-      excepted,
-      'Number parsing does not work as excepted'
-    );
-    t.assert.strictEqual(
+    called.push('num');
+    assert.strictEqual(n, excepted, 'Number parsing does not work as excepted');
+    assert.strictEqual(
       typeof n,
       'number',
       'Number type parsing does not work as excepted'
     );
   });
   ev.on('arr', (someArr, excepted) => {
-    t.assert.deepStrictEqual(
+    called.push('arr');
+    assert.deepStrictEqual(
       someArr,
       excepted,
       'Array parsing does not work as excepted'
     );
-    t.assert.ok(
+    assert.ok(
       Array.isArray(someArr),
       'Array type parsing does not work as excepted'
     );
   });
   ev.on('obj', (someObj, excepted) => {
-    t.assert.deepStrictEqual(
+    called.push('obj');
+    assert.deepStrictEqual(
       someObj,
       excepted,
       'Object parsing does not work as excepted'
     );
-    t.assert.strictEqual(
+    assert.strictEqual(
       typeof someObj,
       'object',
       'Object type parsing does not work as excepted'
     );
   });
   ev.once('str', (s, excepted) => {
-    t.assert.strictEqual(
-      s,
-      excepted,
-      'String parsing does not work as excepted'
-    );
-    t.assert.strictEqual(
+    called.push('str');
+    assert.strictEqual(s, excepted, 'String parsing does not work as excepted');
+    assert.strictEqual(
       typeof s,
       'string',
       'String type parsing does not work as excepted'
@@ -127,4 +122,10 @@ test('Type and Value parsing test', (t) => {
   ev.emit('obj', '{"foo":"bar"}', { foo: 'bar' });
   ev.emit('str', '1 is not 2', '1 is not 2');
   ev.emit('str', '2 is not 3', '1 is not 2');
+
+  assert.deepEqual(
+    called,
+    ['num', 'arr', 'obj', 'str'],
+    'Listeners were not called as expected'
+  );
 });
