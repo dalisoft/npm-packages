@@ -1,10 +1,12 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const CacheTTL = require('./dist/cjs/cache-ttl');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import CacheTTL from './dist/es/cache-ttl.js';
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-test('Cache TTL - In-memory/Temporarily mode', async (t) => {
+test('Cache TTL - In-memory/Temporarily mode', {
+  timeout: 30000
+}, async (t) => {
   const cache = new CacheTTL(5000);
 
   cache.set('key-a', () => 'value-1');
@@ -280,7 +282,9 @@ test('Cache TTL - In-memory/Temporarily mode', async (t) => {
   assert.ok(true, 'Cache destroy was done without errors');
 });
 
-test('Cache TTL - Persistent File-caching mode', async (t) => {
+test('Cache TTL - Persistent File-caching mode', {
+  timeout: 30000
+}, async (t) => {
   const cache = new CacheTTL(5000, true);
 
   await cache.set('key-a', () => 'value-1');
@@ -561,9 +565,14 @@ test('Cache TTL - Persistent File-caching mode', async (t) => {
   assert.ok(true, 'Cache destroy was done without errors');
 });
 
-test('Cache TTL - Custom cache (with Promise) mode', async (t) => {
-  let _map = new Map();
+test('Cache TTL - Custom cache (with Promise) mode', {
+  timeout: 30000
+}, async (t) => {
+  const _map = new Map();
   const cache = new CacheTTL(5000, 'custom', {
+    async deleteTransform(key) {
+      _map.delete(key);
+    },
     async getTransform(key) {
       return _map.get(key);
     },
@@ -572,9 +581,6 @@ test('Cache TTL - Custom cache (with Promise) mode', async (t) => {
     },
     async setTransform(key, value) {
       _map.set(key, value);
-    },
-    async deleteTransform(key) {
-      _map.delete(key);
     }
   });
 
