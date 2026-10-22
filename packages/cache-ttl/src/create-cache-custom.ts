@@ -30,7 +30,7 @@ class CustomCache {
       console.error(
         'The CustomCache is available only for server-side Node.js!'
       );
-      return this;
+      return;
     }
 
     this.config = config;
@@ -40,7 +40,7 @@ class CustomCache {
         ? config.initialKeys() || []
         : [];
 
-    return this;
+    return;
   }
   public async get(key: string): Promise<any> {
     if ((isNonServerEnv && this.config.onlyServer) || !(await this.has(key))) {

@@ -2,7 +2,7 @@ import * as FS from 'node:fs';
 import { tmpdir } from 'node:os';
 import { Cache, type Config } from './create-cache-custom';
 
-const isFSUnavailabe: boolean =
+const isFSUnavailable: boolean =
   typeof window !== 'undefined' || typeof process === 'undefined';
 
 type typeValue =
@@ -26,10 +26,11 @@ class FSCache extends Cache {
           ? randomDir
           : null;
 
-    if (isFSUnavailabe) {
+    if (isFSUnavailable) {
       console.error(
         'The FileCache is available only for server-side File System!'
       );
+      super({} as Config);
       return;
     }
 
@@ -87,7 +88,7 @@ class FSCache extends Cache {
 
     super(config);
 
-    return this;
+    return;
   }
 }
 
