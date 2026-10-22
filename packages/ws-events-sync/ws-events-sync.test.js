@@ -1,40 +1,46 @@
-const test = require('node:test');
-
-const http = require('http');
-const Websocket = require('ws');
-const W3CWebSocket = require('websocket');
-const { Server, Client } = require('.');
+import assert from 'node:assert/strict';
+import http from 'node:http';
+import test from 'node:test';
+import W3CWebSocket from 'websocket';
+import { WebSocketServer } from 'ws';
+import { Client, Server } from './ws-events-sync.js';
 
 const createServer = () =>
-  http.createServer((req, res) => {
+  http.createServer((_req, res) => {
     res.write('server test');
     res.end();
   });
 
-test('WebSocket.Server test', (t) =>
+test('WebSocket.Server test', (_t) =>
   new Promise((resolve) => {
-    t.plan(3);
+    const steps = [];
 
     const server = createServer();
-    const ws = new Websocket.Server({
-      server,
-      path: '/ws'
+    const ws = new WebSocketServer({
+      path: '/ws',
+      server
     });
 
     ws.on('connection', (ws) => {
       const wsWrapper = new Server(ws);
 
-      t.assert.ok(true, 'Connection passed');
+      steps.push('connection');
 
       wsWrapper.on('message', (data) => {
-        t.assert.strictEqual(
+        steps.push('message');
+        assert.equal(
           data,
           'client_message',
           'Message did not match to text from client'
         );
       });
       ws.on('close', () => {
-        t.assert.ok(true, 'Close passed');
+        steps.push('close');
+        assert.deepEqual(
+          steps,
+          ['connection', 'message', 'close'],
+          'Server events did not run in expected order'
+        );
 
         server.close();
         resolve();
@@ -58,14 +64,14 @@ test('WebSocket.Server test', (t) =>
     });
   }));
 
-test('WebSocket.Client test', (t) =>
+test('WebSocket.Client test', (_t) =>
   new Promise((resolve) => {
-    t.plan(3);
+    const steps = [];
 
     const server = createServer();
-    const ws = new Websocket.Server({
-      server,
-      path: '/ws'
+    const ws = new WebSocketServer({
+      path: '/ws',
+      server
     });
 
     ws.on('connection', (ws) => {
@@ -79,12 +85,13 @@ test('WebSocket.Client test', (t) =>
       const wsClient = new Client(client);
 
       wsClient.on('open', () => {
-        t.assert.ok(true, 'Connection passed');
+        steps.push('open');
         client.send('client_message');
       });
 
       wsClient.on('message', (message) => {
-        t.assert.strictEqual(
+        steps.push('message');
+        assert.equal(
           message,
           'server_message',
           'Message did not match to text from server'
@@ -92,12 +99,21 @@ test('WebSocket.Client test', (t) =>
       });
 
       wsClient.on('close', () => {
-        t.assert.ok(true, 'Close passed');
+        steps.push('close');
+        assert.deepEqual(
+          steps,
+          ['open', 'message', 'close'],
+          'Client events did not run in expected order'
+        );
         server.close();
         resolve();
       });
 
       setTimeout(() => {
+        // ws@8 no longer closes existing connections on `close()`
+        for (const socket of ws.clients) {
+          socket.close();
+        }
         ws.close();
       }, 100);
     });
