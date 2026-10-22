@@ -1,7 +1,7 @@
-import benny from 'benny';
-import fastQueryParse from '../parse.js';
-import qs from 'qs';
 import querystring from 'node:querystring';
+import benny from 'benny';
+import qs from 'qs';
+import fastQueryParse from '../parse.js';
 
 const QS = 'foo=bar&loop[]=doing&shitty[foo]=1&shitty[bar]=2&loop[1]=something';
 
