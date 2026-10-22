@@ -2,6 +2,8 @@
   "recommendations": [
     "biomejs.biome",
     "editorconfig.editorconfig",
-    "oven.bun-vscode"
+    "oven.bun-vscode",
+    "rvben.rumdl",
+    "tekumara.typos-vscode"
   ]
 }
