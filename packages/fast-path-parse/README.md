@@ -28,20 +28,6 @@ const parsePath = parse('/user/:foo');
 parsePath('/user/john');
 ```
 
-### CJS
-
-```js
-const parse = require('fast-path-parse/runtime/parse');
-// or
-const parse = require('fast-path-parse/aot/parse');
-
-// Run this ahead-of-time, not at runtime or hot path
-const parsePath = parse('/user/:foo');
-
-// Run this at hot path
-parsePath('/user/john');
-```
-
 ## Benchmark
 
 It is on my machine, on your machine results may vary. See [benchmark](/packages/fast-path-parse/benchmark) folder
