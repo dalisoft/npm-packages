@@ -2,25 +2,31 @@
   "name": "fast-query-parse",
   "version": "3.1.0",
   "description": "Fastest `query parse` with performance of `querystring` module and features of `qs` module",
-  "main": "parse.js",
-  "types": "parse.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/npm-packages.git"
-  },
   "keywords": [
     "esm",
-    "cjs",
     "qs",
     "query",
     "parse"
   ],
-  "author": "dalisoft",
-  "license": "MIT",
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-query-parse",
   "bugs": {
     "url": "https://github.com/dalisoft/npm-packages/issues"
   },
-  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-query-parse",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": "./parse.js"
+  },
+  "main": "parse.js",
+  "types": "parse.d.ts",
+  "files": [
+    "parse.js"
+  ],
   "dependencies": {
     "fast-decode-uri-component": "^1.0.1"
   }
