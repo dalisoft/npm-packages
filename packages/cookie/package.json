@@ -2,27 +2,31 @@
   "name": "@dalisoft/cookie",
   "version": "0.0.4",
   "description": "Cookie utility for everyone",
-  "main": "cookie.js",
-  "cdn": "cookie.min.js",
-  "browser": "cookie.min.js",
-  "scripts": {
-    "minify": "bun build cookie.js --no-bundle --minify --outfile=cookie.min.js",
-    "prepublishOnly": "npm test && npm run minify",
-    "test": "node --test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/cookie.git"
-  },
   "keywords": [
     "cookie",
     "parse",
     "performant"
   ],
-  "author": "dalisoft",
-  "license": "MIT",
+  "homepage": "https://github.com/dalisoft/cookie#readme",
   "bugs": {
     "url": "https://github.com/dalisoft/cookie/issues"
   },
-  "homepage": "https://github.com/dalisoft/cookie#readme"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/cookie.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": "./cookie.js"
+  },
+  "main": "cookie.js",
+  "files": [
+    "cookie.js"
+  ],
+  "scripts": {
+    "prepublishOnly": "bun run test",
+    "test": "bun test"
+  }
 }
