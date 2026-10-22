@@ -67,4 +67,4 @@ declare class sequelizeWrap {
   getLastItem(): ModelResponse;
 }
 
-export = sequelizeWrap;
+export default sequelizeWrap;
