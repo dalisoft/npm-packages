@@ -1,4 +1,4 @@
-const mobx = require('mobx');
+import * as mobx from 'mobx';
 
 function diff(tree, compare) {
   if (typeof tree !== 'object') {
@@ -8,7 +8,7 @@ function diff(tree, compare) {
     return tree.some((item, index) => diff(item, compare[index]));
   }
   let different = false;
-  for (let property in tree) {
+  for (const property in tree) {
     if (!different) {
       different = diff(tree[property], compare[property]);
     } else {
@@ -49,7 +49,7 @@ class SyncStorage {
     window.removeEventListener('storage', this.onRun);
   }
   attachAutoRun() {
-    if (mobx && mobx.autorun) {
+    if (mobx?.autorun) {
       this.autorun = mobx.autorun(this.onRun);
     } else {
       console.error(
@@ -66,7 +66,7 @@ class SyncStorage {
     const isStorageChanged = argument.key === name;
     const storeState = mobx.toJS(store);
     let mixedState = null;
-    let session = storage.getItem(name)
+    const session = storage.getItem(name)
       ? store.deserialize
         ? store.deserialize(storage.getItem(name))
         : JSON.parse(storage.getItem(name))
@@ -115,8 +115,4 @@ class Store {
   }
 }
 
-module.exports = Store;
-
-// For Using as ES6 Module
-exports.default = Store;
-exports.__esModule = true;
+export default Store;

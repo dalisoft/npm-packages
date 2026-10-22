@@ -21,4 +21,4 @@ class Store {
   public constructor(name: string, type?: string) {}
 }
 
-export = Store;
+export default Store;
