@@ -2,13 +2,6 @@
   "name": "gsheet-ql",
   "version": "0.1.1",
   "description": "An Google Sheet Query language ORM",
-  "main": "lib/gsheet-ql.js",
-  "module": "gsheet-ql.es.js",
-  "scripts": {
-    "build": "rm -rf lib dist && bun build ./src/_class.ts --target=node --packages=external --outfile=./gsheet-ql.es.js && bun build ./src/_class.ts --target=node --packages=external --format=cjs --outfile=./lib/gsheet-ql.js",
-    "dev": "bun build ./src/_class.ts --target=node --packages=external --watch --outfile=./gsheet-ql.es.js",
-    "prepublishOnly": "npm run build"
-  },
   "keywords": [
     "google",
     "sheets",
@@ -17,14 +10,27 @@
     "es6",
     "typescript"
   ],
+  "homepage": "https://github.com/dalisoft/gsheet-ql#readme",
+  "bugs": {
+    "url": "https://github.com/dalisoft/gsheet-ql/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/gsheet-ql.git"
   },
-  "bugs": {
-    "url": "https://github.com/dalisoft/gsheet-ql/issues"
-  },
-  "homepage": "https://github.com/dalisoft/gsheet-ql#readme",
+  "license": "MIT",
   "author": "dalisoft",
-  "license": "MIT"
+  "type": "module",
+  "exports": {
+    ".": "./dist/es/gsheet-ql.js"
+  },
+  "main": "dist/es/gsheet-ql.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build ./src/_class.ts --target=node --packages=external --outfile=./dist/es/gsheet-ql.js",
+    "dev": "bun build ./src/_class.ts --target=node --packages=external --watch --outfile=./dist/es/gsheet-ql.js",
+    "prepublishOnly": "bun run build"
+  }
 }
