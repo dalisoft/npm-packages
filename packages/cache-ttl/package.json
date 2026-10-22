@@ -39,8 +39,5 @@
     "prepublishOnly": "bun run test",
     "pretest": "bun run build",
     "test": "bun test"
-  },
-  "devDependencies": {
-    "@types/node": "^26.6.5"
   }
 }
