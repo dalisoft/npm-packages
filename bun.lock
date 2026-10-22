@@ -8,7 +8,7 @@
         "@biomejs/biome": "^2.6.2",
         "@commitlint/cli": "^21.2.4",
         "@commitlint/config-workspace-scopes": "^21.2.0",
-        "@types/node": "^26.6.4",
+        "@types/node": "^26.6.5",
         "lefthook": "^2.2.2",
         "rumdl": "^0.3.0",
         "tsrs": "^0.18.0-ts7.1.0-dev.20260929",
@@ -21,9 +21,6 @@
     "packages/as-batch": {
       "name": "@dalisoft/as-batch",
       "version": "0.1.8",
-      "devDependencies": {
-        "@types/node": "^26.6.5",
-      },
     },
     "packages/batch-collect": {
       "name": "@dalisoft/batch-collect",
@@ -36,9 +33,6 @@
     "packages/cache-ttl": {
       "name": "@dalisoft/cache-ttl",
       "version": "0.4.4",
-      "devDependencies": {
-        "@types/node": "^26.6.5",
-      },
     },
     "packages/cookie": {
       "name": "@dalisoft/cookie",
@@ -152,6 +146,9 @@
         "sequelize": "^6.37.8",
       },
     },
+    "packages/simd-path": {
+      "name": "simd-path",
+    },
     "packages/swipe-gesture": {
       "name": "@dalisoft/swipe-gesture",
       "version": "0.0.6",
@@ -165,13 +162,11 @@
       "version": "1.1.8",
       "dependencies": {
         "@dalisoft/events": "^0.2.0",
-      },
-      "devDependencies": {
         "ws": "^8.22.0",
       },
-      "peerDependencies": {
-        "websocket": "^1.0.32",
-        "ws": "^7.3.1",
+      "devDependencies": {
+        "websocket": "^1.0.35",
+        "ws": "^8.22.0",
       },
     },
   },
@@ -539,6 +534,8 @@
     "sequelize": ["sequelize@6.37.8", "", { "dependencies": { "@types/debug": "^4.1.8", "@types/validator": "^13.7.17", "debug": "^4.3.4", "dottie": "^2.0.6", "inflection": "^1.13.4", "lodash": "^4.17.21", "moment": "^2.29.4", "moment-timezone": "^0.5.43", "pg-connection-string": "^2.6.1", "retry-as-promised": "^7.0.4", "semver": "^7.5.4", "sequelize-pool": "^7.1.0", "toposort-class": "^1.0.1", "uuid": "^8.3.2", "validator": "^13.9.0", "wkx": "^0.5.0" }, "peerDependencies": { "ibm_db": "*", "mariadb": "*", "mysql2": "*", "oracledb": "*", "pg": "*", "pg-hstore": "*", "snowflake-sdk": "*", "sqlite3": "*", "tedious": "*" }, "optionalPeers": ["ibm_db", "mariadb", "mysql2", "oracledb", "pg", "pg-hstore", "snowflake-sdk", "sqlite3", "tedious"] }, "sha512-HJ0IQFqcTsTiqbEgiuioYFMSD00TP6Cz7zoTti+zVVBwVe9fEhev9cH6WnM3XU31+ABS356durAb99ZuOthnKw=="],
 
     "sequelize-pool": ["sequelize-pool@7.1.0", "", {}, "sha512-G9c0qlIWQSK29pR/5U2JF5dDQeqqHRragoyahj/Nx4KOOQ3CPPfzxnfqFPCSB7x5UgjOgnZ61nSxz+fjDpRlJg=="],
+
+    "simd-path": ["simd-path@workspace:packages/simd-path"],
 
     "string-width": ["string-width@8.3.0", "", { "dependencies": { "get-east-asian-width": "^1.5.0", "strip-ansi": "^7.1.2" } }, "sha512-ZbmZM0JCihQN91dWnxoipT2KOEyHqEyfRXUyjuRhW8b/xnqPDoq4gWEVApTVa9db2wN8mmoikgFBbjh71+cGeQ=="],
 
