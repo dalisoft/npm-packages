@@ -9,7 +9,7 @@ Event sync between server and client in Websocket
 - Fast
 - Performant
 - Easy
-- UMD compatible
+- ESM only
 
 ## Installation
 
@@ -22,13 +22,6 @@ npm i @dalisoft/ws-events-sync
 then you able to import to Node.js/Browser easily
 
 ```js
-// Node.js
-const WSEventsWrapper = require('@dalisoft/ws-events-sync').Server;
-
-// Browser
-// window.WSEventsSync.Client OR WSEventsSync.Client
-
-// ES6
 import { Client /* Server */ } from '@dalisoft/ws-events-sync';
 ```
 
@@ -55,16 +48,6 @@ ws.on('connection', (client) => {
   });
   wss.on('server-event', (data) => console.log('server event emitter', data));
 });
-```
-
-## Browser snippet
-
-Add this script into your before script and after body to be this library working out-of-the-box.
-
-Thanks to jsDelivr!
-
-```html
-<script src="https://cdn.jsdelivr.net/combine/npm/@dalisoft/args,npm/@dalisoft/events,npm/@dalisoft/ws-events-sync"></script>
 ```
 
 ## License
