@@ -187,6 +187,7 @@ assets/css/bundle*
 
 # TypeScript v1 declaration files
 typings/
+tsconfig.tsbuildinfo
 
 # release-me
 .release-me

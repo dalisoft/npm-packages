@@ -1,33 +1,28 @@
 {
   "name": "@dalisoft/npm-packages",
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
-  "type": "module",
-  "packageManager": "bun@1.4.2",
+  "scripts": {
+    "format": "biome format --write && rumdl fmt .",
+    "lint": "biome lint && rumdl check .",
+    "prepare": "lefthook install",
+    "release": "for pkg in packages/*/package.json; do (cd \"$(dirname \"$pkg\")\" && ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace) || exit 1; done"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.2",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-workspace-scopes": "^21.2.0",
+    "@types/node": "^26.6.4",
+    "lefthook": "^2.2.2",
+    "rumdl": "^0.3.0",
+    "tsrs": "^0.18.0-ts7.1.0-dev.20260929"
+  },
+  "packageManager": "bun@1.4.3",
   "engines": {
     "node": ">=18.19.1"
   },
-  "scripts": {
-    "prepare": "lefthook install",
-    "release": "for pkg in packages/*/package.json; do (cd \"$(dirname \"$pkg\")\" && ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace) || exit 1; done",
-    "lint": "biome lint && rumdl check .",
-    "format": "biome format --write && rumdl fmt ."
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.5.15",
-    "@commitlint/cli": "^21.2.3",
-    "@commitlint/config-workspace-scopes": "^21.2.0",
-    "lefthook": "^2.1.16",
-    "rumdl": "^0.2.78",
-    "typescript": "^7.0.2"
-  },
-  "overrides": {
-    "@types/node": "^26.6.4"
-  },
-  "trustedDependencies": [],
-  "dependencies": {
-    "lib-export": "^0.0.3"
-  }
+  "trustedDependencies": []
 }

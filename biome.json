@@ -1,31 +1,32 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
+  "$schema": "https://biomejs.dev/schemas/2.6.2/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "useSortedKeys": "on",
+        "useSortedPackageJson": "on"
+      }
+    },
+    "enabled": true
   },
   "files": {
-    "includes": ["**", "!**/*.min.js", "!**/*.d.ts"]
-  },
-  "assist": {
-    "enabled": false
+    "includes": ["**", "!!**/*.min.js", "!!**/*.d.ts", "!!**/node_modules"]
   },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 80,
-    "lineEnding": "lf"
+    "lineEnding": "lf",
+    "lineWidth": 80
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "single",
-      "jsxQuoteStyle": "double",
-      "trailingCommas": "none",
       "arrowParentheses": "always",
-      "bracketSpacing": true,
+      "attributePosition": "multiline",
       "bracketSameLine": true,
-      "attributePosition": "multiline"
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "double",
+      "quoteStyle": "single",
+      "trailingCommas": "none"
     }
   },
   "linter": {
@@ -48,5 +49,22 @@
         "useIterableCallbackReturn": "warn"
       }
     }
+  },
+  "overrides": [
+    {
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      },
+      "includes": ["package.json", "**/package.json"]
+    }
+  ],
+  "vcs": {
+    "clientKind": "git",
+    "enabled": true,
+    "useIgnoreFile": true
   }
 }
