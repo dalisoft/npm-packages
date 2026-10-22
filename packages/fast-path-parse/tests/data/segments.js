@@ -1,420 +1,420 @@
 const segments = [
   {
-    name: 'static route parse',
     children: [
       {
-        name: '/foo/bar',
         input: '/foo/bar',
-        variants: [['%s'], ['%s/']],
+        name: '/foo/bar',
         result: {
           filled: [],
+          length: 2,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'bar',
-              segment: false,
               last: true,
+              name: 'bar',
               position: 5,
+              segment: false,
               size: 3
             }
-          ],
-          length: 2
-        }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'static route parse'
   },
   {
-    name: 'static route compact parse',
     children: [
       {
-        name: '/foo/bar',
         input: '/foo/bar',
-        test_input: true,
-        variants: [['%s'], ['%s/']],
+        name: '/foo/bar',
         result: {
           filled: [],
+          length: 1,
           segments: [
             {
-              name: 'foo/bar',
-              segment: false,
               last: true,
+              name: 'foo/bar',
               position: 1,
+              segment: false,
               size: 7
             }
-          ],
-          length: 1
-        }
+          ]
+        },
+        test_input: true,
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'static route compact parse'
   },
   {
-    name: 'simple dynamic route parse, `:id`',
     children: [
       {
-        name: '/foo/:id',
         input: '/foo/:id',
-        variants: [['%s'], ['%s/']],
+        name: '/foo/:id',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: true,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 2,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: true,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
-          ],
-          length: 2
-        }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple dynamic route parse, `:id`'
   },
   {
-    name: 'simple mixed route parse, `:id`',
     children: [
       {
-        name: '/foo/:id/bar',
         input: '/foo/:id/bar',
-        variants: [['%s'], ['%s/']],
+        name: '/foo/:id/bar',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 3,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             },
             {
-              name: 'bar',
-              segment: false,
               last: true,
+              name: 'bar',
               position: 7,
+              segment: false,
               size: 3
             }
-          ],
-          length: 3
-        }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple mixed route parse, `:id`'
   },
   {
-    name: 'simple static-mixed route parse, `:id`',
     children: [
       {
-        name: '/foo/:id/bar/last',
         input: '/foo/:id/bar/last',
-        variants: [['%s'], ['%s/']],
+        name: '/foo/:id/bar/last',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 4,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             },
             {
-              name: 'bar',
-              segment: false,
               last: false,
+              name: 'bar',
               position: 7,
+              segment: false,
               size: 3
             },
             {
-              name: 'last',
-              segment: false,
               last: true,
+              name: 'last',
               position: 11,
+              segment: false,
               size: 4
             }
-          ],
-          length: 4
-        }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple static-mixed route parse, `:id`'
   },
   {
-    name: 'simple static-mixed route compact parse, `:id`',
     children: [
       {
-        name: '/foo/:id/bar/last',
         input: '/foo/:id/bar/last',
-        test_input: true,
-        variants: [['%s'], ['%s/']],
+        name: '/foo/:id/bar/last',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 3,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             },
             {
-              name: 'bar/last',
-              segment: false,
               last: true,
+              name: 'bar/last',
               position: 7,
+              segment: false,
               size: 8
             }
-          ],
-          length: 3
-        }
+          ]
+        },
+        test_input: true,
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple static-mixed route compact parse, `:id`'
   },
   {
-    name: 'simple dynamic route parse, `<id>`',
     children: [
       {
-        name: '/foo/<id>',
         input: '/foo/<id>',
-        variants: [['%s'], ['%s/']],
+        name: '/foo/<id>',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: true,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 2,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: true,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
-          ],
-          length: 2
-        }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple dynamic route parse, `<id>`'
   },
   {
-    name: 'simple mixed route parse, `<id>`',
     children: [
       {
-        name: '/foo/<id>/bar',
         input: '/foo/<id>/bar',
-        variants: [['%s'], ['%s/']],
+        name: '/foo/<id>/bar',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 3,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             },
             {
-              name: 'bar',
-              segment: false,
               last: true,
+              name: 'bar',
               position: 7,
+              segment: false,
               size: 3
             }
-          ],
-          length: 3
-        }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple mixed route parse, `<id>`'
   },
   {
-    name: 'simple static-mixed route parse, `<id>`',
     children: [
       {
-        name: '/foo/<id>/bar/last',
         input: '/foo/<id>/bar/last',
-        variants: [['%s'], ['%s/']],
+        name: '/foo/<id>/bar/last',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 4,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             },
             {
-              name: 'bar',
-              segment: false,
               last: false,
+              name: 'bar',
               position: 7,
+              segment: false,
               size: 3
             },
             {
-              name: 'last',
-              segment: false,
               last: true,
+              name: 'last',
               position: 11,
+              segment: false,
               size: 4
             }
-          ],
-          length: 4
-        }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple static-mixed route parse, `<id>`'
   },
   {
-    name: 'simple static-mixed route compact parse, `<id>`',
     children: [
       {
-        name: '/foo/<id>/bar/last',
         input: '/foo/<id>/bar/last',
-        test_input: true,
-        variants: [['%s'], ['%s/']],
+        name: '/foo/<id>/bar/last',
         result: {
           filled: [
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             }
           ],
+          length: 3,
           segments: [
             {
-              name: 'foo',
-              segment: false,
               last: false,
+              name: 'foo',
               position: 1,
+              segment: false,
               size: 3
             },
             {
-              name: 'id',
-              segment: true,
               last: false,
+              name: 'id',
               position: 5,
+              segment: true,
               size: 2
             },
             {
-              name: 'bar/last',
-              segment: false,
               last: true,
+              name: 'bar/last',
               position: 7,
+              segment: false,
               size: 8
             }
-          ],
-          length: 3
-        }
+          ]
+        },
+        test_input: true,
+        variants: [['%s'], ['%s/']]
       }
-    ]
+    ],
+    name: 'simple static-mixed route compact parse, `<id>`'
   }
 ];
 
-module.exports = segments;
+export default segments;

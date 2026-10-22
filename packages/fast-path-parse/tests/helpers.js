@@ -1,5 +1,5 @@
-const assert = require('node:assert/strict');
-const { describe, it } = require('node:test');
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 const runTest = (test, callee, is_parent = true) => {
   const { name, input, test_input, result, variants, children } = test;
@@ -52,4 +52,4 @@ const runTest = (test, callee, is_parent = true) => {
   }
 };
 
-module.exports = { runTest };
+export { runTest };
