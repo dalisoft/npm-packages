@@ -191,3 +191,15 @@ tsconfig.tsbuildinfo
 
 # release-me
 .release-me
+
+# rumdl
+.rumdl_cache
+
+#################
+#### Agents #####
+#################
+
+DRAFTS/
+
+# Claude Code
+.claude
