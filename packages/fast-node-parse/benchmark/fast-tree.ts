@@ -1,5 +1,5 @@
 class FastTree {
-  insert<T>(method: string, path: string, params: T) {
+  insert<T>(_method: string, _path: string, _params: T) {
     // implement logic
   }
   /**
@@ -10,7 +10,7 @@ class FastTree {
    * fastTree.match('POST', '/users') // create a new user route exists?
    * ```
    */
-  match(method: string, path: string) {
+  match(_method: string, _path: string) {
     return true;
   }
 
@@ -22,7 +22,7 @@ class FastTree {
    * fastTree.lookup('GET', '/foo/123/user') // matches the route (this case that's `/foo/:id`), parses the params (`{id: 123}`) and executes the `descriptor`
    * ```
    */
-  lookup(method: string, path: string) {
+  lookup(_method: string, _path: string) {
     // implement
   }
 }

@@ -11,8 +11,8 @@ import { Wired } from '../../wired.js';
 import { config, handler } from '../config.js';
 
 const { path, complexity, validate } = {
-  path: '/user/:id/edit/:page',
   complexity: 'medium',
+  path: '/user/:id/edit/:page',
   validate: '/user/1234/edit/weather'
 };
 

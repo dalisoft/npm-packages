@@ -9,8 +9,8 @@ import { Wired } from '../../wired.js';
 import { config, handler } from '../config.js';
 
 const { path, complexity, validate } = {
-  path: '/foo/:id',
   complexity: 'easy',
+  path: '/foo/:id',
   validate: '/foo/bar'
 };
 

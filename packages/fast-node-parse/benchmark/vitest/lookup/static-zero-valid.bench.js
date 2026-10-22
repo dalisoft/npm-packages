@@ -8,8 +8,8 @@ import { Wired } from '../../wired.js';
 import { config, handler } from '../config.js';
 
 const { path, complexity, validate } = {
-  path: '/foo',
   complexity: 'zero',
+  path: '/foo',
   validate: '/foo'
 };
 

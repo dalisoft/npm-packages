@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { Node } from '../src/node.js';
 import { CallbackNode, RootNode } from '../benchmark/nodes.js';
+import { Node } from '../src/node.js';
 
 describe('node tree', () => {
   describe('multi-route siblings', () => {
@@ -145,21 +145,21 @@ describe('node tree', () => {
     describe('valid routes [/foo/123/:kind]', () => {
       it('/foo/123/bar', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/bar'), {
+          calls: 0,
           id: '123',
-          kind: 'bar',
-          calls: 0
+          kind: 'bar'
         }));
       it('/foo/123/baz', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/baz'), {
+          calls: 1,
           id: '123',
-          kind: 'baz',
-          calls: 1
+          kind: 'baz'
         }));
       it('/foo/123/bloof', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/bloof'), {
+          calls: 2,
           id: '123',
-          kind: 'bloof',
-          calls: 2
+          kind: 'bloof'
         }));
     });
 

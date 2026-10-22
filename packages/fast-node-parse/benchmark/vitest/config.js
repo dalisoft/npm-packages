@@ -5,8 +5,8 @@
 /** @type {import('vitest').BenchOptions} */
 export const config = {
   iterations: 1_000_000,
-  warmupIterations: 1_000,
-  now: process.now
+  now: process.now,
+  warmupIterations: 1_000
 };
 
 export const handler = () => {

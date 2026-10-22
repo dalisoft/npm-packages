@@ -1,16 +1,17 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
 /* eslint-disable max-lines */
+
+import Extreme, { param, wildcard } from 'extreme-router';
+import fppMatchA from 'fast-path-parse/aot/match';
+import fppParseA from 'fast-path-parse/aot/parse';
+import fppMatchR from 'fast-path-parse/runtime/match';
+import fppParseR from 'fast-path-parse/runtime/parse';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';
+import { bench, describe } from 'vitest';
 import { CallbackNode, RootNode } from './nodes.js';
-import fppMatchR from 'fast-path-parse/runtime/match';
-import fppMatchA from 'fast-path-parse/aot/match';
-import fppParseR from 'fast-path-parse/runtime/parse';
-import fppParseA from 'fast-path-parse/aot/parse';
-import { describe, bench } from 'vitest';
 import { Wired } from './wired.js';
-import Extreme, { param, wildcard } from 'extreme-router';
 
 /**
  * DO NOT TOUCH
@@ -19,34 +20,34 @@ import Extreme, { param, wildcard } from 'extreme-router';
 /** @type {import('vitest').BenchOptions} */
 const globalBenchConfig = {
   iterations: 1_000_000,
-  warmupIterations: 1_000,
-  now: process.now
+  now: process.now,
+  warmupIterations: 1_000
 };
 
 const modes = [
   {
-    path: '/foo',
     complexity: 'zero',
+    path: '/foo',
     validate: '/foo'
   },
   {
-    path: '/foo/bar',
     complexity: 'zero',
+    path: '/foo/bar',
     validate: '/foo/bar'
   },
   {
+    complexity: 'easy',
     path: '/foo/:bar',
-    complexity: 'easy',
     validate: '/foo/bar'
   },
   {
+    complexity: 'easy',
     path: '/foo/*',
-    complexity: 'easy',
     validate: '/foo/bar'
   },
   {
-    path: '/user/:id/edit/:page',
     complexity: 'medium',
+    path: '/user/:id/edit/:page',
     validate: '/user/1234/edit/weather'
   }
 ];

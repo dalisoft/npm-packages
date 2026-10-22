@@ -11,13 +11,13 @@ export class Wired {
 
   handleMap(method, path, callback) {
     const paths = path.split('/').map((_path) => ({
-      wildcard: _path === '*',
       dynamic: [':', '<', '{'].includes(_path.charAt(0)),
-      static: !(_path === '*' && [':', '<', '{'].includes(_path.charAt(0)))
+      static: !(_path === '*' && [':', '<', '{'].includes(_path.charAt(0))),
+      wildcard: _path === '*'
     }));
     const refIndex = this.#index;
 
-    const ref = { method, path, callback, refIndex };
+    const ref = { callback, method, path, refIndex };
     const response = { method, path };
 
     if (paths.find((route) => route.wildcard)) {

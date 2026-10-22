@@ -1,8 +1,18 @@
 {
   "name": "@nanoexpress/find-route",
   "version": "0.0.1",
+  "description": "Router engine for nanoexpress",
+  "keywords": [],
+  "license": "Apache-2.0",
   "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
+  "type": "module",
   "main": "src/engine.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "overrides": {
+    "tinypool": "^2.x"
+  },
   "dependencies": {
     "benny": "^3.7.1",
     "extreme-router": "^1.1.1",
@@ -10,15 +20,5 @@
     "find-my-way": "^9.0.0",
     "hono": "^4.5.11",
     "vitest": "^3.2.4"
-  },
-  "overrides": {
-    "tinypool": "^2.x"
-  },
-  "description": "Router engine for nanoexpress",
-  "license": "Apache-2.0",
-  "scripts": {
-    "test": "test"
-  },
-  "type": "module",
-  "keywords": []
+  }
 }

@@ -1,4 +1,5 @@
 import Extreme, { param, wildcard } from 'extreme-router';
+import { Node } from 'fast-node-parse';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';
@@ -6,11 +7,10 @@ import { bench, describe } from 'vitest';
 import { CallbackNode, RootNode } from '../../nodes.js';
 import { Wired } from '../../wired.js';
 import { config, handler } from '../config.js';
-import { Node } from 'fast-node-parse';
 
 const { path, complexity, validate } = {
-  path: '/user/:id/edit/:page',
   complexity: 'medium',
+  path: '/user/:id/edit/:page',
   validate: '/user/1234/edit/weather'
 };
 

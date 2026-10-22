@@ -1,4 +1,4 @@
-import { suite, add, cycle, complete } from 'benny';
+import { add, complete, cycle, suite } from 'benny';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';
@@ -54,12 +54,12 @@ suite(
   add('hono regex parse', () => {
     const [res] = honoRouteRegEx.match('GET', '/foo');
 
-    const params = res[0][1];
+    const _params = res[0][1];
   }),
   add('hono trie match', () => {
     const [res] = honoTrieRoute.match('GET', '/foo');
 
-    const params = res[0][1];
+    const _params = res[0][1];
   }),
   add('find-my-way', () => {
     route.find('GET', '/foo');
