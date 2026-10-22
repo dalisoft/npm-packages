@@ -1,4 +1,7 @@
-import jwt, { type GetPublicKeyOrSecret, type VerifyOptions } from 'jsonwebtoken';
+import jwt, {
+  type GetPublicKeyOrSecret,
+  type VerifyOptions
+} from 'jsonwebtoken';
 import { decrypt } from './utils';
 
 const verifyJWT = (
