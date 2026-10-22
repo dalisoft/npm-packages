@@ -1,17 +1,16 @@
-const test = require('node:test');
-const batchCollect = require('.');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import batchCollect from './src/batch-collect.js';
 
 const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-test('Basic test', async (t) => {
-  t.plan(5);
-
+test('Basic test', async (_t) => {
   let queryIndex = 0;
+  let reacted = 0;
   const batchQuery = batchCollect(async (collects) => {
     await timeout(500);
 
     queryIndex++;
-    t.assert.ok(true, 'The collection collect is passed');
 
     return collects.map((collect) => ({
       responseOf: collect
@@ -31,23 +30,26 @@ test('Basic test', async (t) => {
 
   batchQuery(
     () => `getMessages { id, text }`,
-    (response) =>
-      t.assert.deepStrictEqual(response, {
+    (response) => {
+      reacted++;
+      assert.deepEqual(response, {
         responseOf: `getMessages { id, text }`
-      })
+      });
+    }
   );
 
   await timeout(1000);
 
-  t.assert.strictEqual(queryIndex, 3, 'Query called properly');
+  assert.equal(queryIndex, 3, 'Query called properly');
+  assert.equal(reacted, 1, 'Reaction was not called');
 });
 
-test('Duplicate handling', async (t) => {
+test('Duplicate handling', async (_t) => {
   let queryIndex = 0;
   const batchQuery = batchCollect(async (collects) => {
     await timeout(500);
 
-    t.assert.strictEqual(
+    assert.equal(
       collects.length,
       1,
       'Collect deduplication not works properly'
@@ -58,7 +60,7 @@ test('Duplicate handling', async (t) => {
     }));
   });
 
-  let graphqlQuery = `getUserAtDifferentPlace { id, name }`;
+  const graphqlQuery = `getUserAtDifferentPlace { id, name }`;
 
   const resolver = ({ responseOf }) => {
     if (graphqlQuery === responseOf) {
@@ -83,15 +85,11 @@ test('Duplicate handling', async (t) => {
 
   await timeout(500);
 
-  t.assert.strictEqual(
-    queryIndex,
-    5,
-    'Duplication handling not works as expected'
-  );
+  assert.equal(queryIndex, 5, 'Duplication handling not works as expected');
 });
 
-test('N+1 solving', async (t) => {
-  let handleIds = (ids) => ids.map((id) => ({ result: id }));
+test('N+1 solving', async (_t) => {
+  const handleIds = (ids) => ids.map((id) => ({ result: id }));
 
   const batchN1 = batchCollect(async (ids) => {
     await timeout(10);
@@ -102,7 +100,7 @@ test('N+1 solving', async (t) => {
   const handleResult =
     (id) =>
     ({ result }) =>
-      t.assert.strictEqual(result, id, 'Id returned incorrectly');
+      assert.equal(result, id, 'Id returned incorrectly');
 
   batchN1(() => 1, handleResult(1));
   batchN1(2, handleResult(2));
