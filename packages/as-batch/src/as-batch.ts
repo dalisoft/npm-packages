@@ -22,8 +22,8 @@ class AsBatch {
   onCallsTimeoutDelay: number;
   private onRegisterTimeoutId: any;
   private onCallsTimeoutId: any;
-  private timeoutResponse?: any | void;
-  private timeoutResponseOfCall?: any | void;
+  private timeoutResponse?: any | undefined;
+  private timeoutResponseOfCall?: any | undefined;
   private allowWithoutWait?: boolean;
   constructor(options: Config) {
     this.cache = options.cache || new Map();
