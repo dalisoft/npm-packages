@@ -83,10 +83,10 @@ const getArcCenter = (
   pxp,
   pyp
 ) => {
-  const rxsq = Math.pow(rx, 2);
-  const rysq = Math.pow(ry, 2);
-  const pxpsq = Math.pow(pxp, 2);
-  const pypsq = Math.pow(pyp, 2);
+  const rxsq = rx ** 2;
+  const rysq = ry ** 2;
+  const pxpsq = pxp ** 2;
+  const pypsq = pyp ** 2;
 
   let radicant = rxsq * rysq - rxsq * pypsq - rysq * pxpsq;
 
@@ -152,8 +152,7 @@ const arcToBezier = ({
   rx = Math.abs(rx);
   ry = Math.abs(ry);
 
-  const lambda =
-    Math.pow(pxp, 2) / Math.pow(rx, 2) + Math.pow(pyp, 2) / Math.pow(ry, 2);
+  const lambda = pxp ** 2 / rx ** 2 + pyp ** 2 / ry ** 2;
 
   if (lambda > 1) {
     rx *= Math.sqrt(lambda);
@@ -213,7 +212,7 @@ const arcToBezier = ({
       centery
     );
 
-    return { curve: { type: 'cubic', x1, y1, x2, y2 }, x, y };
+    return { curve: { type: 'cubic', x1, x2, y1, y2 }, x, y };
   });
 };
 
