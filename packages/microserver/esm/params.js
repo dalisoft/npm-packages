@@ -1,5 +1,5 @@
 export default (paramValues) => {
-  return (res, req) => {
+  return (_res, req) => {
     if (!req.params) {
       req.params = {};
     }

@@ -28,6 +28,7 @@ const mimes = {
   csv: 'text/csv',
   cxx: 'text/x-c',
   deb: 'application/x-debian-package',
+  default: 'text/html',
   der: 'application/x-x509-ca-cert',
   diff: 'text/x-diff',
   djv: 'image/vnd.djvu',
@@ -164,8 +165,7 @@ const mimes = {
   xslt: 'application/xslt+xml',
   yaml: 'text/yaml',
   yml: 'text/yaml',
-  zip: 'application/zip',
-  default: 'text/html'
+  zip: 'application/zip'
 };
 
 const getMime = (path) => {

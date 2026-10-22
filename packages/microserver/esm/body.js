@@ -1,6 +1,6 @@
 /** global: Buffer */
 export default () => {
-  return (res, req) =>
+  return (_res, req) =>
     new Promise((resolve, reject) => {
       let buffer;
 

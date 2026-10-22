@@ -13,8 +13,7 @@ export default function resPipe(stream, size, compressed = false) {
       this,
       stream,
       typeof req !== 'undefined' &&
-        ((req.headers && req.headers['accept-encoding']) ||
-          req.getHeader('accept-encoding'))
+        (req.headers?.['accept-encoding'] || req.getHeader('accept-encoding'))
     );
 
     if (compressedStream) {
