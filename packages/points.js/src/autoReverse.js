@@ -1,6 +1,6 @@
-import area from './area';
-import reverse from './reverse';
-import { applyFuncToShapes } from './helpers';
+import area from './area.js';
+import { applyFuncToShapes } from './helpers.js';
+import reverse from './reverse.js';
 
 const autoReversePoints = (fromShape, toShape) => {
   const fromShapeArea = area(fromShape);

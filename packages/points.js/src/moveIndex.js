@@ -1,4 +1,4 @@
-import { applyFuncToShapes } from './helpers';
+import { applyFuncToShapes } from './helpers.js';
 
 const countLinePoints = (lines) =>
   lines.reduce((count, points) => count + countPoints(points), 0);
@@ -38,7 +38,7 @@ const reorderPoints = (points, offset) => {
   }
 
   const nextPoints = [
-    { x: points[offset].x, y: points[offset].y, moveTo: true },
+    { moveTo: true, x: points[offset].x, y: points[offset].y },
     ...[...points].splice(offset + 1)
   ];
 
@@ -79,6 +79,6 @@ const movePointsIndex = (shape, offset) => {
 
 const moveIndex = (s, offset) => applyFuncToShapes(movePointsIndex, s, offset);
 
-export { splitLines, reorderPoints, joinLines };
+export { joinLines, reorderPoints, splitLines };
 
 export default moveIndex;

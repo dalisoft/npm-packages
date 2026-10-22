@@ -1,4 +1,4 @@
-import { applyFuncToShapes } from './helpers';
+import { applyFuncToShapes } from './helpers.js';
 
 const autoCurveSinglePoint = (fromShape, toShape) => {
   for (let index = 0, len = fromShape.length; index < len; index++) {
@@ -9,8 +9,8 @@ const autoCurveSinglePoint = (fromShape, toShape) => {
       point.curve = {
         type: 'cubic',
         x1: prevPoint.x,
-        y1: prevPoint.y,
         x2: point.x,
+        y1: prevPoint.y,
         y2: point.y
       };
     }

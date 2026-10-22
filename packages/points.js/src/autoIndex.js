@@ -1,5 +1,5 @@
-import moveIndex from './moveIndex';
-import { applyFuncToShapes, distance } from './helpers';
+import { applyFuncToShapes, distance } from './helpers.js';
+import moveIndex from './moveIndex.js';
 
 function autoIndexPoints(ring, vs) {
   const len = ring.length;

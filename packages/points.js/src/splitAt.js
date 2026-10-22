@@ -1,11 +1,11 @@
-import length, { linearLength } from './length';
-import remove from './remove';
-import { applyFuncToShapes } from './helpers';
+import { applyFuncToShapes } from './helpers.js';
+import length, { linearLength } from './length.js';
+import remove from './remove.js';
 
 const splitAtPoint = (shape, t = 0.5) => {
   shape = remove(shape);
   const lengthSize = Math.floor(1 / t);
-  let splitShapes = new Array(lengthSize).fill(0).map((n) => []);
+  let splitShapes = new Array(lengthSize).fill(0).map((_n) => []);
   const shapeSize = length(shape);
   let currentLength = 0;
 
@@ -27,16 +27,16 @@ const splitAtPoint = (shape, t = 0.5) => {
     const firstPrevShape = i === 0 ? null : prevShape[0];
     const lastPrevShape = i === 0 ? null : prevShape[prevShape.length - 1];
 
-    if (shapes && shapes[0] && !shapes[0].moveTo) {
+    if (shapes?.[0] && !shapes[0].moveTo) {
       shapes.unshift(
         {
           x: firstPrevShape.x,
           y: firstPrevShape.y
         },
         {
+          moveTo: true,
           x: lastPrevShape.x,
-          y: lastPrevShape.y,
-          moveTo: true
+          y: lastPrevShape.y
         }
       );
     }
