@@ -10,13 +10,13 @@ jobs:
   auto-merge:
     timeout-minutes: 5
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
 
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v3
+        uses: dependabot/fetch-metadata@v3.1.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Enable auto-merge for Dependabot PRs
