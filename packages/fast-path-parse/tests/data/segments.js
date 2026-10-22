@@ -414,6 +414,187 @@ const segments = [
       }
     ],
     name: 'simple static-mixed route compact parse, `<id>`'
+  },
+  {
+    children: [
+      {
+        input: '/foo/bar-[one,two]',
+        name: '/foo/bar-[one,two]',
+        result: {
+          filled: [
+            {
+              last: true,
+              name: 'id',
+              position: 5,
+              segment: true,
+              size: 2
+            }
+          ],
+          length: 2,
+          segments: [
+            {
+              last: false,
+              name: 'foo',
+              position: 1,
+              segment: false,
+              size: 3
+            },
+            {
+              last: true,
+              name: 'id',
+              position: 5,
+              segment: true,
+              size: 2
+            }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
+      }
+    ],
+    name: 'simple dynamic route parse, `bar-[one,two]`'
+  },
+  {
+    children: [
+      {
+        input: '/foo/bar-[one,two]/baz',
+        name: '/foo/bar-[one,two]/baz',
+        result: {
+          filled: [
+            {
+              last: false,
+              name: 'id',
+              position: 5,
+              segment: true,
+              size: 2
+            }
+          ],
+          length: 3,
+          segments: [
+            {
+              last: false,
+              name: 'foo',
+              position: 1,
+              segment: false,
+              size: 3
+            },
+            {
+              last: false,
+              name: 'id',
+              position: 5,
+              segment: true,
+              size: 2
+            },
+            {
+              last: true,
+              name: 'baz',
+              position: 7,
+              segment: false,
+              size: 3
+            }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
+      }
+    ],
+    name: 'simple mixed route parse, `bar-[one,two]`'
+  },
+  {
+    children: [
+      {
+        input: '/foo/bar-[one,two]/baz/last',
+        name: '/foo/bar-[one,two]/baz/last',
+        result: {
+          filled: [
+            {
+              last: false,
+              name: 'id',
+              position: 5,
+              segment: true,
+              size: 2
+            }
+          ],
+          length: 4,
+          segments: [
+            {
+              last: false,
+              name: 'foo',
+              position: 1,
+              segment: false,
+              size: 3
+            },
+            {
+              last: false,
+              name: 'bar-*',
+              position: 5,
+              segment: true,
+              size: 7
+            },
+            {
+              last: false,
+              name: 'baz',
+              position: 7,
+              segment: false,
+              size: 3
+            },
+            {
+              last: true,
+              name: 'last',
+              position: 11,
+              segment: false,
+              size: 4
+            }
+          ]
+        },
+        variants: [['%s'], ['%s/']]
+      }
+    ],
+    name: 'simple static-mixed route parse, `bar-[one,two]`'
+  },
+  {
+    children: [
+      {
+        input: '/foo/bar-[one,two]/baz/last',
+        name: '/foo/bar-[one,two]/baz/last',
+        result: {
+          filled: [
+            {
+              last: false,
+              name: 'id',
+              position: 5,
+              segment: true,
+              size: 2
+            }
+          ],
+          length: 3,
+          segments: [
+            {
+              last: false,
+              name: 'foo',
+              position: 1,
+              segment: false,
+              size: 3
+            },
+            {
+              last: false,
+              name: 'bar-*',
+              position: 5,
+              segment: true,
+              size: 7
+            },
+            {
+              last: true,
+              name: 'baz/last',
+              position: 7,
+              segment: false,
+              size: 8
+            }
+          ]
+        },
+        test_input: true,
+        variants: [['%s'], ['%s/']]
+      }
+    ],
+    name: 'simple static-mixed route compact parse, `bar-[one,two]`'
   }
 ];
 
