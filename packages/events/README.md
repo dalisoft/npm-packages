@@ -6,7 +6,7 @@ One more event emitter for Node.js and browser
 
 - Performant
 - Easy
-- UMD compatible
+- ESM only
 
 ## Installation
 
@@ -19,13 +19,6 @@ npm i @dalisoft/events
 then you able to import to Node.js/Browser easily
 
 ```js
-// Node.js
-const Events = require('@dalisoft/events');
-
-// Browser
-// window.Events OR Events
-
-// ES6
 import Events from '@dalisoft/events';
 ```
 
