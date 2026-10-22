@@ -1,8 +1,8 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const strify = require('./json-strify');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import strify from './json-strify.js';
 
-test('stringify number', (t) => {
+test('stringify number', (_t) => {
   const instance = strify();
   const obj = { a: 1 };
   const str = instance(obj);
@@ -14,7 +14,7 @@ test('stringify number', (t) => {
   );
 });
 
-test('stringify string', (t) => {
+test('stringify string', (_t) => {
   const instance = strify();
   const obj = { b: 'string in object' };
   const str = instance(obj);
@@ -35,7 +35,7 @@ test('stringify string', (t) => {
   );
 });
 
-test('stringify boolean', (t) => {
+test('stringify boolean', (_t) => {
   const instance = strify();
   const obj = { c: false };
   const str = instance(obj);
@@ -47,7 +47,7 @@ test('stringify boolean', (t) => {
   );
 });
 
-test('stringify array', (t) => {
+test('stringify array', (_t) => {
   const instance = strify();
   const obj = { baz: [1, 'two'] };
   const str = instance(obj);
@@ -59,7 +59,7 @@ test('stringify array', (t) => {
   );
 });
 
-test('stringify object', (t) => {
+test('stringify object', (_t) => {
   const instance = strify();
   const obj = { foo: { bar: 'baz' } };
 
@@ -72,7 +72,7 @@ test('stringify object', (t) => {
   );
 });
 
-test('stringify circular', (t) => {
+test('stringify circular', (_t) => {
   const instance = strify();
   const obj = { foo: { bar: 'baz' } };
   obj.foo.xyz = obj.foo;
