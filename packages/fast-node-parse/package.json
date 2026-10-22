@@ -38,9 +38,6 @@
   "scripts": {
     "test": "bun test"
   },
-  "devDependencies": {
-    "@types/bun": "^1.4.2"
-  },
   "engines": {
     "node": ">=18.20.4"
   }
