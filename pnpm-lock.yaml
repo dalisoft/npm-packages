@@ -31,8 +31,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(rollup@4.64.10)
       ava:
-        specifier: ^8.0.2
-        version: 8.0.2(rollup@4.64.10)(supports-color@7.2.0)
+        specifier: ^8.1.0
+        version: 8.1.0(rollup@4.64.10)(supports-color@7.2.0)
       eslint:
         specifier: ^9.39.2
         version: 9.39.2(jiti@2.4.2)(supports-color@7.2.0)
@@ -174,6 +174,8 @@ importers:
         version: 6.37.8(supports-color@7.2.0)
 
   packages/swipe-gesture: {}
+
+  packages/ts-env: {}
 
   packages/ws-events-sync:
     dependencies:
@@ -1376,8 +1378,8 @@ packages:
   async-sema@3.1.1:
     resolution: {integrity: sha512-tLRNUXati5MFePdAk8dw7Qt7DpxPB60ofAgn8WRhW6a2rcimZnYBP9oxHiv0OHy+Wz7kPMG+t4LGdt31+4EmGg==}
 
-  ava@8.0.2:
-    resolution: {integrity: sha512-mTqZqikubkGBorVk2HKiw63ruEhpgYLnj/OcTlopFinYRPKlBQc1rBnOGSOZtBzgCuHpF2zqiKw2MGI0/klW9Q==}
+  ava@8.1.0:
+    resolution: {integrity: sha512-qGT7MZBJK4PSgrfg0yYIWRl9+LoXTIgNuGgrQ4PrIlQN2OpUae1gLmyEqZbUyTjR2J113sRreoqXTE0NqudwIw==}
     engines: {node: ^22.20 || ^24.12 || >=26}
     hasBin: true
     peerDependencies:
@@ -5298,15 +5300,15 @@ snapshots:
     dependencies:
       '@mapbox/node-pre-gyp': 2.0.0(supports-color@7.2.0)
       '@rollup/pluginutils': 5.3.0(rollup@4.64.10)
-      acorn: 8.17.0
-      acorn-import-attributes: 1.9.5(acorn@8.17.0)
+      acorn: 8.19.0
+      acorn-import-attributes: 1.9.5(acorn@8.19.0)
       async-sema: 3.1.1
       bindings: 1.5.0
       estree-walker: 2.0.2
       glob: 13.0.6
       graceful-fs: 4.2.11
       node-gyp-build: 4.8.4
-      picomatch: 4.0.5
+      picomatch: 4.0.7
       resolve-from: 5.0.0
     transitivePeerDependencies:
       - encoding
@@ -5324,9 +5326,9 @@ snapshots:
     dependencies:
       acorn: 6.4.2
 
-  acorn-import-attributes@1.9.5(acorn@8.17.0):
+  acorn-import-attributes@1.9.5(acorn@8.19.0):
     dependencies:
-      acorn: 8.17.0
+      acorn: 8.19.0
 
   acorn-jsx@5.3.2(acorn@6.4.2):
     dependencies:
@@ -5338,7 +5340,7 @@ snapshots:
 
   acorn-walk@8.3.5:
     dependencies:
-      acorn: 8.17.0
+      acorn: 8.19.0
 
   acorn@6.4.2: {}
 
@@ -5467,7 +5469,7 @@ snapshots:
 
   async-sema@3.1.1: {}
 
-  ava@8.0.2(rollup@4.64.10)(supports-color@7.2.0):
+  ava@8.1.0(rollup@4.64.10)(supports-color@7.2.0):
     dependencies:
       '@vercel/nft': 1.11.0(rollup@4.64.10)(supports-color@7.2.0)
       acorn: 8.19.0
