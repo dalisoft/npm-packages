@@ -14,11 +14,11 @@
     "tinypool": "^2.x"
   },
   "dependencies": {
-    "benny": "^3.7.1",
-    "extreme-router": "^1.1.1",
+    "extreme-router": "^1.2.0",
+    "fast-node-parse": "file:../",
     "fast-path-parse": "file:../../fast-path-parse",
-    "find-my-way": "^9.0.0",
-    "hono": "^4.5.11",
-    "vitest": "^3.2.4"
+    "find-my-way": "^9.3.0",
+    "hono": "^4.11.1",
+    "vitest": "^4.0.16"
   }
 }

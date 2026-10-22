@@ -8,8 +8,10 @@ import fppMatchR from 'fast-path-parse/runtime/match';
 import fppParseR from 'fast-path-parse/runtime/parse';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
+import { SmartRouter } from 'hono/router/smart-router';
 import { TrieRouter } from 'hono/router/trie-router';
 import { bench, describe } from 'vitest';
+import { MixedTree, NodeTree } from '../src/node-vtree-2';
 import { CallbackNode, RootNode } from './nodes.js';
 import { Wired } from './wired.js';
 
@@ -21,7 +23,8 @@ import { Wired } from './wired.js';
 const globalBenchConfig = {
   iterations: 1_000_000,
   now: process.now,
-  warmupIterations: 1_000
+  throws: true,
+  warmupIterations: 1
 };
 
 const modes = [
@@ -37,13 +40,13 @@ const modes = [
   },
   {
     complexity: 'easy',
-    path: '/foo/:bar',
-    validate: '/foo/bar'
+    path: '/foo/:id',
+    validate: '/foo/123'
   },
   {
     complexity: 'easy',
     path: '/foo/*',
-    validate: '/foo/bar'
+    validate: '/foo/wildcard'
   },
   {
     complexity: 'medium',
@@ -52,62 +55,131 @@ const modes = [
   }
 ];
 
+const wire = new Wired();
+
+const extreme = new Extreme({
+  allowRegisterUpdateExisting: true,
+  skipPluginValidation: true
+});
+extreme.use(param).use(wildcard);
+
+const nodetree = new NodeTree();
+const mixedtree = new MixedTree();
+
+const root = new RootNode('/');
+const foo = new CallbackNode(
+  'GET',
+  () => {
+    return 1 + (1 * 2) / 2 + 1;
+  },
+  'foo'
+);
+
+root.push(foo);
+root.optimize(['method', 'callback']);
+
+const route = FindMyWay({
+  defaultRoute() {
+    return false;
+  }
+});
+
+const honoSmartRoute = new SmartRouter({
+  routers: [new RegExpRouter(), new TrieRouter()]
+});
+const honoTrieRoute = new TrieRouter();
+const makeHonoStoredHandler = (method, path, fn) => {
+  return fn;
+};
+
 for (const { path, complexity, validate } of modes) {
-  const root = new RootNode('/');
-  const foo = new CallbackNode(
-    'GET',
-    () => {
-      return 1 + (1 * 2) / 2 + 1;
-    },
-    'foo'
-  );
   const fastPathParseMatchRuntime = fppMatchR(path);
   const fastPathParseMatchAoT = fppMatchA(path);
   const fastPathParseParseRuntime = fppParseR(path);
   const fastPathParseParseAoT = fppParseA(path);
-  const wire = new Wired();
-  const extreme = new Extreme();
 
-  extreme.use(param).use(wildcard);
-
-  root.push(foo);
-  root.optimize(['method', 'callback']);
-
-  const route = FindMyWay({
-    defaultRoute() {
-      return false;
-    }
-  });
-  route.on('GET', path, () => () => {
-    return 1 + (1 * 2) / 2 + 1;
-  });
-
-  const honoRouteRegEx = new RegExpRouter();
-  honoRouteRegEx.add('GET', path, () => {
-    return 1 + (1 * 2) / 2 + 1;
-  });
-  const honoTrieRoute = new TrieRouter();
-  honoTrieRoute.add('GET', path, () => {
-    return 1 + (1 * 2) / 2 + 1;
-  });
-
-  wire.add('GET', path, () => {
-    return 1 + (1 * 2) / 2 + 1;
-  });
-
-  extreme.register('/foo').handler = () => {
+  const callback = () => {
     return 1 + (1 * 2) / 2 + 1;
   };
 
+  nodetree.insert(path, callback);
+  mixedtree.insert(path, callback);
+  route.on('GET', path, () => callback);
+  honoSmartRoute.add('GET', path, makeHonoStoredHandler('GET', path, callback));
+  honoTrieRoute.add('GET', path, makeHonoStoredHandler('GET', path, callback));
+  wire.add('GET', path, callback);
+  extreme.register(path).handler = callback;
+
+  describe(`initialize [${complexity}]`, () => {
+    bench('fast-node-parse:beta', () => {
+      new NodeTree().insert(path, callback);
+    });
+    bench('fast-node-parse:beta [mixed]', () => {
+      new MixedTree().insert(path, callback);
+    });
+    bench('find-my-way', () => {
+      FindMyWay({
+        defaultRoute() {
+          return false;
+        }
+      }).on('GET', path, () => callback);
+    });
+    bench('hono-smart-match', () => {
+      new SmartRouter({
+        routers: [new RegExpRouter(), new TrieRouter()]
+      }).add('GET', path, makeHonoStoredHandler('GET', path, callback));
+    });
+    bench('hono-regex-match', () => {
+      new RegExpRouter().add(
+        'GET',
+        path,
+        makeHonoStoredHandler('GET', path, callback)
+      );
+    });
+    bench('hono-trie-match', () => {
+      new TrieRouter().add(
+        'GET',
+        path,
+        makeHonoStoredHandler('GET', path, callback)
+      );
+    });
+    /* bench('wired', () => {
+      new Wired().add('GET', path, callback);
+    }); */
+    bench('extreme-router', () => {
+      new Extreme({
+        allowRegisterUpdateExisting: true,
+        skipPluginValidation: true
+      })
+        .use(param)
+        .use(wildcard)
+        .register(path).handler = callback;
+    });
+  });
+
   describe(`matching [${complexity}]`, () => {
-    bench(
+    /* bench(
       'fast-node-parse',
       () => {
         return root.match(validate);
       },
       globalBenchConfig
+    ); */
+    bench(
+      'fast-node-parse:beta',
+      () => {
+        return nodetree.match(validate);
+      },
+      globalBenchConfig
     );
     bench(
+      'fast-node-parse:beta [mixed]',
+      () => {
+        return mixedtree.match(validate);
+      },
+      globalBenchConfig
+    );
+    /* bench(
       'fast-path-parse[-runtime]',
       () => {
         return fastPathParseMatchRuntime(validate);
@@ -120,11 +192,11 @@ for (const { path, complexity, validate } of modes) {
         return fastPathParseMatchAoT(validate);
       },
       globalBenchConfig
-    );
+    ); */
     bench(
-      'hono-regex-match',
+      'hono-smart-match',
       () => {
-        return honoRouteRegEx.match('GET', validate);
+        return honoSmartRoute.match('GET', validate);
       },
       globalBenchConfig
     );
@@ -141,14 +213,14 @@ for (const { path, complexity, validate } of modes) {
         return route.find('GET', validate);
       },
       globalBenchConfig
-    );
+    ); /*
     bench(
       'wired',
       () => {
         return wire.has('GET', validate);
       },
       globalBenchConfig
-    );
+    );*/
     bench(
       'extreme-router',
       () => {
@@ -160,31 +232,45 @@ for (const { path, complexity, validate } of modes) {
 
   // Suite
   describe(`parse [${complexity}]`, () => {
-    bench(
+    /* bench(
       'fast-node-parse',
       () => {
         return root.parse(validate);
       },
       globalBenchConfig
+    ); */
+    bench(
+      'fast-node-parse:beta',
+      () => {
+        return nodetree.parse(validate);
+      },
+      globalBenchConfig
     );
     bench(
+      'fast-node-parse:beta [mixed]',
+      () => {
+        return mixedtree.parse(validate);
+      },
+      globalBenchConfig
+    );
+    /*bench(
       'fast-path-parse[-runtime]',
       () => {
         return fastPathParseParseRuntime(validate);
       },
       globalBenchConfig
     );
-    bench(
+     bench(
       'fast-path-parse[-aot]',
       () => {
         return fastPathParseParseAoT(validate);
       },
       globalBenchConfig
-    );
+    );*/
     bench(
-      'hono-regex-match',
+      'hono-smart-match',
       () => {
-        const [res] = honoRouteRegEx.match('GET', validate);
+        const [res] = honoSmartRoute.match('GET', validate);
         const params = res[0][1];
 
         return params;
@@ -211,7 +297,7 @@ for (const { path, complexity, validate } of modes) {
     bench(
       'extreme-router',
       () => {
-        return extreme.match(validate).params;
+        return extreme.match(validate)?.params;
       },
       globalBenchConfig
     );
@@ -219,17 +305,31 @@ for (const { path, complexity, validate } of modes) {
 
   // Suite
   describe(`lookup [${complexity}]`, () => {
-    bench(
+    /* bench(
       'fast-node-parse',
       () => {
         return root.lookup(validate);
       },
       globalBenchConfig
+    ); */
+    bench(
+      'fast-node-parse:beta',
+      () => {
+        return nodetree.lookup(validate);
+      },
+      globalBenchConfig
     );
     bench(
-      'hono-regex-match',
+      'fast-node-parse:beta [mixed]',
       () => {
-        const [res] = honoRouteRegEx.match('GET', validate);
+        return mixedtree.lookup(validate);
+      },
+      globalBenchConfig
+    );
+    bench(
+      'hono-smart-match',
+      () => {
+        const [res] = honoSmartRoute.match('GET', validate);
         const [callback, params] = res[0];
 
         return callback(params);
@@ -253,19 +353,19 @@ for (const { path, complexity, validate } of modes) {
       },
       globalBenchConfig
     );
-    bench(
+    /* bench(
       'wired',
       () => {
-        return wire.lookup('GET', validate)();
+        return wire.lookup('GET', validate)?.();
       },
       globalBenchConfig
-    );
+    ); */
     bench(
       'extreme-router',
       () => {
-        const { handler, params } = extreme.match(validate);
+        const ematch = extreme.match(validate);
 
-        return handler(params);
+        return ematch?.handler(ematch?.params);
       },
       globalBenchConfig
     );

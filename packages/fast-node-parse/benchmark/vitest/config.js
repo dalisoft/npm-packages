@@ -6,6 +6,7 @@
 export const config = {
   iterations: 1_000_000,
   now: process.now,
+  throws: true,
   warmupIterations: 1_000
 };
 
