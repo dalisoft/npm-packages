@@ -1,5 +1,5 @@
-import boundingBox from './boundingBox';
-import { applyFuncToShapes, distance } from './helpers';
+import boundingBox from './boundingBox.js';
+import { applyFuncToShapes, distance } from './helpers.js';
 
 const findNearestIndexPoints = (points, p, box = false) => {
   let min = Infinity;

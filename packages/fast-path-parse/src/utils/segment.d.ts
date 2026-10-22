@@ -23,4 +23,4 @@ export interface ISegmentSlice {
  */
 function segmentsSlice(path: string, compact: boolean): ISegmentSlice;
 
-export = segmentsSlice;
+export default segmentsSlice;

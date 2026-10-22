@@ -1,7 +1,7 @@
-import { parse } from 'querystring';
+import { parse } from 'node:querystring';
 
 export default () => {
-  return (res, req) => {
+  return (_res, req) => {
     req.query = parse(req.getQuery());
   };
 };

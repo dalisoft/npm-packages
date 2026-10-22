@@ -1,0 +1,43 @@
+{
+  "name": "easy2pdf",
+  "version": "0.0.4",
+  "description": "Easiest HTML and Markdown to PDF Converter",
+  "keywords": [
+    "pdf",
+    "markdown",
+    "html"
+  ],
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/easy2pdf",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": "./src/api.js"
+  },
+  "main": "src/api.js",
+  "bin": "./src/cli.js",
+  "files": [
+    "src/parsers",
+    "src/pdf.js",
+    "src/api.js",
+    "src/cli.js"
+  ],
+  "scripts": {
+    "prepublishOnly": "bun run test",
+    "test": "echo 0"
+  },
+  "dependencies": {
+    "markdown-it": "^15.0.3",
+    "puppeteer": "^25.15.0"
+  },
+  "engines": {
+    "node": ">=18.20.1"
+  }
+}

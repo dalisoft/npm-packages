@@ -1,4 +1,8 @@
-import { decode, DecodeOptions, GetPublicKeyOrSecret } from 'jsonwebtoken';
+import {
+  type DecodeOptions,
+  decode,
+  type GetPublicKeyOrSecret
+} from 'jsonwebtoken';
 import { decrypt } from './utils';
 
 const decodeJWT = (

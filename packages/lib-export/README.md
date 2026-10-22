@@ -34,7 +34,7 @@ lib-export -name LibraryName -file YOUR_FILE.js -output YOUR_FILE.browser.js --n
 ### Library mode
 
 ```js
-const libexport = require('lib-export');
+import libexport from 'lib-export';
 
 libexport({
   name: 'LibraryName',

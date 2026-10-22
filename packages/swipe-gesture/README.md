@@ -11,7 +11,7 @@ Swipe gesture library
 - Clean code
 - Simple & Easy
 - Performant
-- UMD compatible
+- ESM only
 
 ## Demos
 
@@ -28,13 +28,6 @@ npm i @dalisoft/swipe-gesture
 then you able to import to Node.js/Browser easily
 
 ```js
-// Node.js
-const SwipeGesture = require('@dalisoft/swipe-gesture');
-
-// Browser
-// window.SwipeGesture OR SwipeGesture
-
-// ES6
 import SwipeGesture from '@dalisoft/swipe-gesture';
 ```
 

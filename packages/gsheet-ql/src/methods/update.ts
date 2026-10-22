@@ -1,11 +1,11 @@
-import {
-  Sheets,
+import { getRowsIndexRange, parseTypes } from '../helpers/index';
+import type {
   Error,
-  Response,
+  ObjStringAny,
   Resource,
-  ObjStringAny
+  Response,
+  Sheets
 } from '../ts-interfaces';
-import { parseTypes, getRowsIndexRange } from '../helpers/index';
 
 const updateRows = (
   range: string | string[] | any,
@@ -19,7 +19,7 @@ const updateRows = (
   let isDelete = false;
   if (typeof row === 'string' || typeof row === 'number') {
     row = batch && range ? range.map(() => [row]) : [row];
-  } else if (typeof row === 'object' && !Array.isArray(row) && !!row) {
+  } else if (typeof row === 'object' && !Array.isArray(row) && row) {
     row = [row];
   } else if (row === undefined || row === null) {
     isDelete = true;
@@ -66,10 +66,10 @@ const updateRows = (
       const deleteRequest = {
         deleteDimension: {
           range: {
-            sheetId: spreadsheetId,
             dimension: 'ROWS',
-            startIndex: req.startRowIndex,
-            endIndex: req.endRowIndex
+            endIndex: req.endRowIndex,
+            sheetId: spreadsheetId,
+            startIndex: req.startRowIndex
           }
         }
       };
@@ -82,8 +82,8 @@ const updateRows = (
     sheets.spreadsheets.values[batch ? 'batchUpdate' : 'update'](
       {
         auth,
-        spreadsheetId,
         resource,
+        spreadsheetId,
         ...(batch ? {} : { range, valueInputOption: 'USER_ENTERED' })
       },
       (err: Error, res: Response) => {

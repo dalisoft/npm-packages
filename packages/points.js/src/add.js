@@ -1,5 +1,5 @@
-import cubify from './cubify';
-import { numberAtInterval, distance } from './helpers';
+import cubify from './cubify.js';
+import { distance, numberAtInterval } from './helpers.js';
 
 const linearPoints = (from, to, t = 0.5) => [
   {
@@ -43,14 +43,14 @@ const curvedPoints = (from, to, t = 0.5) => {
 
   return [
     {
+      curve: { type: 'cubic', x1: E.x, x2: H.x, y1: E.y, y2: H.y },
       x: K.x,
-      y: K.y,
-      curve: { type: 'cubic', x1: E.x, y1: E.y, x2: H.x, y2: H.y }
+      y: K.y
     },
     {
+      curve: { type: 'cubic', x1: J.x, x2: G.x, y1: J.y, y2: G.y },
       x: D.x,
-      y: D.y,
-      curve: { type: 'cubic', x1: J.x, y1: J.y, x2: G.x, y2: G.y }
+      y: D.y
     }
   ];
 };
@@ -79,7 +79,6 @@ const addPoints = (shape, pointsRequired) => {
     const prevPoint = shape[i - 1];
 
     if (point.moveTo) {
-      continue;
     } else {
       const dist = distance(prevPoint, point);
       if (dist > maxDist) {

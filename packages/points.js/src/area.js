@@ -1,6 +1,6 @@
 /** global: x1 */
 /** global: y1 */
-import { applyFuncToShapes } from './helpers';
+import { applyFuncToShapes } from './helpers.js';
 
 const areaPoints = (polygon) => {
   return polygon.reduce((area, { x, y }, i) => {

@@ -3,7 +3,7 @@ export const useConnectMiddleware = (middleware) => {
     new Promise((resolve) =>
       middleware(req, res, (err, done) => {
         if (err) {
-          res.end(JSON.stringify({ message: err.message, code: err.code }));
+          res.end(JSON.stringify({ code: err.code, message: err.message }));
           return resolve(res);
         }
         if (done !== false) {

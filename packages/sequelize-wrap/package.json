@@ -2,25 +2,36 @@
   "name": "@dalisoft/sequelize-wrap",
   "version": "0.0.10",
   "description": "An Wrapper for Sequelize Model",
-  "main": "sequelize-wrap.js",
-  "typings": "sequelize-wrap.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/sequelize-wrap.git"
-  },
   "keywords": [
     "sequelize",
     "orm",
     "parse",
     "performant"
   ],
-  "author": "dalisoft",
-  "license": "MIT",
+  "homepage": "https://github.com/dalisoft/sequelize-wrap#readme",
   "bugs": {
     "url": "https://github.com/dalisoft/sequelize-wrap/issues"
   },
-  "homepage": "https://github.com/dalisoft/sequelize-wrap#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/sequelize-wrap.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./sequelize-wrap.d.ts",
+      "default": "./sequelize-wrap.js"
+    }
+  },
+  "main": "sequelize-wrap.js",
+  "types": "sequelize-wrap.d.ts",
+  "files": [
+    "sequelize-wrap.js",
+    "sequelize-wrap.d.ts"
+  ],
   "devDependencies": {
-    "sequelize": "^6.37.4"
+    "sequelize": "^6.37.8"
   }
 }

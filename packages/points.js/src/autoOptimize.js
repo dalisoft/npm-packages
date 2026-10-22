@@ -1,9 +1,9 @@
-import { applyFuncToShapes } from './helpers';
+import { applyFuncToShapes } from './helpers.js';
 
 const vergJoin = ',';
 const reducerPath = (prev, { x, y, curve, moveTo }) => {
   let red;
-  if (curve && curve.type) {
+  if (curve?.type) {
     const { type, x1, y1, x2, y2 } = curve;
     if (type === 'cubic') {
       red = [

@@ -1,8 +1,13 @@
 /**
- * @type {import('./node')}
- * @implements {import('./node')}
+ * It is maybe looks like **binary tree**
+ * but it is different algorithm was made
+ * to solve the walking on routers linearly
+ * so it should fast on any size of route
+ *
+ * @type {import('./node').Node}
+ * @implements {import('./node').Node}
  */
-class Node {
+export class Node {
   constructor(segment, length) {
     this.next = undefined;
     this.position = 0;
@@ -10,7 +15,7 @@ class Node {
 
     this.segment = segment;
     this.static = !/[<>{}:*]/.test(segment);
-    this.length = this.static ? segment.length : length ?? 2;
+    this.length = this.static ? segment.length : (length ?? 2);
     this.fixed_length = typeof length === 'number' || this.static;
 
     // This need for routers, otherwise you can modify it
@@ -39,17 +44,20 @@ class Node {
   match(path) {
     let i = -1;
     let node = this;
+    let position;
 
     while (node) {
+      position = node.position;
+
       if (node.static) {
-        i = path.indexOf(node.segment, node.position);
+        i = path.indexOf(node.segment, position);
       } else if (node.fixed_length) {
         i = i + node.length;
       } else {
-        i = path.indexOf('/', node.position + 1);
+        i = path.indexOf('/', position + 1);
       }
 
-      if (i === -1 || i < node.position) {
+      if (i === -1 || i < position) {
         return false;
       }
 
@@ -62,18 +70,21 @@ class Node {
   parse(path) {
     let i = -1;
     let node = this;
+    let position;
     let params;
 
     while (node) {
+      position = node.position;
+
       if (node.static) {
-        i = path.indexOf(node.segment, node.position);
+        i = path.indexOf(node.segment, position);
       } else if (node.fixed_length) {
         i = i + node.length;
       } else {
-        i = path.indexOf('/', node.position + 1);
+        i = path.indexOf('/', position + 1);
       }
 
-      if (i === -1 || i < node.position) {
+      if (i === -1 || i < position) {
         return false;
       }
 
@@ -85,7 +96,7 @@ class Node {
         if (node.key) {
           params[node.key] = node.last
             ? path.substring(i + 1)
-            : path.substring(node.position + 1, i);
+            : path.substring(position + 1, i);
         }
       }
 
@@ -98,18 +109,20 @@ class Node {
   lookup(path) {
     let i = -1;
     let node = this;
+    let position;
 
     while (node) {
+      position = node.position;
+
       if (node.static) {
-        i = path.indexOf(node.segment, node.position);
+        i = path.indexOf(node.segment, position);
       } else if (node.fixed_length) {
         i = i + node.length;
       } else {
-        i = path.indexOf('/', node.position + 1);
+        i = path.indexOf('/', position + 1);
       }
 
-      if (i === -1 || i < node.position) {
-        console.log({ i }, node);
+      if (i === -1 || i < position) {
         return false;
       }
 
@@ -123,18 +136,3 @@ class Node {
     return false;
   }
 }
-/*
-const root = new Node('/');
-const foo = new Node('foo');
-const id = new Node(':id', 3);
-
-root.push(foo);
-foo.push(id);
-
-console.log(
-  root.match('/foo/123'),
-  root.parse('/foo/123'),
-  root.lookup('/foo/123')
-);*/
-
-module.exports = Node;

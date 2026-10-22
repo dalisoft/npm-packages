@@ -1,40 +1,94 @@
+// eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair
+/* eslint-disable max-lines */
+
+import equalArrLen from './equal-arr-len.js';
+
 /**
  * Parses every segment and makes it more clean
  * @param {string} name
  * @param {(() => number)} getIndex
  * @param {number} position
  */
-
+// eslint-disable-next-line complexity, max-lines-per-function
 const parseSegment = (name, getIndex, position = 1) => {
+  /**
+   * example, `/foo/*` and it can handle `/foo/bar`
+   * segment in this case will be `*1` or `*2`
+   */
   if (name === '*' || name === '(.*)') {
     return {
       name: `*${getIndex()}`,
-      segment: true,
       position: position + 2,
+      segment: true,
       size: 2
     };
   }
+
+  /**
+   * example, `/foo/*` and it can handle `/foo/bar`
+   * segment in this case will be `*1` or `*2`
+   */
   if (name.charAt(0) === ':') {
     return {
       name: name.substring(1),
-      segment: true,
       position: position + 2,
+      segment: true,
       size: 2
     };
   }
   if (name.charAt(0) === '<' && name.charAt(name.length - 1) === '>') {
     return {
       name: name.substring(1, name.length - 1),
-      segment: true,
       position: position + 2,
+      segment: true,
+      size: 2
+    };
+  }
+  if (name.indexOf('[') !== -1 && name.charAt(name.length - 1) === ']') {
+    const first = name.indexOf('[');
+    const names = name.substring(first + 1, name.length - 1).split(',');
+
+    if (equalArrLen(names)) {
+      return {
+        name: `*${getIndex()}`,
+        position: position + 2,
+        segment: true,
+        size: names[0].length
+      };
+    }
+
+    return {
+      name: `*${getIndex()}`,
+      position: position + 2,
+      segment: true,
+      size: 2
+    };
+  }
+  if (name.indexOf('{') !== -1 && name.charAt(name.length - 1) === '}') {
+    const first = name.indexOf('{');
+    const names = name.substring(first + 1, name.length - 1).split(',');
+
+    if (equalArrLen(names)) {
+      return {
+        name: `*${getIndex()}`,
+        position: position + 2,
+        segment: true,
+        size: names[0].length
+      };
+    }
+
+    return {
+      name: `*${getIndex()}`,
+      position: position + 2,
+      segment: true,
       size: 2
     };
   }
 
   return {
     name,
-    segment: false,
     position: position + name.length + 1,
+    segment: false,
     size: name.length
   };
 };
@@ -76,9 +130,9 @@ const mergeStaticSegments = (segments) => {
 };
 
 /**
- * @type {import('./segment')}
+ * @type {import('./segment').default}
  */
-module.exports = function segmentsSlice(path, compact = false) {
+export default function segmentsSlice(path, compact = false) {
   let INDEX = 1;
   let POSITION = 1;
 
@@ -104,5 +158,5 @@ module.exports = function segmentsSlice(path, compact = false) {
   const segments = compact ? mergeStaticSegments(rawSegments) : rawSegments;
   const segmentsFilled = segments.filter((segment) => segment.segment);
 
-  return { segments, filled: segmentsFilled, length: segments.length };
-};
+  return { filled: segmentsFilled, length: segments.length, segments };
+}

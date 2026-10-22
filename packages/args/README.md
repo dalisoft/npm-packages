@@ -8,7 +8,7 @@ A performant argument pass library
 - Performant
 - Easy
 - Fallback to `fn.apply(this, args)`
-- UMD compatible
+- ESM only
 
 ## Installation
 
@@ -21,13 +21,6 @@ npm i @dalisoft/args
 then you able to import to Node.js/Browser easily
 
 ```js
-// Node.js
-const args = require('@dalisoft/args');
-
-// Browser
-// window.args OR args
-
-// ES6
 import args from '@dalisoft/args';
 ```
 

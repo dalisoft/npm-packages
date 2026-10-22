@@ -1,0 +1,102 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "rvben.rumdl"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "files.associations": {
+    "*.ts": "typescript",
+    "*rc": "json"
+  },
+  "folders": [
+    {
+      "path": "../packages/easy2pdf"
+    },
+    {
+      "path": "../packages/jwt"
+    },
+    {
+      "path": "../packages/sequelize-wrap"
+    },
+    {
+      "path": "../packages/fast-node-parse"
+    },
+    {
+      "path": "../packages/fast-path-parse"
+    },
+    {
+      "path": "../packages/fast-query-parse"
+    },
+    {
+      "path": "../packages/microserver"
+    },
+    {
+      "path": "../packages/events"
+    },
+    {
+      "path": "../packages/fast-pool"
+    },
+    {
+      "path": "../packages/ws-events-sync"
+    },
+    {
+      "path": "../packages/swipe-gesture"
+    },
+    {
+      "path": "../packages/react-es6-tween"
+    },
+    {
+      "path": "../packages/points.js"
+    },
+    {
+      "path": "../packages/mobx-sync-storage"
+    },
+    {
+      "path": "../packages/macos-antialias-configure"
+    },
+    {
+      "path": "../packages/lib-export"
+    },
+    {
+      "path": "../packages/jwe"
+    },
+    {
+      "path": "../packages/json-strify"
+    },
+    {
+      "path": "../packages/getdirname"
+    },
+    {
+      "path": "../packages/cookie"
+    },
+    {
+      "path": "../packages/batch-do"
+    },
+    {
+      "path": "../packages/batch-collect"
+    },
+    {
+      "path": "../packages/as-batch"
+    },
+    {
+      "path": "../packages/gsheet-ql"
+    },
+    {
+      "path": "../packages/deepcopy"
+    },
+    {
+      "path": "../packages/cache-ttl"
+    },
+    {
+      "path": "../packages/args"
+    }
+  ],
+  "js/ts.tsdk.path": "node_modules/tsrs",
+  "js/ts.validate.enable": true,
+  "npm.packageManager": "bun"
+}

@@ -1,6 +1,11 @@
-const compileJSON = require('compile-json-stringify');
+import compileJSON from 'compile-json-stringify';
 
-module.exports = (schema) => {
+/**
+ * Creates a faster `JSON.stringify` implementation
+ * @param {object | ((value: unknown) => string)} [schema] JSON schema or compiled stringify function
+ * @returns {(jsonObject: unknown, jsonParent?: unknown, topParent?: unknown, jsonSchema?: object) => string}
+ */
+export default (schema) => {
   let isSchemaGenerated;
   let schemaStringify;
   let schemaPrevResponse;
@@ -11,7 +16,7 @@ module.exports = (schema) => {
     isSchemaGenerated = true;
   } else if (typeof schema === 'object') {
     schema.strict = true;
-    schamaStringify = compileJSON(schema);
+    schemaStringify = compileJSON(schema);
     isSchemaGenerated = true;
   } else if (schema === undefined) {
     schema = {};
@@ -29,7 +34,7 @@ module.exports = (schema) => {
     }
     if (typeof jsonObject === 'string') {
       if (jsonObject.indexOf('"') !== -1) {
-        return '"' + jsonObject.replace(/"/g, '\\"') + '"';
+        return `"${jsonObject.replace(/"/g, '\\"')}"`;
       }
       return jsonObject;
     } else if (typeof jsonObject !== 'object') {
@@ -53,7 +58,7 @@ module.exports = (schema) => {
         jsonSchema.items = [];
       }
       for (let i = 0, len = jsonObject.length; i < len; i++) {
-        let value = jsonObject[i];
+        const value = jsonObject[i];
         if (value === undefined || value === null) {
           if (!jsonSchema.items[i]) {
             jsonSchema.items[i] = { type: 'null' };
@@ -74,9 +79,9 @@ module.exports = (schema) => {
           result += '"[Circular]"';
         } else if (typeof value === 'string') {
           if (value.indexOf('"') !== -1) {
-            result += '"' + value.replace(/"/g, '\\"') + '"';
+            result += `"${value.replace(/"/g, '\\"')}"`;
           } else {
-            result += '"' + value + '"';
+            result += `"${value}"`;
           }
 
           if (!jsonSchema.items[i]) {
@@ -110,7 +115,7 @@ module.exports = (schema) => {
         jsonSchema.properties = {};
       }
       for (const key in jsonObject) {
-        let value = jsonObject[key];
+        const value = jsonObject[key];
         if (value === undefined || value === null) {
           if (!jsonSchema.properties[key]) {
             jsonSchema.properties[key] = { type: 'null' };
@@ -123,7 +128,7 @@ module.exports = (schema) => {
         } else {
           result += ',';
         }
-        result += '"' + key + '":';
+        result += `"${key}":`;
         if (
           value === jsonObject ||
           value === jsonParent ||
@@ -132,9 +137,9 @@ module.exports = (schema) => {
           result += '"[Circular]"';
         } else if (typeof value === 'string') {
           if (value.indexOf('"') !== -1) {
-            result += '"' + value.replace(/"/g, '\\"') + '"';
+            result += `"${value.replace(/"/g, '\\"')}"`;
           } else {
-            result += '"' + value + '"';
+            result += `"${value}"`;
           }
 
           if (!jsonSchema.properties[key]) {

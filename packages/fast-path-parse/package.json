@@ -2,27 +2,43 @@
   "name": "fast-path-parse",
   "version": "2.2.1",
   "description": "Fastest route path-to-params parser",
-  "type": "commonjs",
+  "keywords": [
+    "esm",
+    "qs",
+    "query",
+    "parse"
+  ],
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-path-parse",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
   "exports": {
     "./aot/parse": {
-      "default": "./src/aot/parse.js",
-      "types": "./src/aot/parse.d.ts"
+      "types": "./src/aot/parse.d.ts",
+      "default": "./src/aot/parse.js"
     },
     "./aot/match": {
-      "default": "./src/aot/match.js",
-      "types": "./src/aot/match.d.ts"
+      "types": "./src/aot/match.d.ts",
+      "default": "./src/aot/match.js"
     },
     "./runtime/parse": {
-      "default": "./src/runtime/parse.js",
-      "types": "./src/runtime/parse.d.ts"
+      "types": "./src/runtime/parse.d.ts",
+      "default": "./src/runtime/parse.js"
     },
     "./runtime/match": {
-      "default": "./src/runtime/match.js",
-      "types": "./src/runtime/match.d.ts"
+      "types": "./src/runtime/match.d.ts",
+      "default": "./src/runtime/match.js"
     },
     "./utils/segment": {
-      "default": "./src/utils/segment.js",
-      "types": "./src/utils/segment.d.ts"
+      "types": "./src/utils/segment.d.ts",
+      "default": "./src/utils/segment.js"
     }
   },
   "files": [
@@ -30,28 +46,11 @@
     "src/runtime",
     "src/utils"
   ],
+  "scripts": {
+    "prepublishOnly": "bun run test",
+    "test": "bun test"
+  },
   "engines": {
     "node": ">=18.20.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/npm-packages.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dalisoft/npm-packages/issues"
-  },
-  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/fast-path-parse",
-  "scripts": {
-    "test": "vitest --no-isolate --dir=tests **/*.test.js",
-    "prepublishOnly": "npm run test"
-  },
-  "keywords": [
-    "esm",
-    "cjs",
-    "qs",
-    "query",
-    "parse"
-  ],
-  "author": "dalisoft",
-  "license": "MIT"
+  }
 }

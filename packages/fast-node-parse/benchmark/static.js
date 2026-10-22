@@ -54,12 +54,12 @@ suite(
   add('hono regex parse', () => {
     const [res] = honoRouteRegEx.match('GET', '/foo');
 
-    const params = res[0][1];
+    const _params = res[0][1];
   }),
   add('hono trie match', () => {
     const [res] = honoTrieRoute.match('GET', '/foo');
 
-    const params = res[0][1];
+    const _params = res[0][1];
   }),
   add('find-my-way', () => {
     route.find('GET', '/foo');

@@ -2,26 +2,33 @@
   "name": "json-strify",
   "version": "0.1.9",
   "description": "Faster implementation of JSON.stringify",
-  "main": "json-strify.js",
-  "scripts": {
-    "prepublishOnly": "npm test",
-    "test": "ava"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/json-strify.git"
-  },
   "keywords": [
     "json",
     "stringify",
     "faster"
   ],
-  "author": "dalisoft",
-  "license": "MIT",
+  "homepage": "https://github.com/dalisoft/json-strify#readme",
   "bugs": {
     "url": "https://github.com/dalisoft/json-strify/issues"
   },
-  "homepage": "https://github.com/dalisoft/json-strify#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/json-strify.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": "./json-strify.js"
+  },
+  "main": "json-strify.js",
+  "files": [
+    "json-strify.js"
+  ],
+  "scripts": {
+    "prepublishOnly": "bun run test",
+    "test": "bun test"
+  },
   "dependencies": {
     "compile-json-stringify": "^0.1.2"
   }

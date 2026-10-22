@@ -1,9 +1,64 @@
-const assert = require('node:assert/strict');
-const { describe, it } = require('node:test');
-const Node = require('../src/node/node.js');
-const { CallbackNode, RootNode } = require('../benchmark/nodes.js');
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
+import { CallbackNode, RootNode } from '../benchmark/nodes.js';
+import { Node } from '../src/node/node.js';
 
 describe('node tree [/foo/:id/:kind]', () => {
+  describe('multi-route siblings', () => {
+    const root = new Node('/');
+    const foo = new Node('foo');
+    const bar = new Node('bar');
+    const baz = new Node('baz');
+    const id = new Node(':id');
+
+    root.push(foo);
+    foo.push(bar);
+    foo.push(baz);
+    bar.push(id);
+
+    it('matches sibling branches at the same depth', () => {
+      assert.equal(root.match('/foo/bar/123'), true);
+      assert.equal(root.match('/foo/baz'), true);
+      assert.equal(root.match('/foo/bar'), false);
+    });
+
+    it('parses the matched sibling branch', () => {
+      assert.deepEqual(root.parse('/foo/bar/123'), { id: '123' });
+      assert.equal(root.parse('/foo/baz'), undefined);
+    });
+
+    it('looks up the matched sibling leaf', () => {
+      assert.equal(root.lookup('/foo/bar/123'), id);
+      assert.equal(root.lookup('/foo/baz'), baz);
+      assert.equal(root.lookup('/foo/qux'), false);
+    });
+  });
+
+  describe('priority order', () => {
+    const root = new Node('/');
+    const foo = new Node('foo');
+    const id = new Node(':id');
+    const me = new Node('me');
+    const wildcard = new Node('*');
+
+    root.push(foo);
+    foo.push(id);
+    foo.push(wildcard);
+    foo.push(me);
+
+    it('matches static before params and params before wildcard', () => {
+      assert.equal(root.lookup('/foo/me'), me);
+      assert.equal(root.lookup('/foo/123'), id);
+      assert.equal(root.lookup('/foo/a/b'), wildcard);
+    });
+
+    it('parses params and wildcard values', () => {
+      assert.equal(root.parse('/foo/me'), undefined);
+      assert.deepEqual(root.parse('/foo/123'), { id: '123' });
+      assert.deepEqual(root.parse('/foo/a/b'), { '*': 'a/b' });
+    });
+  });
+
   describe('route matches', () => {
     const root = new Node('/');
     const foo = new Node('foo');
@@ -23,6 +78,9 @@ describe('node tree [/foo/:id/:kind]', () => {
 
     describe('invalid routes [/foo/:id]', () => {
       it('/foo/123', () => assert.equal(root.match('/foo/123'), false));
+      it('/foo/123/bar/baz', () =>
+        assert.equal(root.match('/foo/123/bar/baz'), false));
+      it('/foo/123/', () => assert.equal(root.match('/foo/123/'), false));
       it('/foo/bar', () => assert.equal(root.match('/foo/bar'), false));
       it('/foo/', () => assert.equal(root.match('/foo/'), false));
     });
@@ -58,6 +116,9 @@ describe('node tree [/foo/:id/:kind]', () => {
 
     describe('invalid routes [/foo/:id]', () => {
       it('/foo/123', () => assert.equal(root.parse('/foo/123'), false));
+      it('/foo/123/bar/baz', () =>
+        assert.equal(root.parse('/foo/123/bar/baz'), false));
+      it('/foo/123/', () => assert.equal(root.parse('/foo/123/'), false));
       it('/foo/bar', () => assert.equal(root.parse('/foo/bar'), false));
       it('/foo/', () => assert.equal(root.parse('/foo/'), false));
     });
@@ -84,26 +145,30 @@ describe('node tree [/foo/:id/:kind]', () => {
     describe('valid routes [/foo/123/:kind]', () => {
       it('/foo/123/bar', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/bar'), {
+          calls: 0,
           id: '123',
-          kind: 'bar',
-          calls: 0
+          kind: 'bar'
         }));
       it('/foo/123/baz', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/baz'), {
+          calls: 1,
           id: '123',
-          kind: 'baz',
-          calls: 1
+          kind: 'baz'
         }));
       it('/foo/123/bloof', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/bloof'), {
+          calls: 2,
           id: '123',
-          kind: 'bloof',
-          calls: 2
+          kind: 'bloof'
         }));
     });
 
     describe('invalid routes [/foo/:id]', () => {
       it('/foo/123', () => assert.equal(root.lookup('GET', '/foo/123'), false));
+      it('/foo/123/bar/baz', () =>
+        assert.equal(root.lookup('GET', '/foo/123/bar/baz'), false));
+      it('/foo/123/', () =>
+        assert.equal(root.lookup('GET', '/foo/123/'), false));
       it('/foo/bar', () => assert.equal(root.lookup('GET', '/foo/bar'), false));
       it('/foo/', () => assert.equal(root.lookup('GET', '/foo/'), false));
     });
@@ -167,8 +232,8 @@ describe('node tree [/foo/:id]', () => {
     describe('valid routes [/foo/123/]', () => {
       it('/foo/123/bar', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123'), {
-          id: '123',
-          calls: 0
+          calls: 0,
+          id: '123'
         }));
     });
 

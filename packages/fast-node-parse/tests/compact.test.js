@@ -1,8 +1,8 @@
-const assert = require('node:assert/strict');
-const { describe, it } = require('node:test');
-const Node = require('../src/node/node.js');
-const Compactify = require('../src/utils/compact.js');
-const { CallbackNode, RootNode } = require('../benchmark/nodes.js');
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
+import { CallbackNode, RootNode } from '../benchmark/nodes.js';
+import { Node } from '../src/node/node.js';
+import { Compactify } from '../src/utils/compact.js';
 
 describe('node compact tree [optimized]', () => {
   describe('route matches [/foo/:id/:kind]', () => {
@@ -91,21 +91,21 @@ describe('node compact tree [optimized]', () => {
     describe('valid routes [/foo/123/:kind]', () => {
       it('/foo/123/bar', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/bar'), {
+          calls: 0,
           id: '123',
-          kind: 'bar',
-          calls: 0
+          kind: 'bar'
         }));
       it('/foo/123/baz', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/baz'), {
+          calls: 1,
           id: '123',
-          kind: 'baz',
-          calls: 1
+          kind: 'baz'
         }));
       it('/foo/123/bloof', () =>
         assert.deepEqual(root.lookup('GET', '/foo/123/bloof'), {
+          calls: 2,
           id: '123',
-          kind: 'bloof',
-          calls: 2
+          kind: 'bloof'
         }));
     });
 

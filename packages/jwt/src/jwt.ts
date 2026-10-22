@@ -1,6 +1,6 @@
-import { sign } from './sign';
-import { verify } from './verify';
 import { decode } from './decode';
 import { generateToken, refreshToken } from './gen-token';
+import { sign } from './sign';
+import { verify } from './verify';
 
-export { sign, verify, decode, generateToken, refreshToken };
+export { decode, generateToken, refreshToken, sign, verify };

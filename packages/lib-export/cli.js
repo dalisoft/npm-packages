@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-const processFile = require('./lib');
+import processFile from './lib.js';
 
 // Constants
 const params = {};
-const [node, cliFile, ...args] = process.argv;
+const [_node, _cliFile, ...args] = process.argv;
 
 // Preparing step
 for (let i = 0, len = args.length; i < len; ) {

@@ -52,4 +52,4 @@ declare class Node {
   lookup(path: string): false;
 }
 
-export = Node;
+export { Node };

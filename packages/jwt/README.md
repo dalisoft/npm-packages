@@ -24,11 +24,6 @@ import {
   generateToken,
   refreshToken
 } from '@dalisoft/jwt';
-
-// or
-
-// CommonJS
-const JWT = require('@dalisoft/jwt');
 ```
 
 ## Example

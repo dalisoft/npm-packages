@@ -1,20 +1,20 @@
+import approximateCurve from 'approximate-curve';
+import add from './add.js';
+import { autoCurvePoint } from './autoCurve.js';
+import boundingBox from './boundingBox.js';
+import cubify from './cubify.js';
+import findNearestIndex from './findNearestIndex.js';
 import {
   applyFuncToShapes,
   countSubPath,
-  splitSubPath,
+  distance,
   joinSubPath,
-  distance
-} from './helpers';
-import { autoCurvePoint } from './autoCurve';
-import add from './add';
-import cubify from './cubify';
-import remove from './remove';
-import moveIndexFunc from './moveIndex';
-import reverseFunc from './reverse';
-import mapList from './mapList';
-import boundingBox from './boundingBox';
-import findNearestIndex from './findNearestIndex';
-import approximateCurve from 'approximate-curve';
+  splitSubPath
+} from './helpers.js';
+import mapList from './mapList.js';
+import moveIndexFunc from './moveIndex.js';
+import remove from './remove.js';
+import reverseFunc from './reverse.js';
 
 const autoNormalisePoints = (
   fromShape,
@@ -84,7 +84,7 @@ const autoNormalisePoints = (
               boundingBox(toShapeSubPaths[i2]).center
             );
             if (currentDistance < minDistance) {
-              if (!isFinite(minDistance)) {
+              if (!Number.isFinite(minDistance)) {
                 skipInfinity = true;
               }
               if (skipInfinity && i !== i2 && fromShapeSubPaths[i2]) {
@@ -100,7 +100,7 @@ const autoNormalisePoints = (
       }
     }
 
-    largestShapeSubPathsMap.map((d, i) => {
+    largestShapeSubPathsMap.map((_d, i) => {
       let fromSubPath = fromShapeSubPaths[i];
       let toSubPath = toShapeSubPaths[i];
       let prev;
@@ -131,9 +131,9 @@ const autoNormalisePoints = (
         }
         toSubPath = [
           {
+            moveTo: true,
             x,
-            y,
-            moveTo: true
+            y
           },
           {
             x,
@@ -165,9 +165,9 @@ const autoNormalisePoints = (
         }
         fromSubPath = [
           {
+            moveTo: true,
             x,
-            y,
-            moveTo: true
+            y
           },
           {
             x,

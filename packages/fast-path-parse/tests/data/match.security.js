@@ -1,73 +1,73 @@
 const matchSecurity = [
   {
-    name: 'process.exit security check',
     children: [
       {
-        name: '/foo/process.exit(1)',
+        excepted: false,
         input: '/foo/process.exit(1)',
-        test_input: '/foo/(process.exit(1))',
-        excepted: false
-      },
-      {
         name: '/foo/process.exit(1)',
+        test_input: '/foo/(process.exit(1))'
+      },
+      {
+        excepted: false,
         input: '/foo/process.exit(1)',
-        test_input: '/foo',
-        excepted: false
+        name: '/foo/process.exit(1)',
+        test_input: '/foo'
       },
       {
-        name: '/foo/:bar',
+        excepted: true,
         input: '/foo/:bar',
-        test_input: '/foo/(process.exit(1))',
-        excepted: true
-      },
-      {
         name: '/foo/:bar',
-        input: '/foo/:bar',
-        test_input: '/(process.exit(1))',
-        excepted: false
+        test_input: '/foo/(process.exit(1))'
       },
       {
-        name: '/:bar',
+        excepted: false,
+        input: '/foo/:bar',
+        name: '/foo/:bar',
+        test_input: '/(process.exit(1))'
+      },
+      {
+        excepted: true,
         input: '/:bar',
-        test_input: '/(process.exit(1))',
-        excepted: true
+        name: '/:bar',
+        test_input: '/(process.exit(1))'
       }
-    ]
+    ],
+    name: 'process.exit security check'
   },
   {
-    name: 'throw security check',
     children: [
       {
-        name: '/foo/throw 1',
+        excepted: false,
         input: '/foo/throw 1',
-        test_input: '/foo throw 1',
-        excepted: false
-      },
-      {
         name: '/foo/throw 1',
+        test_input: '/foo throw 1'
+      },
+      {
+        excepted: false,
         input: '/foo/throw 1',
-        test_input: '/foo',
-        excepted: false
+        name: '/foo/throw 1',
+        test_input: '/foo'
       },
       {
-        name: '/foo/:bar',
+        excepted: true,
         input: '/foo/:bar',
-        test_input: '/foo/throw 1',
-        excepted: true
-      },
-      {
         name: '/foo/:bar',
-        input: '/foo/:bar',
-        test_input: '/throw 1',
-        excepted: false
+        test_input: '/foo/throw 1'
       },
       {
-        name: '/:bar',
+        excepted: false,
+        input: '/foo/:bar',
+        name: '/foo/:bar',
+        test_input: '/throw 1'
+      },
+      {
+        excepted: true,
         input: '/:bar',
-        test_input: '/throw 1',
-        excepted: true
+        name: '/:bar',
+        test_input: '/throw 1'
       }
-    ]
+    ],
+    name: 'throw security check'
   }
 ];
 

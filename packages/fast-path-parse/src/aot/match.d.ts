@@ -20,4 +20,4 @@ function match(
   options: Partial<IOptions>
 ): (pathname: string) => boolean;
 
-export = match;
+export default match;

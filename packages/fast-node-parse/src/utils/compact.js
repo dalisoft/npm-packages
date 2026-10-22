@@ -1,10 +1,10 @@
-const Node = require('../node/node.js');
+import { Node } from '../node/node.js';
 
 /**
  * Compacts Node tree by using special method
  * @class Compactify
  */
-class Compactify extends Node {
+export class Compactify extends Node {
   /**
    * Compiles node tree into compact nodes
    * by combining them into single or small sizes
@@ -75,5 +75,3 @@ class Compactify extends Node {
     };
   }
 }
-
-module.exports = Compactify;

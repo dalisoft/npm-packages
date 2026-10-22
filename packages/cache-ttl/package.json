@@ -2,25 +2,6 @@
   "name": "@dalisoft/cache-ttl",
   "version": "0.4.4",
   "description": "Caching Library with TTL for Node.js and browser",
-  "types": "dist/es/cache.d.ts",
-  "module": "dist/es/cache-ttl.js",
-  "main": "dist/cjs/cache-ttl.js",
-  "cdn": "dist/umd/cache-ttl.min.js",
-  "browser": "dist/umd/cache-ttl.min.js",
-  "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build && npm test",
-    "test": "ava"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/cache-ttl.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dalisoft/cache-ttl/issues"
-  },
-  "homepage": "https://github.com/dalisoft/cache-ttl#readme",
   "keywords": [
     "ttl",
     "cache",
@@ -30,6 +11,33 @@
     "fast",
     "in-memory"
   ],
+  "homepage": "https://github.com/dalisoft/cache-ttl#readme",
+  "bugs": {
+    "url": "https://github.com/dalisoft/cache-ttl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/cache-ttl.git"
+  },
+  "license": "MIT",
   "author": "dalisoft",
-  "license": "MIT"
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/es/cache.d.ts",
+      "default": "./dist/es/cache-ttl.js"
+    }
+  },
+  "main": "dist/es/cache-ttl.js",
+  "types": "dist/es/cache.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build ./src/cache.ts --target=node --packages=external --outfile=./dist/es/cache-ttl.js",
+    "postbuild": "tsrs --emitDeclarationOnly",
+    "prepublishOnly": "bun run test",
+    "pretest": "bun run build",
+    "test": "bun test"
+  }
 }

@@ -2,23 +2,6 @@
   "name": "@dalisoft/jwt",
   "version": "0.1.0",
   "description": "JWT Helper for Auth building from scratch",
-  "types": "dist/es/jwt.d.ts",
-  "module": "dist/es/jwt.js",
-  "type": "module",
-  "main": "dist/es/jwt.js",
-  "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build && npm run test",
-    "test": "ava --verbose"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/npm-packages.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dalisoft/npm-packages/issues"
-  },
-  "homepage": "https://github.com/dalisoft/npm-packages/packages/jwt#readme",
   "keywords": [
     "auth",
     "jwt",
@@ -27,13 +10,40 @@
     "await",
     "fast"
   ],
-  "author": "dalisoft",
+  "homepage": "https://github.com/dalisoft/npm-packages/packages/jwt#readme",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
   "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/es/jwt.d.ts",
+      "default": "./dist/es/jwt.js"
+    }
+  },
+  "main": "dist/es/jwt.js",
+  "types": "dist/es/jwt.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build ./src/jwt.ts --target=node --packages=external --outfile=./dist/es/jwt.js",
+    "postbuild": "tsrs --emitDeclarationOnly",
+    "prepublishOnly": "bun run test",
+    "pretest": "bun run build",
+    "test": "bun test --timeout=10000"
+  },
   "dependencies": {
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "^9.0.3",
     "rand-token": "^1.0.1"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.7"
+    "@types/jsonwebtoken": "^9.0.10"
   }
 }

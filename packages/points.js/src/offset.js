@@ -1,4 +1,4 @@
-import { applyFuncToShapes } from './helpers';
+import { applyFuncToShapes } from './helpers.js';
 
 const offsetPoints = (shape, x, y) =>
   shape.map((point) => {

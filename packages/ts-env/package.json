@@ -1,0 +1,32 @@
+{
+  "name": "tss-env",
+  "version": "0.0.3",
+  "description": "dotenv typings for TypeScript",
+  "keywords": [
+    "env",
+    "typescript",
+    "smart env"
+  ],
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/ts-env",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/npm-packages.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "main": "lib.js",
+  "module": "lib.js",
+  "typings": "lib.d.ts",
+  "files": [
+    "lib.js",
+    "lib.d.ts",
+    "auto.js"
+  ],
+  "engines": {
+    "node": ">=18.20.1"
+  }
+}

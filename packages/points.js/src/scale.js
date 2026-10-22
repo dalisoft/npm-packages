@@ -1,5 +1,5 @@
-import boundingBox from './boundingBox';
-import { applyFuncToShapes } from './helpers';
+import boundingBox from './boundingBox.js';
+import { applyFuncToShapes } from './helpers.js';
 
 const scalePoint = (point, scaleFactor, anchorX, anchorY) => {
   const p = { ...point };

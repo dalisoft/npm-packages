@@ -1,17 +1,20 @@
 {
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "rvben.rumdl"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "eslint.enable": false,
   "files.associations": {
     "*.ts": "typescript",
     "*rc": "json"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "npm.packageManager": "pnpm",
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "js/ts.tsdk.path": "node_modules/tsrs",
+  "js/ts.validate.enabled": true,
+  "npm.packageManager": "bun"
 }

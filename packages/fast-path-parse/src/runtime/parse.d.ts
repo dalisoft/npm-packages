@@ -23,4 +23,4 @@ function parse(
   params?: Record<string, string>
 ) => Record<string, string>;
 
-export = parse;
+export default parse;

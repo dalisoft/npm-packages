@@ -90,12 +90,12 @@
         JSON.stringify(data) +
         ']</span>\n';
     });
-    wsWrapped.on('error', (err) => {
+    wsWrapped.on('error', (_err) => {
       log_el.innerHTML += '<span class="error">- error</span>\n';
     });
     wsWrapped.on('close', (e) => {
       log_el.innerHTML =
-        '<span class="success">- close [code: ' + e.code + ']</span>\n';
+        `<span class="success">- close [code: ${e.code}]</span>\n`;
     });
   </script>
 </html>

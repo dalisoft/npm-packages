@@ -34,12 +34,12 @@
           return React.createElement(
             ES6Tween,
             {
+              autoPlay: true,
               duration: 4000,
               easing: TWEEN.Easing.Exponential.InOut,
-              autoPlay: true,
               from: {
-                x: 200,
-                backgroundColor: '#0cf'
+                backgroundColor: '#0cf', 
+                x: 200
               }
             },
             React.createElement('div', { id: 'tween-node' })

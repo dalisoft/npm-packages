@@ -2,28 +2,28 @@
   "name": "getdirname",
   "version": "0.1.6",
   "description": "Get callee directory",
-  "main": "cjs.js",
-  "exports": {
-    ".": {
-      "require": "./cjs.js",
-      "default": "./esm.mjs"
-    }
+  "keywords": [
+    "esm",
+    "dirname",
+    "getdirname",
+    "meta"
+  ],
+  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/getdirname",
+  "bugs": {
+    "url": "https://github.com/dalisoft/npm-packages/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/npm-packages.git"
   },
-  "keywords": [
-    "esm",
-    "cjs",
-    "dirname",
-    "getdirname",
-    "meta"
-  ],
-  "author": "dalisoft",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dalisoft/npm-packages/issues"
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": "./getdirname.js"
   },
-  "homepage": "https://github.com/dalisoft/npm-packages/tree/master/packages/getdirname"
+  "main": "getdirname.js",
+  "files": [
+    "getdirname.js"
+  ]
 }

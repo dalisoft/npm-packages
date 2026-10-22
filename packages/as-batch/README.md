@@ -25,15 +25,6 @@ Collect calls and make them batching
 ```js
 // ES6
 import asBatch from '@dalisoft/as-batch';
-
-// or
-
-// CommonJS
-const asBatch = require('@dalisoft/as-batch');
-
-// or
-
-const asBatch = window.asBatch;
 ```
 
 ## Example

@@ -1,10 +1,10 @@
 // Imports
-const fs = require('fs');
+import fs from 'node:fs';
 
-const { importsAst, exportsAst, cleanAst } = require('./ast');
-const template = require('./template');
+import { cleanAst, exportsAst, importsAst } from './ast/index.js';
+import template from './template.js';
 
-module.exports = (params) =>
+export default (params) =>
   new Promise((resolve, reject) => {
     fs.readFile(params.file, { encoding: 'utf-8' }, (err, fileData) => {
       if (err) {
@@ -17,13 +17,13 @@ module.exports = (params) =>
       const cleanExports = cleanAst(fileData);
 
       const processedFileString = template(
-        { imports: matchImports, exports: matchExports },
+        { exports: matchExports, imports: matchImports },
         cleanExports,
         params
       );
 
       fs.writeFile(
-        params.output || params.file.replace(/\.js/g, '') + '.processed.js',
+        params.output || `${params.file.replace(/\.js/g, '')}.processed.js`,
         processedFileString,
         (errWrite) => {
           if (errWrite) {

@@ -1,16 +1,20 @@
 {
-	"name": "benchmark",
-	"version": "1.0.0",
-	"main": "index.js",
-	"type": "module",
-	"engines": {
-		"node": ">=15.10"
-	},
-	"license": "MIT",
-	"dependencies": {
-		"benny": "^3.7.1",
-		"fast-path-parse": "file:..",
-		"path-to-regexp": "^7.1.0",
-		"path-to-tree": "^0.1.0"
-	}
+  "name": "benchmark",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "overrides": {
+    "tinypool": "^2.x"
+  },
+  "dependencies": {
+    "benny": "^3.7.1",
+    "extreme-router": "^1.1.1",
+    "path-to-regexp": "^7.1.0",
+    "path-to-tree": "^0.1.0",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=15.10"
+  }
 }

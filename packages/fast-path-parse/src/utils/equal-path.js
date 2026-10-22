@@ -4,7 +4,7 @@
  * @param {string} path
  * @returns {boolean}
  */
-module.exports.equal = (url, path) =>
+export const equal = (url, path) =>
   url === path ||
   `${url}/` === path ||
   url === `${path}/` ||
@@ -17,4 +17,4 @@ module.exports.equal = (url, path) =>
  * @param {string} path
  * @returns {boolean}
  */
-module.exports.strictEqual = (url, path) => url === path;
+export const strictEqual = (url, path) => url === path;

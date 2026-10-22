@@ -1,18 +1,23 @@
 {
   "name": "fast-node-parse-benchmark",
   "version": "0.0.1",
+  "description": "Benchmark for fast-node-parse",
+  "keywords": [],
+  "license": "Apache-2.0",
   "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
   "type": "module",
-  "dependencies": {
-    "benny": "^3.7.1",
-    "fast-path-parse": "^2.2.0",
-    "find-my-way": "^9.0.1",
-    "hono": "^4.6.3"
-  },
-  "description": "Benchmark for fast-node-parse",
-  "license": "Apache-2.0",
   "scripts": {
     "test": "test"
   },
-  "keywords": []
+  "overrides": {
+    "tinypool": "^2.x"
+  },
+  "dependencies": {
+    "extreme-router": "^1.2.0",
+    "fast-node-parse": "file:../",
+    "fast-path-parse": "file:../../fast-path-parse",
+    "find-my-way": "^9.3.0",
+    "hono": "^4.11.1",
+    "vitest": "^4.0.16"
+  }
 }

@@ -1,5 +1,5 @@
-import Node from '../src/node/node.js';
-import Compactify from '../src/utils/compact.js';
+import { Node } from '../src/node/node.js';
+import { Compactify } from '../src/utils/compact.js';
 
 export class CallbackNode extends Node {
   /**

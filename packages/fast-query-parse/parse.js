@@ -1,4 +1,4 @@
-const fastUrlDecode = require('fast-decode-uri-component');
+import fastUrlDecode from 'fast-decode-uri-component';
 
 /**
  * Parser string or URL encoded string to object
@@ -62,4 +62,4 @@ function parse(str, enableParser = false, delimiter = '&') {
   return map;
 }
 
-module.exports = parse;
+export default parse;

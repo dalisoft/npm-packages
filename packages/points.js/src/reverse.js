@@ -1,5 +1,5 @@
-import cubify from './cubify';
-import { applyFuncToShapes } from './helpers';
+import cubify from './cubify.js';
+import { applyFuncToShapes } from './helpers.js';
 
 const reversePoints = (shape) => {
   let m;
@@ -10,7 +10,7 @@ const reversePoints = (shape) => {
 
     if (c) {
       const { x1: x2, y1: y2, x2: x1, y2: y1 } = c;
-      point.curve = { type: 'cubic', x1, y1, x2, y2 };
+      point.curve = { type: 'cubic', x1, x2, y1, y2 };
     }
 
     if (i === 0 || m) {

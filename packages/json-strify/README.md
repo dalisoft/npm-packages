@@ -23,10 +23,6 @@ npm i json-strify
 then you able to import to Node.js/Browser easily
 
 ```js
-// Node.js
-const JSONStringify = require('json-strify');
-
-// ES6
 import JSONStringify from 'json-strify';
 ```
 

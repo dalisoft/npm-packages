@@ -1,12 +1,12 @@
-const {
-  moduleImportRegExp,
-  requireRegExp,
-  moduleExportRegExp,
+import {
   cjsExportRegExp,
-  lineBreakRegExp
-} = require('./regexp');
+  lineBreakRegExp,
+  moduleExportRegExp,
+  moduleImportRegExp,
+  requireRegExp
+} from './regexp.js';
 
-module.exports = (fileData) => {
+export default (fileData) => {
   const lines = fileData
     .replace(/["']use strict["'][;]/g, '')
     .split(lineBreakRegExp);

@@ -6,4 +6,4 @@ class Event {
   modifyArgs(callback: (args: string[] | number[]) => any[]): this;
 }
 
-export = Event;
+export default Event;

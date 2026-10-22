@@ -1,26 +1,12 @@
-import { describe, it } from 'vitest';
+import { describe } from 'node:test';
 import segmentsSlice from '../src/utils/segment.js';
 import testsSegmentsData from './data/segments.js';
-import { generateTest } from './helpers';
-
-function runTest({ suite, tests }) {
-  describe(suite, () => {
-    for (const test of tests) {
-      if (test.args) {
-        const { name, args, excepted } = test;
-
-        it(name, ({ expect }) => {
-          expect(segmentsSlice(...args)).toStrictEqual(excepted);
-        });
-      } else {
-        runTest(test);
-      }
-    }
-  });
-}
+import { generateTest, runTest } from './helpers.ts';
 
 describe('segments slice', () => {
   for (const test of testsSegmentsData) {
-    runTest(generateTest(test));
+    runTest(generateTest(test), (prepare, input) =>
+      segmentsSlice(prepare, input)
+    );
   }
 });

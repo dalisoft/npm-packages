@@ -1,4 +1,4 @@
-import { getShapeArray } from './helpers';
+import { getShapeArray } from './helpers.js';
 
 const boundingBox = (s) => {
   let bottom;
