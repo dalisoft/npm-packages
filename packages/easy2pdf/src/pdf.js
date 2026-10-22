@@ -19,7 +19,7 @@ const buildPDF = async (content, options = {}) => {
   const buffer = await page.pdf({
     displayHeaderFooter: false,
     format: 'A4',
-    preferCSSPageSize: true,
+    preferCSSPageSize: false,
     ...options
   });
 

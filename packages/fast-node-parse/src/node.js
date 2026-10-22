@@ -39,15 +39,18 @@ export class Node {
   match(path) {
     let i = -1;
     let node = this.next;
+    let position;
 
     while (node) {
+      position = node.position;
+
       if (node.static) {
-        i = path.indexOf(node.segment, node.position);
+        i = path.indexOf(node.segment, position);
       } else {
-        i = path.indexOf('/', node.position + 1);
+        i = path.indexOf('/', position + 1);
       }
 
-      if (i === -1 || i < node.position) {
+      if (i === -1 || i < position) {
         return false;
       }
 
@@ -60,18 +63,20 @@ export class Node {
   parse(path) {
     let i = -1;
     let node = this.next;
+    let position;
     let params;
 
     while (node) {
+      position = node.position;
       const IS_LAST_NODE = !node.next;
 
       if (node.static) {
-        i = path.indexOf(node.segment, node.position);
+        i = path.indexOf(node.segment, position);
       } else {
-        i = path.indexOf('/', node.position + 1);
+        i = path.indexOf('/', position + 1);
       }
 
-      if (i === -1 || i < node.position) {
+      if (i === -1 || i < position) {
         return false;
       }
 
@@ -83,7 +88,7 @@ export class Node {
         if (node.key) {
           params[node.key] = IS_LAST_NODE
             ? path.substring(i + 1)
-            : path.substring(node.position + 1, i);
+            : path.substring(position + 1, i);
         }
       }
 
@@ -96,28 +101,32 @@ export class Node {
   lookup(path) {
     let i = -1;
     let node = this.next;
+    let position;
 
     while (node.next) {
+      position = node.position;
+
       if (node.static) {
-        i = path.indexOf(node.segment, node.position);
+        i = path.indexOf(node.segment, position);
       } else {
-        i = path.indexOf('/', node.position + 1);
+        i = path.indexOf('/', position + 1);
       }
 
-      if (i === -1 || i < node.position) {
+      if (i === -1 || i < position) {
         return false;
       }
 
       node = node.next;
     }
 
+    position = node.position;
     if (node.static) {
-      i = path.indexOf(node.segment, node.position);
+      i = path.indexOf(node.segment, position);
     } else {
-      i = path.indexOf('/', node.position + 1);
+      i = path.indexOf('/', position + 1);
     }
 
-    if (i === -1 || i < node.position) {
+    if (i === -1 || i < position) {
       return false;
     }
 

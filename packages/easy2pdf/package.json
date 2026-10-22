@@ -1,6 +1,6 @@
 {
   "name": "easy2pdf",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Easiest HTML and Markdown to PDF Converter",
   "type": "commonjs",
   "main": "src/api.js",
@@ -34,7 +34,7 @@
   "author": "dalisoft",
   "license": "MIT",
   "dependencies": {
-    "markdown-it": "^15.0.2",
-    "puppeteer": "^25.12.0"
+    "markdown-it": "^15.0.3",
+    "puppeteer": "^25.14.0"
   }
 }

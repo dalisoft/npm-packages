@@ -13,5 +13,7 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
-  }
+  },
+  "typescript.validate.enable": true,
+  "typescript.experimental.useTsgo": false
 }
