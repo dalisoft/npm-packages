@@ -1,8 +1,8 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const args = require('.');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import args from './args.js';
 
-test('Basic test', (t) => {
+test('Basic test', (_t) => {
   const fn1 = (arg1) => arg1 && assert.ok(true, 'Argument was passed', arg1);
   const fn2 = (arg1, arg2) =>
     assert.notEqual(arg1, arg2, 'Function with 2 arguments was failed');
@@ -16,7 +16,7 @@ test('Basic test', (t) => {
   args(fn3, ['Argument', 'second argument', 'Argument']);
 });
 
-test('Type and Value parsing test', (t) => {
+test('Type and Value parsing test', (_t) => {
   const num = (n, excepted) => {
     assert.equal(n, excepted, 'Number parsing does not work as excepted');
     assert.equal(
@@ -67,7 +67,7 @@ test('Type and Value parsing test', (t) => {
     ) {
       return JSON.parse(type);
     }
-    if (isNaN(+type)) {
+    if (Number.isNaN(+type)) {
       return type;
     }
     return +type;
