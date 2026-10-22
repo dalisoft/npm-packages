@@ -2,31 +2,40 @@
   "name": "@dalisoft/as-batch",
   "version": "0.1.8",
   "description": "Convert many calls into batches",
-  "types": "dist/es/as-batch.d.ts",
-  "module": "dist/es/as-batch.js",
-  "main": "dist/cjs/as-batch.js",
-  "cdn": "dist/umd/as-batch.min.js",
-  "browser": "dist/umd/as-batch.min.js",
-  "scripts": {
-    "build": "bun ../../build.js ./src/as-batch.ts --name=asBatch --clean=dist --es=./dist/es/as-batch.js --cjs=./dist/cjs/as-batch.js --umd=./dist/umd/as-batch.js --min=./dist/umd/as-batch.min.js && tsc --emitDeclarationOnly",
-    "prepublishOnly": "npm run build && npm test",
-    "test": "npm run build && node --test --test-timeout=10000"
+  "keywords": [
+    "call",
+    "batch"
+  ],
+  "homepage": "https://github.com/dalisoft/as-batch#readme",
+  "bugs": {
+    "url": "https://github.com/dalisoft/as-batch/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/as-batch.git"
   },
-  "keywords": [
-    "call",
-    "batch"
-  ],
-  "author": "dalisoft",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dalisoft/as-batch/issues"
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/es/as-batch.d.ts",
+      "default": "./dist/es/as-batch.js"
+    }
   },
-  "homepage": "https://github.com/dalisoft/as-batch#readme",
+  "main": "dist/es/as-batch.js",
+  "types": "dist/es/as-batch.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build ./src/as-batch.ts --target=node --packages=external --outfile=./dist/es/as-batch.js",
+    "postbuild": "tsrs --emitDeclarationOnly",
+    "prepublishOnly": "bun run test",
+    "pretest": "bun run build",
+    "test": "bun test"
+  },
   "devDependencies": {
-    "@types/node": "^26.6.4"
+    "@types/node": "^26.6.5"
   }
 }
