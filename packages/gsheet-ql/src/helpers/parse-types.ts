@@ -2,7 +2,7 @@ const parseTypes = (
   value: string,
   nonPrimitiveEnforce: boolean = true
 ): number | object | any[] | string => {
-  if (!isNaN(+value)) {
+  if (!Number.isNaN(+value)) {
     return +value;
   }
   if (

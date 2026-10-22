@@ -1,5 +1,5 @@
 import { get, insert, update } from './methods/index';
-import { Sheets, ObjStringAny } from './ts-interfaces';
+import type { ObjStringAny, Sheets } from './ts-interfaces';
 export default class GSheetSQL {
   private spreadsheetId: string;
   private sheets: Sheets;

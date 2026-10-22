@@ -1,5 +1,5 @@
-import { Sheets, Error, Response, ObjStringAny } from '../ts-interfaces';
-import { parseTypes, fieldsIntoObject } from '../helpers/index';
+import { fieldsIntoObject, parseTypes } from '../helpers/index';
+import type { Error, ObjStringAny, Response, Sheets } from '../ts-interfaces';
 
 const getRows = (
   range: string | string[],
