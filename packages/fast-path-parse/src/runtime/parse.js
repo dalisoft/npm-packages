@@ -3,7 +3,7 @@ import segmentsSlice from '../utils/segment.js';
 /**
  * @type {import('./parse').default}
  */
-const parse = (path, compact) => {
+const parse = (path, { compact, ignoreTrailingSlash = true } = {}) => {
   const { segments, filled, length: LENGTH } = segmentsSlice(path, compact);
 
   return filled.length > 0
@@ -16,13 +16,13 @@ const parse = (path, compact) => {
 
           i = pathname.indexOf('/', lastIndex);
 
-          if (!segment.last && i < segment.position) {
-            return params;
+          if (i === -1 && i < segment.position) {
+            return {};
           }
 
           if (segment.segment) {
             params[segment.name] =
-              segment.last && i === -1
+              segment.last && i === -1 && ignoreTrailingSlash
                 ? pathname.substring(lastIndex)
                 : pathname.substring(lastIndex, i);
           }

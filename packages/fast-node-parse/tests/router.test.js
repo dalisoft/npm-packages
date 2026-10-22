@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { Router } from '../src/node.js';
+import { Router } from '../src/node/node.js';
 
 describe('Router', () => {
   it('matches, parses and looks up static routes', () => {

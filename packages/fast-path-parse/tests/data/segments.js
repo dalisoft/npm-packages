@@ -2,9 +2,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/bar',
-        name: '/foo/bar',
-        result: {
+        excepted: {
           filled: [],
           length: 2,
           segments: [
@@ -24,6 +22,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/bar',
+        name: '/foo/bar',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -32,9 +32,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/bar',
-        name: '/foo/bar',
-        result: {
+        excepted: {
           filled: [],
           length: 1,
           segments: [
@@ -47,6 +45,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/bar',
+        name: '/foo/bar',
         test_input: true,
         variants: [['%s'], ['%s/']]
       }
@@ -56,9 +56,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/:id',
-        name: '/foo/:id',
-        result: {
+        excepted: {
           filled: [
             {
               last: true,
@@ -86,6 +84,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/:id',
+        name: '/foo/:id',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -94,9 +94,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/:id/bar',
-        name: '/foo/:id/bar',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -131,6 +129,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/:id/bar',
+        name: '/foo/:id/bar',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -139,9 +139,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/:id/bar/last',
-        name: '/foo/:id/bar/last',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -183,6 +181,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/:id/bar/last',
+        name: '/foo/:id/bar/last',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -191,9 +191,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/:id/bar/last',
-        name: '/foo/:id/bar/last',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -228,6 +226,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/:id/bar/last',
+        name: '/foo/:id/bar/last',
         test_input: true,
         variants: [['%s'], ['%s/']]
       }
@@ -237,9 +237,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/<id>',
-        name: '/foo/<id>',
-        result: {
+        excepted: {
           filled: [
             {
               last: true,
@@ -267,6 +265,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/<id>',
+        name: '/foo/<id>',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -275,9 +275,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/<id>/bar',
-        name: '/foo/<id>/bar',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -312,6 +310,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/<id>/bar',
+        name: '/foo/<id>/bar',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -320,9 +320,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/<id>/bar/last',
-        name: '/foo/<id>/bar/last',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -364,6 +362,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/<id>/bar/last',
+        name: '/foo/<id>/bar/last',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -372,9 +372,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/<id>/bar/last',
-        name: '/foo/<id>/bar/last',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -409,6 +407,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/<id>/bar/last',
+        name: '/foo/<id>/bar/last',
         test_input: true,
         variants: [['%s'], ['%s/']]
       }
@@ -418,9 +418,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/bar-[one,two]',
-        name: '/foo/bar-[one,two]',
-        result: {
+        excepted: {
           filled: [
             {
               last: true,
@@ -448,6 +446,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/bar-[one,two]',
+        name: '/foo/bar-[one,two]',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -456,9 +456,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/bar-[one,two]/baz',
-        name: '/foo/bar-[one,two]/baz',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -493,6 +491,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/bar-[one,two]/baz',
+        name: '/foo/bar-[one,two]/baz',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -501,9 +501,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/bar-[one,two]/baz/last',
-        name: '/foo/bar-[one,two]/baz/last',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -545,6 +543,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/bar-[one,two]/baz/last',
+        name: '/foo/bar-[one,two]/baz/last',
         variants: [['%s'], ['%s/']]
       }
     ],
@@ -553,9 +553,7 @@ const segments = [
   {
     children: [
       {
-        input: '/foo/bar-[one,two]/baz/last',
-        name: '/foo/bar-[one,two]/baz/last',
-        result: {
+        excepted: {
           filled: [
             {
               last: false,
@@ -590,6 +588,8 @@ const segments = [
             }
           ]
         },
+        input: '/foo/bar-[one,two]/baz/last',
+        name: '/foo/bar-[one,two]/baz/last',
         test_input: true,
         variants: [['%s'], ['%s/']]
       }
