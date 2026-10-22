@@ -1,9 +1,9 @@
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const DeepCopy = require('.');
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import DeepCopy from './deepcopy.js';
 
-test('Object clone', (t) => {
-  const obj = { a: 'b', 2: 3 };
+test('Object clone', (_t) => {
+  const obj = { 2: 3, a: 'b' };
   const copy = DeepCopy(obj);
 
   assert.deepEqual(obj, copy, 'Data is malformed when copy');
@@ -12,7 +12,7 @@ test('Object clone', (t) => {
   }
 });
 
-test('Deep Object clone', (t) => {
+test('Deep Object clone', (_t) => {
   const obj = { foo: { bar: 'baz' } };
   const copy = DeepCopy(obj);
 
@@ -22,7 +22,7 @@ test('Deep Object clone', (t) => {
   }
 });
 
-test('Map clone', (t) => {
+test('Map clone', (_t) => {
   const map = new Map();
   map.set('foo', 'bar');
 
@@ -34,7 +34,7 @@ test('Map clone', (t) => {
   }
 });
 
-test('Deep Map clone', (t) => {
+test('Deep Map clone', (_t) => {
   const map = new Map();
   const foo = new Map();
   foo.set('bar', 'baz');
@@ -49,7 +49,7 @@ test('Deep Map clone', (t) => {
   }
 });
 
-test('Array clone', (t) => {
+test('Array clone', (_t) => {
   const arr = ['a', 2];
   const copy = DeepCopy(arr);
 
@@ -59,7 +59,7 @@ test('Array clone', (t) => {
   }
 });
 
-test('Deep Array clone', (t) => {
+test('Deep Array clone', (_t) => {
   const arr = [['foo', ['bar', ['baz']]]];
   const copy = DeepCopy(arr);
 
@@ -74,7 +74,7 @@ test('Deep Array clone', (t) => {
   }
 });
 
-test('Date clone', (t) => {
+test('Date clone', (_t) => {
   const date = new Date();
   const copy = DeepCopy(date);
 
@@ -84,7 +84,7 @@ test('Date clone', (t) => {
   }
 });
 
-test('Primitive clone', (t) => {
+test('Primitive clone', (_t) => {
   const num = 1;
   const numCopy = DeepCopy(num);
 
