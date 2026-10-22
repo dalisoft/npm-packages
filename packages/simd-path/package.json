@@ -1,0 +1,6 @@
+{
+  "name": "simd-path",
+  "private": true,
+  "type": "module",
+  "main": "lib.ts"
+}
