@@ -1,10 +1,10 @@
-const {
+import {
+  lineBreakRegExp,
   moduleImportRegExp,
-  requireRegExp,
-  lineBreakRegExp
-} = require('./regexp');
+  requireRegExp
+} from './regexp.js';
 
-module.exports = (fileData) => {
+export default (fileData) => {
   const lines = fileData.split(lineBreakRegExp);
   return lines
     .filter((line) => line)
@@ -26,23 +26,23 @@ module.exports = (fileData) => {
           exportsList = exportsList.split(',').map((v) => v.trim());
 
           return {
-            path: moduleMatch[3],
-            namedExports: exportsList,
             default: false,
-            module: true
+            module: true,
+            namedExports: exportsList,
+            path: moduleMatch[3]
           };
         }
         return {
           constant: moduleMatch[2],
-          path: moduleMatch[3],
           default: true,
-          module: true
+          module: true,
+          path: moduleMatch[3]
         };
       } else if (requireMatch) {
         return {
           constant: requireMatch[2],
-          path: requireMatch[3],
-          module: false
+          module: false,
+          path: requireMatch[3]
         };
       }
     })

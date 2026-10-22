@@ -1,10 +1,10 @@
-const {
-  moduleExportRegExp,
+import {
   cjsExportRegExp,
-  lineBreakRegExp
-} = require('./regexp');
+  lineBreakRegExp,
+  moduleExportRegExp
+} from './regexp.js';
 
-module.exports = (fileData) => {
+export default (fileData) => {
   const lines = fileData.split(lineBreakRegExp);
   return lines
     .map((line) => {
@@ -23,8 +23,8 @@ module.exports = (fileData) => {
           if (moduleExportsMatch[4].includes('default')) {
             return {
               constant: moduleExportsMatch[4].substr(8),
-              module: true,
-              default: true
+              default: true,
+              module: true
             };
           }
           if (
@@ -40,16 +40,16 @@ module.exports = (fileData) => {
             exportsList = exportsList.map((v) => v.trim());
 
             return {
-              namedExports: exportsList,
               default: false,
-              module: true
+              module: true,
+              namedExports: exportsList
             };
           }
           return {
             constant: moduleExportsMatch[2],
-            path: moduleExportsMatch[3],
+            default: false,
             module: true,
-            default: false
+            path: moduleExportsMatch[3]
           };
         } else {
           console.warn(
@@ -67,15 +67,15 @@ module.exports = (fileData) => {
         if (cjsExportMatch[3]) {
           return {
             constant: cjsExportMatch[3],
-            module: false,
             default: false,
+            module: false,
             namedExport: true
           };
         } else {
           return {
             constant: cjsExportMatch[2],
-            module: false,
             default: true,
+            module: false,
             namedExport: false
           };
         }

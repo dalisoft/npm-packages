@@ -2,15 +2,6 @@
   "name": "lib-export",
   "version": "0.0.3",
   "description": "CLI for making pure types exportable",
-  "main": "lib.js",
-  "bin": "./cli.js",
-  "scripts": {
-    "test": "./cli.js -name Simple -file test/simple.js -output test/simple.umd.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalisoft/lib-export.git"
-  },
   "keywords": [
     "es6",
     "export",
@@ -18,10 +9,30 @@
     "commonjs",
     "window"
   ],
-  "author": "dalisoft",
-  "license": "MIT",
+  "homepage": "https://github.com/dalisoft/lib-export#readme",
   "bugs": {
     "url": "https://github.com/dalisoft/lib-export/issues"
   },
-  "homepage": "https://github.com/dalisoft/lib-export#readme"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalisoft/lib-export.git"
+  },
+  "license": "MIT",
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": "./lib.js"
+  },
+  "main": "lib.js",
+  "bin": "./cli.js",
+  "files": [
+    "ast",
+    "cli.js",
+    "lib.js",
+    "template.js"
+  ],
+  "scripts": {
+    "prepublishOnly": "bun run test",
+    "test": "bun test"
+  }
 }

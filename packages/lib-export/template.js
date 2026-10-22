@@ -1,6 +1,6 @@
 const whitespace = (space = 2) => new Array(space).fill(' ').join('');
 
-module.exports = ({ imports, exports }, pureFunction, options) => {
+export default ({ imports, exports }, pureFunction, options) => {
   let template = '';
 
   template += '(function(libraryName, factory) {\n';
@@ -15,9 +15,9 @@ module.exports = ({ imports, exports }, pureFunction, options) => {
     template +=
       whitespace(4) +
       'define([' +
-      imports.map(({ path }) => '"' + path + '"') +
+      imports.map(({ path }) => `"${path}"`) +
       '], factory)\n';
-    template += whitespace(2) + '} ';
+    template += `${whitespace(2)}} `;
   }
 
   // CommonJS / Node exports
@@ -30,12 +30,12 @@ module.exports = ({ imports, exports }, pureFunction, options) => {
       imports
         .map(({ path, default: isDefault }) =>
           isDefault
-            ? '_interopDefault(require("' + path + '"))'
-            : 'require("' + path + '")'
+            ? `_interopDefault(require("${path}"))`
+            : `require("${path}")`
         )
         .join(', ') +
       '));\n';
-    template += whitespace(2) + '}';
+    template += `${whitespace(2)}}`;
   }
 
   // ES6 Exports
@@ -48,13 +48,13 @@ module.exports = ({ imports, exports }, pureFunction, options) => {
       imports
         .map(({ path, default: isDefault }) =>
           isDefault
-            ? '_interopDefault(require("' + path + '"))'
-            : 'require("' + path + '")'
+            ? `_interopDefault(require("${path}"))`
+            : `require("${path}")`
         )
         .join(', ') +
       '));\n';
-    template += whitespace(4) + 'exports.__esModule = true;' + '\n';
-    template += whitespace(2) + '}';
+    template += `${whitespace(4)}exports.__esModule = true;\n`;
+    template += `${whitespace(2)}}`;
   }
 
   // Worker support
@@ -69,17 +69,17 @@ module.exports = ({ imports, exports }, pureFunction, options) => {
           isDefault
             ? '_interopDefault(self["' +
               path +
-              (constant && path !== constant ? '"] || self["' + constant : '') +
+              (constant && path !== constant ? `"] || self["${constant}` : '') +
               '"])'
             : 'self["' +
               path +
-              (constant && path !== constant ? '"] || self["' + constant : '') +
+              (constant && path !== constant ? `"] || self["${constant}` : '') +
               '"]'
         )
         .join(', ') +
       '));\n';
-    template += whitespace(4) + 'self.__esModule = true;' + '\n';
-    template += whitespace(2) + '}';
+    template += `${whitespace(4)}self.__esModule = true;\n`;
+    template += `${whitespace(2)}}`;
   }
 
   // Browser support
@@ -96,20 +96,20 @@ module.exports = ({ imports, exports }, pureFunction, options) => {
             ? '_interopDefault(window["' +
               path +
               (constant && path !== constant
-                ? '"] || window["' + constant
+                ? `"] || window["${constant}`
                 : '') +
               '"])'
             : 'window["' +
               path +
               (constant && path !== constant
-                ? '"] || window["' + constant
+                ? `"] || window["${constant}`
                 : '') +
               '"]'
         )
         .join(', ') +
       '));\n';
-    template += whitespace(4) + 'window.__esModule = true;' + '\n';
-    template += whitespace(2) + '}';
+    template += `${whitespace(4)}window.__esModule = true;\n`;
+    template += `${whitespace(2)}}`;
   }
 
   // Other env supports
@@ -123,27 +123,27 @@ module.exports = ({ imports, exports }, pureFunction, options) => {
           isDefault
             ? '_interopDefault(this["' +
               path +
-              (constant && path !== constant ? '"] || this["' + constant : '') +
+              (constant && path !== constant ? `"] || this["${constant}` : '') +
               '"])'
             : 'this["' +
               path +
-              (constant && path !== constant ? '"] || this["' + constant : '') +
+              (constant && path !== constant ? `"] || this["${constant}` : '') +
               '"]'
         )
         .join(', ') +
       '));\n';
-    template += whitespace(4) + 'this.__esModule = true;' + '\n';
-    template += whitespace(2) + '}';
+    template += `${whitespace(4)}this.__esModule = true;\n`;
+    template += `${whitespace(2)}}`;
   }
 
   if (template.indexOf('if ') !== -1) {
     template += '\n';
   }
 
-  template += "})('" + options.name + "', function(";
+  template += `})('${options.name}', function(`;
   template += imports
     .map(({ constant, namedExports }) =>
-      namedExports ? '{ ' + namedExports.join(', ') + ' }' : constant
+      namedExports ? `{ ${namedExports.join(', ')} }` : constant
     )
     .join(', ');
   template += ') {\n';
@@ -157,21 +157,20 @@ module.exports = ({ imports, exports }, pureFunction, options) => {
 
   template += '\n\n';
 
-  template += whitespace(2) + 'const globalModule = {};' + '\n';
+  template += `${whitespace(2)}const globalModule = {};\n`;
   exports.forEach(({ default: isDefault, constant, namedExports }) => {
     if (isDefault) {
-      template += whitespace(2) + 'globalModule.default = ' + constant + ';\n';
+      template += `${whitespace(2)}globalModule.default = ${constant};\n`;
     } else if (namedExports) {
       namedExports.forEach((name) => {
-        template +=
-          whitespace(2) + 'globalModule.' + name + ' = ' + name + ';\n';
+        template += `${whitespace(2)}globalModule.${name} = ${name};\n`;
       });
     }
   });
 
-  template += whitespace(2) + '\n';
+  template += `${whitespace(2)}\n`;
 
-  template += whitespace(2) + 'return globalModule';
+  template += `${whitespace(2)}return globalModule`;
 
   template += '\n\n';
 
