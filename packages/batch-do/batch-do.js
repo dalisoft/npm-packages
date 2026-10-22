@@ -1,15 +1,15 @@
 let nextTick = null;
 
 const defaultContext = {
-  resolveBatchs(cb) {
-    cb();
-  },
+  awaitBatch: false,
+  batches: [],
+  calls: 0,
   pendingResolve(cb) {
     return Promise.resolve().then(cb);
   },
-  batches: [],
-  awaitBatch: false,
-  calls: 0
+  resolveBatchs(cb) {
+    cb();
+  }
 };
 
 const runBatches = async (context) => {
@@ -27,7 +27,7 @@ const runBatches = async (context) => {
           return Promise.all(batches);
         }
       : async () => {
-          for (let callback of batches) {
+          for (const callback of batches) {
             await callback();
           }
         }
@@ -54,12 +54,12 @@ const createContext = (
   maxCallsPerBatch
 ) => {
   return {
-    resolveBatchs,
-    pendingResolve,
-    batches: [],
     awaitBatch,
+    batches: [],
+    calls: 0,
     maxCallsPerBatch,
-    calls: 0
+    pendingResolve,
+    resolveBatchs
   };
 };
 
@@ -70,5 +70,4 @@ const batch = (fn, context = defaultContext) => {
   return callNextTick(context);
 };
 
-module.exports = batch;
-module.exports.createContext = createContext;
+export { batch as default, createContext };
