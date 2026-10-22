@@ -20,10 +20,10 @@ const Swipe = (props) => {
       e.pageX !== undefined
         ? e
         : e.touches
-        ? e.touches[0]
-        : e.changedTouches
-        ? e.changedTouches[0]
-        : null;
+          ? e.touches[0]
+          : e.changedTouches
+            ? e.changedTouches[0]
+            : null;
 
     if (!e) {
       return false;
@@ -52,11 +52,11 @@ const Swipe = (props) => {
         props.onPointerMove(e);
       }
 
-      let dx = e.pageX - startX;
-      let dy = e.pageY - startY;
+      const dx = e.pageX - startX;
+      const dy = e.pageY - startY;
 
-      let ax = Math.abs(dx);
-      let ay = Math.abs(dy);
+      const ax = Math.abs(dx);
+      const ay = Math.abs(dy);
 
       if (ax > ay) {
         if (props.onPanX) {
@@ -89,15 +89,15 @@ const Swipe = (props) => {
       }
     }
   };
-  const onTouchEndHandler = (e) => {
+  const onTouchEndHandler = (_e) => {
     requestAnimationFrame(onLeaveHandle);
     isPressed = false;
   };
 
   return {
-    onStart: onTouchStartHandler,
+    onEnd: onTouchEndHandler,
     onMove: onTouchMoveHandler,
-    onEnd: onTouchEndHandler
+    onStart: onTouchStartHandler
   };
 };
 
