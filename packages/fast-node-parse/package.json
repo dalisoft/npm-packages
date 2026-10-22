@@ -19,6 +19,9 @@
       "types": "./src/node.d.ts",
       "default": "./src/node.js"
     },
+    "./beta": {
+      "default": "./src/node-vtree.js"
+    },
     "./utils/compact": {
       "types": "./utils/compact.d.ts",
       "default": "./utils/compact.js"
@@ -34,6 +37,9 @@
   ],
   "scripts": {
     "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2"
   },
   "engines": {
     "node": ">=18.20.4"
