@@ -37,13 +37,11 @@
     "test": "bun test --timeout=1000"
   },
   "dependencies": {
-    "@dalisoft/events": "^0.2.0"
-  },
-  "devDependencies": {
+    "@dalisoft/events": "^0.2.0",
     "ws": "^8.22.0"
   },
-  "peerDependencies": {
-    "websocket": "^1.0.32",
-    "ws": "^7.3.1"
+  "devDependencies": {
+    "websocket": "^1.0.35",
+    "ws": "^8.22.0"
   }
 }
