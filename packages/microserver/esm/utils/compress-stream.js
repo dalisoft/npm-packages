@@ -1,4 +1,4 @@
-import { createBrotliCompress, createGzip, createDeflate } from 'zlib';
+import { createBrotliCompress, createDeflate, createGzip } from 'node:zlib';
 
 const priority = ['gzip', 'br', 'deflate'];
 
@@ -11,10 +11,10 @@ export default function (stream, contentEncoding) {
     encoding === 'br'
       ? createBrotliCompress()
       : encoding === 'gzip'
-      ? createGzip()
-      : encoding === 'deflate'
-      ? createDeflate()
-      : null;
+        ? createGzip()
+        : encoding === 'deflate'
+          ? createDeflate()
+          : null;
 
   if (compression) {
     stream.pipe(compression);

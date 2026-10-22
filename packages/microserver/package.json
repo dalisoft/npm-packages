@@ -2,40 +2,34 @@
   "name": "microhelpers",
   "version": "0.0.1",
   "description": "Pack of micro-helpers for uWebSockets.js",
-  "main": "./cjs/index.cjs",
-  "exports": {
-    ".": {
-      "require": "./cjs/index.cjs",
-      "default": "./esm/index.js"
-    }
-  },
-  "module": "./esm/index.js",
-  "type": "module",
-  "typings": "microhelpers.d.ts",
-  "scripts": {
-    "dev": "bun build ./esm/index.js --format=cjs --target=node --packages=external --sourcemap=linked --outdir=./cjs --entry-naming=index.cjs --watch",
-    "build": "bun build ./esm/index.js --format=cjs --target=node --packages=external --sourcemap=linked --outdir=./cjs --entry-naming=index.cjs",
-    "lint": "biome lint ./esm",
-    "prepublishOnly": "npm run lint"
-  },
-  "engines": {
-    "node": ">=12.10"
+  "keywords": [
+    "ast-parser",
+    "nanoexpress"
+  ],
+  "homepage": "https://github.com/dalisoft/microhelpers#readme",
+  "bugs": {
+    "url": "https://github.com/dalisoft/microhelpers/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalisoft/microhelpers"
   },
-  "keywords": [
-    "ast-parser",
-    "nanoexpress"
-  ],
-  "author": "dalisoft",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dalisoft/microhelpers/issues"
+  "author": "dalisoft",
+  "type": "module",
+  "exports": {
+    ".": "./esm/index.js"
   },
-  "homepage": "https://github.com/dalisoft/microhelpers#readme",
+  "main": "./esm/index.js",
+  "typings": "microhelpers.d.ts",
+  "scripts": {
+    "lint": "biome lint ./esm",
+    "prepublishOnly": "bun run lint"
+  },
   "dependencies": {
     "cookie": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=12.10"
   }
 }
