@@ -1,10 +1,9 @@
-import * as FS from 'fs';
-import { Cache, Config } from './create-cache-custom';
+import * as FS from 'node:fs';
+import { tmpdir } from 'node:os';
+import { Cache, type Config } from './create-cache-custom';
 
 const isFSUnavailabe: boolean =
-  typeof window !== 'undefined' ||
-  typeof require === 'undefined' ||
-  typeof process === 'undefined';
+  typeof window !== 'undefined' || typeof process === 'undefined';
 
 type typeValue =
   | string
@@ -24,8 +23,8 @@ class FSCache extends Cache {
       randomDir === true
         ? Math.floor(Math.random() * 10000000).toString(36)
         : typeof randomDir === 'string'
-        ? randomDir
-        : null;
+          ? randomDir
+          : null;
 
     if (isFSUnavailabe) {
       console.error(
@@ -34,11 +33,11 @@ class FSCache extends Cache {
       return;
     }
 
-    const tmpDir = FS.realpathSync(require('os').tmpdir());
+    const tmpDir = FS.realpathSync(tmpdir());
 
     const dir = randomDir
-      ? tmpDir + `/dalisoft-cache-ttl--${rnd}/`
-      : tmpDir + '/dalisoft-cache-ttl/';
+      ? `${tmpDir}/dalisoft-cache-ttl--${rnd}/`
+      : `${tmpDir}/dalisoft-cache-ttl/`;
 
     if (!FS.existsSync(dir)) {
       FS.mkdirSync(dir);
@@ -47,8 +46,16 @@ class FSCache extends Cache {
     const initialKeys = FS.readdirSync(dir, 'utf8') || [];
 
     const config: Config = {
-      initialKeys,
-      jsonEnforce: true,
+      deleteTransform(key: string) {
+        return new Promise((resolve, reject) => {
+          FS.unlink(dir + key, (err: any) => {
+            if (err) {
+              return reject(err);
+            }
+            resolve(true);
+          });
+        });
+      },
       getTransform(key: string): Promise<typeValue> {
         return new Promise((resolve, reject) => {
           FS.readFile(dir + key, { encoding: 'utf8' }, (err, result) => {
@@ -64,6 +71,8 @@ class FSCache extends Cache {
           FS.exists(dir + key, resolve);
         });
       },
+      initialKeys,
+      jsonEnforce: true,
       setTransform(key: string, value: typeValue) {
         return new Promise((resolve, reject) => {
           FS.writeFile(dir + key, value, 'utf8', (err: any) => {
@@ -71,16 +80,6 @@ class FSCache extends Cache {
               return reject(err);
             }
             resolve(value);
-          });
-        });
-      },
-      deleteTransform(key: string) {
-        return new Promise((resolve, reject) => {
-          FS.unlink(dir + key, (err: any) => {
-            if (err) {
-              return reject(err);
-            }
-            resolve(true);
           });
         });
       }
