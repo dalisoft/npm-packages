@@ -1,8 +1,8 @@
 import benny from 'benny';
-import fastPathCompile from '../aot/match.js';
-import fastPathParse from '../runtime/match.js';
 import pathToRegExp from 'path-to-regexp';
 import pathToTree from 'path-to-tree';
+import fastPathCompile from '../aot/match.js';
+import fastPathParse from '../runtime/match.js';
 
 const path = '/user/:id/edit/:page';
 

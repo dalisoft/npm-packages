@@ -1,8 +1,8 @@
 import benny from 'benny';
-import fastPathCompile from '../aot/parse.js';
-import fastPathParse from '../runtime/parse.js';
 import pathToRegExp from 'path-to-regexp';
 import pathToTree from 'path-to-tree';
+import fastPathCompile from '../aot/parse.js';
+import fastPathParse from '../runtime/parse.js';
 
 const path = '/user/:id/edit/:page';
 
