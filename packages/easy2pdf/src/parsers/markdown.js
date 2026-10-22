@@ -1,10 +1,8 @@
-const markdown = require('markdown-it');
-const hljs = require('highlight.js');
-const buildHTML = require('./html.js');
+import hljs from 'highlight.js';
+import markdown from 'markdown-it';
+import buildHTML from './html.js';
 
 const md = markdown({
-  html: true,
-  linkify: true,
   highlight(str, lang) {
     if (!lang) {
       return '';
@@ -12,7 +10,7 @@ const md = markdown({
     if (hljs.getLanguage(lang)) {
       try {
         return `<pre><code class="hljs">${
-          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value
+          hljs.highlight(str, { ignoreIllegals: true, language: lang }).value
         }</code></pre>`;
       } catch (__) {
         // noop
@@ -23,7 +21,9 @@ const md = markdown({
     }
 
     return '';
-  }
+  },
+  html: true,
+  linkify: true
 });
 
 /**
@@ -34,4 +34,4 @@ const md = markdown({
  */
 const buildMarkdown = (title, content) => buildHTML(title, md.render(content));
 
-module.exports = buildMarkdown;
+export default buildMarkdown;

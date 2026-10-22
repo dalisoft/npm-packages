@@ -46,4 +46,4 @@ ${content}
 </body>
 </html>`;
 
-module.exports = buildHTML;
+export default buildHTML;
