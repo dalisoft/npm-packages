@@ -15,7 +15,6 @@
     "*rc": "json"
   },
   "js/ts.tsdk.path": "node_modules/tsrs",
-  "js/ts.validate.enable": true,
   "js/ts.validate.enabled": true,
   "npm.packageManager": "bun"
 }
