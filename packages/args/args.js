@@ -1,6 +1,5 @@
 function args(fn, args, modifyArgs) {
   const argsLen = args.length;
-  let i = 0;
 
   if (argsLen === 0) {
     return fn();
@@ -15,19 +14,8 @@ function args(fn, args, modifyArgs) {
       args = modifyArgs(args);
     }
 
-    const [
-      arg1,
-      arg2,
-      arg3,
-      arg4,
-      arg5,
-      arg6,
-      arg7,
-      arg8,
-      arg9,
-      arg10,
-      arg11
-    ] = args;
+    const [arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11] =
+      args;
 
     if (argsLen === 2) {
       return fn(arg1, arg2);
