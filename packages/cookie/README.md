@@ -10,7 +10,7 @@ Note: _Requires Node.js framework Response and Request instance for some methods
 - Clean code
 - Performant
 - Easy
-- UMD compatible
+- ESM only
 
 ## Installation
 
@@ -23,14 +23,9 @@ npm i @dalisoft/cookie
 then you able to import to Node.js/Browser easily
 
 ```js
-// Node.js
-const Cookie = require('@dalisoft/cookie');
-
-// Browser
-// window.Cookie OR Cookie
-
-// ES6
-import Cookie from '@dalisoft/cookie';
+import * as Cookie from '@dalisoft/cookie';
+// or
+import { parse, stringify, set, remove } from '@dalisoft/cookie';
 ```
 
 ## Methods
