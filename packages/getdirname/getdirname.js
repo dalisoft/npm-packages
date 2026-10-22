@@ -1,4 +1,4 @@
-module.exports = function getdirname() {
+export default function getdirname() {
   try {
     throw new Error('__get__dirname__');
   } catch (e) {
@@ -7,7 +7,7 @@ module.exports = function getdirname() {
     let stackTraceRun = currStackTrace.shift();
     // eslint-disable-next-line no-constant-condition
     while (true) {
-      if (currStackTrace[0].indexOf(' (/') !== -1) {
+      if (currStackTrace[0].indexOf('file://') !== -1) {
         stackTraceRun = currStackTrace.shift();
       } else {
         break;
@@ -19,17 +19,12 @@ module.exports = function getdirname() {
     }
 
     const lastSlashIndex = stackTraceRun.lastIndexOf('/');
-    let firstBrace = stackTraceRun.indexOf(' (/');
 
-    if (firstBrace !== -1 && lastSlashIndex !== -1) {
-      firstBrace += 2;
-      const realdirname = stackTraceRun.substr(
-        firstBrace,
-        lastSlashIndex - firstBrace
-      );
-      return realdirname;
+    if (lastSlashIndex !== -1) {
+      const realdirname = stackTraceRun.substr(0, lastSlashIndex);
+      return realdirname.replace('file://', '');
     }
   }
 
   return null;
-};
+}
