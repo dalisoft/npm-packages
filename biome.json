@@ -10,7 +10,13 @@
     "enabled": true
   },
   "files": {
-    "includes": ["**", "!!**/*.min.js", "!!**/*.d.ts", "!!**/node_modules"]
+    "includes": [
+      "**",
+      "!!**/*.min.js",
+      "!!**/*.d.ts",
+      "!!**/node_modules",
+      "!!bun.lock"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
