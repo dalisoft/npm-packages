@@ -14,7 +14,8 @@
     "*.ts": "typescript",
     "*rc": "json"
   },
-  "js/ts.tsdk.path": "node_modules/tsrs",
+  "js/ts.experimental.useTsgo": true,
+  "js/ts.tsdk.path": "./node_modules/tsrs/tsdk",
   "js/ts.validate.enabled": true,
   "npm.packageManager": "bun"
 }

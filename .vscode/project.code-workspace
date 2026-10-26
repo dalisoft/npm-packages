@@ -96,7 +96,7 @@
       "path": "../packages/args"
     }
   ],
-  "js/ts.tsdk.path": "node_modules/tsrs",
+  "js/ts.tsdk.path": "./node_modules/tsrs/tsdk",
   "js/ts.validate.enable": true,
   "npm.packageManager": "bun"
 }
