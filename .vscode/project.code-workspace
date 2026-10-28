@@ -96,13 +96,6 @@
       "path": "../packages/args"
     }
   ],
-  "js/ts.tsdk.path": "./node_modules/tsrs/tsdk",
   "js/ts.validate.enable": true,
-  "npm.packageManager": "bun",
-  "terminal.integrated.env.linux": {
-    "TSRS_FAST": "1"
-  },
-  "terminal.integrated.env.osx": {
-    "TSRS_FAST": "1"
-  }
+  "npm.packageManager": "bun"
 }

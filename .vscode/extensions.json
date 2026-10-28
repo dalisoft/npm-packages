@@ -4,7 +4,6 @@
     "editorconfig.editorconfig",
     "oven.bun-vscode",
     "rvben.rumdl",
-    "tekumara.typos-vscode",
-    "typescriptteam.native-preview"
+    "tekumara.typos-vscode"
   ]
 }
