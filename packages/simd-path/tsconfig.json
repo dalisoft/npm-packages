@@ -1,7 +1,4 @@
 {
-  "compilerOptions": {
-    "module": "ESNext"
-  },
   "exclude": ["node_modules"],
   "extends": "../../tsconfig.json",
   "include": ["lib.ts"]

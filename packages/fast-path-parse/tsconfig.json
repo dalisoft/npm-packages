@@ -1,7 +1,4 @@
 {
-  "compilerOptions": {
-    "module": "esnext"
-  },
   "exclude": ["node_modules"],
   "extends": "../../tsconfig.json",
   "include": ["src", "tests", "benchmark"]
