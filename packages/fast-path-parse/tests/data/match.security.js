@@ -2,33 +2,33 @@ const matchSecurity = [
   {
     children: [
       {
+        excepted: false,
         input: '/foo/process.exit(1)',
         name: '/foo/process.exit(1)',
-        result: false,
         test_input: '/foo/(process.exit(1))'
       },
       {
+        excepted: false,
         input: '/foo/process.exit(1)',
         name: '/foo/process.exit(1)',
-        result: false,
         test_input: '/foo'
       },
       {
+        excepted: true,
         input: '/foo/:bar',
         name: '/foo/:bar',
-        result: true,
         test_input: '/foo/(process.exit(1))'
       },
       {
+        excepted: false,
         input: '/foo/:bar',
         name: '/foo/:bar',
-        result: false,
         test_input: '/(process.exit(1))'
       },
       {
+        excepted: true,
         input: '/:bar',
         name: '/:bar',
-        result: true,
         test_input: '/(process.exit(1))'
       }
     ],
@@ -37,33 +37,33 @@ const matchSecurity = [
   {
     children: [
       {
+        excepted: false,
         input: '/foo/throw 1',
         name: '/foo/throw 1',
-        result: false,
         test_input: '/foo throw 1'
       },
       {
+        excepted: false,
         input: '/foo/throw 1',
         name: '/foo/throw 1',
-        result: false,
         test_input: '/foo'
       },
       {
+        excepted: true,
         input: '/foo/:bar',
         name: '/foo/:bar',
-        result: true,
         test_input: '/foo/throw 1'
       },
       {
+        excepted: false,
         input: '/foo/:bar',
         name: '/foo/:bar',
-        result: false,
         test_input: '/throw 1'
       },
       {
+        excepted: true,
         input: '/:bar',
         name: '/:bar',
-        result: true,
         test_input: '/throw 1'
       }
     ],

@@ -6,7 +6,7 @@ import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';
 import { bench, describe } from 'vitest';
 import { Node as BeforeNode } from '../../.backup/src/node.js';
-import { Node as AfterNode } from '../../src/node.js';
+import { Node as AfterNode } from '../../src/node/node.js';
 import { FastTree } from '../fast-tree.ts';
 import { config, handler } from './config.js';
 

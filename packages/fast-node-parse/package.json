@@ -16,24 +16,23 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./src/node.d.ts",
-      "default": "./src/node.js"
+      "types": "./src/node/node.d.ts",
+      "default": "./src/node/node.js"
     },
     "./beta": {
       "default": "./src/node-vtree.js"
     },
     "./utils/compact": {
-      "types": "./utils/compact.d.ts",
-      "default": "./utils/compact.js"
+      "types": "./src/utils/compact.d.ts",
+      "default": "./src/utils/compact.js"
     }
   },
-  "main": "src/node.js",
-  "module": "src/node.js",
+  "main": "src/node/node.js",
+  "module": "src/node/node.js",
   "types": "module",
-  "typings": "src/node.d.ts",
+  "typings": "src/node/node.d.ts",
   "files": [
-    "src",
-    "utils"
+    "src"
   ],
   "scripts": {
     "test": "bun test"

@@ -1,4 +1,4 @@
-import { Node } from '../src/node.js';
+import { Node } from '../node/node.js';
 
 /**
  * Compacts Node tree by using special method
@@ -17,8 +17,8 @@ export class Compactify extends Node {
     let node = this;
     let next;
 
-    if (this.segment === '/') {
-      this.segment = '';
+    if (node.segment === '/' && node.static && node.next.static) {
+      node.segment = '';
     }
 
     // biome-ignore lint/suspicious/noAssignInExpressions: It is efficient
