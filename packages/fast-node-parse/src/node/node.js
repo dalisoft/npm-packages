@@ -8,13 +8,15 @@
  * @implements {import('./node').Node}
  */
 export class Node {
-  constructor(segment) {
+  constructor(segment, length) {
     this.next = undefined;
     this.position = 0;
+    this.last = true;
 
     this.segment = segment;
     this.static = !/[<>{}:*]/.test(segment);
-    this.length = this.static ? segment.length : 2;
+    this.length = this.static ? segment.length : (length ?? 2);
+    this.fixed_length = typeof length === 'number' || this.static;
 
     // This need for routers, otherwise you can modify it
     // or remove it, add something, do whatever you want
@@ -31,6 +33,9 @@ export class Node {
   push(node) {
     node.position = this.position + this.length;
 
+    this.last = false;
+    node.last = true;
+
     this.next = node;
 
     return this;
@@ -38,7 +43,7 @@ export class Node {
 
   match(path) {
     let i = -1;
-    let node = this.next;
+    let node = this;
     let position;
 
     while (node) {
@@ -46,6 +51,8 @@ export class Node {
 
       if (node.static) {
         i = path.indexOf(node.segment, position);
+      } else if (node.fixed_length) {
+        i = i + node.length;
       } else {
         i = path.indexOf('/', position + 1);
       }
@@ -62,16 +69,17 @@ export class Node {
 
   parse(path) {
     let i = -1;
-    let node = this.next;
+    let node = this;
     let position;
     let params;
 
     while (node) {
       position = node.position;
-      const IS_LAST_NODE = !node.next;
 
       if (node.static) {
         i = path.indexOf(node.segment, position);
+      } else if (node.fixed_length) {
+        i = i + node.length;
       } else {
         i = path.indexOf('/', position + 1);
       }
@@ -86,7 +94,7 @@ export class Node {
         }
 
         if (node.key) {
-          params[node.key] = IS_LAST_NODE
+          params[node.key] = node.last
             ? path.substring(i + 1)
             : path.substring(position + 1, i);
         }
@@ -100,14 +108,16 @@ export class Node {
 
   lookup(path) {
     let i = -1;
-    let node = this.next;
+    let node = this;
     let position;
 
-    while (node.next) {
+    while (node) {
       position = node.position;
 
       if (node.static) {
         i = path.indexOf(node.segment, position);
+      } else if (node.fixed_length) {
+        i = i + node.length;
       } else {
         i = path.indexOf('/', position + 1);
       }
@@ -116,20 +126,13 @@ export class Node {
         return false;
       }
 
+      if (node.last) {
+        return node;
+      }
+
       node = node.next;
     }
 
-    position = node.position;
-    if (node.static) {
-      i = path.indexOf(node.segment, position);
-    } else {
-      i = path.indexOf('/', position + 1);
-    }
-
-    if (i === -1 || i < position) {
-      return false;
-    }
-
-    return node;
+    return false;
   }
 }

@@ -1,12 +1,11 @@
 {
-  "name": "@nanoexpress/find-route",
+  "name": "fast-node-parse-benchmark",
   "version": "0.0.1",
-  "description": "Router engine for nanoexpress",
+  "description": "Benchmark for fast-node-parse",
   "keywords": [],
   "license": "Apache-2.0",
   "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
   "type": "module",
-  "main": "src/engine.ts",
   "scripts": {
     "test": "test"
   },

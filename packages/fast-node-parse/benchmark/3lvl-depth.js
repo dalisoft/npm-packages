@@ -2,7 +2,7 @@ import { add, complete, cycle, suite } from 'benny';
 import FindMyWay from 'find-my-way';
 import { RegExpRouter } from 'hono/router/reg-exp-router';
 import { TrieRouter } from 'hono/router/trie-router';
-import { Node } from '../src/node.js';
+import { Node } from '../src/node/node.js';
 import { CallbackNode, RootNode } from './nodes.js';
 
 const root = new RootNode('/');

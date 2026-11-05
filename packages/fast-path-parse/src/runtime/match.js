@@ -1,10 +1,10 @@
-import equalPath from '../utils/equal-path.js';
+import { equal, strictEqual } from '../utils/equal-path.js';
 import segmentsSlice from '../utils/segment.js';
 
 /**
  * @type {import('./match').default}
  */
-const match = (path, compact) => {
+const match = (path, { compact, ignoreTrailingSlash = true } = {}) => {
   const { segments, filled, length: LENGTH } = segmentsSlice(path, compact);
 
   return filled.length > 0
@@ -30,7 +30,7 @@ const match = (path, compact) => {
 
           i = pathname.indexOf('/', lastIndex);
 
-          if (!segment.last && i < segment.position) {
+          if (!segment.last && i < segment.position && !ignoreTrailingSlash) {
             return false;
           }
 
@@ -46,7 +46,9 @@ const match = (path, compact) => {
 
         return isValid;
       }
-    : (url) => equalPath(url, path);
+    : ignoreTrailingSlash
+      ? (url) => equal(url, path)
+      : (url) => strictEqual(url, path);
 };
 
 export default match;
