@@ -27,7 +27,7 @@
     "prepublishOnly": "bun run lint"
   },
   "dependencies": {
-    "cookie": "^2.0.1"
+    "cookie": "^2.0.2"
   },
   "engines": {
     "node": ">=12.10"
