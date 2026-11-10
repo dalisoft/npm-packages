@@ -12,7 +12,7 @@
     "release": "for pkg in packages/*/package.json; do (cd \"$(dirname \"$pkg\")\" && ../../.release-me/release.sh -w --use-version --plugins=npm,npm-post,git,github-release --preset=workspace) || exit 1; done"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.6.5",
+    "@biomejs/biome": "^2.6.6",
     "@commitlint/cli": "^21.2.4",
     "@commitlint/config-workspace-scopes": "^21.2.0",
     "@types/node": "^26.6.6",
