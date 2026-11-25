@@ -1,7 +1,11 @@
+import type { IOptions } from './match';
+
 /**
  * Prepares an route path for parsing
  * @param path A path to be compiled
- * @param compact An status of compiler to reduce segments
+ * @param options Options to configure the parse
+ * @param options.ignoreTrailingSlash Compare strictly or loosely
+ * @param options.compact An status of compiler to reduce segments
  * @returns Function which parse params at runtime
  * @example
  * ```ts
@@ -13,7 +17,7 @@
  */
 function parse(
   path: string,
-  compact: boolean
+  options: Partial<IOptions>
 ): (
   pathname: string,
   params?: Record<string, string>

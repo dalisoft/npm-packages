@@ -1,113 +1,214 @@
 const parse = [
   {
-    input: '/foo/bar',
-    name: 'No segment',
-    result: {},
-    test_input: '/foo/bar',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
+    children: [
+      {
+        excepted: {},
+        input: '/foo/bar',
+        name: '2-level depth',
+        test_input: '/foo/bar',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: {},
+        input: '/foo/bar/baz',
+        name: '3-level depth',
+        test_input: '/foo/bar/baz',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      }
+    ],
+    name: 'No segment'
   },
+
   {
-    input: '/foo/:id',
-    name: 'Simple segmenting, `:id`',
-    result: { id: '123' },
-    test_input: '/foo/123',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
+    children: [
+      {
+        excepted: { id: '123' },
+        input: '/foo/:id',
+        name: '2-level depth, `:id`',
+        test_input: '/foo/123',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: {},
+        input: '/foo/:id',
+        name: '2-level depth, `:id`',
+        test_input: '/foo/',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: { id: '123' },
+        input: '/foo/<id>',
+        name: '2-level depth, `<id>`',
+        test_input: '/foo/123',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: {},
+        input: '/foo/<id>',
+        name: '2-level depth, `<id>`',
+        test_input: '/foo/',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: { id: '123' },
+        input: '/foo/:id/bar',
+        name: '3-level depth, `:id`',
+        test_input: '/foo/123/bar',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: {},
+        input: '/foo/:id/bar',
+        name: '3-level depth, `:id`',
+        test_input: '/foo/123',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: { id: '123' },
+        input: '/foo/<id>/bar',
+        name: '3-level depth, <id>',
+        test_input: '/foo/123/bar',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: {},
+        input: '/foo/<id>/bar',
+        name: '3-level depth, `<id>`',
+        test_input: '/foo/123',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: { id: '123' },
+        input: '/foo/bar/:id',
+        name: '3-level depth alternative, `:id`',
+        test_input: '/foo/bar/123',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: {},
+        input: '/foo/:id/bar/:task',
+        name: '4-level depth',
+        test_input: '/foo/123/bar/run',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      }
+    ],
+    name: 'Simple segmenting'
   },
+
   {
-    input: '/foo/:id/bar',
-    name: 'Simple segmenting 2, `:id`',
-    result: { id: '123' },
-    test_input: '/foo/123/bar',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
-  },
-  {
-    input: '/foo/<id>',
-    name: 'Simple segmenting, `<id>`',
-    result: { id: '123' },
-    test_input: '/foo/123',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
-  },
-  {
-    input: '/foo/<id>/bar',
-    name: 'Simple segmenting 2, `<id>`',
-    result: { id: '123' },
-    test_input: '/foo/123/bar',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
-  },
-  {
-    input: '/foo/:id/bar/:task',
-    name: 'Simple two segmenting',
-    result: { id: '123', task: 'run' },
-    test_input: '/foo/123/bar/run',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
-  },
-  {
-    input: '/foo/:id/:task',
-    name: 'Average two segmenting',
-    result: { id: '123', task: 'run' },
-    test_input: '/foo/123/run',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
-  },
-  {
-    input: '/foo/:id/:task/bar',
-    name: 'Average two segmenting 2',
-    result: { id: '123', task: 'run' },
-    test_input: '/foo/123/run/bar',
-    variants: [
-      ['%s', '%s'],
-      ['%s/', '%s'],
-      ['%s', '%s/'],
-      ['%s/', '%s/']
-    ]
+    children: [
+      {
+        excepted: { id: '123', task: 'run' },
+        input: '/foo/:id/:task',
+        name: '3-level depth',
+        test_input: '/foo/123/run',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      },
+      {
+        excepted: { id: '123', task: 'run' },
+        input: '/foo/:id/:task/bar',
+        name: '4-level depth',
+        test_input: '/foo/123/run/bar',
+        variants: [
+          ['%s', '%s'],
+          ['%s/', '%s'],
+          ['%s', '%s/'],
+          ['%s/', '%s/']
+        ]
+      }
+    ],
+    name: 'Average two segmenting'
   },
   {
     children: [
       {
+        excepted: { '*1': '123' },
         input: '/foo/*/bar',
         name: '/foo/*/bar',
-        result: { '*1': '123' },
         test_input: '/foo/123/bar'
       },
       {
+        excepted: {},
+        input: '/foo/*/bar',
+        name: '/foo/*/bar',
+        test_input: '/foo/123'
+      },
+      {
+        excepted: { '*1': '123', '*2': 'run' },
         input: '/foo/*/bar/*',
         name: '/foo/*/bar/*',
-        result: { '*1': '123', '*2': 'run' },
         test_input: '/foo/123/bar/run'
+      },
+      {
+        excepted: {},
+        input: '/foo/*/bar/*',
+        name: '/foo/*/bar/*',
+        test_input: '/foo/123/bar'
       }
     ],
     name: 'Simple * segment'
@@ -115,35 +216,35 @@ const parse = [
   {
     children: [
       {
+        excepted: { '*1': 'bar', id: '123' },
         input: '/foo/:id/*',
         name: '/foo/:id/*',
-        result: { '*1': 'bar', id: '123' },
         test_input: '/foo/123/bar'
       },
       {
+        excepted: { '*1': '123', '*2': 'bar', '*3': 'run' },
         input: '/foo/*/*/*',
         name: '/foo/*/*/*',
-        result: { '*1': '123', '*2': 'bar', '*3': 'run' },
         test_input: '/foo/123/bar/run'
       },
       {
+        excepted: {
+          '*1': '123',
+          '*2': 'run',
+          id: 'bar'
+        },
         input: '/foo/*/:id/*',
         name: '/foo/*/:id/*',
-        result: {
-          '*1': '123',
-          '*2': 'run',
-          id: 'bar'
-        },
         test_input: '/foo/123/bar/run'
       },
       {
-        input: '/foo/*/:id/(.*)',
-        name: '/foo/*/:id/(.*)',
-        result: {
+        excepted: {
           '*1': '123',
           '*2': 'run',
           id: 'bar'
         },
+        input: '/foo/*/:id/(.*)',
+        name: '/foo/*/:id/(.*)',
         test_input: '/foo/123/bar/run'
       }
     ],

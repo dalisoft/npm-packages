@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { CallbackNode, RootNode } from '../benchmark/nodes.js';
-import { Node } from '../src/node.js';
+import { Node } from '../src/node/node.js';
 
-describe('node tree', () => {
+describe('node tree [/foo/:id/:kind]', () => {
   describe('multi-route siblings', () => {
     const root = new Node('/');
     const foo = new Node('foo');
@@ -59,7 +59,7 @@ describe('node tree', () => {
     });
   });
 
-  describe('route matches [/foo/:id/:kind]', () => {
+  describe('route matches', () => {
     const root = new Node('/');
     const foo = new Node('foo');
     const id = new Node(':id');
@@ -86,7 +86,7 @@ describe('node tree', () => {
     });
   });
 
-  describe('route parse [/foo/:id/:kind]', () => {
+  describe('route parse', () => {
     const root = new Node('/');
     const foo = new Node('foo');
     const id = new Node(':id');
@@ -124,7 +124,7 @@ describe('node tree', () => {
     });
   });
 
-  describe('route lookup [/foo/:id/:kind]', () => {
+  describe('route lookup', () => {
     let callsCount = 0;
 
     const root = new RootNode('/');
@@ -170,6 +170,74 @@ describe('node tree', () => {
       it('/foo/123/', () =>
         assert.equal(root.lookup('GET', '/foo/123/'), false));
       it('/foo/bar', () => assert.equal(root.lookup('GET', '/foo/bar'), false));
+      it('/foo/', () => assert.equal(root.lookup('GET', '/foo/'), false));
+    });
+  });
+});
+
+describe('node tree [/foo/:id]', () => {
+  describe('route matches', () => {
+    const root = new Node('/');
+    const foo = new Node('foo');
+    const id = new Node(':id');
+
+    root.push(foo);
+    foo.push(id);
+
+    describe('valid routes [/foo/123]', () => {
+      it('/foo/123', () => assert.equal(root.match('/foo/123'), true));
+
+      describe('invalid routes [/foo/]', () => {
+        it('/foo/', () => assert.equal(root.match('/foo/'), false));
+      });
+    });
+  });
+
+  describe('route parse', () => {
+    const root = new Node('/');
+    const foo = new Node('foo');
+    const id = new Node(':id');
+
+    root.push(foo);
+    foo.push(id);
+
+    describe('valid routes [/foo/123]', () => {
+      it('/foo/123', () =>
+        assert.deepEqual(root.parse('/foo/123'), {
+          id: '123'
+        }));
+    });
+
+    describe('invalid routes [/foo/:id]', () => {
+      it('/foo/', () => assert.equal(root.parse('/foo/'), false));
+    });
+  });
+
+  describe('route lookup', () => {
+    let callsCount = 0;
+
+    const root = new RootNode('/');
+    const foo = new Node('foo');
+    const id = new CallbackNode(
+      'GET',
+      (params) => {
+        return { ...params, calls: callsCount++ };
+      },
+      ':id'
+    );
+
+    root.push(foo);
+    foo.push(id);
+
+    describe('valid routes [/foo/123/]', () => {
+      it('/foo/123/bar', () =>
+        assert.deepEqual(root.lookup('GET', '/foo/123'), {
+          calls: 0,
+          id: '123'
+        }));
+    });
+
+    describe('invalid routes [/foo/]', () => {
       it('/foo/', () => assert.equal(root.lookup('GET', '/foo/'), false));
     });
   });

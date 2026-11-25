@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { CallbackNode, RootNode } from '../benchmark/nodes.js';
-import { Node } from '../src/node.js';
-import { Compactify } from '../utils/compact.js';
+import { Node } from '../src/node/node.js';
+import { Compactify } from '../src/utils/compact.js';
 
 describe('node compact tree [optimized]', () => {
   describe('route matches [/foo/:id/:kind]', () => {

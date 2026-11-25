@@ -1,4 +1,4 @@
-import type { Node } from '../src/node';
+import type { Node } from '../node/node';
 
 declare class Compactify extends Node {
   optimize(copyProps: string[]): this;
